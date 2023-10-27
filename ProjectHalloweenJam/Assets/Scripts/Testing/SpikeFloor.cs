@@ -11,12 +11,9 @@ namespace Testing
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            print("bebra");
             
             if (other.TryGetComponent<IDamageable>(out var damageable))
             {
-                print("damage");
-                
                 damageable.TryTakeDamage(_damage);
             }
         }
