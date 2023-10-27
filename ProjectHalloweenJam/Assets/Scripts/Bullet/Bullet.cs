@@ -14,7 +14,6 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Wall") 
         {
             transform.position = new Vector3(0, 0, -100);
-            this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             this.gameObject.SetActive(false);
         }
         
