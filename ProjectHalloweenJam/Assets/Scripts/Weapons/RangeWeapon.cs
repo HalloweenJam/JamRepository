@@ -1,4 +1,4 @@
-using Testing;
+using Managers;
 using UnityEngine;
 
 namespace Weapons
@@ -6,12 +6,12 @@ namespace Weapons
     [CreateAssetMenu(menuName = "Weapons/Range")]
     public class RangeWeapon : BaseWeapon
     {
-        [SerializeField] private Bullet.Bullet _projectile;
+        [SerializeField] private float _bulletSpeed;
         
-        public override bool TryToUse(Vector2 direction)
+        public override bool TryToUse(Vector2 startPosition, Vector2 direction)
         {
-            Debug.Log("пиу пиу");
-            
+            BulletPoolingManager.Instance.GetBullet(startPosition, direction, _bulletSpeed, Damage);
+
             return true;
         }
     }

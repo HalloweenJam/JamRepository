@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Core;
+using Managers;
 using Player.Controls;
 using UnityEngine;
 using Weapons;
@@ -8,14 +9,21 @@ namespace Entities
 {
     public class WeaponSelector : MonoBehaviour
     {
-        [SerializeField] private RangeWeapon _weapon;
+        [SerializeField] private List<RangeWeapon> _weaponsToAdd;
         
         private readonly List<WeaponData> _weapons = new();
 
         private int _selectedWeaponIndex = 0;
         private bool _isHoldingWeapon;
 
+        private Vector2 _direction;
+
         private InputReader _inputReader;
+        
+        public void Add(BaseWeapon weapon)
+        {
+            _weapons.Add(new WeaponData(weapon));
+        }
 
         private void Start()
         {
@@ -25,27 +33,28 @@ namespace Entities
             _inputReader.ShootingCancelledEvent += () => _isHoldingWeapon = false;
 
             _inputReader.MouseWheelScrollEvent += ChangeWeapon;
+            _inputReader.MousePositionEvent += mousePosition =>
+            {
+                _direction = (mousePosition - (Vector2) transform.position).normalized;
+            };
             
-            Add(_weapon);
+            foreach (var weapon in _weaponsToAdd)
+            {
+                Add(weapon);
+            }
         }
 
         private void ChangeWeapon(float direction)
         {
-            _selectedWeaponIndex += direction > 0 ? 1 : -1;
-        }
-
-        public void Add(BaseWeapon weapon)
-        {
-            weapon.Init(transform);
-            _weapons.Add(new WeaponData(weapon));
+            var dir = direction > 0 ? 1 : -1;
+            
+            _selectedWeaponIndex = (_selectedWeaponIndex + _weapons.Count + dir) % _weapons.Count;
         }
 
         private void Update()
         {
-
-            
             if (_isHoldingWeapon)
-                _weapons[_selectedWeaponIndex].TryToAttack(transform.position);
+                _weapons[_selectedWeaponIndex].TryToAttack(transform.position, _direction);
             
             var deltaTime = Time.deltaTime;
             

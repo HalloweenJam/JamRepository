@@ -9,8 +9,9 @@ namespace Player.Controls
     {
         private GameControls _gameControls;
 
-        public event Action<float> MouseWheelScrollEvent; 
-        
+        public event Action<float> MouseWheelScrollEvent;
+
+        public event Action<Vector2> MousePositionEvent;
         public event Action<Vector2> MoveEvent;
 
         public event Action DashEvent;
@@ -85,6 +86,13 @@ namespace Player.Controls
         {
             if (context.phase == InputActionPhase.Started)
                 MouseWheelScrollEvent?.Invoke(context.ReadValue<float>());
+        }
+
+        public void OnMousePosition(InputAction.CallbackContext context)
+        {
+            var direction = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            
+            MousePositionEvent?.Invoke(direction);
         }
     }
 }

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ae2491422424028963a2a77d453e68a, type: 3}
-  m_Name: New Range Weapon
+  m_Name: SniperRifle
   m_EditorClassIdentifier: 
   _description:
     _icon: {fileID: 0}
     _name: 
     _info: 
-  _damage: 0
   _weaponConfig:
-    _totalBullets: 90
-    _bulletsPerBatch: 7
+    _totalBullets: 25
+    _bulletsPerBatch: 1
     _attackSpeed: 0.1
-    _reloadingSpeed: 1
-  _projectile: {fileID: 0}
+    _reloadingSpeed: 2
+  _damage: 10
+  _bulletSpeed: 50

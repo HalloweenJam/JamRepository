@@ -55,13 +55,13 @@ namespace Core
             RefillBatch();
         }
 
-        public bool TryToAttack(Vector2 position)
+        public bool TryToAttack(Vector2 startPosition, Vector2 endPosition)
         {
             if (_leftBulletsInBatch <= 0 || _attackSpeedCounter > 0) 
                 return false;
             
             _leftBulletsInBatch--;
-            _baseWeapon.TryToUse(position);
+            _baseWeapon.TryToUse(startPosition, endPosition);
             _attackSpeedCounter = _attackSpeed;
             return true;
         }

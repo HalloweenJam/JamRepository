@@ -80,6 +80,15 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""a2066e13-ce7b-45ee-b23c-7272eecb4baf"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -214,6 +223,17 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""MouseWheelScroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61621dc3-424e-4f11-a06d-7cc860861eee"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -234,6 +254,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_MouseWheelScroll = m_Gameplay.FindAction("MouseWheelScroll", throwIfNotFound: true);
+        m_Gameplay_MousePosition = m_Gameplay.FindAction("MousePosition", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
     }
@@ -303,6 +324,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_MouseWheelScroll;
+    private readonly InputAction m_Gameplay_MousePosition;
     public struct GameplayActions
     {
         private @GameControls m_Wrapper;
@@ -313,6 +335,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @MouseWheelScroll => m_Wrapper.m_Gameplay_MouseWheelScroll;
+        public InputAction @MousePosition => m_Wrapper.m_Gameplay_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -340,6 +363,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @MouseWheelScroll.started += instance.OnMouseWheelScroll;
             @MouseWheelScroll.performed += instance.OnMouseWheelScroll;
             @MouseWheelScroll.canceled += instance.OnMouseWheelScroll;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -362,6 +388,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @MouseWheelScroll.started -= instance.OnMouseWheelScroll;
             @MouseWheelScroll.performed -= instance.OnMouseWheelScroll;
             @MouseWheelScroll.canceled -= instance.OnMouseWheelScroll;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -425,6 +454,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnMouseWheelScroll(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

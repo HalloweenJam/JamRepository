@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Player.Controls;
 using UnityEngine;
 
-namespace Player.Controls
+namespace Managers
 {
     public class InputReaderManager : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Bullet
+namespace Testing
 {
     public class CreateFire : MonoBehaviour
     {
