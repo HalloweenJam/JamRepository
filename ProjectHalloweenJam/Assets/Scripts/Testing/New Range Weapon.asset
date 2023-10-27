@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae2491422424028963a2a77d453e68a, type: 3}
+  m_Name: New Range Weapon
+  m_EditorClassIdentifier: 
+  _description:
+    _icon: {fileID: 0}
+    _name: 
+    _info: 
+  _damage: 0
+  _weaponConfig:
+    _totalBullets: 90
+    _bulletsPerBatch: 7
+    _attackSpeed: 0.1
+    _reloadingSpeed: 1
+  _projectile: {fileID: 0}
