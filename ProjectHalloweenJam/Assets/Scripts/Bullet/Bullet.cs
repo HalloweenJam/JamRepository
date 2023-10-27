@@ -1,21 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Core.Interfaces;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace Bullet
 {
-    [SerializeField] private int _damage;
-    private void OnTriggerEnter2D(Collider2D other)
+    public class Bullet : MonoBehaviour
     {
-        if (other.TryGetComponent<IDamageable>(out var damageable))
+        [SerializeField] private int _damage;
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            damageable.TryTakeDamage(_damage);
+            if (other.TryGetComponent<IDamageable>(out var damageable))
+            {
+                damageable.TryTakeDamage(_damage);
+            }
         }
-        if (other.tag == "Wall") 
+
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            transform.position = new Vector3(0, 0, -100);
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
-        
     }
 }

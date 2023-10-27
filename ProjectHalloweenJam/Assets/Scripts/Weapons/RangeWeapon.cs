@@ -6,7 +6,7 @@ namespace Weapons
     [CreateAssetMenu(menuName = "Weapons/Range")]
     public class RangeWeapon : BaseWeapon
     {
-        [SerializeField] private Bullet _projectile;
+        [SerializeField] private Bullet.Bullet _projectile;
         
         public override bool TryToUse(Vector2 direction)
         {
