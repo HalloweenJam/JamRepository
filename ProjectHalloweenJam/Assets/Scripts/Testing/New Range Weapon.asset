@@ -18,8 +18,8 @@ MonoBehaviour:
     _info: 
   _damage: 0
   _weaponConfig:
-    _totalBullets: 11
-    _bulletsPerBatch: 3
+    _totalBullets: 90
+    _bulletsPerBatch: 7
     _attackSpeed: 0.1
     _reloadingSpeed: 1
   _projectile: {fileID: 0}

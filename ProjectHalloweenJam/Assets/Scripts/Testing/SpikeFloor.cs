@@ -1,4 +1,3 @@
-using System;
 using Core.Interfaces;
 using UnityEngine;
 
@@ -11,7 +10,6 @@ namespace Testing
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            
             if (other.TryGetComponent<IDamageable>(out var damageable))
             {
                 damageable.TryTakeDamage(_damage);

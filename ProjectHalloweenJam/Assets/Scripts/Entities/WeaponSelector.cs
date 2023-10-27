@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Core;
 using Player.Controls;
@@ -24,8 +23,15 @@ namespace Entities
 
             _inputReader.ShootingEvent += () => _isHoldingWeapon = true;
             _inputReader.ShootingCancelledEvent += () => _isHoldingWeapon = false;
+
+            _inputReader.MouseWheelScrollEvent += ChangeWeapon;
             
             Add(_weapon);
+        }
+
+        private void ChangeWeapon(float direction)
+        {
+            _selectedWeaponIndex += direction > 0 ? 1 : -1;
         }
 
         public void Add(BaseWeapon weapon)
@@ -36,6 +42,8 @@ namespace Entities
 
         private void Update()
         {
+
+            
             if (_isHoldingWeapon)
                 _weapons[_selectedWeaponIndex].TryToAttack(transform.position);
             

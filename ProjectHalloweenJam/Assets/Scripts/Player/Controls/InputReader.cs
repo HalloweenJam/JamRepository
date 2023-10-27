@@ -9,6 +9,8 @@ namespace Player.Controls
     {
         private GameControls _gameControls;
 
+        public event Action<float> MouseWheelScrollEvent; 
+        
         public event Action<Vector2> MoveEvent;
 
         public event Action DashEvent;
@@ -77,6 +79,12 @@ namespace Player.Controls
         {
             if (context.phase == InputActionPhase.Performed)
                 InteractEvent?.Invoke();
+        }
+
+        public void OnMouseWheelScroll(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Started)
+                MouseWheelScrollEvent?.Invoke(context.ReadValue<float>());
         }
     }
 }
