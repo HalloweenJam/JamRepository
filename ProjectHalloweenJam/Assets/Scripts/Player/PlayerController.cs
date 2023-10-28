@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player
 {
-    [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
+    [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D), typeof(Animator))]
     public class PlayerController : MonoBehaviour
     {
         [Header("Rigidbody")] 
@@ -20,13 +20,21 @@ namespace Player
         [Space]
         [SerializeField] private float _dashDelay = 3f;
         [SerializeField] private int _maxDashesCount = 1;
+
+        [Header("Animator")] 
+        [SerializeField] private string _idle;
+        [SerializeField] private string _run;
         
         [HideInInspector, SerializeField] private Rigidbody2D _rigidbody;
+        [HideInInspector, SerializeField] private Animator _animator;
+        [HideInInspector, SerializeField] private SpriteRenderer _spriteRenderer;
+        
         private Camera _camera;
 
         private bool _isDashing;
         private float _dashDelayCounter;
         private int _dashesCount;
+        private bool _movementCancelled = true;
         
         private Vector2 _movementDirection;
         private InputReader _inputReader;
@@ -40,6 +48,9 @@ namespace Player
         private void OnValidate()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
+            _spriteRenderer ??= GetComponent<SpriteRenderer>();
+            
             _camera = Camera.main;
 
             _rigidbody.mass = _mass;
@@ -54,7 +65,14 @@ namespace Player
         {
             _inputReader = InputReaderManager.Instance.GetInputReader();
             
-            _inputReader.MoveEvent += direction => _movementDirection = direction;
+            _inputReader.MoveEvent += direction =>
+            {
+                _movementDirection = direction;
+                _movementCancelled = false;
+            };
+            
+            _inputReader.MoveCancelledEvent += () => _movementCancelled = true;
+
             _inputReader.DashEvent += () =>
             {
                 if (_canDash)
@@ -93,18 +111,25 @@ namespace Player
         {
             Move();
             Rotate();
+            
         }
 
         private void Rotate()
         {
-            var aimDirection =  (Vector2) _camera.ScreenToWorldPoint(Input.mousePosition) - _rigidbody.position;
-            var aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-
-            _rigidbody.rotation = aimAngle;
+            var mousePosX = _camera.ScreenToWorldPoint(Input.mousePosition).x;
+            _spriteRenderer.flipX = mousePosX < _rigidbody.position.x;
         }
 
         private void Move()
         {
+            if (_movementCancelled)
+            {
+                _animator.Play(_idle);
+                return;
+            }
+
+            _animator.Play(_run);
+            
             _rigidbody.AddForce(new Vector2(_movementDirection.x, _movementDirection.y) * _speed);
         }
     }
