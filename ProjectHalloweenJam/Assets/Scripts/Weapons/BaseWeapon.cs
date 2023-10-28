@@ -8,10 +8,12 @@ namespace Weapons
     {
         [SerializeField] private Description _description;
         [SerializeField] private WeaponConfig _weaponConfig;
+        [SerializeField] private BulletInfo _bulletConfig;
         [Space]
         [SerializeField] private int _damage;
         
         public WeaponConfig WeaponConfig => _weaponConfig;
+        public BulletInfo BulletConfig => _bulletConfig;
 
         protected int Damage => _damage;
         

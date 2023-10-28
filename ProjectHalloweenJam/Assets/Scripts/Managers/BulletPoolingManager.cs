@@ -1,3 +1,4 @@
+using Core.Classes;
 using Projectiles;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -12,18 +13,19 @@ namespace Managers
 
         private ObjectPool<Bullet> _bulletsPool;
 
-        public void GetBullet(Vector2 startPosition, Vector2 direction, float speed, int damage)
+        public void GetBullet(Vector2 startPosition, Vector2 direction, BulletInfo bulletInfo)
         {
             var instance = _bulletsPool.Get();
             instance.transform.position = startPosition;
             instance.gameObject.SetActive(true);
-            instance.Init(direction, speed, damage);
+            instance.Init(direction, bulletInfo);
         }
 
         public void Release(Bullet bullet)
         {
             bullet.gameObject.SetActive(false);
-            _bulletsPool.Release(bullet);
+            try {_bulletsPool.Release(bullet); } catch { }
+            
         }
 
         private void Awake()

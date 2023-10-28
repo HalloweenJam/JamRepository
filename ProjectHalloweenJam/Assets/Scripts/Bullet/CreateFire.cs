@@ -17,7 +17,7 @@ public class CreateFire : MonoBehaviour
     
 
     [SerializeField]
-    private List<BulletInfo> _bullets;
+    //private List<BulletInfo> _bullets;
 
 
     Transform bullet = null;
@@ -25,7 +25,7 @@ public class CreateFire : MonoBehaviour
 
     private void Start()
     {
-        CreatePrefab(StartCount);
+        //CreatePrefab(StartCount);
         /*_inputReader = InputReaderManager.Instance.GetInputReader();
         _inputReader.MousePosition += MousePosition;
         _inputReader.ShootingEvent += ShootingEvent;*/
@@ -41,7 +41,7 @@ public class CreateFire : MonoBehaviour
         _worldMousePosition = Camera.main.ScreenToWorldPoint(vector);
     }*/
 
-    public void OnShooting(int index, Vector3 startPosition, Vector3 direction)
+  /*  public void OnShooting(int index, Vector3 startPosition, Vector3 direction)
     {
         switch(_bullets[index].Type) 
         {
@@ -130,5 +130,5 @@ public class CreateFire : MonoBehaviour
             bullet.SetActive(false);
         }
         return bullet;
-    }
+    }*/
 }
