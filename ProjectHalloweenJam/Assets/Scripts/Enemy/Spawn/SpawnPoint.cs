@@ -8,9 +8,9 @@ public class SpawnPoint : MonoBehaviour
     public List<EnemyMovement> EnemyPrefabs => _enemyPrefabs;
     public int CountEnemy => _enemyPrefabs.Count;
 
-    public EnemyMovement SpawnEnemy()
+    public EnemyMovement SpawnEnemy(Transform parent)
     {
-        EnemyMovement enemy = Instantiate(_enemyPrefabs[CountEnemy - 1], this.transform);
+        EnemyMovement enemy = Instantiate(_enemyPrefabs[CountEnemy - 1], parent);
         enemy.transform.position = transform.position;
 
         RemoveEnemyFromList();

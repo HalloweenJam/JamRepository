@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2224d64b25ee856489d0a47b6c8e0c44
+guid: d18ae5c92c50d5a41aaf0292774130ef
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,12 +101,12 @@ TextureImporter:
       name: wall_left_down_corner_0
       rect:
         serializedVersion: 2
-        x: 23
+        x: 0
         y: 0
-        width: 9
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,7 +121,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ba767d693d20f4e43a2530fb638a34d0
     internalID: 0
     vertices: []
     indices: 
