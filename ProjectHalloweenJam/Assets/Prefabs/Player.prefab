@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 4557758781414726204}
   - component: {fileID: 5637165108510291848}
   - component: {fileID: 1771303344377511941}
+  - component: {fileID: 2360950530178985899}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -337,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 5
-  _currentHealth: 5
+  CurrentHealth: 5
   _invisibilityLength: 1
   _playerController: {fileID: 4621394336644080632}
 --- !u!114 &7120541555264942736
@@ -353,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponHolder: {fileID: 7033296657604008231}
-  _firePoint: {fileID: 0}
+  _firePoint: {fileID: 954874279844262263}
   _weaponsToAdd:
   - {fileID: 11400000, guid: 117c11a4f30d50c418ef9b5e6c14764c, type: 2}
   - {fileID: 11400000, guid: 9dffd703588b6ba4c805f83a85e478c1, type: 2}
@@ -411,3 +412,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2360950530178985899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6745565781883482922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853483e707214c7980da3e347b67ab2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}
+  _flashTime: 0.25
+  _spriteRenderer: {fileID: 8783166603959011272}
+  _entityStats: {fileID: 3276824683475747444}

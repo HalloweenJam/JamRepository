@@ -1,16 +1,12 @@
 ﻿using System;
-using Core.Interfaces;
+using Entities;
 using UnityEngine;
 
 namespace Player
 {
     [RequireComponent(typeof(PlayerController))]
-    public class PlayerStats : MonoBehaviour, IDamageable
+    public class PlayerStats : EntityStats
     {
-        [Header("Stats")]
-        [SerializeField] private int _maxHealth = 5;
-        [SerializeField] private int _currentHealth = 5;
-
         [Header("Damage Taking")] 
         [SerializeField] private float _invisibilityLength = 1.5f;
         
@@ -22,7 +18,7 @@ namespace Player
         
         private bool _canIgnoreDamage => _playerController.IsDashing || _invisibilityCounter > 0;
         
-        public bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
+        public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
         {
             if (_canIgnoreDamage && !ignoreInvisibility)
                 return false;
@@ -33,10 +29,12 @@ namespace Player
                 return true;
             }
 
-            _currentHealth -= damage;
+            OnEntityTakeDamage?.Invoke();
+            
+            CurrentHealth -= damage;
             _invisibilityCounter = _invisibilityLength;
 
-            if (_currentHealth <= 0)
+            if (CurrentHealth <= 0)
                 Kill();
 
             return true;
@@ -45,10 +43,10 @@ namespace Player
         private void OnValidate()
         {
             _playerController = GetComponent<PlayerController>();
-            _currentHealth = _maxHealth;
+            CurrentHealth = MaxHealth;
         }
 
-        private void Kill()
+        protected override void Kill()
         {
             OnPlayerKilled?.Invoke();
             gameObject.SetActive(false);
