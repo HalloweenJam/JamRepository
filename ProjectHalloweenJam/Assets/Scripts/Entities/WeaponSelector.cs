@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Core;
 using Core.Classes;
 using Managers;
 using Player.Controls;
@@ -10,6 +9,8 @@ namespace Entities
 {
     public class WeaponSelector : MonoBehaviour
     {
+        [SerializeField] private WeaponHolder _weaponHolder;
+        
         [SerializeField] private List<RangeWeapon> _weaponsToAdd;
         
         private readonly List<WeaponData> _weapons = new();
@@ -20,7 +21,7 @@ namespace Entities
         private Vector2 _direction;
 
         private InputReader _inputReader;
-        
+
         public void Add(BaseWeapon weapon)
         {
             _weapons.Add(new WeaponData(weapon));
@@ -50,6 +51,8 @@ namespace Entities
             var dir = direction > 0 ? 1 : -1;
             
             _selectedWeaponIndex = (_selectedWeaponIndex + _weapons.Count + dir) % _weapons.Count;
+            
+            _weaponHolder.SetWeaponSprite(_weapons[_selectedWeaponIndex].WeaponSprite);
         }
 
         private void Update()

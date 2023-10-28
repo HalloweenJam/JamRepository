@@ -1,5 +1,4 @@
 using Bullet;
-using Core.Classes;
 using Managers;
 using UnityEngine;
 
@@ -32,7 +31,7 @@ namespace Projectiles
             _damage = bulletConfig.Damage;
             
             _canTakeDamage = false;
-            _lifeTimeCounter = bulletConfig.LifeTime;
+            _lifeTimeCounter = _lifeTime;
         }
 
         private void OnValidate()

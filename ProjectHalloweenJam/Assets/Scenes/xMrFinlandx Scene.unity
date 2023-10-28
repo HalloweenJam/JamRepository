@@ -172,14 +172,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 7120541555264942736, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
-      propertyPath: _weaponsToAdd.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7120541555264942736, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
-      propertyPath: '_weaponsToAdd.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 6f2ce02e7e4500f4bb8942fb95599acc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

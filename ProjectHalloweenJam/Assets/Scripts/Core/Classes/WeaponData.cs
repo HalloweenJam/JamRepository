@@ -18,6 +18,8 @@ namespace Core.Classes
         private int _leftBullets;
         private int _leftBulletsInBatch;
 
+        public Sprite WeaponSprite { get; private set; }
+
         public WeaponData(BaseWeapon baseWeapon)
         {
             _baseWeapon = baseWeapon;
@@ -26,6 +28,8 @@ namespace Core.Classes
             _reloadingSpeed = baseWeapon.WeaponConfig.ReloadingSpeed;
             _leftBullets = baseWeapon.WeaponConfig.TotalBullets;
             _bulletsPerBatch = baseWeapon.WeaponConfig.BulletsPerBatch;
+
+            WeaponSprite = baseWeapon.Description.Icon;
 
             _attackSpeedCounter = _attackSpeed;
             _reloadingSpeedCounter = _reloadingSpeed;
