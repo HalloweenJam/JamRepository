@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-namespace Core.Classes
+namespace Bullet
 {
     [Serializable]
-    public class BulletInfo
+    public class BulletConfig
     {
         public enum BulletType
         {

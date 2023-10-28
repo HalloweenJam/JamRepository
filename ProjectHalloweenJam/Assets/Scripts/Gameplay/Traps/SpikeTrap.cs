@@ -1,13 +1,11 @@
-using System;
 using System.Collections;
 using Core.Enums;
-using Core.Interfaces;
 using UnityEngine;
 
 namespace Gameplay.Traps
 {
     [RequireComponent(typeof(BoxCollider2D), typeof(SpriteRenderer))]
-    public class SpikeFloor : MonoBehaviour
+    public class SpikeTrap : MonoBehaviour
     {
         [SerializeField] private TrapActivationType _activationType;
         [SerializeField] private float _activationTime = 1f;

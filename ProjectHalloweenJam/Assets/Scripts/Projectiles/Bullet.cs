@@ -1,3 +1,4 @@
+using Bullet;
 using Core.Classes;
 using Managers;
 using UnityEngine;
@@ -22,16 +23,16 @@ namespace Projectiles
         
         private Vector2 _direction;
         
-        public void Init(Vector2 direction, BulletInfo bulletInfo)
+        public void Init(Vector2 direction, BulletConfig bulletConfig)
         {
-            _render.sprite = bulletInfo.Sprite;
-            _collider.radius = bulletInfo.Radius;
+            _render.sprite = bulletConfig.Sprite;
+            _collider.radius = bulletConfig.Radius;
             _direction = direction;
-            _speed = bulletInfo.Speed;
-            _damage = bulletInfo.Damage;
+            _speed = bulletConfig.Speed;
+            _damage = bulletConfig.Damage;
             
             _canTakeDamage = false;
-            _lifeTimeCounter = bulletInfo.LifeTime;
+            _lifeTimeCounter = bulletConfig.LifeTime;
         }
 
         private void OnValidate()

@@ -13,12 +13,12 @@ public class Arena : MonoBehaviour
 
     private void Awake()
     {
-        EnemyStats.OnDeath += (pos) => _countEnemy--;
+        // EnemyStats.OnDeath += (pos) => _countEnemy--;
     }
 
     public void ActivateArena()
     {
-        _spawnerEnemy.SpawnEnemy(this);
+       // _spawnerEnemy.SpawnEnemy(this);
         _countEnemy = _spawnerEnemy.transform.childCount;
 
         foreach (Transform wall in _walls)       
