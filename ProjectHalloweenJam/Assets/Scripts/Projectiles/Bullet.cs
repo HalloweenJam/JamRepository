@@ -10,7 +10,7 @@ namespace Projectiles
         
         [SerializeField, HideInInspector] private Rigidbody2D _rigidbody;
         
-        [SerializeField] private int _damage;
+        private int _damage;
         
         private float _speed;
         private float _lifeTimeCounter;

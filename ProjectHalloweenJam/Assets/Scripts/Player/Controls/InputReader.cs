@@ -13,7 +13,6 @@ namespace Player.Controls
 
         public event Action<Vector2> MousePositionEvent;
         public event Action<Vector2> MoveEvent;
-        public event Action MoveCancelledEvent;
 
         public event Action DashEvent;
 
@@ -52,9 +51,6 @@ namespace Player.Controls
         public void OnMovement(InputAction.CallbackContext context)
         {
             MoveEvent?.Invoke(context.ReadValue<Vector2>());
-            
-            if (context.phase == InputActionPhase.Canceled)
-                MoveCancelledEvent?.Invoke();
         }
 
         public void OnDash(InputAction.CallbackContext context)
