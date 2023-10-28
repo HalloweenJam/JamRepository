@@ -1,6 +1,8 @@
+using Managers;
 using Player.Controls;
 using System.Collections;
 using System.Collections.Generic;
+
 using TMPro;
 using UnityEngine;
 using Weapons;
@@ -22,7 +24,7 @@ public class TestFireSelect : MonoBehaviour
         _textMeshPro.SetText(_selectedWeaponIndex.ToString());
         _inputReader = InputReaderManager.Instance.GetInputReader();
         _inputReader.MouseWheelScrollEvent += ChangeWeapon;
-        _inputReader.MousePosition += MousePosition;
+        _inputReader.MousePositionEvent += MousePosition;
         _inputReader.ShootingEvent += ShootingEvent;
     }
 
@@ -40,7 +42,7 @@ public class TestFireSelect : MonoBehaviour
 
     private void MousePosition(Vector2 vector)
     {
-        _worldMousePosition = Camera.main.ScreenToWorldPoint(vector);
+        _worldMousePosition = vector;
     }
     // Update is called once per frame
     void Update()
@@ -48,3 +50,4 @@ public class TestFireSelect : MonoBehaviour
         
     }
 }
+

@@ -5,24 +5,6 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-[Serializable]
-public struct BulletInfo
-{
-    public enum BulletType
-    {
-        line, sin, circle, fraction, firework,
-    }
-    public BulletType Type;
-    public Sprite Sprite;
-    public int Damage;
-    public float Speed;
-    public float Size;
-    public float TimeHeart;
-    public int Coint;
-    public int Radius;
-
-}
-
 public class CreateFire : MonoBehaviour
 {
     [SerializeField] private GameObject firePrefab;
