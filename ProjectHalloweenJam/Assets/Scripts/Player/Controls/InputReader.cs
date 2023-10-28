@@ -9,10 +9,10 @@ namespace Player.Controls
     {
         private GameControls _gameControls;
 
-        public event Action<float> MouseWheelScrollEvent; 
-        
+        public event Action<float> MouseWheelScrollEvent;
+
+        public event Action<Vector2> MousePositionEvent;
         public event Action<Vector2> MoveEvent;
-        public event Action<Vector2> MousePosition;
 
         public event Action DashEvent;
 
@@ -90,8 +90,9 @@ namespace Player.Controls
 
         public void OnMousePosition(InputAction.CallbackContext context)
         {
-                MousePosition?.Invoke(context.ReadValue<Vector2>());
+            var direction = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            
+            MousePositionEvent?.Invoke(direction);
         }
-
     }
 }
