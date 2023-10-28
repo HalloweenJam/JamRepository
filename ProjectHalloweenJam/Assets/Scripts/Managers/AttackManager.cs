@@ -89,17 +89,23 @@ public class AttackManager : MonoBehaviour
         float positionX;
         float positionY;
         Vector2 vec = (startPosition + direction) - Vector2.up;
-        angle = Mathf.Atan2(direction.y - Vector2.up.y, direction.x - Vector2.up.x) * Mathf.Rad2Deg;
+        angle = Mathf.Atan2(direction.y - Vector2.up.y, direction.x - Vector2.up.x);
+        //if (angle >= 0) { angle += anlgeCoint * (bulletInfo.Coint / 2); }
+        //if (angle < 0) { angle -= anlgeCoint * (bulletInfo.Coint / 2); }
         //angle = Mathf.Atan2(Vector2.up.y - direction.y, Vector2.up.x- direction.x) * Mathf.Rad2Deg;
-        //angle = Mathf.Atan2(direction.y - Vector2.up.y, direction.x - Vector2.up.x) * Mathf.Rad2Deg;
+        // angle = Mathf.Atan2(direction.x - Vector2.up.x, direction.y - Vector2.up.y) * Mathf.Rad2Deg;
         for (int i = 0; i < bulletInfo.Coint; i++)
         {
+            if(angle > 360) { angle -= 360;  }
+            if(angle < 360) { angle += 360; }
             positionX = startPosition.x + Mathf.Cos(angle) + direction.x;
             positionY = startPosition.y + Mathf.Sin(angle) + direction.y;
-            /*Vector2 _direction = (new Vector2(positionX, positionY) - (Vector2)startPosition).normalized;
-            BulletPoolingManager.Instance.GetBullet(startPosition, _direction, bulletInfo);*/
-            BulletPoolingManager.Instance.GetBullet(startPosition, new Vector2(positionX, positionY), bulletInfo);
-            angle += anlgeCoint;
+            Vector2 _direction = (new Vector2(positionX, positionY) - (Vector2)startPosition).normalized;
+            BulletPoolingManager.Instance.GetBullet(startPosition, _direction, bulletInfo);
+            //BulletPoolingManager.Instance.GetBullet(startPosition, new Vector2(positionX, positionY), bulletInfo);
+            if (angle >= 0) { angle += anlgeCoint; }
+            if (angle < 0) { angle -= anlgeCoint; }
+            
         }
     }
 }
