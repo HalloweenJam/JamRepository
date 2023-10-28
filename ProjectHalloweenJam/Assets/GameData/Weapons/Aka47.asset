@@ -21,5 +21,14 @@ MonoBehaviour:
     _bulletsPerBatch: 7
     _attackSpeed: 0.15
     _reloadingSpeed: 1
+  _bulletConfig:
+    Type: 0
+    Sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
+    Damage: 10
+    Speed: 20
+    Size: 0.5
+    LifeTime: 5
+    Coint: 5
+    Radius: 1
   _damage: 0
   _bulletSpeed: 20

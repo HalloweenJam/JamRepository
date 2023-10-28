@@ -1,15 +1,19 @@
+using Bullet;
+using Core.Classes;
 using Managers;
 using UnityEngine;
 
 namespace Projectiles
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D), typeof(SpriteRenderer))]
     public class Bullet : MonoBehaviour
     {
         [SerializeField] private float _lifeTime = 5f;
         
         [SerializeField, HideInInspector] private Rigidbody2D _rigidbody;
-        
+        [SerializeField, HideInInspector] private SpriteRenderer _render;
+        [SerializeField, HideInInspector] private CircleCollider2D _collider;
+
         private int _damage;
         
         private float _speed;
@@ -19,19 +23,23 @@ namespace Projectiles
         
         private Vector2 _direction;
         
-        public void Init(Vector2 direction, float speed, int damage)
+        public void Init(Vector2 direction, BulletConfig bulletConfig)
         {
+            _render.sprite = bulletConfig.Sprite;
+            _collider.radius = bulletConfig.Radius;
             _direction = direction;
-            _speed = speed;
-            _damage = damage;
+            _speed = bulletConfig.Speed;
+            _damage = bulletConfig.Damage;
             
             _canTakeDamage = false;
-            _lifeTimeCounter = _lifeTime;
+            _lifeTimeCounter = bulletConfig.LifeTime;
         }
 
         private void OnValidate()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _render = GetComponent<SpriteRenderer>();
+            _collider = GetComponent<CircleCollider2D>();
         }
 
         private void FixedUpdate()
