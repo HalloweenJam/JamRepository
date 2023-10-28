@@ -164,3 +164,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifeTime: 5
   _rigidbody: {fileID: 6718050034743092748}
+  _damage: 10

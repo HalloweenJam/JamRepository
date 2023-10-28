@@ -7,7 +7,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
 {
     [Header("Health")]
     [SerializeField] private int _health;
-    protected int _currentHealth;
+    public int _currentHealth;
 
     [Header("Damage")]
     [SerializeField] private int _damage;
@@ -20,6 +20,8 @@ public class EnemyStats : MonoBehaviour, IDamageable
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        _currentHealth = _health;
         _defaultColor = _spriteRenderer.color;
     }
 
@@ -45,7 +47,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
     {
         _currentHealth = 0;
         OnDeath?.Invoke(transform.position);
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     private IEnumerator PaintingSprite()
