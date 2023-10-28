@@ -1,7 +1,6 @@
 using System.Collections;
-using Core;
+using System;
 using UnityEngine;
-using Core;
 
 [RequireComponent(typeof(EnemyMovement), typeof(SpriteRenderer))]
 public class EnemyStats : MonoBehaviour, IDamageable
@@ -13,6 +12,9 @@ public class EnemyStats : MonoBehaviour, IDamageable
     [Header("Damage")]
     [SerializeField] private int _damage;
 
+    public static Action<Vector2> OnDeath;
+
+    private SpawnerEnemy _spawner;
     private SpriteRenderer _spriteRenderer;
     private Color _defaultColor;
 
@@ -43,7 +45,8 @@ public class EnemyStats : MonoBehaviour, IDamageable
     private void Dead() 
     {
         _currentHealth = 0;
-        this.Deactivate();
+        OnDeath?.Invoke(transform.position);
+        Destroy(this);
     }
 
     private IEnumerator PaintingSprite()
