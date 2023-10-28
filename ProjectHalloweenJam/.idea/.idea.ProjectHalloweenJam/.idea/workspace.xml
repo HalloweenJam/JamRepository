@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0161c759-ee88-472e-9ba3-1b7fc98a7114" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe-0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe-0.log" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectHalloweenJam/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_10_2023_19_21__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectHalloweenJam/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_10_2023_19_21__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectHalloweenJam/.idea/shelf/Uncommitted_changes_before_Merge_at_27_10_2023_19_26__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectHalloweenJam/.idea/shelf/Uncommitted_changes_before_Merge_at_27_10_2023_19_26__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectHalloweenJam/.idea/shelf/Uncommitted_changes_before_Merge_at_27_10_2023_19_30__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectHalloweenJam/.idea/shelf/Uncommitted_changes_before_Merge_at_27_10_2023_19_30__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjectHalloweenJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjectHalloweenJam/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bullet/BulletSys.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bullet/BulletSys.cs.meta" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,13 +24,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+<<<<<<< Updated upstream
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/36128ec596ab42c8af4441b8e0cdd33a1a2c00/17/47c4152e/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
+=======
+>>>>>>> Stashed changes
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@15.0.7/Runtime/UniversalRenderPipelineGlobalSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet/TestFireSelect.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 7
-}</component>
   <component name="ProjectId" id="2XLKj7H7JKSia3esvhi7DH3gkfk" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -31,6 +39,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -50,8 +59,13 @@
       &quot;C:\\Users\\Ванечка\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
       &quot;C:\\Users\\Ванечка\\AppData\\Local\\Symbols\\src&quot;
     ]
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "game"
+>>>>>>> Stashed changes
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\Разработка\Unity\2023.1.18f1\Editor\Unity.exe" />
