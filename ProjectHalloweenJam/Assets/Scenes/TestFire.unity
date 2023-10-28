@@ -1133,7 +1133,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1318228815}
-  - component: {fileID: 1318228814}
   - component: {fileID: 1318228816}
   m_Layer: 0
   m_Name: Fire
@@ -1142,18 +1141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1318228814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318228813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 676c939529e184447935649b90a70a1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1318228815
 Transform:
   m_ObjectHideFlags: 0
@@ -1178,7 +1165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1318228813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3877b82ab109ec478d2f2b72a3a413a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ef8b13f25e1de740b04ffa994ee81c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePrefab: {fileID: 6529856041836587089, guid: 45b4e40f7bcbed6469dec2d3ac2d3ab4, type: 3}
