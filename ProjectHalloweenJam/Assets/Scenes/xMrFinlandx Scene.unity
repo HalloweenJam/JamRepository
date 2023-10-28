@@ -413,7 +413,6 @@ MonoBehaviour:
   _dashDelay: 3
   _maxDashesCount: 1
   _rigidbody: {fileID: 1321141684}
-  _camera: {fileID: 1619905294}
 --- !u!50 &1321141684
 Rigidbody2D:
   serializedVersion: 4
