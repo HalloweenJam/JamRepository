@@ -6,7 +6,7 @@ public class Arena : MonoBehaviour
     [SerializeField] private Transform _walls;
     private int _countEnemy;
 
-    private void Awake() => EnemyStats.OnDeath += (pos) => CheckEnemyCount(); // sisis
+    private void Awake() => EnemyStats.OnDeath += (pos) => CheckEnemyCount(); 
   
     private void CheckEnemyCount()
     {

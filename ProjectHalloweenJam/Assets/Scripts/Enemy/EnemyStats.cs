@@ -14,15 +14,22 @@ public class EnemyStats : MonoBehaviour, IDamageable
 
     public static Action<Vector2> OnDeath;
 
+    private EnemyMovement _movement;
     private SpriteRenderer _spriteRenderer;
     private Color _defaultColor;
 
-    private void Awake()
+    public void Spawn(Transform playerPosition)
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _movement = GetComponent<EnemyMovement>();
 
         _currentHealth = _health;
         _defaultColor = _spriteRenderer.color;
+
+        _movement.Initialize(playerPosition);
+        _movement.enabled = false;
+
+        StartCoroutine(SpawnCor());
     }
 
     public bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
@@ -48,6 +55,23 @@ public class EnemyStats : MonoBehaviour, IDamageable
         _currentHealth = 0;
         OnDeath?.Invoke(transform.position);
         Destroy(gameObject);
+    }
+
+    private IEnumerator SpawnCor()
+    {
+        float fadeMaterial = 0f;
+        float spawnTime = 1.75f;
+        float elapsedTime = 0f;
+        float percent = (1 / spawnTime);
+        while (elapsedTime < spawnTime)
+        {
+            fadeMaterial += percent * Time.deltaTime;
+            elapsedTime += Time.deltaTime;
+            _spriteRenderer.material.SetFloat("_Fade", fadeMaterial);
+            yield return null;
+        }
+        _movement.enabled = true;
+        _spriteRenderer.material.SetFloat("_Fade", 1f);
     }
 
     private IEnumerator PaintingSprite()

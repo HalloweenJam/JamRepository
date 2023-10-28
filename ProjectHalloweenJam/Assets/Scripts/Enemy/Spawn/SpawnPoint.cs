@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField] private List<EnemyMovement> _enemyPrefabs;
+    [SerializeField] private List<EnemyStats> _enemyPrefabs;
 
-    public List<EnemyMovement> EnemyPrefabs => _enemyPrefabs;
+    public List<EnemyStats> EnemyPrefabs => _enemyPrefabs;
     public int CountEnemy => _enemyPrefabs.Count;
 
-    public EnemyMovement SpawnEnemy(Transform parent)
+    public EnemyStats SpawnEnemy(Transform parent)
     {
-        EnemyMovement enemy = Instantiate(_enemyPrefabs[CountEnemy - 1], parent);
+        EnemyStats enemy = Instantiate(_enemyPrefabs[CountEnemy - 1], parent);
         enemy.transform.position = transform.position;
 
         RemoveEnemyFromList();

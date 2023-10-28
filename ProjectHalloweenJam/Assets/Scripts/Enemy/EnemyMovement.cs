@@ -4,7 +4,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private ObstacleAvoidanceType _avoidanceType;
     private NavMeshAgent _agent;
     private Transform _playerTransform;
     private Vector3 _defaultScale;
@@ -14,7 +13,6 @@ public class EnemyMovement : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _playerTransform = playerTransform;
 
-        _agent.obstacleAvoidanceType = _avoidanceType;
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
 
