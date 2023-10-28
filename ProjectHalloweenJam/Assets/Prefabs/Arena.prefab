@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 7511456736699293933, guid: 21a02cb5a900da64d99d0ba36ad244db, type: 3}
-  - {fileID: 1743653628891270641, guid: bc45692ecdaa666409546e714749d7a8, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2536241901811449582
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,8 +424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 7511456736699293933, guid: 21a02cb5a900da64d99d0ba36ad244db, type: 3}
-  - {fileID: 1743653628891270641, guid: bc45692ecdaa666409546e714749d7a8, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &7666012507932911447
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +476,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnerEnemy: {fileID: 7656494351305195718}
   _walls: {fileID: 3131467237688796726}
-  _countEnemy: 0
 --- !u!1 &8447672874770333884
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,8 +521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 7511456736699293933, guid: 21a02cb5a900da64d99d0ba36ad244db, type: 3}
-  - {fileID: 1743653628891270641, guid: bc45692ecdaa666409546e714749d7a8, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8948228620215652723
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,5 +603,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 7511456736699293933, guid: 21a02cb5a900da64d99d0ba36ad244db, type: 3}
-  - {fileID: 1743653628891270641, guid: bc45692ecdaa666409546e714749d7a8, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}

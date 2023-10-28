@@ -9,14 +9,18 @@ public class EnemyStats : MonoBehaviour, IDamageable
     [SerializeField] private int _health;
     private int _currentHealth;
 
-    [Header("Damage")]
-    [SerializeField] private int _damage;
-
     public static Action<Vector2> OnDeath;
+
+    [Header("Dissolve")]
+    private bool _dissolved = false;
+    private float _elapsedTime = 0f;
+    private float _dissolveTime = 1f;
 
     private EnemyMovement _movement;
     private SpriteRenderer _spriteRenderer;
     private Color _defaultColor;
+
+    public bool Dissolved => _dissolved;
 
     public void Spawn(Transform playerPosition)
     {
@@ -26,10 +30,10 @@ public class EnemyStats : MonoBehaviour, IDamageable
         _currentHealth = _health;
         _defaultColor = _spriteRenderer.color;
 
-        _movement.Initialize(playerPosition);
         _movement.enabled = false;
+        _movement.Initialize(playerPosition, this);
 
-        StartCoroutine(SpawnCor());
+        Appearance();
     }
 
     public bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
@@ -57,21 +61,46 @@ public class EnemyStats : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    private IEnumerator SpawnCor()
+    public void Appearance() => StartCoroutine(AppearanceCor());
+
+    public void Dissolve() => StartCoroutine(DissolveCor());
+
+    private IEnumerator AppearanceCor( )
     {
-        float fadeMaterial = 0f;
-        float spawnTime = 1.75f;
-        float elapsedTime = 0f;
-        float percent = (1 / spawnTime);
-        while (elapsedTime < spawnTime)
+        _dissolved = false;
+        float fadeMaterial = 0;
+        float percent = (1 / _dissolveTime);
+
+        while (_elapsedTime < _dissolveTime)
         {
             fadeMaterial += percent * Time.deltaTime;
-            elapsedTime += Time.deltaTime;
+            _elapsedTime += Time.deltaTime;
             _spriteRenderer.material.SetFloat("_Fade", fadeMaterial);
             yield return null;
         }
+        _elapsedTime = 0f;
         _movement.enabled = true;
         _spriteRenderer.material.SetFloat("_Fade", 1f);
+        _dissolved = true;
+    }
+
+    private IEnumerator DissolveCor()
+    {
+        _dissolved = false;
+        float fadeMaterial = 1;
+        float percent = -(1 / _dissolveTime);
+
+        while (_elapsedTime < _dissolveTime)
+        {
+            fadeMaterial += percent * Time.deltaTime;
+            _elapsedTime += Time.deltaTime;
+            _spriteRenderer.material.SetFloat("_Fade", fadeMaterial);
+            yield return null;
+        }
+        _elapsedTime = 0f;
+        _movement.enabled = true;
+        _spriteRenderer.material.SetFloat("_Fade", 0f);
+        _dissolved = true;
     }
 
     private IEnumerator PaintingSprite()
