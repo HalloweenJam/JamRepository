@@ -1,13 +1,11 @@
+using Core.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
-using Testing;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IDamageable
 {
     [SerializeField] private int _damage;
-<<<<<<< Updated upstream
-=======
 
     private float _timeHeart;
     private float _timerHeart;
@@ -30,7 +28,6 @@ public class Bullet : MonoBehaviour
         return false;
     }
 
->>>>>>> Stashed changes
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent<IDamageable>(out var damageable))
