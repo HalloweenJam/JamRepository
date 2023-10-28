@@ -10,7 +10,8 @@ namespace Weapons
         
         public override bool TryToUse(Vector2 startPosition, Vector2 direction)
         {
-            BulletPoolingManager.Instance.GetBullet(startPosition, direction, _bulletSpeed, Damage);
+            //BulletPoolingManager.Instance.GetBullet(startPosition, direction, BulletConfig);
+            AttackManager.Instance.GetSelectAttack(startPosition, direction, BulletConfig);
 
             return true;
         }
