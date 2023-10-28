@@ -5,12 +5,14 @@ public class DevilAttack : EnemyAttack
 {
     private string _attackName = "Attack";
     private bool _isAttack = false;
+    private bool _isReload = false;
 
     public bool IsAttack => _isAttack;
 
     public override void Attack()
     {
-        StartCoroutine(AttackCor());
+        if(!_isAttack && !_isReload)
+            StartCoroutine(AttackCor());
     }
 
     private IEnumerator AttackCor()
@@ -19,6 +21,7 @@ public class DevilAttack : EnemyAttack
         float elapsedTime = 0f;
         float attackTime = 3f;
         Animator.SetBool(_attackName, true);
+
         while (elapsedTime < attackTime)
         {
             elapsedTime += Time.deltaTime;
@@ -26,5 +29,20 @@ public class DevilAttack : EnemyAttack
         }
         Animator.SetBool(_attackName, false);
         _isAttack = false;
+        StartCoroutine(Reload());
+    }
+
+    private IEnumerator Reload()
+    {
+        _isReload = true;
+        float elapsedTime = 0f;
+        float reloadTime = 1f;
+
+        while (elapsedTime < reloadTime)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        _isReload = false;
     }
 }
