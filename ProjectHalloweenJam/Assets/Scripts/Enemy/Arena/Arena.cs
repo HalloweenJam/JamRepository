@@ -18,7 +18,7 @@ public class Arena : MonoBehaviour
 
     public void ActivateArena()
     {
-        _spawnerEnemy.SpawnEnemy(this);
+        _spawnerEnemy.SpawnEnemy();
         _countEnemy = _spawnerEnemy.transform.childCount;
 
         foreach (Transform wall in _walls)       
