@@ -14,7 +14,6 @@ public class EnemyStats : MonoBehaviour, IDamageable
 
     public static Action<Vector2> OnDeath;
 
-    private SpawnerEnemy _spawner;
     private SpriteRenderer _spriteRenderer;
     private Color _defaultColor;
 
