@@ -9,8 +9,6 @@ public class SpawnerEnemy : MonoBehaviour
 
     public bool CanSpawn => _canSpawn;
 
-
-
     public void CheckEnemyIsEmpty()
     {
         _canSpawn = false;

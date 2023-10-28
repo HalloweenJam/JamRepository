@@ -1,20 +1,20 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(SpriteRenderer), typeof(BoxCollider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private bool _onlyFlipRotation = false;
-    private Transform _playerTransform;
+    [SerializeField] private ObstacleAvoidanceType _avoidanceType;
     private NavMeshAgent _agent;
+    private Transform _playerTransform;
     private Vector3 _defaultScale;
 
     public void Initialize(Transform playerTransform)
     {
         _agent = GetComponent<NavMeshAgent>();
         _playerTransform = playerTransform;
-        
+
+        _agent.obstacleAvoidanceType = _avoidanceType;
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
 

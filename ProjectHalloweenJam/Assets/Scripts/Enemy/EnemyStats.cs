@@ -7,7 +7,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
 {
     [Header("Health")]
     [SerializeField] private int _health;
-    public int _currentHealth;
+    private int _currentHealth;
 
     [Header("Damage")]
     [SerializeField] private int _damage;

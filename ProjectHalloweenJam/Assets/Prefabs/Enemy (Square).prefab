@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 50
-  _currentHealth: 0
   _damage: 0
 --- !u!114 &7511456736699293933
 MonoBehaviour:
@@ -64,8 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd91c37293a5604694d348172f03939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
-  _onlyFlipRotation: 0
+  _avoidanceType: 2
 --- !u!212 &1298659149655708849
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -212,4 +210,4 @@ NavMeshAgent:
   m_Height: 1.96
   m_BaseOffset: 0.99
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2
