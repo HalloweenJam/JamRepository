@@ -90,12 +90,15 @@ public class AttackManager : MonoBehaviour
         float positionY;
         Vector2 vec = (startPosition + direction) - Vector2.up;
         angle = Mathf.Atan2(direction.y - Vector2.up.y, direction.x - Vector2.up.x) * Mathf.Rad2Deg;
+        //angle = Mathf.Atan2(Vector2.up.y - direction.y, Vector2.up.x- direction.x) * Mathf.Rad2Deg;
+        //angle = Mathf.Atan2(direction.y - Vector2.up.y, direction.x - Vector2.up.x) * Mathf.Rad2Deg;
         for (int i = 0; i < bulletInfo.Coint; i++)
         {
             positionX = startPosition.x + Mathf.Cos(angle) + direction.x;
             positionY = startPosition.y + Mathf.Sin(angle) + direction.y;
-            Vector2 _direction = (new Vector2(positionX, positionY) - (Vector2)startPosition).normalized;
-            BulletPoolingManager.Instance.GetBullet(startPosition, _direction, bulletInfo);
+            /*Vector2 _direction = (new Vector2(positionX, positionY) - (Vector2)startPosition).normalized;
+            BulletPoolingManager.Instance.GetBullet(startPosition, _direction, bulletInfo);*/
+            BulletPoolingManager.Instance.GetBullet(startPosition, new Vector2(positionX, positionY), bulletInfo);
             angle += anlgeCoint;
         }
     }
