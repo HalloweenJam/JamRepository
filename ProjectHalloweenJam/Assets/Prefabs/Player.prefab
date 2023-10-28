@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4621394336644080632}
   - component: {fileID: 3276824683475747444}
   - component: {fileID: 7120541555264942736}
+  - component: {fileID: 4557758781414726204}
+  - component: {fileID: 5637165108510291848}
   - component: {fileID: 1771303344377511941}
   m_Layer: 0
   m_Name: Player
@@ -217,6 +219,37 @@ MonoBehaviour:
   _weaponsToAdd:
   - {fileID: 11400000, guid: 117c11a4f30d50c418ef9b5e6c14764c, type: 2}
   - {fileID: 11400000, guid: 9dffd703588b6ba4c805f83a85e478c1, type: 2}
+--- !u!114 &4557758781414726204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6745565781883482922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e574f7d82fbd4d60af67960a5419685a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _keysCount: 1
+  _keysVariables: 5
+--- !u!114 &5637165108510291848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6745565781883482922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a0037d801647258519404959385354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _range: 0.6
+  _interactionsLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _inventory: {fileID: 4557758781414726204}
 --- !u!95 &1771303344377511941
 Animator:
   serializedVersion: 7

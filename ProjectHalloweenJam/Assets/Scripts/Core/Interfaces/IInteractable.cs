@@ -1,7 +1,9 @@
+using Player;
+
 namespace Core.Interfaces
 {
     public interface IInteractable
     {
-        public bool Interact();
+        public bool Interact(Inventory inventory);
     }
 }
