@@ -24,7 +24,7 @@ MonoBehaviour:
   _bulletConfig:
     _bulletType: 0
     _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
-    _speed: 30
+    _speed: 45
     _damage: 2
     _count: 0
-    _radius: 0
+    _radius: 0.3

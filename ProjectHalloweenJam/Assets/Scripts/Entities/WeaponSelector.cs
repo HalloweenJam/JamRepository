@@ -10,6 +10,7 @@ namespace Entities
     public class WeaponSelector : MonoBehaviour
     {
         [SerializeField] private WeaponHolder _weaponHolder;
+        [SerializeField] private Transform _firePoint;
         
         [SerializeField] private List<RangeWeapon> _weaponsToAdd;
         
@@ -37,13 +38,15 @@ namespace Entities
             _inputReader.MouseWheelScrollEvent += ChangeWeapon;
             _inputReader.MousePositionEvent += mousePosition =>
             {
-                _direction = (mousePosition - (Vector2) transform.position).normalized;
+                _direction = (mousePosition - (Vector2) _firePoint.position).normalized;
             };
             
             foreach (var weapon in _weaponsToAdd)
             {
                 Add(weapon);
             }
+            
+            SetWeaponSprite();
         }
 
         private void ChangeWeapon(float direction)
@@ -52,13 +55,18 @@ namespace Entities
             
             _selectedWeaponIndex = (_selectedWeaponIndex + _weapons.Count + dir) % _weapons.Count;
             
+            SetWeaponSprite();
+        }
+
+        private void SetWeaponSprite()
+        {
             _weaponHolder.SetWeaponSprite(_weapons[_selectedWeaponIndex].WeaponSprite);
         }
 
         private void Update()
         {
             if (_isHoldingWeapon)
-                _weapons[_selectedWeaponIndex].TryToAttack(transform.position, _direction);
+                _weapons[_selectedWeaponIndex].TryToAttack(_firePoint.position, _direction);
             
             var deltaTime = Time.deltaTime;
             

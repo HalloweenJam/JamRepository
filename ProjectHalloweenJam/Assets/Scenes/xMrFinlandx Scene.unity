@@ -128,6 +128,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 448689235473096329, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_Size.x
+      value: 0.53125
+      objectReference: {fileID: 0}
+    - target: {fileID: 448689235473096329, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_Size.y
+      value: 0.34375
+      objectReference: {fileID: 0}
+    - target: {fileID: 448689235473096329, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7362661061344524757, guid: 9355908b4923c78408dd411e6050eaef, type: 3}
+    - target: {fileID: 448689235473096329, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2122618606134928642, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -168,9 +184,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5765303340139183827, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6745565781883482922, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: m_Name
       value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745565781883482922, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033296657604008231, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 7362661061344524757, guid: 9355908b4923c78408dd411e6050eaef, type: 3}
+    - target: {fileID: 7120541555264942736, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: _firePoint
+      value: 
+      objectReference: {fileID: 905124676}
+    - target: {fileID: 8783166603959011272, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8783166603959011272, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_FlipY
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -282,6 +322,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c53f202483f5994699c87c10f4048ac, type: 3}
+--- !u!4 &905124676 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 954874279844262263, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+  m_PrefabInstance: {fileID: 91467741}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1219137255
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +470,7 @@ GameObject:
   - component: {fileID: 1508212691}
   - component: {fileID: 1508212690}
   - component: {fileID: 1508212689}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,4 +1,5 @@
 ﻿using System;
+using Entities;
 using Managers;
 using Player.Controls;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace Player
 
         [Header("Movement")] 
         [SerializeField] private float _speed = 12;
+
+        [SerializeField] private WeaponHolder _weaponHolder;
 
         [Header("Dash")] 
         [SerializeField] private float _dashForce = 20;
@@ -35,8 +38,10 @@ namespace Player
         private float _dashDelayCounter;
         private int _dashesCount;
         private bool _movementCancelled = true;
-        
+
+        private Vector2 _cashedMovementDirection = Vector2.right;
         private Vector2 _movementDirection;
+        
         private InputReader _inputReader;
 
         public bool IsDashing => _isDashing;
@@ -67,6 +72,9 @@ namespace Player
             
             _inputReader.MoveEvent += direction =>
             {
+                if (direction != Vector2.zero)
+                    _cashedMovementDirection = direction;
+                
                 _movementDirection = direction;
                 _movementCancelled = false;
             };
@@ -87,7 +95,7 @@ namespace Player
 
             _dashesCount--;
             
-            _rigidbody.AddForce(new Vector2(_movementDirection.x, _movementDirection.y) * (_speed * _dashForce));
+            _rigidbody.AddForce(new Vector2(_cashedMovementDirection.x, _cashedMovementDirection.y) * (_speed * _dashForce));
             
             _isDashing = false;
             OnPlayerDashing?.Invoke(_isDashing);
@@ -116,7 +124,14 @@ namespace Player
         private void Rotate()
         {
             var mousePosX = _camera.ScreenToWorldPoint(Input.mousePosition).x;
-            _spriteRenderer.flipX = mousePosX < _rigidbody.position.x;
+            var localScale = transform.localScale;
+
+            var isFacingRight = mousePosX < _rigidbody.position.x;
+            
+            localScale.x = isFacingRight ? -1 : 1;
+            transform.localScale = localScale;
+            
+            _weaponHolder.Flip(isFacingRight);
         }
 
         private void Move()

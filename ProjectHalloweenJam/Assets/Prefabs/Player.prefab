@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1874255116781009606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 954874279844262263}
+  m_Layer: 7
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &954874279844262263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874255116781009606}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.28, y: 0.053, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2758214160276593883}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5765303340139183827
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +61,8 @@ Transform:
   m_LocalPosition: {x: 0.25, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 954874279844262263}
   m_Father: {fileID: 2122618606134928642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &448689235473096329
@@ -97,6 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52ff6ce24394201a5de53973250d1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _offset: 0
+  _maxRotate: 90
+  _minRotate: -90
   _sprite: {fileID: 0}
   _spriteRenderer: {fileID: 448689235473096329}
 --- !u!1 &6745565781883482922
@@ -226,7 +261,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -236,7 +271,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3, y: 0.6}
   m_EdgeRadius: 0
 --- !u!50 &7874342451100787098
 Rigidbody2D:
@@ -264,7 +299,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4621394336644080632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +315,7 @@ MonoBehaviour:
   _linearDrag: 15
   _mass: 1
   _speed: 100
+  _weaponHolder: {fileID: 7033296657604008231}
   _dashForce: 20
   _dashDelay: 3
   _maxDashesCount: 1
@@ -317,6 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponHolder: {fileID: 7033296657604008231}
+  _firePoint: {fileID: 0}
   _weaponsToAdd:
   - {fileID: 11400000, guid: 117c11a4f30d50c418ef9b5e6c14764c, type: 2}
   - {fileID: 11400000, guid: 9dffd703588b6ba4c805f83a85e478c1, type: 2}
@@ -350,7 +387,7 @@ MonoBehaviour:
   _range: 0.6
   _interactionsLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 2048
   _inventory: {fileID: 4557758781414726204}
 --- !u!95 &1771303344377511941
 Animator:
