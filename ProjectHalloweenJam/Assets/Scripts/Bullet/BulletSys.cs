@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IDamageable
+public class BulletSys : MonoBehaviour, IDamageable
 {
     [SerializeField] private int _damage;
 

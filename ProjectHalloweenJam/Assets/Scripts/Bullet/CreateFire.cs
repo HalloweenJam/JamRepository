@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
-using Weapons;
 
 [Serializable]
 public struct BulletInfo
@@ -107,7 +106,7 @@ public class CreateFire : MonoBehaviour
                 Vector3 aimDirection = (direction - bullet.position).normalized;
                 float rotateZ = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
                 bullet.eulerAngles = new Vector3(0f, 0f, rotateZ);
-                bullet.GetComponent<Bullet>().OnAttack(bulletInfo, BulletInfo.BulletType.line);
+                bullet.GetComponent<BulletSys>().OnAttack(bulletInfo, BulletInfo.BulletType.line);
                 //bullet.GetComponent<Rigidbody2D>().velocity = bullet.right * Speed * Time.fixedDeltaTime;
             }
             catch (System.Exception)
