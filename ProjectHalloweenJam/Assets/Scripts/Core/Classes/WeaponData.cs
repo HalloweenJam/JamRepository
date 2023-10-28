@@ -1,7 +1,7 @@
 using UnityEngine;
 using Weapons;
 
-namespace Core
+namespace Core.Classes
 {
     public class WeaponData
     {
@@ -33,12 +33,6 @@ namespace Core
             RefillBatch();
         }
 
-        private void RefillBatch()
-        {
-            _leftBulletsInBatch = _leftBullets > _bulletsPerBatch ? _bulletsPerBatch : _leftBullets;
-            _leftBullets -= _leftBulletsInBatch;
-        }
-
         public void Update(float deltaTime)
         {
             _attackSpeedCounter -= deltaTime;
@@ -64,6 +58,12 @@ namespace Core
             _baseWeapon.TryToUse(startPosition, endPosition);
             _attackSpeedCounter = _attackSpeed;
             return true;
+        }
+        
+        private void RefillBatch()
+        {
+            _leftBulletsInBatch = _leftBullets > _bulletsPerBatch ? _bulletsPerBatch : _leftBullets;
+            _leftBullets -= _leftBulletsInBatch;
         }
     }
 }

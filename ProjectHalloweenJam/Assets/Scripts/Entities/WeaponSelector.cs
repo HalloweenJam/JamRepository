@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Core;
+using Core.Classes;
 using Managers;
 using Player.Controls;
 using UnityEngine;

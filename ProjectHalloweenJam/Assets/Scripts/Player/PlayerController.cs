@@ -22,7 +22,7 @@ namespace Player
         [SerializeField] private int _maxDashesCount = 1;
         
         [HideInInspector, SerializeField] private Rigidbody2D _rigidbody;
-        [HideInInspector, SerializeField] private Camera _camera;
+        private Camera _camera;
 
         private bool _isDashing;
         private float _dashDelayCounter;
@@ -40,7 +40,7 @@ namespace Player
         private void OnValidate()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _camera = FindObjectOfType<Camera>();
+            _camera = Camera.main;
 
             _rigidbody.mass = _mass;
             _rigidbody.drag = _linearDrag;

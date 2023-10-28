@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Core
+namespace Core.Classes
 {
     [Serializable]
     public class WeaponConfig
