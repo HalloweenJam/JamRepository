@@ -37,7 +37,7 @@ public class TestFireSelect : MonoBehaviour
 
     private void ShootingEvent()
     {
-        fire.OnShooting(_selectedWeaponIndex, new Vector3(0, 0, 0), _worldMousePosition);
+        //fire.OnShooting(_selectedWeaponIndex, new Vector3(0, 0, 0), _worldMousePosition);
     }
 
     private void MousePosition(Vector2 vector)

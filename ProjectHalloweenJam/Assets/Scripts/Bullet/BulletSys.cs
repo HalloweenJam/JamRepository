@@ -42,7 +42,7 @@ public class BulletSys : MonoBehaviour, IDamageable
         
     }
 
-    public void OnAttack(BulletInfo info, BulletInfo.BulletType type)
+   /* public void OnAttack(BulletInfo info, BulletInfo.BulletType type)
     {
         _spriteRenderer.sprite = info.Sprite;
         _circleCollider.radius = info.Size;
@@ -58,7 +58,7 @@ public class BulletSys : MonoBehaviour, IDamageable
                 break;
             default: break;
         }
-    }
+    }*/
 
     private IEnumerator Line()
     {

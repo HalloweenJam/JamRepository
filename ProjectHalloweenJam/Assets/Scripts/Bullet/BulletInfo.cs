@@ -1,24 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-using System.Collections;
-using System;
-
-[Serializable]
-public struct BulletInfo
+namespace Core.Classes
 {
-    public enum BulletType
+    [Serializable]
+    public class BulletInfo
     {
-        line, sin, circle, fraction, firework,
-    }
-    public BulletType Type;
-    public Sprite Sprite;
-    public int Damage;
-    public float Speed;
-    public float Size;
-    public float TimeHeart;
-    public int Coint;
-    public int Radius;
+        public enum BulletType
+        {
+            line, sin, circle, fraction, firework,
+        }
+        public BulletType Type;
+        public Sprite Sprite;
+        public int Damage;
+        public float Speed;
+        public float Size;
+        public float LifeTime;
+        public int Coint;
+        public int Radius;
 
+    }
 }
