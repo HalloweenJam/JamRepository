@@ -111,7 +111,6 @@ namespace Player
         {
             Move();
             Rotate();
-            
         }
 
         private void Rotate()
