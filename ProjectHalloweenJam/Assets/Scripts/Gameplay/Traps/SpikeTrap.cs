@@ -1,4 +1,5 @@
 using System.Collections;
+using Core;
 using Core.Enums;
 using UnityEngine;
 
@@ -8,7 +9,8 @@ namespace Gameplay.Traps
     public class SpikeTrap : MonoBehaviour
     {
         [SerializeField] private TrapActivationType _activationType;
-        [SerializeField] private float _activationTime = 1f;
+        [SerializeField] private LayerMask _entitiesLayerMask;
+        [SerializeField] private float _activationTime = 2f;
         [Space]
         [SerializeField] private int _damage = 1;
 
@@ -37,15 +39,11 @@ namespace Gameplay.Traps
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (!_isEnabled && !_isChangingState)
-            {
-                _isChangingState = true;
-                StartCoroutine(ChangeState());
+            if (_isEnabled || _isChangingState) 
                 return;
-            }
             
-            if (_isEnabled && other.TryGetComponent<IDamageable>(out var damageable))
-                damageable.TryTakeDamage(_damage);
+            _isChangingState = true;
+            StartCoroutine(ChangeState());
         }
 
         private IEnumerator ChangeState()
@@ -56,7 +54,17 @@ namespace Gameplay.Traps
             ChangeColors();
 
             if (_isEnabled)
-               yield return StartCoroutine(Disable());
+            {
+                var colliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(1, 1), 0, _entitiesLayerMask);
+
+                foreach (var target in colliders)
+                {
+                    if (target.TryGetComponent<IDamageable>(out var damageable))
+                        damageable.TryTakeDamage(_damage);
+                }
+                
+                yield return StartCoroutine(Disable());
+            }
 
             _isChangingState = false;
         }

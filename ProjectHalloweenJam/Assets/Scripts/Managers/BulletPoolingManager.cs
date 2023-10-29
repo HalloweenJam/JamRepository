@@ -1,6 +1,4 @@
 using Bullet;
-using Core.Classes;
-using Projectiles;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -25,7 +23,7 @@ namespace Managers
         public void Release(Projectiles.Bullet bullet)
         {
             bullet.gameObject.SetActive(false);
-            try {_bulletsPool.Release(bullet); } catch { }
+            _bulletsPool.Release(bullet); 
         }
 
         private void Awake()

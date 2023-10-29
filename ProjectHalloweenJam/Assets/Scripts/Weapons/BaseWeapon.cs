@@ -1,5 +1,4 @@
 using Bullet;
-using Core;
 using Core.Classes;
 using UnityEngine;
 
@@ -10,13 +9,10 @@ namespace Weapons
         [SerializeField] private Description _description;
         [SerializeField] private WeaponConfig _weaponConfig;
         [SerializeField] private BulletConfig _bulletConfig;
-        [Space]
-        [SerializeField] private int _damage;
         
+        public Description Description => _description;
         public WeaponConfig WeaponConfig => _weaponConfig;
         public BulletConfig BulletConfig => _bulletConfig;
-
-        protected int Damage => _damage;
         
         public abstract bool TryToUse(Vector2 startPosition, Vector2 direction);
     }

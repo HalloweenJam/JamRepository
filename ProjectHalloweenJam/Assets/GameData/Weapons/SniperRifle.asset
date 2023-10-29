@@ -13,22 +13,20 @@ MonoBehaviour:
   m_Name: SniperRifle
   m_EditorClassIdentifier: 
   _description:
-    _icon: {fileID: 0}
+    _inHands: {fileID: -3476979527478288156, guid: 9355908b4923c78408dd411e6050eaef, type: 3}
+    _icon: {fileID: 2407328536907620315, guid: a86d1d2d9cf74a5419cc94d5a8ddae2d, type: 3}
     _name: 
     _info: 
   _weaponConfig:
-    _totalBullets: 25
-    _bulletsPerBatch: 1
-    _attackSpeed: 0.1
+    _totalBullets: 15
+    _bulletsPerBatch: 5
+    _attackSpeed: 0.7
     _reloadingSpeed: 2
   _bulletConfig:
-    Type: 0
-    Sprite: {fileID: -712631045867808456, guid: 473e45578d9aedb4b9fa6cef603c59d3, type: 3}
-    Damage: 5
-    Speed: 1
-    Size: 0.5
-    LifeTime: 5
-    Coint: 6
-    Radius: 1
-  _damage: 10
-  _bulletSpeed: 50
+    _bulletType: 0
+    _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
+    _isEnemyBullet: 0
+    _speed: 45
+    _damage: 2
+    _count: 0
+    _radius: 0.3

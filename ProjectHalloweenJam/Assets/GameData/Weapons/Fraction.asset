@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Fraction
   m_EditorClassIdentifier: 
   _description:
-    _icon: {fileID: 0}
+    _inHands: {fileID: -9170448629031416532, guid: 9355908b4923c78408dd411e6050eaef, type: 3}
+    _icon: {fileID: -5175883975536919146, guid: a86d1d2d9cf74a5419cc94d5a8ddae2d, type: 3}
     _name: 
     _info: 
   _weaponConfig:
@@ -22,13 +23,10 @@ MonoBehaviour:
     _attackSpeed: 0.5
     _reloadingSpeed: 1
   _bulletConfig:
-    Type: 3
-    Sprite: {fileID: 7482667652216324306, guid: 4afcb60660a43d544b2aead2df9785c9, type: 3}
-    Damage: 0
-    Speed: 10
-    Size: 0.5
-    LifeTime: 5
-    Coint: 5
-    Radius: 60
-  _damage: 10
-  _bulletSpeed: 50
+    _bulletType: 3
+    _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
+    _isEnemyBullet: 0
+    _speed: 20
+    _damage: 1
+    _count: 3
+    _radius: 0.3

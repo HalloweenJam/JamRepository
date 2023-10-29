@@ -1,4 +1,7 @@
-public interface IDamageable
+namespace Core
 {
-    public bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false);
+    public interface IDamageable
+    {
+        public bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false);
+    }
 }

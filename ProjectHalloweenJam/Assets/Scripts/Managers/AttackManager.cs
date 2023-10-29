@@ -1,5 +1,5 @@
 using Bullet;
-using Core.Classes;
+using Core.Enums;
 using UnityEngine;
 
 namespace Managers
@@ -21,80 +21,70 @@ namespace Managers
 
             DontDestroyOnLoad(gameObject);
         }
-        public void GetSelectAttack(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
+        public static void SelectAttack(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
         {
             switch (bulletConfig.Type)
             {
-                case BulletConfig.BulletType.line:
+                case BulletType.Line:
                     GetLine(startPosition, direction, bulletConfig);
                     break;
-                case BulletConfig.BulletType.sin:
+                case BulletType.Sin:
                     break;
-                case BulletConfig.BulletType.circle:
+                case BulletType.Circle:
                     GetCircle(startPosition, direction, bulletConfig);
                     break;
-                case BulletConfig.BulletType.fraction:
+                case BulletType.Fraction:
                     GetFraction(startPosition, direction, bulletConfig);
                     break;
-                case BulletConfig.BulletType.firework:
+                case BulletType.Firework:
                     break;
                 default:
                     break;
             }
         }
 
-        void GetLine(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
+        private static void GetLine(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
         {
             BulletPoolingManager.Instance.GetBullet(startPosition, direction, bulletConfig);
         }
 
-        void GetCircle(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
+        private static void GetCircle(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
         {
-            if (bulletConfig.Coint == 0)
-            {
-                bulletConfig.Coint = 1;
-            }
-            if (bulletConfig.Radius == 0)
-            {
-                bulletConfig.Radius = 1;
-            }
-            float anlgeCoint = 360 / bulletConfig.Coint;
+            var bulletCount = bulletConfig.Count == 0 ? 1 : bulletConfig.Count;
+            var bulletRadius = bulletConfig.Radius == 0 ? 1 : bulletConfig.Radius; 
+            
+            float angleCount = 360 / bulletCount;
             float angle = 0;
-            float positionX;
-            float positionY;
-            for (int i = 0; i < bulletConfig.Coint; i++)
+            for (int i = 0; i < bulletConfig.Count; i++)
             {
-                positionX = startPosition.x + Mathf.Cos((angle * Mathf.PI) / 180) * bulletConfig.Radius;
-                positionY = startPosition.y + Mathf.Sin((angle * Mathf.PI) / 180) * bulletConfig.Radius;
-                Vector2 _direction = (new Vector2(positionX, positionY) - (Vector2)startPosition).normalized;
+                var positionX = startPosition.x + Mathf.Cos((angle * Mathf.PI) / 180) * bulletRadius;
+                var positionY = startPosition.y + Mathf.Sin((angle * Mathf.PI) / 180) * bulletRadius;
+                var _direction = (new Vector2(positionX, positionY) - startPosition).normalized;
+                
                 BulletPoolingManager.Instance.GetBullet(startPosition, _direction, bulletConfig);
-                angle += anlgeCoint;
+                angle += angleCount;
             }
         }
 
-        void GetFraction(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
+        private static void GetFraction(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
         {
-            if (bulletConfig.Coint == 0)
+            var bulletCount = bulletConfig.Count == 0 ? 1 : bulletConfig.Count;
+            var bulletRadius = bulletConfig.Radius <= 5 ? 5 : bulletConfig.Radius;
+
+            var angleStep = bulletRadius / (bulletCount - 1);
+            var startAngle = -(bulletRadius / 2);
+
+            var targetDirection = (startPosition + direction * 2) - startPosition;
+            var targetAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+
+            for (int i = 0; i < bulletCount; i++)
             {
-                bulletConfig.Coint = 1;
-            }
-            if (bulletConfig.Radius <= 5)
-            {
-                bulletConfig.Radius = 5;
-            }
-            float anlgeCoint = bulletConfig.Radius / bulletConfig.Coint;
-            float angle = 0;
-            float positionX;
-            float positionY;
-            Vector2 vec = (startPosition + direction) - Vector2.up;
-            angle = Mathf.Atan2(direction.y - Vector2.up.y, direction.x - Vector2.up.x) * Mathf.Rad2Deg;
-            for (int i = 0; i < bulletConfig.Coint; i++)
-            {
-                positionX = startPosition.x + Mathf.Cos(angle) + direction.x;
-                positionY = startPosition.y + Mathf.Sin(angle) + direction.y;
-                Vector2 _direction = (new Vector2(positionX, positionY) - (Vector2)startPosition).normalized;
+                var angle = startAngle + i * angleStep; 
+                var positionX = startPosition.x + Mathf.Cos((targetAngle + angle) * Mathf.PI / 180) * bulletRadius;
+                var positionY = startPosition.y + Mathf.Sin((targetAngle + angle) * Mathf.PI / 180) * bulletRadius;
+                var _direction = (new Vector2(positionX, positionY) - startPosition).normalized;
+                
                 BulletPoolingManager.Instance.GetBullet(startPosition, _direction, bulletConfig);
-                angle += anlgeCoint;
             }
         }
     }
