@@ -130,7 +130,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -144,7 +144,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -194,10 +194,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 11
-        width: 43
-        height: 45
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,10 +215,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_1
       rect:
         serializedVersion: 2
-        x: 76
-        y: 11
-        width: 41
-        height: 46
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,10 +236,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_2
       rect:
         serializedVersion: 2
-        x: 140
-        y: 11
-        width: 41
-        height: 47
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,10 +257,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_3
       rect:
         serializedVersion: 2
-        x: 202
-        y: 47
-        width: 9
-        height: 14
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +278,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_4
       rect:
         serializedVersion: 2
-        x: 204
-        y: 11
-        width: 41
-        height: 47
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,10 +299,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_5
       rect:
         serializedVersion: 2
-        x: 235
-        y: 49
-        width: 11
-        height: 12
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,10 +320,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_6
       rect:
         serializedVersion: 2
-        x: 266
-        y: 47
-        width: 9
-        height: 14
+        x: 384
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,10 +341,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_7
       rect:
         serializedVersion: 2
-        x: 268
-        y: 11
-        width: 41
-        height: 47
+        x: 448
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,10 +362,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_8
       rect:
         serializedVersion: 2
-        x: 299
-        y: 49
-        width: 11
-        height: 12
+        x: 512
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,10 +383,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_9
       rect:
         serializedVersion: 2
-        x: 330
-        y: 47
-        width: 9
-        height: 14
+        x: 576
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,10 +404,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_10
       rect:
         serializedVersion: 2
-        x: 332
-        y: 11
-        width: 41
-        height: 47
+        x: 640
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,10 +425,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_11
       rect:
         serializedVersion: 2
-        x: 363
-        y: 49
-        width: 11
-        height: 12
+        x: 704
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,10 +446,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_12
       rect:
         serializedVersion: 2
-        x: 394
-        y: 47
-        width: 9
-        height: 14
+        x: 768
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,10 +467,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_13
       rect:
         serializedVersion: 2
-        x: 396
-        y: 11
-        width: 41
-        height: 47
+        x: 832
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -488,10 +488,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_14
       rect:
         serializedVersion: 2
-        x: 427
-        y: 49
-        width: 11
-        height: 12
+        x: 896
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -509,10 +509,10 @@ TextureImporter:
       name: gluttony_boss_attack2-Sheet_15
       rect:
         serializedVersion: 2
-        x: 458
-        y: 47
-        width: 9
-        height: 14
+        x: 960
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -526,346 +526,10 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_16
-      rect:
-        serializedVersion: 2
-        x: 460
-        y: 11
-        width: 41
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 05a2c9b83ab65a0f0800000000000000
-      internalID: -1106359783283479984
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_17
-      rect:
-        serializedVersion: 2
-        x: 491
-        y: 49
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 60bf872dbc7db8c70800000000000000
-      internalID: 8974503952875322118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_18
-      rect:
-        serializedVersion: 2
-        x: 522
-        y: 47
-        width: 9
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab9a09e78b21064e0800000000000000
-      internalID: -1990570451691066950
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_19
-      rect:
-        serializedVersion: 2
-        x: 524
-        y: 11
-        width: 41
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c8e0441f570a22a60800000000000000
-      internalID: 7647851545647910540
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_20
-      rect:
-        serializedVersion: 2
-        x: 555
-        y: 49
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8713ac6047adbd0a0800000000000000
-      internalID: -6855645815876472456
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_21
-      rect:
-        serializedVersion: 2
-        x: 586
-        y: 47
-        width: 9
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c502b76e42c763cb0800000000000000
-      internalID: -4884580247909228452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_22
-      rect:
-        serializedVersion: 2
-        x: 588
-        y: 11
-        width: 41
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1c13305dba2fc5450800000000000000
-      internalID: 6079000416870412737
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_23
-      rect:
-        serializedVersion: 2
-        x: 619
-        y: 49
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9a446a9d8ebbeec40800000000000000
-      internalID: 5543574800098018473
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_24
-      rect:
-        serializedVersion: 2
-        x: 650
-        y: 47
-        width: 9
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 95472407a2fdb8da0800000000000000
-      internalID: -5941409910020213671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_25
-      rect:
-        serializedVersion: 2
-        x: 652
-        y: 11
-        width: 41
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 49dd302e42c8897a0800000000000000
-      internalID: -6370187582876951148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_26
-      rect:
-        serializedVersion: 2
-        x: 683
-        y: 49
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b5dbbb4875f26dc70800000000000000
-      internalID: 8995429358654700891
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_27
-      rect:
-        serializedVersion: 2
-        x: 716
-        y: 11
-        width: 41
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: afdd28d3b9acde1c0800000000000000
-      internalID: -4472696086808306182
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_28
-      rect:
-        serializedVersion: 2
-        x: 780
-        y: 11
-        width: 41
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 464b922e0b47f00f0800000000000000
-      internalID: -1148571076898737052
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_29
-      rect:
-        serializedVersion: 2
-        x: 844
-        y: 11
-        width: 41
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0ce4d34b4dc0cc1c0800000000000000
-      internalID: -4482193421443969344
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_30
-      rect:
-        serializedVersion: 2
-        x: 907
-        y: 11
-        width: 43
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 52fb0357898eb3ef0800000000000000
-      internalID: -127252422951125211
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_attack2-Sheet_31
-      rect:
-        serializedVersion: 2
-        x: 971
-        y: 11
-        width: 43
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 22b65143a499018c0800000000000000
-      internalID: -4030553122516145374
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 3ea679c06ff316749bf792ed7e0f0cab
     internalID: 0
     vertices: []
     indices: 
@@ -881,24 +545,8 @@ TextureImporter:
       gluttony_boss_attack2-Sheet_13: -3214547767705817696
       gluttony_boss_attack2-Sheet_14: -6426475704713671180
       gluttony_boss_attack2-Sheet_15: 7484950031503579989
-      gluttony_boss_attack2-Sheet_16: -1106359783283479984
-      gluttony_boss_attack2-Sheet_17: 8974503952875322118
-      gluttony_boss_attack2-Sheet_18: -1990570451691066950
-      gluttony_boss_attack2-Sheet_19: 7647851545647910540
       gluttony_boss_attack2-Sheet_2: -2987351101050398618
-      gluttony_boss_attack2-Sheet_20: -6855645815876472456
-      gluttony_boss_attack2-Sheet_21: -4884580247909228452
-      gluttony_boss_attack2-Sheet_22: 6079000416870412737
-      gluttony_boss_attack2-Sheet_23: 5543574800098018473
-      gluttony_boss_attack2-Sheet_24: -5941409910020213671
-      gluttony_boss_attack2-Sheet_25: -6370187582876951148
-      gluttony_boss_attack2-Sheet_26: 8995429358654700891
-      gluttony_boss_attack2-Sheet_27: -4472696086808306182
-      gluttony_boss_attack2-Sheet_28: -1148571076898737052
-      gluttony_boss_attack2-Sheet_29: -4482193421443969344
       gluttony_boss_attack2-Sheet_3: 3925610406491389392
-      gluttony_boss_attack2-Sheet_30: -127252422951125211
-      gluttony_boss_attack2-Sheet_31: -4030553122516145374
       gluttony_boss_attack2-Sheet_4: 5306094797449089201
       gluttony_boss_attack2-Sheet_5: 2307919097464168574
       gluttony_boss_attack2-Sheet_6: -5589774430043407881
