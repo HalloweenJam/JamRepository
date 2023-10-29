@@ -23,8 +23,6 @@ namespace Managers
         }
         public static void SelectAttack(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
         {
-            print(bulletConfig.Type);
-            
             switch (bulletConfig.Type)
             {
                 case BulletType.Line:

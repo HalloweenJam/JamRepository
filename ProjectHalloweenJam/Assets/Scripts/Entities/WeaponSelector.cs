@@ -20,10 +20,13 @@ namespace Entities
         private int _selectedWeaponIndex = 0;
         private bool _isHoldingWeapon;
 
+        private Vector2 _cashedMousePosition;
         private Vector2 _direction;
 
         private InputReader _inputReader;
 
+        private WeaponData _currentWeapon => _weapons[_selectedWeaponIndex];
+        
         public Action<WeaponData, bool> OnWeaponUsed;
 
         public void Add(BaseWeapon weapon) => _weapons.Add(new WeaponData(weapon));
@@ -31,7 +34,7 @@ namespace Entities
         public bool TryToAttack(Vector2 targetPosition, bool isDirection = true)
         {
             var direction = isDirection ? targetPosition : (targetPosition - (Vector2) _firePoint.position).normalized;
-            var selectedWeapon = _weapons[_selectedWeaponIndex];
+            var selectedWeapon = _currentWeapon;
             
             OnWeaponUsed?.Invoke(selectedWeapon, false);
             
@@ -54,16 +57,14 @@ namespace Entities
             _inputReader.ShootingCancelledEvent += () => _isHoldingWeapon = false;
 
             _inputReader.MouseWheelScrollEvent += ChangeWeapon;
-            _inputReader.MousePositionEvent += mousePosition =>
-            {
-                _direction = (mousePosition - (Vector2) _firePoint.position).normalized;
-            };
+            _inputReader.MousePositionEvent += mousePosition => _cashedMousePosition = mousePosition;
             
             foreach (var weapon in _weaponsToAdd)
             {
                 Add(weapon);
             }
             
+            OnWeaponUsed?.Invoke(_currentWeapon, true);
             SetWeaponSprite();
         }
 
@@ -73,20 +74,23 @@ namespace Entities
             
             _selectedWeaponIndex = (_selectedWeaponIndex + _weapons.Count + dir) % _weapons.Count;
             
-            OnWeaponUsed?.Invoke(_weapons[_selectedWeaponIndex], true);
+            OnWeaponUsed?.Invoke(_currentWeapon, true);
             
             SetWeaponSprite();
         }
 
         private void SetWeaponSprite()
         {
-            _weaponHolder.SetWeaponSprite(_weapons[_selectedWeaponIndex].WeaponSprite);
+            _weaponHolder.SetWeaponSprite(_currentWeapon.InHandsSprite);
         }
 
         private void FixedUpdate()
         {
             if (_isHoldingWeapon)
+            {
+                _direction = (_cashedMousePosition - (Vector2) _firePoint.position).normalized;
                 TryToAttack(_direction);
+            }
             
             var deltaTime = Time.fixedDeltaTime;
 

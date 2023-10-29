@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 9355908b4923c78408dd411e6050eaef
+guid: a86d1d2d9cf74a5419cc94d5a8ddae2d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7362661061344524757
-    second: guns_0
+      213: 7829804072965817479
+    second: guns_no_hands_0
   - first:
-      213: -7349882584872989000
-    second: guns_1
+      213: 2625957265458543061
+    second: guns_no_hands_1
   - first:
-      213: -3476979527478288156
-    second: guns_2
+      213: 2407328536907620315
+    second: guns_no_hands_2
   - first:
-      213: -9170448629031416532
-    second: guns_3
+      213: -5175883975536919146
+    second: guns_no_hands_3
   - first:
-      213: -2395591618090941519
-    second: guns_4
+      213: 6841632011172071884
+    second: guns_no_hands_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: guns_0
+      name: guns_no_hands_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5d97a0be93d6d2660800000000000000
-      internalID: 7362661061344524757
+      spriteID: 784c80ef15d09ac60800000000000000
+      internalID: 7829804072965817479
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guns_1
+      name: guns_no_hands_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8bec0dbfab8fff990800000000000000
-      internalID: -7349882584872989000
+      spriteID: 5d933035836417420800000000000000
+      internalID: 2625957265458543061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guns_2
+      name: guns_no_hands_2
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e0e955aa894fbfc0800000000000000
-      internalID: -3476979527478288156
+      spriteID: bdf1a0cbc8c886120800000000000000
+      internalID: 2407328536907620315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guns_3
+      name: guns_no_hands_3
       rect:
         serializedVersion: 2
         x: 32
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c2d4d9b1f850cb080800000000000000
-      internalID: -9170448629031416532
+      spriteID: 69d3c7f72f09b28b0800000000000000
+      internalID: -5175883975536919146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: guns_4
+      name: guns_no_hands_4
       rect:
         serializedVersion: 2
         x: 32
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b349c0ad1621ced0800000000000000
-      internalID: -2395591618090941519
+      spriteID: cc94addc01c52fe50800000000000000
+      internalID: 6841632011172071884
       vertices: []
       indices: 
       edges: []
@@ -217,7 +217,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 16bc9d40dea164643b1430b926741c0b
+    spriteID: 1e0c39a006af73d49ac2ffbeefb4fc00
     internalID: 0
     vertices: []
     indices: 
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      guns_0: 7362661061344524757
-      guns_1: -7349882584872989000
-      guns_2: -3476979527478288156
-      guns_3: -9170448629031416532
-      guns_4: -2395591618090941519
+      guns_no_hands_0: 7829804072965817479
+      guns_no_hands_1: 2625957265458543061
+      guns_no_hands_2: 2407328536907620315
+      guns_no_hands_3: -5175883975536919146
+      guns_no_hands_4: 6841632011172071884
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

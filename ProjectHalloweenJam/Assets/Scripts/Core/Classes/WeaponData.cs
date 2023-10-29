@@ -13,15 +13,15 @@ namespace Core.Classes
         private float _attackSpeedCounter;
         private float _reloadingSpeedCounter;
 
+        private bool _isInfinity;
+        
         public int LeftBullets { get; private set; }
-
         public int LeftBulletsInBatch { get; private set; }
-
         public int TotalBullets { get; }
-
         public int TotalBulletsInBatch { get; }
 
-        public Sprite WeaponSprite { get; private set; }
+        public Sprite InHandsSprite { get; }
+        public Sprite Icon { get; private set; }
 
         public WeaponData(BaseWeapon baseWeapon)
         {
@@ -31,9 +31,12 @@ namespace Core.Classes
             _reloadingSpeed = baseWeapon.WeaponConfig.ReloadingSpeed;
             TotalBullets = baseWeapon.WeaponConfig.TotalBullets;
             TotalBulletsInBatch = baseWeapon.WeaponConfig.BulletsPerBatch;
-            
-            WeaponSprite = baseWeapon.Description.Icon;
 
+            _isInfinity = baseWeapon.WeaponConfig.TotalBullets < 0;
+            
+            InHandsSprite = baseWeapon.Description.InHands;
+            Icon = baseWeapon.Description.Icon;
+            
             LeftBullets = TotalBullets;
             _attackSpeedCounter = _attackSpeed;
             _reloadingSpeedCounter = _reloadingSpeed;
@@ -64,6 +67,7 @@ namespace Core.Classes
                 return false;
             
             LeftBulletsInBatch--;
+            
             _baseWeapon.TryToUse(startPosition, endPosition);
             _attackSpeedCounter = _attackSpeed;
             return true;
@@ -71,6 +75,12 @@ namespace Core.Classes
         
         private void RefillBatch()
         {
+            if (_isInfinity)
+            {
+                LeftBulletsInBatch = TotalBulletsInBatch;
+                return;
+            }
+
             LeftBulletsInBatch = LeftBullets > TotalBulletsInBatch ? TotalBulletsInBatch : LeftBullets;
             LeftBullets -= LeftBulletsInBatch;
         }

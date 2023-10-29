@@ -38,13 +38,17 @@ namespace UI
             var totalRatio = (float) data.LeftBullets / data.TotalBullets;
 
             AnimateFillAmount(_batchFill, inBatchRatio, _batchDuration);
-            AnimateFillAmount(_totalFill, totalRatio, _totalDuration);
+
+            if (data.TotalBullets > 0)
+                AnimateFillAmount(_totalFill, totalRatio, _totalDuration);
+            else
+                _totalFill.fillAmount = 1;
 
             _bulletsInBatch.text = $"{data.LeftBulletsInBatch}/{data.TotalBulletsInBatch}";
-            _totalBullets.text = $"{data.LeftBullets}/{data.TotalBullets}";
-
+            _totalBullets.text = data.TotalBullets < 0 ? "\u221e" : $"{data.LeftBullets}/{data.TotalBullets}";
+       
             if (isChanged)
-                _weaponImage.sprite = data.WeaponSprite;
+                _weaponImage.sprite = data.Icon;
         }
         
         private static void AnimateFillAmount(Image fillImage, float targetFillAmount, float duration)
