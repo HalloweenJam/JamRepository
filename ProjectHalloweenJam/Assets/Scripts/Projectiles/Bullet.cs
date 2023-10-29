@@ -31,7 +31,7 @@ namespace Projectiles
                 : LayerMask.NameToLayer("PlayerProjectile");
             
             _render.sprite = bulletConfig.Sprite;
-            _collider.radius = bulletConfig.Radius;
+            _collider.radius = 0.3f;
             _direction = direction;
             _speed = bulletConfig.Speed;
             _damage = bulletConfig.Damage;

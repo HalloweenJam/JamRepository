@@ -49,7 +49,7 @@ namespace Entities
         private void Start()
         {
             _inputReader = InputReaderManager.Instance.GetInputReader();
-
+            _firePoint = transform;
             _inputReader.ShootingEvent += () => _isHoldingWeapon = true;
             _inputReader.ShootingCancelledEvent += () => _isHoldingWeapon = false;
 
