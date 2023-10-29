@@ -1,3 +1,4 @@
+using Entities;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour, IAttackable
@@ -7,10 +8,15 @@ public class EnemyAttack : MonoBehaviour, IAttackable
     protected EnemyMovement EnemyMovement;
     protected Animator Animator;
 
-    private void Start()
+    protected WeaponSelector WeaponSelector { get; private set; }
+
+    protected virtual void Start()
     {
         Animator = GetComponent<Animator>();
         EnemyMovement = GetComponent<EnemyMovement>();
+        
+        WeaponSelector = GetComponent<WeaponSelector>();
+        WeaponSelector.SetWeaponByIndex(0);
     }
 
     public virtual void Attack() { }

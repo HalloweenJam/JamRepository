@@ -43,8 +43,8 @@ namespace Entities
 
         public void SetWeaponByIndex(int weaponIndex)
         {
-            if (_selectedWeaponIndex < 0 || _selectedWeaponIndex > _weapons.Count - 1)
-                throw new OutOfMemoryException("Selected Weapon Index is out of available weapons count");
+            /*if (_selectedWeaponIndex < 0 || _selectedWeaponIndex > _weapons.Count - 1)
+                throw new OutOfMemoryException($"Selected Weapon Index is out of available weapons count: {_selectedWeaponIndex}");*/
             
             _selectedWeaponIndex = weaponIndex;
         }
@@ -81,7 +81,8 @@ namespace Entities
 
         private void SetWeaponSprite()
         {
-            _weaponHolder.SetWeaponSprite(_currentWeapon.InHandsSprite);
+            if (_weaponHolder != null)
+                _weaponHolder.SetWeaponSprite(_currentWeapon.InHandsSprite);
         }
 
         private void FixedUpdate()

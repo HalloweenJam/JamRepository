@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ae2491422424028963a2a77d453e68a, type: 3}
-  m_Name: BasePistol
+  m_Name: Devil Radial Attack
   m_EditorClassIdentifier: 
   _description:
-    _inHands: {fileID: -2395591618090941519, guid: 9355908b4923c78408dd411e6050eaef, type: 3}
-    _icon: {fileID: 6841632011172071884, guid: a86d1d2d9cf74a5419cc94d5a8ddae2d, type: 3}
+    _inHands: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
+    _icon: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
     _name: 
     _info: 
   _weaponConfig:
     _totalBullets: -1
-    _bulletsPerBatch: 5
-    _attackSpeed: 0.3
-    _reloadingSpeed: 2
+    _bulletsPerBatch: 1000
+    _attackSpeed: 1
+    _reloadingSpeed: 0.1
   _bulletConfig:
-    _bulletType: 0
+    _bulletType: 2
     _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
-    _isEnemyBullet: 0
-    _speed: 20
-    _damage: 15
-    _count: 0
-    _radius: 0
+    _isEnemyBullet: 1
+    _speed: 4
+    _damage: 1
+    _count: 30
+    _radius: 1

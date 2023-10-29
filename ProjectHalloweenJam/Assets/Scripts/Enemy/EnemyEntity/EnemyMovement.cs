@@ -9,6 +9,8 @@ public class EnemyMovement : MonoBehaviour
     protected NavMeshAgent Agent;
     protected Transform PlayerTransform;
 
+    public Transform Player => PlayerTransform;
+
     private Vector3 _defaultScale;
 
     public void Initialize(Transform playerTransform, EnemyStats enemyStats)
