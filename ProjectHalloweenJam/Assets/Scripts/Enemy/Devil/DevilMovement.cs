@@ -1,11 +1,9 @@
-using System;
 using UnityEngine;
 using System.Collections;
 
 public class DevilMovement : EnemyMovement
 {
     [SerializeField] private Vector3 _offset;
-    private bool _canTeleportation = false;
     private bool _isTeleportation = false;
     private bool _playerInAttackZone = false;
 
@@ -21,11 +19,8 @@ public class DevilMovement : EnemyMovement
     {
         float distance = Vector3.Distance(transform.position, PlayerTransform.position);
         _playerInAttackZone = distance < 5f ? true : false;
-        if (_playerInAttackZone)
-        {
-            EnemyAttack.Attack();
-        }
-
+        if (_playerInAttackZone)        
+            EnemyAttack.Attack();       
     }
 
     private IEnumerator Teleportation()

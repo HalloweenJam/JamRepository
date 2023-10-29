@@ -4,14 +4,14 @@ using System.Collections;
 public class DevilAttack : EnemyAttack
 {
     private string _attackName = "Attack";
+    private bool _canAttack = true;
     private bool _isAttack = false;
-    private bool _isReload = false;
 
     public bool IsAttack => _isAttack;
 
     public override void Attack()
     {
-        if(!_isAttack && !_isReload)
+        if(!_isAttack && _canAttack)
             StartCoroutine(AttackCor());
     }
 
@@ -19,9 +19,8 @@ public class DevilAttack : EnemyAttack
     {
         _isAttack = true;
         float elapsedTime = 0f;
-        float attackTime = 3f;
+        float attackTime = 2f;
         Animator.SetBool(_attackName, true);
-
         while (elapsedTime < attackTime)
         {
             elapsedTime += Time.deltaTime;
@@ -29,20 +28,20 @@ public class DevilAttack : EnemyAttack
         }
         Animator.SetBool(_attackName, false);
         _isAttack = false;
+        _canAttack = false;
         StartCoroutine(Reload());
     }
 
     private IEnumerator Reload()
     {
-        _isReload = true;
         float elapsedTime = 0f;
-        float reloadTime = 1f;
+        float reloadTime = 2f;
 
         while (elapsedTime < reloadTime)
         {
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        _isReload = false;
+        _canAttack = true;
     }
 }

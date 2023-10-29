@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: aea7076999e449d44a076ba995aaf738
+guid: f55c7b52f943a524a8a85d3bd55b4b9d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6067802987096507569
-    second: wall_down_0
+      213: 2275542139351671705
+    second: air_evil_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wall_down_0
+      name: air_evil_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 3
+        y: 24
+        width: 58
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b401fc0baa253450800000000000000
-      internalID: 6067802987096507569
+      spriteID: 9932d77f489549f10800000000000000
+      internalID: 2275542139351671705
       vertices: []
       indices: 
       edges: []
@@ -121,7 +121,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 97a4bb7423394a94292dd374c0765b91
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wall_down_0: 6067802987096507569
+      air_evil_0: 2275542139351671705
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

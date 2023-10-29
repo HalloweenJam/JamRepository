@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: aea7076999e449d44a076ba995aaf738
+guid: 046d3c135b97ec146a7d70beb37cf769
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6067802987096507569
-    second: wall_down_0
+      213: 8651862619831560131
+    second: fat_ball_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wall_down_0
+      name: fat_ball_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 15
+        y: 15
+        width: 18
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b401fc0baa253450800000000000000
-      internalID: 6067802987096507569
+      spriteID: 3c76a849637911870800000000000000
+      internalID: 8651862619831560131
       vertices: []
       indices: 
       edges: []
@@ -121,7 +121,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 97a4bb7423394a94292dd374c0765b91
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wall_down_0: 6067802987096507569
+      fat_ball_0: 8651862619831560131
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

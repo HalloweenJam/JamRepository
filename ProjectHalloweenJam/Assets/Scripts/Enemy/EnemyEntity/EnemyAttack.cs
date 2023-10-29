@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 public class EnemyAttack : MonoBehaviour, IAttackable
 {
@@ -14,8 +13,5 @@ public class EnemyAttack : MonoBehaviour, IAttackable
         EnemyMovement = GetComponent<EnemyMovement>();
     }
 
-    public virtual void Attack()
-    {
-        
-    }
+    public virtual void Attack() { }
 }

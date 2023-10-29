@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: aea7076999e449d44a076ba995aaf738
+guid: b83b9955282f6bf4a9500dd2a0d05249
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6067802987096507569
-    second: wall_down_0
+      213: 7187059410076441933
+    second: small_evil_afk_animation-Sheet_0
+  - first:
+      213: 7192810436383222491
+    second: small_evil_afk_animation-Sheet_1
+  - first:
+      213: 3799879373482454103
+    second: small_evil_afk_animation-Sheet_2
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -98,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wall_down_0
+      name: small_evil_afk_animation-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,8 +118,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b401fc0baa253450800000000000000
-      internalID: 6067802987096507569
+      spriteID: d4d1c3d64709db360800000000000000
+      internalID: 7187059410076441933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_evil_afk_animation-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bda28559bfef1d360800000000000000
+      internalID: 7192810436383222491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_evil_afk_animation-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75c61c55822ebb430800000000000000
+      internalID: 3799879373482454103
       vertices: []
       indices: 
       edges: []
@@ -121,7 +169,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 97a4bb7423394a94292dd374c0765b91
+    spriteID: 61ffa85e8b4d54240949ca40c8857f38
     internalID: 0
     vertices: []
     indices: 
@@ -129,7 +177,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wall_down_0: 6067802987096507569
+      small_evil_afk_animation-Sheet_0: 7187059410076441933
+      small_evil_afk_animation-Sheet_1: 7192810436383222491
+      small_evil_afk_animation-Sheet_2: 3799879373482454103
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

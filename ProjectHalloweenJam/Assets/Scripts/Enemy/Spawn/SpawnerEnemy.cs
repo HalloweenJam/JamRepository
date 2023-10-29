@@ -4,10 +4,19 @@ using System.Collections.Generic;
 public class SpawnerEnemy : MonoBehaviour
 {
     [SerializeField] private Transform _playerTransform;
-    [SerializeField] private List<SpawnPoint> _spawnPoints;
+    [SerializeField] private Transform _spawnPoinsTransfrom;
+    private List<SpawnPoint> _spawnPoints;
+
     private bool _canSpawn = false;
 
     public bool CanSpawn => _canSpawn;
+
+    private void Awake()
+    {
+        _spawnPoints = new List<SpawnPoint>(_spawnPoinsTransfrom.childCount);
+        foreach (Transform points in _spawnPoinsTransfrom)     
+            _spawnPoints.Add(points.GetComponent<SpawnPoint>());       
+    }
 
     public void CheckEnemyIsEmpty()
     {
