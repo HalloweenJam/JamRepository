@@ -1,6 +1,7 @@
 using Core.Classes;
 using DG.Tweening;
 using Entities;
+using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,6 @@ namespace UI
 {
     public class WeaponBar : MonoBehaviour
     {
-        [SerializeField] private WeaponSelector _player;
         [Space(12)] 
         [SerializeField] private float _batchDuration = .05f;
         [SerializeField] private float _totalDuration = .1f;
@@ -22,8 +22,11 @@ namespace UI
 
         [SerializeField] private Image _weaponImage;
 
+        private WeaponSelector _player;
+        
         private void Start()
         {
+            _player = FindFirstObjectByType<PlayerStats>().GetComponent<WeaponSelector>();
             _player.OnWeaponUsed += ChangeBar;
         }
 

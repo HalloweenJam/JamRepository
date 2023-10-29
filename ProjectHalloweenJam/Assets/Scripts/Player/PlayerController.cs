@@ -46,7 +46,7 @@ namespace Player
 
         public bool IsDashing => _isDashing;
 
-        public static Action<bool> OnPlayerDashing;
+        public Action<bool> OnPlayerDashing;
         
         private bool _canDash => !_isDashing && _dashesCount > 0;
         

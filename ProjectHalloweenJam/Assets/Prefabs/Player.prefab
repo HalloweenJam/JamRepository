@@ -336,9 +336,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8f1fe70e2744539ced6c601afbb492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
-  CurrentHealth: 5
+  _maxHealth: 10
+  CurrentHealth: 10
   _invisibilityLength: 1
+  _dashInvisibilityLength: 0.7
   _playerController: {fileID: 4621394336644080632}
 --- !u!114 &7120541555264942736
 MonoBehaviour:

@@ -264,3 +264,5 @@ MonoBehaviour:
   _firePoint: {fileID: 6419696612186514366}
   _weaponsToAdd:
   - {fileID: 11400000, guid: cc005e8ef4085fb41ae7d49a1aa7a117, type: 2}
+  - {fileID: 11400000, guid: 9758b92db1a0be94daf78d735ed3a3cf, type: 2}
+  - {fileID: 11400000, guid: 43cf449debacd2c4882fc827ba739ecd, type: 2}

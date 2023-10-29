@@ -1,52 +1,64 @@
 using System.Collections;
+using Enemy.EnemyEntity;
 using UnityEngine;
 
-public class DevilAttack : EnemyAttack
+namespace Enemy.Devil
 {
-    private string _attackName = "Attack";
-    private bool _canAttack = true;
-    private bool _isAttack = false;
-    public bool IsAttack => _isAttack;
-
-    public override void Attack()
+    public class DevilAttack : EnemyAttack
     {
-        if (!_isAttack && _canAttack)
+        private string _attackName = "Attack";
+        private bool _canAttack = true;
+        private bool _isAttacking = false;
+        public bool IsAttacking => _isAttacking;
+
+        public override void Attack()
+        {
+            if (_isAttacking || !_canAttack) 
+                return;
+            
+            SelectAttack();
+        }
+
+        private void SelectAttack()
+        {
+            var value = Random.value;
+
+            switch (value)
+            {
+                case < .33f:
+                    WeaponSelector.SetWeaponByIndex(0);
+                    break;
+                case < .66f:
+                    WeaponSelector.SetWeaponByIndex(1);
+                    break;
+                default:
+                    WeaponSelector.SetWeaponByIndex(2);
+                    break;
+            }
+
             StartCoroutine(AttackCor());
-    }
-
-    private IEnumerator AttackCor()
-    {
-        _isAttack = true;
-        float elapsedTime = 0f;
-        float attackTime = 2f;
-        
-        Animator.SetBool(_attackName, true);
-        while (elapsedTime < attackTime)
-        {
-            elapsedTime += Time.deltaTime;
-            yield return null;
         }
-        
-        WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
 
-        yield return new WaitForSeconds(1f);
-        
-        Animator.SetBool(_attackName, false);
-        _isAttack = false;
-        _canAttack = false;
-        StartCoroutine(Reload());
-    }
-
-    private IEnumerator Reload()
-    {
-        float elapsedTime = 0f;
-        float reloadTime = 2f;
-
-        while (elapsedTime < reloadTime)
+        private IEnumerator AttackCor()
         {
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            _isAttacking = true;
+        
+            Animator.SetBool(_attackName, true);
+            
+            yield return new WaitForSeconds(2f);
+            WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
+            
+            Animator.SetBool(_attackName, false);
+            
+            _isAttacking = false;
+            _canAttack = false;
+            StartCoroutine(Reload());
         }
-        _canAttack = true;
+
+        private IEnumerator Reload()
+        {
+            yield return new WaitForSeconds(2f);
+            _canAttack = true;
+        }
     }
 }

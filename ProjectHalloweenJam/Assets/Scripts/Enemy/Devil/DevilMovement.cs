@@ -18,7 +18,7 @@ public class DevilMovement : EnemyMovement
     private void CheckDistance()
     {
         float distance = Vector3.Distance(transform.position, PlayerTransform.position);
-        _playerInAttackZone = distance < 5f ? true : false;
+        _playerInAttackZone = distance < 5f;
         if (_playerInAttackZone)        
             EnemyAttack.Attack();       
     }

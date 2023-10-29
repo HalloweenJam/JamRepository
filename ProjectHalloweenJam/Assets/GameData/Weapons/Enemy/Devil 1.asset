@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ae2491422424028963a2a77d453e68a, type: 3}
-  m_Name: Devil Radial Attack
+  m_Name: Devil 1
   m_EditorClassIdentifier: 
   _description:
     _inHands: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
@@ -20,13 +20,13 @@ MonoBehaviour:
   _weaponConfig:
     _totalBullets: -1
     _bulletsPerBatch: 1000
-    _attackSpeed: 1
+    _attackSpeed: 0.1
     _reloadingSpeed: 0.1
   _bulletConfig:
-    _bulletType: 2
+    _bulletType: 3
     _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
     _isEnemyBullet: 1
-    _speed: 4
+    _speed: 10
     _damage: 1
-    _count: 30
+    _count: 3
     _radius: 1

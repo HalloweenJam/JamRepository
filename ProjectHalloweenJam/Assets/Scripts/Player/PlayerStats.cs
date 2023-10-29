@@ -9,30 +9,38 @@ namespace Player
     {
         [Header("Damage Taking")] 
         [SerializeField] private float _invisibilityLength = 1.5f;
+        [SerializeField] private float _dashInvisibilityLength = .7f;
         
         [SerializeField, HideInInspector] private PlayerController _playerController;
 
         public static Action OnPlayerKilled;
+        public Action<float> OnPlayerTakeDamage;
         
         private float _invisibilityCounter = 1;
         
-        private bool _canIgnoreDamage => _playerController.IsDashing || _invisibilityCounter > 0;
-        
+        private bool _canIgnoreDamage => _invisibilityCounter > 0;
+
+        private void Start()
+        {
+            _playerController.OnPlayerDashing += _ => _invisibilityCounter = _dashInvisibilityLength; 
+        }
+
         public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
         {
             if (_canIgnoreDamage && !ignoreInvisibility)
                 return false;
-
+            
             if (instantKill)
             {
                 Kill();
                 return true;
             }
-
-            OnEntityTakeDamage?.Invoke();
             
             CurrentHealth -= damage;
             _invisibilityCounter = _invisibilityLength;
+            
+            OnEntityTakeDamage?.Invoke();
+            OnPlayerTakeDamage?.Invoke((float) CurrentHealth / MaxHealth);
 
             if (CurrentHealth <= 0)
                 Kill();
