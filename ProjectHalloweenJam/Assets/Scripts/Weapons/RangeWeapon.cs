@@ -8,7 +8,7 @@ namespace Weapons
     {
         public override bool TryToUse(Vector2 startPosition, Vector2 direction)
         {
-            AttackManager.SelectAttack(startPosition, direction, BulletConfig);
+            AttackManager.Instance.SelectAttack(startPosition, direction, BulletConfig);
 
             return true;
         }
