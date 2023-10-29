@@ -61,14 +61,14 @@ namespace Core.Classes
             return true;
         }
 
-        public bool TryToAttack(Vector2 startPosition, Vector2 endPosition)
+        public bool TryToAttack(Vector2 startPosition, Vector2 direction)
         {
             if (LeftBulletsInBatch <= 0 || _attackSpeedCounter > 0) 
                 return false;
             
             LeftBulletsInBatch--;
             
-            _baseWeapon.TryToUse(startPosition, endPosition);
+            _baseWeapon.TryToUse(startPosition, direction);
             _attackSpeedCounter = _attackSpeed;
             return true;
         }

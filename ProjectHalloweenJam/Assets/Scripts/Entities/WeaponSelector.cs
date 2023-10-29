@@ -43,9 +43,6 @@ namespace Entities
 
         public void SetWeaponByIndex(int weaponIndex)
         {
-            /*if (_selectedWeaponIndex < 0 || _selectedWeaponIndex > _weapons.Count - 1)
-                throw new OutOfMemoryException($"Selected Weapon Index is out of available weapons count: {_selectedWeaponIndex}");*/
-            
             _selectedWeaponIndex = weaponIndex;
         }
         
@@ -90,7 +87,7 @@ namespace Entities
             if (_isHoldingWeapon)
             {
                 _direction = (_cashedMousePosition - (Vector2) _firePoint.position).normalized;
-                TryToAttack(_direction);
+                TryToAttack(_direction, true);
             }
             
             var deltaTime = Time.fixedDeltaTime;
