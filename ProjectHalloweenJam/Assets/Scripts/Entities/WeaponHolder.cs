@@ -6,9 +6,7 @@ namespace Entities
     public class WeaponHolder : MonoBehaviour
     {
         [SerializeField] private float _offset;
-        [SerializeField] private float _maxRotate = 90f;
-        [SerializeField] private float _minRotate = -90f;
-        
+
         [SerializeField] private Sprite _sprite;
 
         [SerializeField, HideInInspector] private SpriteRenderer _spriteRenderer;

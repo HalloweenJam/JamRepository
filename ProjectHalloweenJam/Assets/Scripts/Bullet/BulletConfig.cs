@@ -20,7 +20,7 @@ namespace Bullet
         public BulletType Type => _bulletType;
         public Sprite Sprite => _sprite;
 
-        public bool IsEnemyBullet;
+        public bool IsEnemyBullet => _isEnemyBullet;
 
         public float Speed => _speed;
         public float Radius => _radius;
