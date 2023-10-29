@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2758214160276593883}
   - component: {fileID: 448689235473096329}
   - component: {fileID: 7033296657604008231}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 0.19, y: 0.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 5637165108510291848}
   - component: {fileID: 1771303344377511941}
   - component: {fileID: 2360950530178985899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,6 +354,7 @@ MonoBehaviour:
   _weaponHolder: {fileID: 7033296657604008231}
   _firePoint: {fileID: 954874279844262263}
   _weaponsToAdd:
+  - {fileID: 11400000, guid: 7b20970b5761db940ab15e0ffb030ab2, type: 2}
   - {fileID: 11400000, guid: 117c11a4f30d50c418ef9b5e6c14764c, type: 2}
   - {fileID: 11400000, guid: 9dffd703588b6ba4c805f83a85e478c1, type: 2}
   - {fileID: 11400000, guid: 6f2ce02e7e4500f4bb8942fb95599acc, type: 2}

@@ -48,7 +48,7 @@ namespace Entities
             
             _selectedWeaponIndex = weaponIndex;
         }
-
+        
         private void Start()
         {
             _inputReader = InputReaderManager.Instance.GetInputReader();
