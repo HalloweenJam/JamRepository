@@ -1016,7 +1016,45 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      satana_boss_attack1_0: -3494746089614522173
+      satana_boss_attack1_1: 2863665126679775093
+      satana_boss_attack1_10: 4391601845616861023
+      satana_boss_attack1_11: 7559292812988519000
+      satana_boss_attack1_12: 3821961829858955391
+      satana_boss_attack1_13: -4346632172955891293
+      satana_boss_attack1_14: 4972273635066692018
+      satana_boss_attack1_15: -311670507304264331
+      satana_boss_attack1_16: 2646381353817695643
+      satana_boss_attack1_17: -1351828821911432211
+      satana_boss_attack1_18: -4649929649644358036
+      satana_boss_attack1_19: -1243156814818510042
+      satana_boss_attack1_2: -4890896975170175507
+      satana_boss_attack1_20: 1852996595789909480
+      satana_boss_attack1_21: 5575221553379737428
+      satana_boss_attack1_22: -479354972667859067
+      satana_boss_attack1_23: 6560917964923085167
+      satana_boss_attack1_24: 5763677993286936928
+      satana_boss_attack1_25: -457039914530594651
+      satana_boss_attack1_26: -7470686865781043633
+      satana_boss_attack1_27: -628898466412870182
+      satana_boss_attack1_28: 6451306863682481990
+      satana_boss_attack1_29: -6830111787631520638
+      satana_boss_attack1_3: 1467848790956721144
+      satana_boss_attack1_30: 6265088633683858672
+      satana_boss_attack1_31: 7897704669630061666
+      satana_boss_attack1_32: 401292034828356846
+      satana_boss_attack1_33: 8938464986013005672
+      satana_boss_attack1_34: -5737333610583768639
+      satana_boss_attack1_35: -626711526955870889
+      satana_boss_attack1_36: 2180584487057577043
+      satana_boss_attack1_37: -4561309560296048058
+      satana_boss_attack1_4: 1198245877338029271
+      satana_boss_attack1_5: -6916403165152158344
+      satana_boss_attack1_6: 7040761852540498942
+      satana_boss_attack1_7: 3747126762399415449
+      satana_boss_attack1_8: -8935297504947888552
+      satana_boss_attack1_9: 5651359036084277168
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

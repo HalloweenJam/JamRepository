@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      satana_boss_0: 1192479715537116015
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
