@@ -24,13 +24,18 @@ namespace Entities
 
         private InputReader _inputReader;
 
+        public Action<WeaponData, bool> OnWeaponUsed;
+
         public void Add(BaseWeapon weapon) => _weapons.Add(new WeaponData(weapon));
 
         public bool TryToAttack(Vector2 targetPosition, bool isDirection = true)
         {
             var direction = isDirection ? targetPosition : (targetPosition - (Vector2) _firePoint.position).normalized;
+            var selectedWeapon = _weapons[_selectedWeaponIndex];
             
-            return _weapons[_selectedWeaponIndex].TryToAttack(_firePoint.position, direction);
+            OnWeaponUsed?.Invoke(selectedWeapon, false);
+            
+            return selectedWeapon.TryToAttack(_firePoint.position, direction);
         }
 
         public void SetWeaponByIndex(int weaponIndex)
@@ -68,6 +73,8 @@ namespace Entities
             
             _selectedWeaponIndex = (_selectedWeaponIndex + _weapons.Count + dir) % _weapons.Count;
             
+            OnWeaponUsed?.Invoke(_weapons[_selectedWeaponIndex], true);
+            
             SetWeaponSprite();
         }
 
@@ -76,16 +83,24 @@ namespace Entities
             _weaponHolder.SetWeaponSprite(_weapons[_selectedWeaponIndex].WeaponSprite);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (_isHoldingWeapon)
                 TryToAttack(_direction);
             
-            var deltaTime = Time.deltaTime;
-            
-            foreach (var weapon in _weapons)
+            var deltaTime = Time.fixedDeltaTime;
+
+            for (int i = 0; i < _weapons.Count; i++)
             {
-                weapon.Update(deltaTime);
+                if (i == _selectedWeaponIndex)
+                {
+                    if (_weapons[i].Update(deltaTime))
+                        OnWeaponUsed?.Invoke(_weapons[i], false);
+                }
+                else
+                {
+                    _weapons[i].Update(deltaTime);
+                }
             }
         }
     }
