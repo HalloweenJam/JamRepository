@@ -14,7 +14,7 @@ public class AttackManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
@@ -61,7 +61,9 @@ public class AttackManager : MonoBehaviour
             bulletInfo.Radius = 1;
         }
         float anlgeCoint = 360 / bulletInfo.Coint;
-        float angle = 0;
+        Vector2 targetDirection = (startPosition + direction * 2) - startPosition;
+        float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+        
         float positionX;
         float positionY;
         for (int i = 0; i < bulletInfo.Coint; i++)
@@ -84,30 +86,22 @@ public class AttackManager : MonoBehaviour
         {
             bulletInfo.Radius = 5;
         }
-        float anlgeCoint = bulletInfo.Radius / bulletInfo.Coint;
-        float angle = 0;
         float positionX;
         float positionY;
-        Vector2 vec = (startPosition + direction) - Vector2.up;
-        angle = Mathf.Atan2(direction.y - Vector2.up.y, direction.x - Vector2.up.x);
-        if (angle >= 360) { angle -= 360; }
-        else if (angle < 0) { angle += 360; }
-        /*if (angle >= 0) { */angle -= anlgeCoint * (bulletInfo.Coint / 2); //}
-        //if (angle < 0) { angle -= anlgeCoint * (bulletInfo.Coint / 2); }
-        //angle = Mathf.Atan2(Vector2.up.y - direction.y, Vector2.up.x- direction.x) * Mathf.Rad2Deg;
-        // angle = Mathf.Atan2(direction.x - Vector2.up.x, direction.y - Vector2.up.y) * Mathf.Rad2Deg;
-        for (int i = 0; i < bulletInfo.Coint; i++)
+        int numberOfBullets = bulletInfo.Coint; // Количество пуль в полукруге
+        float angleStep = bulletInfo.Radius / (numberOfBullets - 1); // Шаг угла между пулями
+        float startAngle = -(bulletInfo.Radius / 2); // Начальный угол
+
+        Vector2 targetDirection = (startPosition + direction * 2) - startPosition;
+        float targetAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+
+        for (int i = 0; i < numberOfBullets; i++)
         {
-             if(angle >= 360) { angle -= 360;  }
-             else if(angle < 0) { angle += 360; }
-
-                float currectAngle = angle + i * anlgeCoint;
-                positionX = startPosition.x + Mathf.Cos(currectAngle) + direction.x;
-                positionY = startPosition.y + Mathf.Sin(currectAngle) + direction.y;
-
+            float angle = startAngle + i * angleStep; // Вычисляем угол для каждой пули
+            positionX = startPosition.x + Mathf.Cos(((targetAngle + angle) * Mathf.PI) / 180) * bulletInfo.Radius;
+            positionY = startPosition.y + Mathf.Sin(((targetAngle + angle) * Mathf.PI) / 180) * bulletInfo.Radius;
             Vector2 _direction = (new Vector2(positionX, positionY) - (Vector2)startPosition).normalized;
             BulletPoolingManager.Instance.GetBullet(startPosition, _direction, bulletInfo);
-            //BulletPoolingManager.Instance.GetBullet(startPosition, new Vector2(positionX, positionY), bulletInfo);
         }
     }
 }

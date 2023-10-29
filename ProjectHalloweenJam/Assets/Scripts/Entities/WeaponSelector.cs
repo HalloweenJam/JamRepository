@@ -20,13 +20,19 @@ namespace Entities
         private Vector2 _direction;
 
         private InputReader _inputReader;
+
+        private Vector3 _positionPlayer;
         
         public void Add(BaseWeapon weapon)
         {
             _weapons.Add(new WeaponData(weapon));
         }
 
-        private void Start()
+        private void OnValidate()
+        { 
+            _positionPlayer = transform.position;
+        }
+            private void Start()
         {
             _inputReader = InputReaderManager.Instance.GetInputReader();
 
@@ -36,7 +42,7 @@ namespace Entities
             _inputReader.MouseWheelScrollEvent += ChangeWeapon;
             _inputReader.MousePositionEvent += mousePosition =>
             {
-                _direction = (mousePosition - (Vector2) transform.position).normalized;
+                _direction = (mousePosition - (Vector2) _positionPlayer).normalized;
             };
             
             foreach (var weapon in _weaponsToAdd)

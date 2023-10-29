@@ -28,7 +28,7 @@ MonoBehaviour:
     Speed: 10
     Size: 0.5
     LifeTime: 5
-    Coint: 5
+    Coint: 10
     Radius: 60
   _damage: 10
   _bulletSpeed: 50
