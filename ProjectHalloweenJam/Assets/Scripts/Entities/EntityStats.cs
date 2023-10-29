@@ -1,5 +1,6 @@
 using System;
 using Core;
+using Core.Interfaces;
 using UnityEngine;
 
 namespace Entities

@@ -1,5 +1,6 @@
 using System.Collections;
 using System;
+using Core.Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyMovement), typeof(SpriteRenderer))]

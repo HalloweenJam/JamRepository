@@ -1,6 +1,7 @@
 using System.Collections;
 using Core;
 using Core.Enums;
+using Core.Interfaces;
 using UnityEngine;
 
 namespace Gameplay.Traps
