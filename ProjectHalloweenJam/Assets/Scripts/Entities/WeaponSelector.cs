@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Core.Classes;
 using Managers;
@@ -23,9 +24,21 @@ namespace Entities
 
         private InputReader _inputReader;
 
-        public void Add(BaseWeapon weapon)
+        public void Add(BaseWeapon weapon) => _weapons.Add(new WeaponData(weapon));
+
+        public bool TryToAttack(Vector2 targetPosition, bool isDirection = true)
         {
-            _weapons.Add(new WeaponData(weapon));
+            var direction = isDirection ? targetPosition : (targetPosition - (Vector2) _firePoint.position).normalized;
+            
+            return _weapons[_selectedWeaponIndex].TryToAttack(_firePoint.position, direction);
+        }
+
+        public void SetWeaponByIndex(int weaponIndex)
+        {
+            if (_selectedWeaponIndex < 0 || _selectedWeaponIndex > _weapons.Count - 1)
+                throw new OutOfMemoryException("Selected Weapon Index is out of available weapons count");
+            
+            _selectedWeaponIndex = weaponIndex;
         }
 
         private void Start()
@@ -66,7 +79,7 @@ namespace Entities
         private void Update()
         {
             if (_isHoldingWeapon)
-                _weapons[_selectedWeaponIndex].TryToAttack(_firePoint.position, _direction);
+                TryToAttack(_direction);
             
             var deltaTime = Time.deltaTime;
             
