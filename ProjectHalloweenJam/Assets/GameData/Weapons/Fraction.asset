@@ -22,9 +22,9 @@ MonoBehaviour:
     _attackSpeed: 0.5
     _reloadingSpeed: 1
   _bulletConfig:
-    _bulletType: 0
+    _bulletType: 3
     _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
     _speed: 20
     _damage: 1
-    _count: 0
+    _count: 3
     _radius: 0.3

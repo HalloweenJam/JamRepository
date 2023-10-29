@@ -200,18 +200,6 @@ PrefabInstance:
       propertyPath: _sprite
       value: 
       objectReference: {fileID: 7362661061344524757, guid: 9355908b4923c78408dd411e6050eaef, type: 3}
-    - target: {fileID: 8783166603959011272, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783166603959011272, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783166603959011272, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -269,10 +257,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7512729995992159184, guid: 8c53f202483f5994699c87c10f4048ac, type: 3}
-      propertyPath: _bullet
-      value: 
-      objectReference: {fileID: 3731238360929126369, guid: f6e956a0a4d8b9548b845bded0384ea7, type: 3}
     - target: {fileID: 7753105054852593135, guid: 8c53f202483f5994699c87c10f4048ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -333,7 +317,7 @@ GameObject:
   - component: {fileID: 1219137258}
   - component: {fileID: 1219137257}
   - component: {fileID: 1219137256}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

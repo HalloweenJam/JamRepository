@@ -15,11 +15,11 @@ TagManager:
   - Obstacle
   - Player
   - Enemy
-  - Projectile
+  - 
   - Trap
   - Interactable
-  - 
-  - 
+  - EnemyProjectile
+  - PlayerProjectile
   - 
   - 
   - 

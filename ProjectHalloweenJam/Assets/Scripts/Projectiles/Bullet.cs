@@ -1,3 +1,4 @@
+using System;
 using Bullet;
 using Core;
 using Managers;
@@ -13,25 +14,28 @@ namespace Projectiles
         [SerializeField, HideInInspector] private Rigidbody2D _rigidbody;
         [SerializeField, HideInInspector] private SpriteRenderer _render;
         [SerializeField, HideInInspector] private CircleCollider2D _collider;
-
+        
         private int _damage;
         
         private float _speed;
         private float _lifeTimeCounter;
-
-        private bool _canTakeDamage;
+        
+        private bool _isEnemyBullet;
         
         private Vector2 _direction;
         
         public void Init(Vector2 direction, BulletConfig bulletConfig)
         {
+            gameObject.layer = bulletConfig.IsEnemyBullet
+                ? LayerMask.NameToLayer("EnemyProjectile")
+                : LayerMask.NameToLayer("PlayerProjectile");
+            
             _render.sprite = bulletConfig.Sprite;
             _collider.radius = bulletConfig.Radius;
             _direction = direction;
             _speed = bulletConfig.Speed;
             _damage = bulletConfig.Damage;
             
-            _canTakeDamage = false;
             _lifeTimeCounter = _lifeTime;
         }
 
@@ -40,6 +44,8 @@ namespace Projectiles
             _rigidbody = GetComponent<Rigidbody2D>();
             _render = GetComponent<SpriteRenderer>();
             _collider = GetComponent<CircleCollider2D>();
+
+            _collider.isTrigger = false;
         }
 
         private void FixedUpdate()
@@ -52,14 +58,9 @@ namespace Projectiles
                 BulletPoolingManager.Instance.Release(this);
         }
 
-        private void OnTriggerExit2D(Collider2D other) => _canTakeDamage = true;
-
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            if (!_canTakeDamage)
-                return;
-            
-            if (other.TryGetComponent<IDamageable>(out var damageable))
+            if (other.collider.TryGetComponent<IDamageable>(out var damageable))
                 damageable.TryTakeDamage(_damage);
 
             BulletPoolingManager.Instance.Release(this);

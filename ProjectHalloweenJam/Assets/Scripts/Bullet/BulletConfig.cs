@@ -9,6 +9,7 @@ namespace Bullet
     {
         [SerializeField] private BulletType _bulletType;
         [SerializeField] private Sprite _sprite;
+        [SerializeField] private bool _isEnemyBullet = false;
         [Space]
         [SerializeField] private float _speed;
         [SerializeField] private int _damage;
@@ -18,6 +19,8 @@ namespace Bullet
         
         public BulletType Type => _bulletType;
         public Sprite Sprite => _sprite;
+
+        public bool IsEnemyBullet;
 
         public float Speed => _speed;
         public float Radius => _radius;
