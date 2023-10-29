@@ -200,7 +200,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gluttony_boss_attack1-Sheet_0: 5721441536304710199
+      gluttony_boss_attack1-Sheet_1: -8499554499174975954
+      gluttony_boss_attack1-Sheet_2: -3679368335102904561
+      gluttony_boss_attack1-Sheet_3: 8501697707605954829
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

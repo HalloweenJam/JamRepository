@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gluttony_boss_arena_0: 1995130220050496780
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
