@@ -12,11 +12,16 @@ namespace Core.Classes
         
         private float _attackSpeedCounter;
         private float _reloadingSpeedCounter;
+
+        private bool _isInfinity;
         
-        private readonly int _bulletsPerBatch;
-        
-        private int _leftBullets;
-        private int _leftBulletsInBatch;
+        public int LeftBullets { get; private set; }
+        public int LeftBulletsInBatch { get; private set; }
+        public int TotalBullets { get; }
+        public int TotalBulletsInBatch { get; }
+
+        public Sprite InHandsSprite { get; }
+        public Sprite Icon { get; private set; }
 
         public WeaponData(BaseWeapon baseWeapon)
         {
@@ -24,46 +29,60 @@ namespace Core.Classes
 
             _attackSpeed = baseWeapon.WeaponConfig.AttackSpeed;
             _reloadingSpeed = baseWeapon.WeaponConfig.ReloadingSpeed;
-            _leftBullets = baseWeapon.WeaponConfig.TotalBullets;
-            _bulletsPerBatch = baseWeapon.WeaponConfig.BulletsPerBatch;
+            TotalBullets = baseWeapon.WeaponConfig.TotalBullets;
+            TotalBulletsInBatch = baseWeapon.WeaponConfig.BulletsPerBatch;
 
+            _isInfinity = baseWeapon.WeaponConfig.TotalBullets < 0;
+            
+            InHandsSprite = baseWeapon.Description.InHands;
+            Icon = baseWeapon.Description.Icon;
+            
+            LeftBullets = TotalBullets;
             _attackSpeedCounter = _attackSpeed;
             _reloadingSpeedCounter = _reloadingSpeed;
             
             RefillBatch();
         }
 
-        public void Update(float deltaTime)
+        public bool Update(float deltaTime)
         {
             _attackSpeedCounter -= deltaTime;
 
-            if (_leftBulletsInBatch > 0)
-                return;
+            if (LeftBulletsInBatch > 0)
+                return false;
             
             _reloadingSpeedCounter -= deltaTime;
 
             if (_reloadingSpeedCounter > 0) 
-                return;
+                return false;
             
             _reloadingSpeedCounter = _reloadingSpeed;
             RefillBatch();
+            return true;
         }
 
-        public bool TryToAttack(Vector2 startPosition, Vector2 endPosition)
+        public bool TryToAttack(Vector2 startPosition, Vector2 direction)
         {
-            if (_leftBulletsInBatch <= 0 || _attackSpeedCounter > 0) 
+            if (LeftBulletsInBatch <= 0 || _attackSpeedCounter > 0) 
                 return false;
             
-            _leftBulletsInBatch--;
-            _baseWeapon.TryToUse(startPosition, endPosition);
+            LeftBulletsInBatch--;
+            
+            _baseWeapon.TryToUse(startPosition, direction);
             _attackSpeedCounter = _attackSpeed;
             return true;
         }
         
         private void RefillBatch()
         {
-            _leftBulletsInBatch = _leftBullets > _bulletsPerBatch ? _bulletsPerBatch : _leftBullets;
-            _leftBullets -= _leftBulletsInBatch;
+            if (_isInfinity)
+            {
+                LeftBulletsInBatch = TotalBulletsInBatch;
+                return;
+            }
+
+            LeftBulletsInBatch = LeftBullets > TotalBulletsInBatch ? TotalBulletsInBatch : LeftBullets;
+            LeftBullets -= LeftBulletsInBatch;
         }
     }
 }

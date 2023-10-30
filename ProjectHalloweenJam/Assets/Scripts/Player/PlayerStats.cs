@@ -1,42 +1,48 @@
 ﻿using System;
-using Core.Interfaces;
+using Entities;
 using UnityEngine;
 
 namespace Player
 {
     [RequireComponent(typeof(PlayerController))]
-    public class PlayerStats : MonoBehaviour, IDamageable
+    public class PlayerStats : EntityStats
     {
-        [Header("Stats")]
-        [SerializeField] private int _maxHealth = 5;
-        [SerializeField] private int _currentHealth = 5;
-
         [Header("Damage Taking")] 
         [SerializeField] private float _invisibilityLength = 1.5f;
+        [SerializeField] private float _dashInvisibilityLength = .7f;
         
         [SerializeField, HideInInspector] private PlayerController _playerController;
 
         public static Action OnPlayerKilled;
+        public Action<float> OnPlayerTakeDamage;
         
         private float _invisibilityCounter = 1;
         
-        private bool _canIgnoreDamage => _playerController.IsDashing || _invisibilityCounter > 0;
-        
-        public bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
+        private bool _canIgnoreDamage => _invisibilityCounter > 0;
+
+        private void Start()
+        {
+            _playerController.OnPlayerDashing += _ => _invisibilityCounter = _dashInvisibilityLength; 
+        }
+
+        public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
         {
             if (_canIgnoreDamage && !ignoreInvisibility)
                 return false;
-
+            
             if (instantKill)
             {
                 Kill();
                 return true;
             }
-
-            _currentHealth -= damage;
+            
+            CurrentHealth -= damage;
             _invisibilityCounter = _invisibilityLength;
+            
+            OnEntityTakeDamage?.Invoke();
+            OnPlayerTakeDamage?.Invoke((float) CurrentHealth / MaxHealth);
 
-            if (_currentHealth <= 0)
+            if (CurrentHealth <= 0)
                 Kill();
 
             return true;
@@ -45,10 +51,10 @@ namespace Player
         private void OnValidate()
         {
             _playerController = GetComponent<PlayerController>();
-            _currentHealth = _maxHealth;
+            CurrentHealth = MaxHealth;
         }
 
-        private void Kill()
+        protected override void Kill()
         {
             OnPlayerKilled?.Invoke();
             gameObject.SetActive(false);

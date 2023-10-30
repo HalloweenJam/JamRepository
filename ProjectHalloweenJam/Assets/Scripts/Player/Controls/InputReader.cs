@@ -98,5 +98,6 @@ namespace Player.Controls
             
             MousePositionEvent?.Invoke(direction);
         }
+
     }
 }

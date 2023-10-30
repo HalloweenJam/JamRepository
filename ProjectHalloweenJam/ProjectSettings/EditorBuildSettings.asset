@@ -8,4 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/MenuTest.unity
+    guid: e057498800023664eb8bbb9ac0c07290
+  - enabled: 1
+    path: Assets/Scenes/TestFire.unity
+    guid: e3902fa1a2d58034c8bbc70014192f74
+  - enabled: 1
+    path: Assets/Scenes/xMrFinlandx Scene.unity
+    guid: a95b2f08e0c05964eb73501ca401b4e8
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

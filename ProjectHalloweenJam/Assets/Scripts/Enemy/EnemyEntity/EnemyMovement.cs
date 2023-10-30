@@ -1,3 +1,4 @@
+using Enemy.EnemyEntity;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,8 @@ public class EnemyMovement : MonoBehaviour
     protected EnemyAttack EnemyAttack;
     protected NavMeshAgent Agent;
     protected Transform PlayerTransform;
+
+    public Transform Player => PlayerTransform;
 
     private Vector3 _defaultScale;
 

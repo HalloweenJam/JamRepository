@@ -1,17 +1,26 @@
+using Entities;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour, IAttackable
+namespace Enemy.EnemyEntity
 {
-    [Header("Damage")]
-    [SerializeField] private int _damage;
-    protected EnemyMovement EnemyMovement;
-    protected Animator Animator;
-
-    private void Start()
+    public class EnemyAttack : MonoBehaviour, IAttackable
     {
-        Animator = GetComponent<Animator>();
-        EnemyMovement = GetComponent<EnemyMovement>();
-    }
+        [Header("Damage")]
+        [SerializeField] private int _damage;
+        protected EnemyMovement EnemyMovement;
+        protected Animator Animator;
 
-    public virtual void Attack() { }
+        protected WeaponSelector WeaponSelector { get; private set; }
+
+        protected virtual void Start()
+        {
+            Animator = GetComponent<Animator>();
+            EnemyMovement = GetComponent<EnemyMovement>();
+        
+            WeaponSelector = GetComponent<WeaponSelector>();
+            WeaponSelector.SetWeaponByIndex(0);
+        }
+
+        public virtual void Attack() { }
+    }
 }
