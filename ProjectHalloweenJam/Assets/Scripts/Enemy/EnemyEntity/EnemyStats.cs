@@ -104,7 +104,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
         _dissolved = true;
     }
 
-    private IEnumerator PaintingSprite()
+    private IEnumerator PaintingSprite() // use flash shader for enemy
     {
         float ignoreTime = 1f;
         float elapsedTime = 0f;

@@ -21,7 +21,6 @@ namespace UI
         private void Start()
         {
             _playerStats.OnPlayerTakeDamage += OnPlayerTakeDamage;
-            print(_playerStats.name);
         }
 
         private void OnPlayerTakeDamage(float ratio)
