@@ -23,7 +23,7 @@ namespace Enemy.Evil
             _isAttacking = true;
             yield return new WaitForSeconds(2f);
 
-            WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
+            WeaponSelector.TryToAttack(EnemyMovement.Player.position);
             _isAttacking = false;
             StartCoroutine(Reload());
         }
