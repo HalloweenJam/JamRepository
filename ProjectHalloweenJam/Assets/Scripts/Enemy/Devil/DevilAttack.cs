@@ -6,14 +6,13 @@ namespace Enemy.Devil
 {
     public class DevilAttack : EnemyAttack
     {
-        private Coroutine _attackCoroutine;
         private string _attackName = "Attack";
 
         public override void Attack()
         {
             if (IsAttacking || IsReload) 
                 return;
-            
+
             SelectAttack();
         }
 
@@ -34,11 +33,12 @@ namespace Enemy.Devil
                     break;
             }
 
-            _attackCoroutine = StartCoroutine(AttackCor());
+            StartCoroutine(AttackCor());
         }
 
         private IEnumerator AttackCor()
-        {        
+        {
+            IsAttacking = true;
             Animator.SetBool(_attackName, true);
             
             yield return new WaitForSeconds(2f);

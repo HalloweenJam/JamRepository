@@ -28,8 +28,8 @@ namespace Enemy.EnemyEntity
                 WeaponSelector.SetWeaponByIndex(0);
         }
 
-        public virtual void Attack() => IsAttacking = true;
-
+        public virtual void Attack() { }
+   
         private void OnCollisionStay2D(Collision2D collision)
         {
             if (collision != null & collision.gameObject.TryGetComponent<IDamageable>(out var damageable))

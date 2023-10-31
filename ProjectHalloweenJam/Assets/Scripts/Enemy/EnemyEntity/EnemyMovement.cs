@@ -39,15 +39,9 @@ public class EnemyMovement : MonoBehaviour
         Rotation();
     }
 
-    public virtual void Move()
-    {
-        Agent.SetDestination(PlayerTransform.position);
-    }
+    public virtual void Move() => Agent.SetDestination(PlayerTransform.position);      
 
-    public virtual void CanAttack() 
-    {
-        Attack?.Invoke();
-    }
+    public virtual void CanAttack() => Attack?.Invoke();
 
     private void Rotation() 
     {

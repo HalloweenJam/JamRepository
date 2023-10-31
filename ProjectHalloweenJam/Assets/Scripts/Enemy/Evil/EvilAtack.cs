@@ -5,28 +5,22 @@ using Enemy.EnemyEntity;
 namespace Enemy.Evil
 {
     public class EvilAtack : EnemyAttack
-    { 
+    {
+        private void Update() => Attack();
+
         public override void Attack()
         {
-            if (IsAttacking || IsReload)
+            if (IsReload)
                 return;
 
-            StartCoroutine(AttackCor());
-        }
-
-        private IEnumerator AttackCor()
-        {       
-            yield return new WaitForSeconds(2f);
-
             WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
-            IsAttacking = false;
             StartCoroutine(Reload());
         }
 
         private IEnumerator Reload()
         {
             IsReload = true;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             IsReload = false;
         }
     }
