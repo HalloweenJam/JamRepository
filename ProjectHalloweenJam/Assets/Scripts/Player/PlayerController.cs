@@ -31,6 +31,7 @@ namespace Player
         [HideInInspector, SerializeField] private Rigidbody2D _rigidbody;
         [HideInInspector, SerializeField] private Animator _animator;
         [HideInInspector, SerializeField] private SpriteRenderer _spriteRenderer;
+        [HideInInspector, SerializeField] private WeaponSelector _weaponSelector;
         
         private Camera _camera;
 
@@ -42,7 +43,6 @@ namespace Player
         private Vector2 _cashedMovementDirection = Vector2.right;
         private Vector2 _movementDirection;
 
-        private WeaponSelector _weaponSelector;
         private InputReader _inputReader;
 
         public bool IsDashing => _isDashing;

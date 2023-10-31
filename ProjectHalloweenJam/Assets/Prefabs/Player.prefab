@@ -324,6 +324,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 7874342451100787098}
   _animator: {fileID: 1771303344377511941}
   _spriteRenderer: {fileID: 8783166603959011272}
+  _weaponSelector: {fileID: 7120541555264942736}
 --- !u!114 &3276824683475747444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +392,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   _inventory: {fileID: 4557758781414726204}
+  _weaponSelector: {fileID: 7120541555264942736}
 --- !u!95 &1771303344377511941
 Animator:
   serializedVersion: 7
