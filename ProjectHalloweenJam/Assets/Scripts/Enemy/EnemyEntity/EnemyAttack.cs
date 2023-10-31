@@ -1,5 +1,6 @@
 using Core.Interfaces;
 using Entities;
+using System.Security.Authentication.ExtendedProtection;
 using UnityEngine;
 
 namespace Enemy.EnemyEntity
@@ -11,19 +12,23 @@ namespace Enemy.EnemyEntity
         protected EnemyMovement EnemyMovement;
         protected Animator Animator;
 
+        protected bool IsAttacking = false;
+        protected bool IsReload = false;
+
         protected WeaponSelector WeaponSelector { get; private set; }
 
         protected virtual void Start()
         {
             Animator = GetComponent<Animator>();
             EnemyMovement = GetComponent<EnemyMovement>();
-        
+            EnemyMovement.Attack += Attack;
+
             WeaponSelector = GetComponent<WeaponSelector>();
             if(WeaponSelector != null)
                 WeaponSelector.SetWeaponByIndex(0);
         }
 
-        public virtual void Attack() { }
+        public virtual void Attack() => IsAttacking = true;
 
         private void OnCollisionStay2D(Collision2D collision)
         {

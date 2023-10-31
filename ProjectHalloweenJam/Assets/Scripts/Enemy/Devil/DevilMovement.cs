@@ -19,8 +19,8 @@ public class DevilMovement : EnemyMovement
     {
         float distance = Vector3.Distance(transform.position, PlayerTransform.position);
         _playerInAttackZone = distance < 5f;
-        if (_playerInAttackZone)        
-            EnemyAttack.Attack();       
+        if (_playerInAttackZone)
+            CanAttack();      
     }
 
     private IEnumerator Teleportation()
