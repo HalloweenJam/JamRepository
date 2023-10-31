@@ -44,6 +44,15 @@ namespace Core.Classes
             RefillBatch();
         }
 
+        public void AddBullets(float value, bool isPercent = false)
+        {
+            if (TotalBullets < 0)
+                return;
+            
+            var bulletsToAdd = isPercent ? (int) (TotalBullets * (value / 100)) : (int) value;
+            LeftBullets += bulletsToAdd > TotalBullets - LeftBullets ? TotalBullets - LeftBullets : bulletsToAdd;
+        }
+
         public bool Update(float deltaTime)
         {
             _attackSpeedCounter -= deltaTime;
