@@ -41,9 +41,9 @@ namespace Enemy.Devil
             IsAttacking = true;
             Animator.SetBool(_attackName, true);
             
+            WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
             yield return new WaitForSeconds(2f);
             WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
-            
             Animator.SetBool(_attackName, false);
 
             IsAttacking = false;        

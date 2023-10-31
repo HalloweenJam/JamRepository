@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6419696612186514366}
-  - component: {fileID: 3165698067836541632}
+  - component: {fileID: 4603893558348285115}
   - component: {fileID: 6646594070938337341}
   - component: {fileID: 8737008621884067199}
   - component: {fileID: 4428916396937083588}
@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 842521669592393700}
   - component: {fileID: 4038313323617925439}
   - component: {fileID: 653620201686142057}
+  - component: {fileID: 8492581884428677945}
   m_Layer: 8
   m_Name: Devil
   m_TagString: Untagged
@@ -40,7 +41,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3165698067836541632
+--- !u!114 &4603893558348285115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,10 +50,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1630100048154938782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f483105e4d72e04bb10e4298e395072, type: 3}
+  m_Script: {fileID: 11500000, guid: fbc774760ec26e742a82516a587ec258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 400
+  _maxHealth: 100
+  CurrentHealth: 5
 --- !u!114 &6646594070938337341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,3 +268,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc005e8ef4085fb41ae7d49a1aa7a117, type: 2}
   - {fileID: 11400000, guid: 9758b92db1a0be94daf78d735ed3a3cf, type: 2}
   - {fileID: 11400000, guid: 43cf449debacd2c4882fc827ba739ecd, type: 2}
+--- !u!114 &8492581884428677945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630100048154938782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc774760ec26e742a82516a587ec258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 5
+  CurrentHealth: 5

@@ -1,25 +1,24 @@
 using System.Collections;
 using System;
-using Core.Interfaces;
 using UnityEngine;
+using Entities;
+using Items;
+using Gameplay.Interactions;
 
 [RequireComponent(typeof(EnemyMovement), typeof(SpriteRenderer))]
-public class EnemyStats : MonoBehaviour, IDamageable
+public class EnemyStats : EntityStats
 {
-    [Header("Health")]
-    [SerializeField] private int _health;
-    private int _currentHealth;
-
-    public static Action<Vector2> OnDeath;
-
     [Header("Dissolve")]
     private bool _dissolved = false;
     private float _elapsedTime = 0f;
     private float _dissolveTime = 1f;
 
+    [SerializeField] private GameObject _itemPrefab;
     private EnemyMovement _movement;
     private SpriteRenderer _spriteRenderer;
     private Color _defaultColor;
+
+    public static Action<Vector2> OnDeath;
 
     public bool Dissolved => _dissolved;
 
@@ -27,8 +26,6 @@ public class EnemyStats : MonoBehaviour, IDamageable
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _movement = GetComponent<EnemyMovement>();
-
-        _currentHealth = _health;
         _defaultColor = _spriteRenderer.color;
 
         _movement.enabled = false;
@@ -37,28 +34,33 @@ public class EnemyStats : MonoBehaviour, IDamageable
         Appearance();
     }
 
-    public bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
+    public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
     {
         if (instantKill)
         {
-            Dead();
+            Kill();
             StartCoroutine(PaintingSprite());
             return true;
         }
 
-        _currentHealth -= damage;
+        CurrentHealth -= damage;
         StartCoroutine(PaintingSprite());
 
-        if (_currentHealth <= 0)
-            Dead();
+        if (CurrentHealth <= 0)
+            Kill();
 
         return true;
     }
 
-    private void Dead() 
+    protected override void Kill()
     {
-        _currentHealth = 0;
+        CurrentHealth = 0;
         OnDeath?.Invoke(transform.position);
+        if(_itemPrefab != null)
+        {
+            GameObject item = Instantiate(_itemPrefab);
+            item.transform.position = transform.position;
+        }
         Destroy(gameObject);
     }
 
@@ -66,7 +68,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
 
     public void Dissolve() => StartCoroutine(DissolveCor());
 
-    private IEnumerator AppearanceCor( )
+    private IEnumerator AppearanceCor()
     {
         _dissolved = false;
         float fadeMaterial = 0;
@@ -113,7 +115,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
         {
             elapsedTime += Time.deltaTime;
             yield return null;
-        }       
+        }
         _spriteRenderer.color = _defaultColor;
     }
 }

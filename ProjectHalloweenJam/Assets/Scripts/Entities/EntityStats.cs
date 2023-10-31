@@ -11,8 +11,10 @@ namespace Entities
         [SerializeField] protected int CurrentHealth = 5;
 
         public Action OnEntityTakeDamage;
-        
+
         protected int MaxHealth => _maxHealth;
+
+        protected void Start() => CurrentHealth = _maxHealth;
         
         public abstract bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false);
 
