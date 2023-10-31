@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Core.Classes;
+using Items;
 using Managers;
 using Player.Controls;
 using UnityEngine;
@@ -115,6 +116,16 @@ namespace Entities
                     _weapons[i].Update(deltaTime);
                 }
             }
+        }
+
+        public void AddItem(Item item)
+        {
+            foreach (var weapon in _weapons)
+            {
+                weapon.AddBullets(item.RefillPercent, item.IsPercent);
+            }
+            
+            OnWeaponUsed?.Invoke(_currentWeapon, false);
         }
     }
 }
