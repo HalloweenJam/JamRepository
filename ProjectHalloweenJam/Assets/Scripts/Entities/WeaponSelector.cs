@@ -23,6 +23,8 @@ namespace Entities
         private Vector2 _cashedMousePosition;
         private Vector2 _direction;
 
+        private Camera _camera;
+        
         private InputReader _inputReader;
 
         private WeaponData _currentWeapon => _weapons[_selectedWeaponIndex];
@@ -54,8 +56,9 @@ namespace Entities
             _inputReader.ShootingCancelledEvent += () => _isHoldingWeapon = false;
 
             _inputReader.MouseWheelScrollEvent += ChangeWeapon;
-            _inputReader.MousePositionEvent += mousePosition => _cashedMousePosition = mousePosition;
-            
+
+            _camera = Camera.main;
+
             foreach (var weapon in _weaponsToAdd)
             {
                 Add(weapon);
@@ -86,7 +89,7 @@ namespace Entities
         {
             if (_isHoldingWeapon)
             {
-                _direction = (_cashedMousePosition - (Vector2) _firePoint.position).normalized;
+                _direction =(_camera.ScreenToWorldPoint(Input.mousePosition) - _firePoint.position).normalized;
                 TryToAttack(_direction, true);
             }
             
