@@ -41,7 +41,8 @@ namespace Player
 
         private Vector2 _cashedMovementDirection = Vector2.right;
         private Vector2 _movementDirection;
-        
+
+        private WeaponSelector _weaponSelector;
         private InputReader _inputReader;
 
         public bool IsDashing => _isDashing;
@@ -54,6 +55,7 @@ namespace Player
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+            _weaponSelector ??= GetComponent<WeaponSelector>();
             _spriteRenderer ??= GetComponent<SpriteRenderer>();
             
             _camera = Camera.main;
@@ -68,6 +70,8 @@ namespace Player
 
         private void Start()
         {
+            _weaponSelector.Init(true);
+            
             _inputReader = InputReaderManager.Instance.GetInputReader();
             
             _inputReader.MoveEvent += direction =>

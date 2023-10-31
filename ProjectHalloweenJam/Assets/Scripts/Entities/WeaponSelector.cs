@@ -18,7 +18,8 @@ namespace Entities
         private readonly List<WeaponData> _weapons = new();
 
         private int _selectedWeaponIndex = 0;
-        private bool _isHoldingWeapon;
+        private bool _isAttacking;
+        private bool _isPlayer;
 
         private Vector2 _cashedMousePosition;
         private Vector2 _direction;
@@ -32,6 +33,8 @@ namespace Entities
         public Action<WeaponData, bool> OnWeaponUsed;
 
         public void Add(BaseWeapon weapon) => _weapons.Add(new WeaponData(weapon));
+
+        public void Init(bool isPlayer = false) => _isPlayer = isPlayer;
 
         public bool TryToAttack(Vector2 targetPosition, bool isDirection = true)
         {
@@ -50,15 +53,20 @@ namespace Entities
         
         private void Start()
         {
-            _inputReader = InputReaderManager.Instance.GetInputReader();
+            if (_isPlayer)
+            {
+                _inputReader = InputReaderManager.Instance.GetInputReader();
+
+                _inputReader.ShootingEvent += () => _isAttacking = true;
+                _inputReader.ShootingCancelledEvent += () => _isAttacking = false;
+
+                _inputReader.MouseWheelScrollEvent += ChangeWeapon;
+
+                _camera = Camera.main;
+            }
+
             _firePoint = transform;
-            _inputReader.ShootingEvent += () => _isHoldingWeapon = true;
-            _inputReader.ShootingCancelledEvent += () => _isHoldingWeapon = false;
-
-            _inputReader.MouseWheelScrollEvent += ChangeWeapon;
-
-            _camera = Camera.main;
-
+            
             foreach (var weapon in _weaponsToAdd)
             {
                 Add(weapon);
@@ -87,7 +95,7 @@ namespace Entities
 
         private void FixedUpdate()
         {
-            if (_isHoldingWeapon)
+            if (_isAttacking)
             {
                 _direction =(_camera.ScreenToWorldPoint(Input.mousePosition) - _firePoint.position).normalized;
                 TryToAttack(_direction, true);
