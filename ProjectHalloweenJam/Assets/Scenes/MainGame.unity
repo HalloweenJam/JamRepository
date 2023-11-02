@@ -120,6 +120,65 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &149603839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 149603841}
+  - component: {fileID: 149603840}
+  m_Layer: 0
+  m_Name: ===LootManager===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &149603840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149603839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2deaacd10f4b139b73cbd8c859bdea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemHolder: {fileID: 2419766574648860924, guid: 29a9441bc04fca64ab767cb8a151868e, type: 3}
+  _weightedLootList:
+    weightedList:
+    - weightedItem:
+      - {fileID: 11400000, guid: fb97782ff8f5e514b83c9d448f4b1687, type: 2}
+      weight: 80
+    - weightedItem:
+      - {fileID: 11400000, guid: 059766fc991c8e7488d52f2fc226e397, type: 2}
+      weight: 40
+    - weightedItem:
+      - {fileID: 11400000, guid: b8673d18fbaaf2440a09d61244f98115, type: 2}
+      weight: 20
+    - weightedItem:
+      - {fileID: 11400000, guid: 57c64d45f9799244e83e2631c4cc6e7d, type: 2}
+      weight: 10
+--- !u!4 &149603841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149603839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &207582016 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8296090184087637533, guid: af8aa28686473394d9d46d52a9d01b8d, type: 3}
@@ -1155,3 +1214,4 @@ SceneRoots:
   - {fileID: 497246372}
   - {fileID: 836741891}
   - {fileID: 1413387446}
+  - {fileID: 149603841}

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Enemy.EnemyEntity;
 using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
