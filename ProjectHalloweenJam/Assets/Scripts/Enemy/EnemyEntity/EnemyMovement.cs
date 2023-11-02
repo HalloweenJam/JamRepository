@@ -24,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
         EnemyStats = enemyStats;
         PlayerTransform = playerTransform;
 
+        Agent.enabled = true;
         Agent.updateRotation = false;
         Agent.updateUpAxis = false;
 

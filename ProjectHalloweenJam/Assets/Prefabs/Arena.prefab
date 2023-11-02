@@ -11708,6 +11708,8 @@ Tilemap:
     m_Data: {fileID: 6417867223003000657, guid: b35b9c6ec46038b40a798c2edd2cacf2, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 629
     m_Data:
@@ -11730,6 +11732,8 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 629
     m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}

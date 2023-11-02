@@ -55,6 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   CurrentHealth: 5
+  _itemPrefab: {fileID: 0}
 --- !u!114 &6646594070938337341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630100048154938782}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 3.5
@@ -282,3 +283,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 5
   CurrentHealth: 5
+  _itemPrefab: {fileID: 0}
