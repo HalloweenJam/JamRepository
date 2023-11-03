@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 using Weapons;
 
@@ -36,7 +37,7 @@ namespace Core.Classes
             
             InHandsSprite = baseWeapon.Description.InHands;
             Icon = baseWeapon.Description.Icon;
-            
+
             LeftBullets = TotalBullets;
             _attackSpeedCounter = _attackSpeed;
             _reloadingSpeedCounter = _reloadingSpeed;

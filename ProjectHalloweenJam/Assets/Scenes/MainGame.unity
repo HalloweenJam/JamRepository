@@ -37722,7 +37722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051b754939542f646862b30efffdad2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
 --- !u!114 &7656494349418657129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37767,7 +37766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051b754939542f646862b30efffdad2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
 --- !u!66 &7761579953970770250
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -38091,7 +38089,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051b754939542f646862b30efffdad2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
 --- !u!114 &8153628502630108203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38589,7 +38586,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051b754939542f646862b30efffdad2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
 --- !u!483693784 &9200124201674068819
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -38651,7 +38647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051b754939542f646862b30efffdad2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
