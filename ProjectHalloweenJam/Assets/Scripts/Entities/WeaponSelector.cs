@@ -23,7 +23,6 @@ namespace Entities
         private bool _isPlayer;
 
         private Vector2 _cashedMousePosition;
-        private Vector2 _direction;
 
         private Camera _camera;
         
@@ -98,8 +97,8 @@ namespace Entities
         {
             if (_isAttacking)
             {
-                _direction =(_camera.ScreenToWorldPoint(Input.mousePosition) - _firePoint.position).normalized;
-                TryToAttack(_direction, true);
+                var mousePosition =_camera.ScreenToWorldPoint(Input.mousePosition);
+                TryToAttack(mousePosition, false);
             }
             
             var deltaTime = Time.fixedDeltaTime;

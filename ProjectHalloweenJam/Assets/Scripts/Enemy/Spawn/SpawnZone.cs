@@ -1,4 +1,5 @@
 using Core;
+using Enemy.Arena;
 using UnityEngine;
 
 public class SpawnZone : MonoBehaviour

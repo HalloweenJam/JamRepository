@@ -31,9 +31,15 @@ namespace Projectiles
                 ? LayerMask.NameToLayer("EnemyProjectile")
                 : LayerMask.NameToLayer("PlayerProjectile");
             
-            _render.sprite = bulletConfig.Sprite;
-
-            _animator.runtimeAnimatorController = bulletConfig.AnimatorController != null ? bulletConfig.AnimatorController : null;
+            if (bulletConfig.AnimatorController.Enabled)
+            {
+                _animator.runtimeAnimatorController = bulletConfig.AnimatorController.Value;
+            }
+            else
+            {
+                _animator.runtimeAnimatorController = null;
+                _render.sprite = bulletConfig.Sprite;
+            }
 
             _collider.radius = 0.3f;
             _direction = direction;
