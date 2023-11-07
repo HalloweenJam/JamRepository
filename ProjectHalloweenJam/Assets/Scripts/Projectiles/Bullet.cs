@@ -14,7 +14,8 @@ namespace Projectiles
         [SerializeField, HideInInspector] private Rigidbody2D _rigidbody;
         [SerializeField, HideInInspector] private SpriteRenderer _render;
         [SerializeField, HideInInspector] private CircleCollider2D _collider;
-        
+        [SerializeField, HideInInspector] private Animator _animator;
+
         private int _damage;
         
         private float _speed;
@@ -31,6 +32,9 @@ namespace Projectiles
                 : LayerMask.NameToLayer("PlayerProjectile");
             
             _render.sprite = bulletConfig.Sprite;
+
+            _animator.runtimeAnimatorController = bulletConfig.AnimatorController != null ? bulletConfig.AnimatorController : null;
+
             _collider.radius = 0.3f;
             _direction = direction;
             _speed = bulletConfig.Speed;
@@ -44,6 +48,7 @@ namespace Projectiles
             _rigidbody = GetComponent<Rigidbody2D>();
             _render = GetComponent<SpriteRenderer>();
             _collider = GetComponent<CircleCollider2D>();
+            _animator = GetComponent<Animator>();
 
             _collider.isTrigger = false;
         }

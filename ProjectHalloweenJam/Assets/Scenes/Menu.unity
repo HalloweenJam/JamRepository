@@ -4302,7 +4302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8709005970316801983, guid: 847f9e38ed0f7bf42ae593324734ac0b, type: 3}
       propertyPath: m_TextStyleHashCode
-      value: 2425
+      value: -1183493901
       objectReference: {fileID: 0}
     - target: {fileID: 8709005970316801983, guid: 847f9e38ed0f7bf42ae593324734ac0b, type: 3}
       propertyPath: m_hasFontAssetChanged
