@@ -25,9 +25,11 @@ MonoBehaviour:
   _bulletConfig:
     _bulletType: 0
     _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
-    _animatorController: {fileID: 0}
+    _animatorController:
+      _value: {fileID: 0}
+      _enabled: 0
     _isEnemyBullet: 0
-    _speed: 100
+    _speed: 25
     _damage: 15
     _count: 0
     _radius: 0

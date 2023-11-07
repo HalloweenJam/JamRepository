@@ -25,7 +25,9 @@ MonoBehaviour:
   _bulletConfig:
     _bulletType: 2
     _sprite: {fileID: -4502192010138243074, guid: e2869d1d00a52d84bbe6d4968d25e7d2, type: 3}
-    _animatorController: {fileID: 9100000, guid: b7df17295bf54e04f9e3a26100d01733, type: 2}
+    _animatorController:
+      _value: {fileID: 9100000, guid: b7df17295bf54e04f9e3a26100d01733, type: 2}
+      _enabled: 1
     _isEnemyBullet: 1
     _speed: 10
     _damage: 1

@@ -55,7 +55,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   CurrentHealth: 5
-  _itemPrefab: {fileID: 0}
+  _dropLootChance: 1
+  _dissolveTime: 1
 --- !u!114 &6646594070938337341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,4 +284,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 5
   CurrentHealth: 5
-  _itemPrefab: {fileID: 0}
+  _dropLootChance: 0.2
+  _dissolveTime: 1
