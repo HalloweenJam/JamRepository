@@ -429,6 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flashColor: {r: 1, g: 1, b: 1, a: 1}
   _flashTime: 0.25
+  _flashMaterial: {fileID: 0}
   _spriteRenderer: {fileID: 8783166603959011272}
   _entityStats: {fileID: 3276824683475747444}
 --- !u!1 &8897113618174451265

@@ -12611,6 +12611,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2360950530178985899, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: _flashMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
     - target: {fileID: 3276824683475747444, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: _maxHealth
       value: 100
