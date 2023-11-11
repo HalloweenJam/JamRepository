@@ -1,3 +1,14 @@
 fileFormatVersion: 2
 guid: 853483e707214c7980da3e347b67ab2e
-timeCreated: 1698520753
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _flashMaterial: {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
+  - _spriteRenderer: {instanceID: 0}
+  - _entityStats: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

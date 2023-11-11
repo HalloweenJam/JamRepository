@@ -9,11 +9,13 @@ namespace Visuals
     {
         [SerializeField, ColorUsage(false, true)] private Color _flashColor = Color.white;
         [SerializeField] private float _flashTime = .25f;
+        [SerializeField] private Material _flashMaterial;
         
         [SerializeField, HideInInspector] private SpriteRenderer _spriteRenderer;
         [SerializeField, HideInInspector] private EntityStats _entityStats;
         
         private Material _material;
+        private Material _cashedMaterial;
         private Coroutine _coroutine;
         
         private static readonly int MaterialColor = Shader.PropertyToID("_Color");
@@ -21,6 +23,12 @@ namespace Visuals
 
         private void Play()
         {
+            if (_coroutine != null)
+            {
+                StopCoroutine(_coroutine);
+                _spriteRenderer.material = _cashedMaterial;
+            }
+
             _coroutine = StartCoroutine(Flash());
         }
 
@@ -48,7 +56,8 @@ namespace Visuals
         
         private IEnumerator Flash()
         {
-            SetFlashColor();
+            _cashedMaterial = _spriteRenderer.material;
+            SetFlashData();
 
             var elapsedTime = 0f;
 
@@ -61,10 +70,15 @@ namespace Visuals
                 
                 yield return null;
             }
+
+            _spriteRenderer.material = _cashedMaterial;
         }
 
-        private void SetFlashColor()
+        private void SetFlashData()
         {
+            _spriteRenderer.material = _flashMaterial;
+            _material = _spriteRenderer.material;
+            
             _material.SetColor(MaterialColor, _flashColor);
         }
 

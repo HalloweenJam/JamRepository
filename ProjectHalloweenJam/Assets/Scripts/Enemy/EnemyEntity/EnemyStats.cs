@@ -12,6 +12,7 @@ namespace Enemy.EnemyEntity
         [SerializeField, Range(0f, 1f)] private float _dropLootChance = .2f;
         [Header("Dissolve")]
         [SerializeField] private float _dissolveTime = 1f;
+        [SerializeField] private Material _dissolveMaterial;
         
         private bool _dissolved = false;
         private float _elapsedTime = 0f;
@@ -21,6 +22,8 @@ namespace Enemy.EnemyEntity
         private Color _defaultColor;
 
         public static Action<Vector2, float> OnDeath;
+        
+        private static readonly int Fade = Shader.PropertyToID("_Fade");
 
         public bool Dissolved => _dissolved;
 
@@ -30,6 +33,8 @@ namespace Enemy.EnemyEntity
             _movement = GetComponent<EnemyMovement>();
             _defaultColor = _spriteRenderer.color;
 
+            _spriteRenderer.material = _dissolveMaterial;
+            
             _movement.enabled = false;
             _movement.Initialize(playerPosition, this);
 
@@ -41,13 +46,12 @@ namespace Enemy.EnemyEntity
             if (instantKill)
             {
                 Kill();
-                StartCoroutine(PaintingSprite());
                 return true;
             }
 
+            OnEntityTakeDamage?.Invoke();
+            
             CurrentHealth -= damage;
-            StartCoroutine(PaintingSprite());
-
             if (CurrentHealth <= 0)
                 Kill();
 
@@ -76,12 +80,12 @@ namespace Enemy.EnemyEntity
             {
                 fadeMaterial += percent * Time.deltaTime;
                 _elapsedTime += Time.deltaTime;
-                _spriteRenderer.material.SetFloat("_Fade", fadeMaterial);
+                _spriteRenderer.material.SetFloat(Fade, fadeMaterial);
                 yield return null;
             }
             _elapsedTime = 0f;
             _movement.enabled = true;
-            _spriteRenderer.material.SetFloat("_Fade", 1f);
+            _spriteRenderer.material.SetFloat(Fade, 1f);
             _dissolved = true;
         }
 
@@ -95,26 +99,13 @@ namespace Enemy.EnemyEntity
             {
                 fadeMaterial += percent * Time.deltaTime;
                 _elapsedTime += Time.deltaTime;
-                _spriteRenderer.material.SetFloat("_Fade", fadeMaterial);
+                _spriteRenderer.material.SetFloat(Fade, fadeMaterial);
                 yield return null;
             }
             _elapsedTime = 0f;
             _movement.enabled = true;
-            _spriteRenderer.material.SetFloat("_Fade", 0f);
+            _spriteRenderer.material.SetFloat(Fade, 0f);
             _dissolved = true;
-        }
-
-        private IEnumerator PaintingSprite() // use flash shader for enemy
-        {
-            float ignoreTime = 1f;
-            float elapsedTime = 0f;
-            _spriteRenderer.color = Color.red;
-            while (elapsedTime < ignoreTime)
-            {
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-            _spriteRenderer.color = _defaultColor;
         }
     }
 }
