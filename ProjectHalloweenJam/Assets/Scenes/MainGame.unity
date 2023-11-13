@@ -12571,6 +12571,10 @@ PrefabInstance:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1874255116781009606, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2122618606134928642, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.09
@@ -12623,9 +12627,21 @@ PrefabInstance:
       propertyPath: CurrentHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4621394336644080632, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: _hurtCollider
+      value: 
+      objectReference: {fileID: 1337476600}
+    - target: {fileID: 5765303340139183827, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6745565781883482922, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745565781883482922, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7668388570558426076, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: orthographic size
@@ -12651,14 +12667,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9216733569172840091, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2122618606134928642, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 561705358}
     - targetCorrespondingSourceObject: {fileID: 2122618606134928642, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 1381888033}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
@@ -12674,7 +12694,7 @@ GameObject:
   - component: {fileID: 561705361}
   - component: {fileID: 561705360}
   - component: {fileID: 561705362}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: MapCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13737,6 +13757,11 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 769647797}
+--- !u!61 &1337476600 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2295259176523968681, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+  m_PrefabInstance: {fileID: 497246372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1381888032
 GameObject:
   m_ObjectHideFlags: 0

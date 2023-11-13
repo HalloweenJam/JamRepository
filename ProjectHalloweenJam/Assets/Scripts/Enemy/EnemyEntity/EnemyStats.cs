@@ -27,6 +27,11 @@ namespace Enemy.EnemyEntity
 
         public bool Dissolved => _dissolved;
 
+        private void Start()
+        {
+            SetHealth();
+        }
+
         public void Spawn(Transform playerPosition)
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
