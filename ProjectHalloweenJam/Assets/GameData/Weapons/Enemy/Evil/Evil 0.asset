@@ -24,7 +24,10 @@ MonoBehaviour:
     _reloadingSpeed: 0.1
   _bulletConfig:
     _bulletType: 0
-    _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
+    _sprite: {fileID: 2560381209985369486, guid: fc3c1d4ea44042a4289f9c894a836eea, type: 3}
+    _animatorController:
+      _value: {fileID: 9100000, guid: f506603282aa69044a6e58f3abb6903b, type: 2}
+      _enabled: 1
     _isEnemyBullet: 1
     _speed: 10
     _damage: 1
