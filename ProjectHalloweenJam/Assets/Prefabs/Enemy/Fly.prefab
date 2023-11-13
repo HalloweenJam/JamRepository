@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7791554708245832804}
   - component: {fileID: 3440297373342935336}
   - component: {fileID: 3339767716003175521}
+  - component: {fileID: 3749840463090854485}
   m_Layer: 8
   m_Name: Fly
   m_TagString: Untagged
@@ -53,7 +54,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 75
   CurrentHealth: 5
-  _itemPrefab: {fileID: 0}
+  _dropLootChance: 0.2
+  _dissolveTime: 1
+  _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
 --- !u!114 &440553403702090537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +102,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
+  - {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -248,3 +251,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3749840463090854485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290981419494193894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853483e707214c7980da3e347b67ab2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashColor: {r: 1.4980392, g: 0, b: 0, a: 1}
+  _flashTime: 0.25
+  _flashMaterial: {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
+  _spriteRenderer: {fileID: 4982913484937996174}
+  _entityStats: {fileID: 5706745955460684541}

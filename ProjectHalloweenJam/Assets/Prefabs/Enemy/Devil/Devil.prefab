@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 842521669592393700}
   - component: {fileID: 4038313323617925439}
   - component: {fileID: 653620201686142057}
-  - component: {fileID: 8492581884428677945}
+  - component: {fileID: -4191769297528909491}
   m_Layer: 8
   m_Name: Devil
   m_TagString: Untagged
@@ -57,6 +57,7 @@ MonoBehaviour:
   CurrentHealth: 5
   _dropLootChance: 1
   _dissolveTime: 1
+  _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
 --- !u!114 &6646594070938337341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +104,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
+  - {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -270,7 +271,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc005e8ef4085fb41ae7d49a1aa7a117, type: 2}
   - {fileID: 11400000, guid: 9758b92db1a0be94daf78d735ed3a3cf, type: 2}
   - {fileID: 11400000, guid: 43cf449debacd2c4882fc827ba739ecd, type: 2}
---- !u!114 &8492581884428677945
+--- !u!114 &-4191769297528909491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -279,10 +280,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1630100048154938782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc774760ec26e742a82516a587ec258, type: 3}
+  m_Script: {fileID: 11500000, guid: 853483e707214c7980da3e347b67ab2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
-  CurrentHealth: 5
-  _dropLootChance: 0.2
-  _dissolveTime: 1
+  _flashColor: {r: 1.4980392, g: 0, b: 0, a: 1}
+  _flashTime: 0.25
+  _flashMaterial: {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
+  _spriteRenderer: {fileID: 4428916396937083588}
+  _entityStats: {fileID: 4603893558348285115}

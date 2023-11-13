@@ -43,6 +43,7 @@ namespace Entities
         private void Start()
         {
             _camera = Camera.main;
+            print(_camera.name);
         }
         
         private void OnValidate()

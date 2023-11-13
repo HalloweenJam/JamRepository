@@ -94,10 +94,6 @@ namespace Player.Controls
 
         public void OnMousePosition(InputAction.CallbackContext context)
         {
-            var direction = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
-            
-            MousePositionEvent?.Invoke(direction);
         }
-
     }
 }

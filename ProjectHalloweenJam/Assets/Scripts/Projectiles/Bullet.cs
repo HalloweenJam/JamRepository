@@ -1,5 +1,4 @@
 using Bullet;
-using Core;
 using Core.Interfaces;
 using Managers;
 using UnityEngine;
@@ -72,7 +71,10 @@ namespace Projectiles
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.collider.TryGetComponent<IDamageable>(out var damageable))
+            {
+                print(other.collider.name);
                 damageable.TryTakeDamage(_damage);
+            }
 
             BulletPoolingManager.Instance.Release(this);
         }

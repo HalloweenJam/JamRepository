@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Entities;
 using Managers;
 using Player.Controls;
@@ -19,6 +20,8 @@ namespace Player
         [SerializeField] private WeaponHolder _weaponHolder;
 
         [Header("Dash")] 
+        [SerializeField] private BoxCollider2D _hurtCollider;
+        [Space]
         [SerializeField] private float _dashForce = 20;
         [Space]
         [SerializeField] private float _dashDelay = 3f;
@@ -50,7 +53,19 @@ namespace Player
         public Action<bool> OnPlayerDashing;
         
         private bool _canDash => !_isDashing && _dashesCount > 0;
-        
+
+        public void DisableHurtCollider(float time)
+        {
+            _hurtCollider.enabled = false;
+            StartCoroutine(EnableHurtCollider(time));
+        }
+
+        private IEnumerator EnableHurtCollider(float time)
+        {
+            yield return new WaitForSeconds(time);
+            _hurtCollider.enabled = true;
+        }
+
         private void OnValidate()
         {
             _rigidbody = GetComponent<Rigidbody2D>();

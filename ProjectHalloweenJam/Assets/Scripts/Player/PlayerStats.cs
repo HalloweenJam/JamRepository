@@ -22,7 +22,12 @@ namespace Player
 
         private void Start()
         {
-            _playerController.OnPlayerDashing += _ => _invisibilityCounter = _dashInvisibilityLength; 
+            SetHealth();
+            _playerController.OnPlayerDashing += _ =>
+            {
+                _invisibilityCounter = _dashInvisibilityLength;
+                _playerController.DisableHurtCollider(_dashInvisibilityLength);
+            }; 
         }
 
         public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
@@ -38,6 +43,7 @@ namespace Player
             
             CurrentHealth -= damage;
             _invisibilityCounter = _invisibilityLength;
+            _playerController.DisableHurtCollider(_invisibilityLength);
             
             OnEntityTakeDamage?.Invoke();
             OnPlayerTakeDamage?.Invoke((float) CurrentHealth / MaxHealth);
