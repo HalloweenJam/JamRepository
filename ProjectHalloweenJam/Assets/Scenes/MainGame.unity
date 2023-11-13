@@ -12621,16 +12621,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
     - target: {fileID: 3276824683475747444, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: _maxHealth
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3276824683475747444, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: CurrentHealth
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 4621394336644080632, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
-      propertyPath: _hurtCollider
-      value: 
-      objectReference: {fileID: 1337476600}
     - target: {fileID: 5765303340139183827, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -13757,11 +13753,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 769647797}
---- !u!61 &1337476600 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2295259176523968681, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
-  m_PrefabInstance: {fileID: 497246372}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1381888032
 GameObject:
   m_ObjectHideFlags: 0
@@ -17084,7 +17075,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32247
+    m_Bits: 32255
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

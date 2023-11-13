@@ -48,8 +48,6 @@ namespace Player
 
         private InputReader _inputReader;
 
-        public bool IsDashing => _isDashing;
-
         public Action<bool> OnPlayerDashing;
         
         private bool _canDash => !_isDashing && _dashesCount > 0;

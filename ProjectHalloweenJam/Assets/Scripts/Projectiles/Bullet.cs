@@ -72,9 +72,10 @@ namespace Projectiles
         {
             if (other.collider.TryGetComponent<IDamageable>(out var damageable))
             {
-                print(other.collider.name);
                 damageable.TryTakeDamage(_damage);
             }
+            
+            print(other.collider.name);
 
             BulletPoolingManager.Instance.Release(this);
         }
