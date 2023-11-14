@@ -117,11 +117,11 @@ namespace Entities
             }
         }
 
-        public void AddItem(Item item)
+        public void AddRefill(float refillAmount, bool isPercent)
         {
             foreach (var weapon in _weapons)
             {
-                weapon.AddBullets(item.RefillPercent, item.IsPercent);
+                weapon.AddBullets(refillAmount, isPercent);
             }
             
             OnWeaponUsed?.Invoke(_currentWeapon, false);

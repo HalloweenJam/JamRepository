@@ -71,12 +71,8 @@ namespace Projectiles
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.collider.TryGetComponent<IDamageable>(out var damageable))
-            {
                 damageable.TryTakeDamage(_damage);
-            }
             
-            print(other.collider.name);
-
             BulletPoolingManager.Instance.Release(this);
         }
     }

@@ -15,11 +15,13 @@ namespace Player
         [SerializeField, HideInInspector] private Inventory _inventory;
         [SerializeField, HideInInspector] private WeaponSelector _weaponSelector;
         
+        private PlayerStats _playerStats;
         private InputReader _inputReader;
 
         private void OnValidate()
         {
             _inventory = GetComponent<Inventory>();
+            _playerStats = GetComponent<PlayerStats>();
             _weaponSelector ??= GetComponent<WeaponSelector>();
         }
 
@@ -45,7 +47,7 @@ namespace Player
         {
             if (other.TryGetComponent<IPickUp>(out var item))
             {
-                item.PickUp(_weaponSelector);
+                item.PickUp(_playerStats);
             }
         }
 

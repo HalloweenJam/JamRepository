@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb2a9f427027459496206f520e69635a, type: 3}
-  m_Name: 10 Rrefill
+  m_Script: {fileID: 11500000, guid: 6fa10387033e4f0f9970c6c7e73ba926, type: 3}
+  m_Name: 1 coin
   m_EditorClassIdentifier: 
-  _refillPercent: 10
-  _isPercent: 1
-  _sprite: {fileID: 1140158517803954075, guid: 1720eacd62e367241a2a5568a3aba4b2, type: 3}
+  _sprite: {fileID: 8651862619831560131, guid: 046d3c135b97ec146a7d70beb37cf769, type: 3}
+  _value: 1

@@ -1,6 +1,6 @@
 using Core.Interfaces;
-using Entities;
 using Items;
+using Player;
 using UnityEngine;
 
 namespace Gameplay.Interactions
@@ -8,27 +8,27 @@ namespace Gameplay.Interactions
     [RequireComponent(typeof(SpriteRenderer), typeof(CircleCollider2D))]
     public class ItemHolder : MonoBehaviour, IPickUp
     {
-        [SerializeField] private Item _item;
+        [SerializeField] private Collectable _collectable;
         
         [SerializeField, HideInInspector] private CircleCollider2D _collider;
         [SerializeField, HideInInspector] private SpriteRenderer _spriteRenderer;
 
-        public void SetItem(Item item)
+        public void SetItem(Collectable item)
         {
             _spriteRenderer.sprite = item.Sprite;
-            _item = item;
+            _collectable = item;
         }
 
-        public void PickUp(WeaponSelector weaponSelector)
+        public void PickUp(PlayerStats playerStats)
         {
-            weaponSelector.AddItem(_item);
+            _collectable.Apply(playerStats);
             Destroy(gameObject);
         }
         
         private void Start()
         {
-            if (_item != null)
-                SetItem(_item);
+            if (_collectable != null)
+                SetItem(_collectable);
         }
 
         private void OnValidate()

@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb2a9f427027459496206f520e69635a, type: 3}
-  m_Name: 35 Rrefill
+  m_Script: {fileID: 11500000, guid: 0a545fc586a748c694b64f21e1997f4b, type: 3}
+  m_Name: 35 refill
   m_EditorClassIdentifier: 
-  _refillPercent: 35
   _sprite: {fileID: -2379907888183350289, guid: 1720eacd62e367241a2a5568a3aba4b2, type: 3}
+  _refillAmount: 35
+  _isPercent: 1
