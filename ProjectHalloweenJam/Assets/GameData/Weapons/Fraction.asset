@@ -18,13 +18,16 @@ MonoBehaviour:
     _name: 
     _info: 
   _weaponConfig:
-    _totalBullets: 1000
+    _totalBullets: 35
     _bulletsPerBatch: 5
     _attackSpeed: 0.5
     _reloadingSpeed: 1
   _bulletConfig:
     _bulletType: 3
     _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
+    _animatorController:
+      _value: {fileID: 0}
+      _enabled: 0
     _isEnemyBullet: 0
     _speed: 20
     _damage: 12

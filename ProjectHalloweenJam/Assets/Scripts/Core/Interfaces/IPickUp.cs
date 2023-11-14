@@ -1,9 +1,9 @@
-using Entities;
+using Player;
 
 namespace Core.Interfaces
 {
     public interface IPickUp
     {
-        public void PickUp(WeaponSelector weaponSelector);
+        public void PickUp(PlayerStats playerStats);
     }
 }

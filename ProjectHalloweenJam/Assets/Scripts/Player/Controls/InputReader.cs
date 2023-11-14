@@ -10,8 +10,7 @@ namespace Player.Controls
         private GameControls _gameControls;
 
         public event Action<float> MouseWheelScrollEvent;
-
-        public event Action<Vector2> MousePositionEvent;
+        
         public event Action<Vector2> MoveEvent;
         public event Action MoveCancelledEvent;
 

@@ -13,7 +13,7 @@ namespace Managers
     {
         [SerializeField] private ItemHolder _itemHolder;
         [Space]
-        [SerializeField] private WeightedRandomList<List<Item>> _weightedLootList = new();
+        [SerializeField] private WeightedRandomList<List<Collectable>> _weightedLootList = new();
 
         private void Awake() => EnemyStats.OnDeath += SpawnLoot;
 

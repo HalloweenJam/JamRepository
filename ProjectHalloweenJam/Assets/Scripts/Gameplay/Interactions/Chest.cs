@@ -28,12 +28,7 @@ namespace Gameplay.Interactions
                 return false;
             
             if (inventory.Keys[_rarity] <= 0)
-            {
-                print("no");
                 return false;
-            }
-
-            print("skibidi dopdopdop es es");
             
             _enabled = true;
             inventory.Keys[_rarity]--;
