@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 10 refill
   m_EditorClassIdentifier: 
   _sprite: {fileID: 1140158517803954075, guid: 1720eacd62e367241a2a5568a3aba4b2, type: 3}
+  _cost: 2
   _refillAmount: 10
   _isPercent: 1

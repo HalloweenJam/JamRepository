@@ -3,26 +3,12 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class InputReaderManager : MonoBehaviour
+    public class InputReaderManager : PersistentSingleton<InputReaderManager>
     {
         [SerializeField] private InputReader _inputReader;
 
-        public static InputReaderManager Instance { get; private set; }
-
+        public void Init() => base.Awake();
+        
         public InputReader GetInputReader() => _inputReader;
-
-        private void Awake()
-        {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                Instance = this;
-            }
-            
-            DontDestroyOnLoad(gameObject);
-        }
     }
 }
