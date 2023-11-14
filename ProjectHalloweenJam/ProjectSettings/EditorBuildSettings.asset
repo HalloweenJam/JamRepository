@@ -11,8 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: 7fcd06b1ca88dea419f5b2e7dfefdf21
-  - enabled: 1
-    path: Assets/Scenes/LazyBoss.unity
-    guid: e49963f1e18ce134f944750e12ce2297
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
