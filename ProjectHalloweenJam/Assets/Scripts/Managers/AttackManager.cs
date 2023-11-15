@@ -1,4 +1,3 @@
-using System;
 using Bullet;
 using Core.Enums;
 using System.Collections;
@@ -6,9 +5,24 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class AttackManager : PersistentSingleton<AttackManager>
+    public class AttackManager : MonoBehaviour
     {
-        public static void SelectAttack(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
+        public static AttackManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+
+            DontDestroyOnLoad(gameObject);
+        }
+        public void SelectAttack(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
         {
             switch (bulletConfig.Type)
             {
@@ -16,7 +30,7 @@ namespace Managers
                     GetLine(startPosition, direction, bulletConfig);
                     break;
                 case BulletType.Sin:
-                    Instance.StartCoroutine(GetSin(startPosition, direction, bulletConfig));
+                    Instance.StartCoroutine(Instance.GetSin(startPosition, direction, bulletConfig));
                     break;
                 case BulletType.Circle:
                     GetCircle(startPosition, direction, bulletConfig);
@@ -36,7 +50,7 @@ namespace Managers
             BulletPoolingManager.Instance.GetBullet(startPosition, direction, bulletConfig);
         }
 
-        private static IEnumerator GetSin(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
+        private IEnumerator GetSin(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
         {
             var bulletCount = bulletConfig.Count == 0 ? 1 : bulletConfig.Count;
             var bulletRadius = bulletConfig.Radius <= 5 ? 5 : bulletConfig.Radius;
@@ -64,7 +78,7 @@ namespace Managers
         {
             var bulletCount = bulletConfig.Count == 0 ? 1 : bulletConfig.Count;
             
-            var angleCount = 360 / (float) bulletCount;
+            float angleCount = 360 / bulletCount;
             var targetDirection = (startPosition + direction * 2) - startPosition;
             var angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
             

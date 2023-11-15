@@ -4,17 +4,16 @@ namespace Core.Classes
 {
     public class Wallet
     {
-        private int _handledPoints = 0;
-        
         public Action<int> WalletBalanceChangedAction;
-        
+        public int HandledPoints { get; private set; }
+
         public void DepositPoints(int points)
         {
             if (points <= 0)
                 throw new Exception("money amount cannot be less than 0");
 
-            _handledPoints += points;
-            WalletBalanceChangedAction?.Invoke(_handledPoints);
+            HandledPoints += points;
+            WalletBalanceChangedAction?.Invoke(HandledPoints);
         }
 
         public bool TryToSpendPoints(int cost)
@@ -22,11 +21,11 @@ namespace Core.Classes
             if (cost < 0)
                 throw new Exception("cost cannot be less than 0");
 
-            if (cost > _handledPoints)
+            if (cost > HandledPoints)
                 return false;
 
-            _handledPoints -= cost;
-            WalletBalanceChangedAction?.Invoke(_handledPoints);
+            HandledPoints -= cost;
+            WalletBalanceChangedAction?.Invoke(HandledPoints);
             return true;
         }
     }

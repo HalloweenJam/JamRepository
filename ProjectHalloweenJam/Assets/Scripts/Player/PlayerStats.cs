@@ -22,7 +22,7 @@ namespace Player
         private static readonly Wallet _wallet = new();
         
         public WeaponSelector WeaponSelector { get; private set; }
-        public Wallet Wallet => _wallet;
+        public static Wallet Wallet => _wallet;
         private bool _canIgnoreDamage => _invisibilityCounter > 0;
 
         public static void DepositMoney(int value) => _wallet.DepositPoints(value);

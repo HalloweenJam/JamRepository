@@ -21,10 +21,11 @@ namespace Entities
         private int _selectedWeaponIndex = 0;
         private bool _isAttacking;
         private bool _isPlayer;
-        private bool _isStarted;
 
         private Vector2 _cashedMousePosition;
+
         private Camera _camera;
+        
         private InputReader _inputReader;
 
         private WeaponData _currentWeapon => _weapons[_selectedWeaponIndex];
@@ -32,6 +33,8 @@ namespace Entities
         public Action<WeaponData, bool> OnWeaponUsed;
 
         public void Add(BaseWeapon weapon) => _weapons.Add(new WeaponData(weapon));
+
+        public void Init(bool isPlayer = false) => _isPlayer = isPlayer;
 
         public bool TryToAttack(Vector2 targetPosition, bool isDirection = true)
         {
@@ -48,18 +51,8 @@ namespace Entities
             _selectedWeaponIndex = weaponIndex;
         }
         
-        public void Init(bool isPlayer = false)
-        { 
-            _isPlayer = isPlayer;
-            Start();
-            _isStarted = true;
-        }
-
         private void Start()
         {
-            if (_isStarted)
-                return;
-            
             if (_isPlayer)
             {
                 _inputReader = InputReaderManager.Instance.GetInputReader();
@@ -86,8 +79,6 @@ namespace Entities
         private void ChangeWeapon(float direction)
         {
             var dir = direction > 0 ? 1 : -1;
-            
-            print("change");
             
             _selectedWeaponIndex = (_selectedWeaponIndex + _weapons.Count + dir) % _weapons.Count;
             

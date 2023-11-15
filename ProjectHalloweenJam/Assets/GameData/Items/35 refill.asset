@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d1ebd8a5a84f4d9807e08b8b7040e1, type: 3}
-  m_Name: Aka47Holder
+  m_Script: {fileID: 11500000, guid: 0a545fc586a748c694b64f21e1997f4b, type: 3}
+  m_Name: 35 refill
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 7829804072965817479, guid: a86d1d2d9cf74a5419cc94d5a8ddae2d, type: 3}
-  _cost: 1
-  _weapon: {fileID: 11400000, guid: 117c11a4f30d50c418ef9b5e6c14764c, type: 2}
+  _sprite: {fileID: -2379907888183350289, guid: 1720eacd62e367241a2a5568a3aba4b2, type: 3}
+  _refillAmount: 35
+  _isPercent: 1

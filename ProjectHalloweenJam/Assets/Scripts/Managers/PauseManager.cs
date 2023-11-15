@@ -3,14 +3,30 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class PauseManager : PersistentSingleton<PauseManager>
+    public class PauseManager : MonoBehaviour
     {
+
         private InputReader _inputReader;
         private bool _paused;
     
         public bool isPause => _paused;
 
-        private void Start()
+        public static PauseManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+
+            DontDestroyOnLoad(gameObject);
+        }
+        void Start()
         {
             _inputReader = InputReaderManager.Instance.GetInputReader();
             _inputReader.ExitEvent += Pause;
@@ -23,8 +39,9 @@ namespace Managers
         {
             OnGamePause();
         }
-        
-        private void OnGamePause()
+
+        // Update is called once per frame
+        void OnGamePause()
         {
             _paused = true;
             GameMenu.Instance.SetActive(true);

@@ -9,21 +9,16 @@ namespace Player
     {
         [SerializeField] private int _keysCount = 1;
         [SerializeField] private int _keysVariables = 5;
+        
+        private Dictionary<int, int> _keys = new();
 
-        public PlayerStats PlayerStats { get; private set; }
-
-        public Dictionary<int, int> Keys { get; } = new();
-
-        private void OnValidate()
-        {
-            PlayerStats = GetComponent<PlayerStats>();
-        }
-
+        public Dictionary<int, int> Keys => _keys;
+        
         private void Start()
         {
             for (int i = 1; i <= _keysVariables; i++)
             {
-                Keys.Add(i, _keysCount);
+                _keys.Add(i, _keysCount);
             }
         }
     }

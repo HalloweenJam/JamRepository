@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d1ebd8a5a84f4d9807e08b8b7040e1, type: 3}
-  m_Name: RifleHolder
+  m_Script: {fileID: 11500000, guid: 0a545fc586a748c694b64f21e1997f4b, type: 3}
+  m_Name: 20 refill
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 2407328536907620315, guid: a86d1d2d9cf74a5419cc94d5a8ddae2d, type: 3}
-  _cost: 10
-  _weapon: {fileID: 11400000, guid: 9dffd703588b6ba4c805f83a85e478c1, type: 2}
+  _sprite: {fileID: -1865607800944187221, guid: 1720eacd62e367241a2a5568a3aba4b2, type: 3}
+  _refillAmount: 20
+  _isPercent: 1
