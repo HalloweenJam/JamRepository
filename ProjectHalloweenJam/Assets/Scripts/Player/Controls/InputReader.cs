@@ -35,7 +35,13 @@ namespace Player.Controls
             
             SetPlayerActions();
         }
-        
+
+        public void Disable()
+        {
+            _gameControls.UI.Disable();
+            _gameControls.Gameplay.Disable();
+        }
+
         public void SetPlayerActions()
         {
             _gameControls.Gameplay.Enable();

@@ -1,28 +1,31 @@
-﻿using Player.Controls;
+﻿using System;
+using Player.Controls;
 using UnityEngine;
 
 namespace Managers
 {
-    public class InputReaderManager : MonoBehaviour
+    public class InputReaderManager : PersistentSingleton<InputReaderManager>
     {
         [SerializeField] private InputReader _inputReader;
 
-        public static InputReaderManager Instance { get; private set; }
-
+        public Action<bool> OnInputReaderActiveStateChanged;
+        
+        public void Init() => base.Awake();
+        
         public InputReader GetInputReader() => _inputReader;
 
-        private void Awake()
+        public void SetActiveControls(bool active)
         {
-            if (Instance != null && Instance != this)
+            if (!active)
             {
-                Destroy(gameObject);
+                _inputReader.SetUIActions();
             }
             else
             {
-                Instance = this;
+                _inputReader.SetPlayerActions();
             }
             
-            DontDestroyOnLoad(gameObject);
+            OnInputReaderActiveStateChanged?.Invoke(active);
         }
     }
 }
