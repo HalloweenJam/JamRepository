@@ -62,4 +62,4 @@ namespace Entities
             _spriteRenderer.sprite = _sprite;
         }
     }
-}s
+}
