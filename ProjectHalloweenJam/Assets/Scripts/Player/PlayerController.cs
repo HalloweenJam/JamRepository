@@ -38,6 +38,7 @@ namespace Player
         
         private Camera _camera;
 
+        private bool _isEnabled = true;
         private bool _isDashing;
         private float _dashDelayCounter;
         private int _dashesCount;
@@ -134,6 +135,9 @@ namespace Player
 
         private void FixedUpdate()
         {
+            if (!_isEnabled)
+                return;
+            
             Move();
             Rotate();
         }
@@ -162,6 +166,16 @@ namespace Player
             _animator.Play(_run);
             
             _rigidbody.AddForce(new Vector2(_movementDirection.x, _movementDirection.y) * _speed);
+        }
+        
+        private void Start()
+        {
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
+        }
+        
+        private void OnDisable()
+        {
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged -= (state) => _isEnabled = state;
         }
     }
 }

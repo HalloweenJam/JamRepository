@@ -1,4 +1,5 @@
 using System;
+using Managers;
 using UnityEngine;
 
 namespace Player
@@ -12,10 +13,22 @@ namespace Player
         private Rect _screenRect;
         private Vector3 _targetPosition;
 
+        private bool _isEnabled = true;
+
         private void Awake()
         {
             _camera = Camera.main;
             _screenRect = new Rect(0f, 0f, Screen.width, Screen.height);
+        }
+
+        private void Start()
+        {
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
+        }
+        
+        private void OnDisable()
+        {
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged -= (state) => _isEnabled = state;
         }
 
         private void OnValidate()
@@ -25,6 +38,9 @@ namespace Player
 
         private void LateUpdate()
         {
+            if (!_isEnabled)
+                return;
+            
             if (!_screenRect.Contains(Input.mousePosition))
                 return;
 
