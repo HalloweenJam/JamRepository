@@ -24,9 +24,11 @@ public class GluttonyAttack : EnemyAttack
     {
         IsAttacking = true;
         Animator.SetBool(_burpAttack, true);
-
+        yield return new WaitForSeconds(1.25f);
         WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
+        WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
+        yield return new WaitForSeconds(0.5f);
         WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
         Animator.SetBool(_burpAttack, false);
 
@@ -37,7 +39,7 @@ public class GluttonyAttack : EnemyAttack
     private IEnumerator Reload()
     {
         IsReload = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         IsReload = false;
     }
 }
