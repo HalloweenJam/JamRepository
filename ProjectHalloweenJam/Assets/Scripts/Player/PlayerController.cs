@@ -89,6 +89,7 @@ namespace Player
             _weaponSelector.Init(true);
             
             _inputReader = InputReaderManager.Instance.GetInputReader();
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
             
             _inputReader.MoveEvent += direction =>
             {
@@ -168,11 +169,6 @@ namespace Player
             _animator.Play(_run);
             
             _rigidbody.AddForce(new Vector2(_movementDirection.x, _movementDirection.y) * _speed);
-        }
-        
-        private void Start()
-        {
-            InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
         }
         
         private void OnDisable()
