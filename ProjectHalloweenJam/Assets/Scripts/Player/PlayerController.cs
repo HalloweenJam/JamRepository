@@ -82,7 +82,7 @@ namespace Player
             _rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         }
 
-        public void Initialize()
+        public void Init()
         {
             _weaponSelector.Init(true);
             
