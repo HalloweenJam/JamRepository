@@ -12,7 +12,7 @@ namespace Managers
         {
             base.Awake();
             _inputReaderManager.Init();
-            _playerController.Init();
+            _playerController.Initialize();
         }
     }
 }
