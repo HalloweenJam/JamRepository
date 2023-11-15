@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 using Weapons;
 
@@ -36,12 +37,21 @@ namespace Core.Classes
             
             InHandsSprite = baseWeapon.Description.InHands;
             Icon = baseWeapon.Description.Icon;
-            
+
             LeftBullets = TotalBullets;
             _attackSpeedCounter = _attackSpeed;
             _reloadingSpeedCounter = _reloadingSpeed;
             
             RefillBatch();
+        }
+
+        public void AddBullets(float value, bool isPercent = false)
+        {
+            if (TotalBullets < 0)
+                return;
+            
+            var bulletsToAdd = isPercent ? (int) (TotalBullets * (value / 100)) : (int) value;
+            LeftBullets += bulletsToAdd > TotalBullets - LeftBullets ? TotalBullets - LeftBullets : bulletsToAdd;
         }
 
         public bool Update(float deltaTime)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Core.Classes;
+using Items;
 using Managers;
 using Player.Controls;
 using UnityEngine;
@@ -18,11 +19,12 @@ namespace Entities
         private readonly List<WeaponData> _weapons = new();
 
         private int _selectedWeaponIndex = 0;
-        private bool _isHoldingWeapon;
+        private bool _isAttacking;
+        private bool _isPlayer;
+        private bool _isStarted;
 
         private Vector2 _cashedMousePosition;
-        private Vector2 _direction;
-
+        private Camera _camera;
         private InputReader _inputReader;
 
         private WeaponData _currentWeapon => _weapons[_selectedWeaponIndex];
@@ -46,15 +48,31 @@ namespace Entities
             _selectedWeaponIndex = weaponIndex;
         }
         
+        public void Init(bool isPlayer = false)
+        { 
+            _isPlayer = isPlayer;
+            Start();
+            _isStarted = true;
+        }
+
         private void Start()
         {
-            _inputReader = InputReaderManager.Instance.GetInputReader();
-            _firePoint = transform;
-            _inputReader.ShootingEvent += () => _isHoldingWeapon = true;
-            _inputReader.ShootingCancelledEvent += () => _isHoldingWeapon = false;
+            if (_isStarted)
+                return;
+            
+            if (_isPlayer)
+            {
+                _inputReader = InputReaderManager.Instance.GetInputReader();
 
-            _inputReader.MouseWheelScrollEvent += ChangeWeapon;
-            _inputReader.MousePositionEvent += mousePosition => _cashedMousePosition = mousePosition;
+                _inputReader.ShootingEvent += () => _isAttacking = true;
+                _inputReader.ShootingCancelledEvent += () => _isAttacking = false;
+
+                _inputReader.MouseWheelScrollEvent += ChangeWeapon;
+
+                _camera = Camera.main;
+            }
+
+            _firePoint = transform;
             
             foreach (var weapon in _weaponsToAdd)
             {
@@ -84,10 +102,10 @@ namespace Entities
 
         private void FixedUpdate()
         {
-            if (_isHoldingWeapon)
+            if (_isAttacking)
             {
-                _direction = (_cashedMousePosition - (Vector2) _firePoint.position).normalized;
-                TryToAttack(_direction, true);
+                var mousePosition =_camera.ScreenToWorldPoint(Input.mousePosition);
+                TryToAttack(mousePosition, false);
             }
             
             var deltaTime = Time.fixedDeltaTime;
@@ -104,6 +122,16 @@ namespace Entities
                     _weapons[i].Update(deltaTime);
                 }
             }
+        }
+
+        public void AddRefill(float refillAmount, bool isPercent)
+        {
+            foreach (var weapon in _weapons)
+            {
+                weapon.AddBullets(refillAmount, isPercent);
+            }
+            
+            OnWeaponUsed?.Invoke(_currentWeapon, false);
         }
     }
 }

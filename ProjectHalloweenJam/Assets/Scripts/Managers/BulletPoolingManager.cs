@@ -5,11 +5,10 @@ using UnityEngine.Pool;
 
 namespace Managers
 {
-    public class BulletPoolingManager : MonoBehaviour
+    public class BulletPoolingManager : PersistentSingleton<BulletPoolingManager>
     {
         [SerializeField] private Projectiles.Bullet _bullet;
         
-        public static BulletPoolingManager Instance { get; private set; }
 
         private ObjectPool<Projectiles.Bullet> _bulletsPool;
 
@@ -32,20 +31,6 @@ namespace Managers
             {
                 // ignored
             }
-        }
-
-        private void Awake()
-        {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                Instance = this;
-            }
-            
-            DontDestroyOnLoad(gameObject);
         }
 
         private void Start()

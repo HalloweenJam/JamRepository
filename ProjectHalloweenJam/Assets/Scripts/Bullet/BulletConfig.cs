@@ -1,5 +1,7 @@
 using System;
+using Core.Classes;
 using Core.Enums;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Bullet
@@ -9,6 +11,7 @@ namespace Bullet
     {
         [SerializeField] private BulletType _bulletType;
         [SerializeField] private Sprite _sprite;
+        [SerializeField] private OptionalProperty<AnimatorController> _animatorController;
         [SerializeField] private bool _isEnemyBullet = false;
         [Space]
         [SerializeField] private float _speed;
@@ -19,6 +22,7 @@ namespace Bullet
         
         public BulletType Type => _bulletType;
         public Sprite Sprite => _sprite;
+        public OptionalProperty<AnimatorController> AnimatorController => _animatorController;
 
         public bool IsEnemyBullet => _isEnemyBullet;
 

@@ -10,8 +10,7 @@ namespace Player.Controls
         private GameControls _gameControls;
 
         public event Action<float> MouseWheelScrollEvent;
-
-        public event Action<Vector2> MousePositionEvent;
+        
         public event Action<Vector2> MoveEvent;
         public event Action MoveCancelledEvent;
 
@@ -36,7 +35,13 @@ namespace Player.Controls
             
             SetPlayerActions();
         }
-        
+
+        public void Disable()
+        {
+            _gameControls.UI.Disable();
+            _gameControls.Gameplay.Disable();
+        }
+
         public void SetPlayerActions()
         {
             _gameControls.Gameplay.Enable();
@@ -94,10 +99,6 @@ namespace Player.Controls
 
         public void OnMousePosition(InputAction.CallbackContext context)
         {
-            var direction = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
-            
-            MousePositionEvent?.Invoke(direction);
         }
-
     }
 }

@@ -7,15 +7,12 @@ namespace Enemy.Devil
     public class DevilAttack : EnemyAttack
     {
         private string _attackName = "Attack";
-        private bool _canAttack = true;
-        private bool _isAttacking = false;
-        public bool IsAttacking => _isAttacking;
 
         public override void Attack()
         {
-            if (_isAttacking || !_canAttack) 
+            if (IsAttacking || IsReload) 
                 return;
-            
+
             SelectAttack();
         }
 
@@ -41,24 +38,23 @@ namespace Enemy.Devil
 
         private IEnumerator AttackCor()
         {
-            _isAttacking = true;
-        
+            IsAttacking = true;
             Animator.SetBool(_attackName, true);
             
+            WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
             yield return new WaitForSeconds(2f);
             WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
-            
             Animator.SetBool(_attackName, false);
-            
-            _isAttacking = false;
-            _canAttack = false;
+
+            IsAttacking = false;        
             StartCoroutine(Reload());
         }
 
         private IEnumerator Reload()
         {
+            IsReload = true;
             yield return new WaitForSeconds(2f);
-            _canAttack = true;
+            IsReload = false;
         }
     }
 }

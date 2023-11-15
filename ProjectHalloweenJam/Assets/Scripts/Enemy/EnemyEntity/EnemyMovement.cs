@@ -1,4 +1,5 @@
 using Enemy.EnemyEntity;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
     protected EnemyAttack EnemyAttack;
     protected NavMeshAgent Agent;
     protected Transform PlayerTransform;
+
+    public Action Attack;
 
     public Transform Player => PlayerTransform;
 
@@ -21,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
         EnemyStats = enemyStats;
         PlayerTransform = playerTransform;
 
+        Agent.enabled = true;
         Agent.updateRotation = false;
         Agent.updateUpAxis = false;
 
@@ -36,10 +40,9 @@ public class EnemyMovement : MonoBehaviour
         Rotation();
     }
 
-    public virtual void Move()
-    {
-        Agent.SetDestination(PlayerTransform.position);
-    }
+    public virtual void Move() => Agent.SetDestination(PlayerTransform.position);      
+
+    public virtual void CanAttack() => Attack?.Invoke();
 
     private void Rotation() 
     {

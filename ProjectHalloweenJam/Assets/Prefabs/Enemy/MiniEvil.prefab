@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1837827484640866959}
-  - component: {fileID: 2213824296322625023}
+  - component: {fileID: 2426690312207598836}
   - component: {fileID: 5390917791800890228}
   - component: {fileID: -8618557988957850670}
   - component: {fileID: 1109195691682511900}
@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8012317903794497672}
   - component: {fileID: 2430517534611063178}
   - component: {fileID: 1930112362953662734}
+  - component: {fileID: -552130028238232375}
   m_Layer: 8
   m_Name: MiniEvil
   m_TagString: Untagged
@@ -33,13 +34,13 @@ Transform:
   m_GameObject: {fileID: 5192472700415059242}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.87, y: -31.44, z: -0.0032399464}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2213824296322625023
+--- !u!114 &2426690312207598836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,10 +49,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5192472700415059242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f483105e4d72e04bb10e4298e395072, type: 3}
+  m_Script: {fileID: 11500000, guid: fbc774760ec26e742a82516a587ec258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 30
+  _maxHealth: 35
+  CurrentHealth: 5
+  _dropLootChance: 0.2
+  _dissolveTime: 1
+  _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
 --- !u!114 &5390917791800890228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +102,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
+  - {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -209,7 +214,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5192472700415059242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2.5
@@ -246,3 +251,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-552130028238232375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5192472700415059242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853483e707214c7980da3e347b67ab2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashColor: {r: 1.4980392, g: 0, b: 0, a: 1}
+  _flashTime: 0.25
+  _flashMaterial: {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
+  _spriteRenderer: {fileID: 1109195691682511900}
+  _entityStats: {fileID: 2426690312207598836}

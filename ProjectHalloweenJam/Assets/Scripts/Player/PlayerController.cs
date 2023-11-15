@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Entities;
 using Managers;
 using Player.Controls;
@@ -19,6 +20,8 @@ namespace Player
         [SerializeField] private WeaponHolder _weaponHolder;
 
         [Header("Dash")] 
+        [SerializeField] private BoxCollider2D _hurtCollider;
+        [Space]
         [SerializeField] private float _dashForce = 20;
         [Space]
         [SerializeField] private float _dashDelay = 3f;
@@ -31,9 +34,11 @@ namespace Player
         [HideInInspector, SerializeField] private Rigidbody2D _rigidbody;
         [HideInInspector, SerializeField] private Animator _animator;
         [HideInInspector, SerializeField] private SpriteRenderer _spriteRenderer;
+        [HideInInspector, SerializeField] private WeaponSelector _weaponSelector;
         
         private Camera _camera;
 
+        private bool _isEnabled = true;
         private bool _isDashing;
         private float _dashDelayCounter;
         private int _dashesCount;
@@ -41,19 +46,30 @@ namespace Player
 
         private Vector2 _cashedMovementDirection = Vector2.right;
         private Vector2 _movementDirection;
-        
-        private InputReader _inputReader;
 
-        public bool IsDashing => _isDashing;
+        private InputReader _inputReader;
 
         public Action<bool> OnPlayerDashing;
         
         private bool _canDash => !_isDashing && _dashesCount > 0;
-        
+
+        public void DisableHurtCollider(float time)
+        {
+            _hurtCollider.enabled = false;
+            StartCoroutine(EnableHurtCollider(time));
+        }
+
+        private IEnumerator EnableHurtCollider(float time)
+        {
+            yield return new WaitForSeconds(time);
+            _hurtCollider.enabled = true;
+        }
+
         private void OnValidate()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+            _weaponSelector ??= GetComponent<WeaponSelector>();
             _spriteRenderer ??= GetComponent<SpriteRenderer>();
             
             _camera = Camera.main;
@@ -66,9 +82,14 @@ namespace Player
             _rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         }
 
-        private void Start()
+        public void Init()
         {
+            _weaponSelector.Init(true);
+            
             _inputReader = InputReaderManager.Instance.GetInputReader();
+            
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed += OnDisable;
             
             _inputReader.MoveEvent += direction =>
             {
@@ -117,6 +138,9 @@ namespace Player
 
         private void FixedUpdate()
         {
+            if (!_isEnabled)
+                return;
+            
             Move();
             Rotate();
         }
@@ -145,6 +169,15 @@ namespace Player
             _animator.Play(_run);
             
             _rigidbody.AddForce(new Vector2(_movementDirection.x, _movementDirection.y) * _speed);
+        }
+        
+        private void OnDisable()
+        {
+            if (InputReaderManager.Instance == null)
+                return;
+            
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged -= (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed -= OnDisable;
         }
     }
 }

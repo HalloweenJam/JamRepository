@@ -9,18 +9,18 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PlayerCollisionCollider
   - Water
   - UI
   - Obstacle
   - Player
   - Enemy
-  - 
+  - Map
   - Trap
   - Interactable
   - EnemyProjectile
   - PlayerProjectile
-  - 
+  - Tile
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Interactions
+    uniqueID: 3770427287
     locked: 0
   - name: Entity
     uniqueID: 21571557

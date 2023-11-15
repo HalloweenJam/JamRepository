@@ -18,9 +18,6 @@ public class GameMenu : MonoBehaviour
         {
             Instance = this;
         }
-
-        
-
     }
 
     private void Start()

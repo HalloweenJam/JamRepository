@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 
 namespace Entities
@@ -12,6 +13,7 @@ namespace Entities
         [SerializeField, HideInInspector] private SpriteRenderer _spriteRenderer;
         
         private float _rotation;
+        private bool _isEnabled = true; 
         
         private Camera _camera;
 
@@ -19,30 +21,44 @@ namespace Entities
         {
             _spriteRenderer.sprite = sprite;
         }
-
+        
+        private void Start()
+        {
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed += OnDisable;
+            _camera = Camera.main;
+        }
+        
+        private void OnDisable()
+        {
+            if (InputReaderManager.Instance == null)
+                return;
+            
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged -= (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed -= OnDisable;
+        }
+        
         public void Flip(bool isFacingRight)
         {
-            var s_localScale = transform.localScale;
+            var localScale = transform.localScale;
 
             var value = isFacingRight ? -1f : 1f;
 
-            s_localScale.x = value;
-            s_localScale.y = value;
+            localScale.x = value;
+            localScale.y = value;
 
-            transform.localScale = s_localScale;
+            transform.localScale = localScale;
         }
 
         private void FixedUpdate()
         {
+            if (!_isEnabled) 
+                return;
+            
             var direction = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
             _rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, _rotation + _offset);
-        }
-
-        private void Start()
-        {
-            _camera = Camera.main;
         }
         
         private void OnValidate()

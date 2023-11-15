@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Classes;
 using Entities;
 using UnityEngine;
 
@@ -17,13 +18,14 @@ namespace Player
         public Action<float> OnPlayerTakeDamage;
         
         private float _invisibilityCounter = 1;
+
+        private static readonly Wallet _wallet = new();
         
+        public WeaponSelector WeaponSelector { get; private set; }
+        public Wallet Wallet => _wallet;
         private bool _canIgnoreDamage => _invisibilityCounter > 0;
 
-        private void Start()
-        {
-            _playerController.OnPlayerDashing += _ => _invisibilityCounter = _dashInvisibilityLength; 
-        }
+        public static void DepositMoney(int value) => _wallet.DepositPoints(value);
 
         public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
         {
@@ -38,6 +40,7 @@ namespace Player
             
             CurrentHealth -= damage;
             _invisibilityCounter = _invisibilityLength;
+            _playerController.DisableHurtCollider(_invisibilityLength);
             
             OnEntityTakeDamage?.Invoke();
             OnPlayerTakeDamage?.Invoke((float) CurrentHealth / MaxHealth);
@@ -48,9 +51,20 @@ namespace Player
             return true;
         }
         
+        private void Start()
+        {
+            SetHealth();
+            _playerController.OnPlayerDashing += _ =>
+            {
+                _invisibilityCounter = _dashInvisibilityLength;
+                _playerController.DisableHurtCollider(_dashInvisibilityLength);
+            }; 
+        }
+        
         private void OnValidate()
         {
             _playerController = GetComponent<PlayerController>();
+            WeaponSelector = GetComponent<WeaponSelector>();
             CurrentHealth = MaxHealth;
         }
 

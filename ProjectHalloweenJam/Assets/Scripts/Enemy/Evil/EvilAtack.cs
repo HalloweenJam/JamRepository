@@ -6,33 +6,22 @@ namespace Enemy.Evil
 {
     public class EvilAtack : EnemyAttack
     {
-        private bool _canAttack = true;
-        private bool _isAttacking = false;
-        public bool IsAttacking => _isAttacking;
-   
+        private void Update() => Attack();
+
         public override void Attack()
         {
-            if (_isAttacking || !_canAttack)
+            if (IsReload)
                 return;
 
-            StartCoroutine(AttackCor());
-        }
-
-        private IEnumerator AttackCor()
-        {
-            _isAttacking = true;
-            yield return new WaitForSeconds(2f);
-
             WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
-            _isAttacking = false;
             StartCoroutine(Reload());
         }
 
         private IEnumerator Reload()
         {
-            _canAttack = false;
-            yield return new WaitForSeconds(2f);
-            _canAttack = true;
+            IsReload = true;
+            yield return new WaitForSeconds(1f);
+            IsReload = false;
         }
     }
 }

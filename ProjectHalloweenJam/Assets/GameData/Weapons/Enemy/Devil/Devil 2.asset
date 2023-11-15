@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Devil 2
   m_EditorClassIdentifier: 
   _description:
-    _inHands: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
-    _icon: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
+    _inHands: {fileID: -4502192010138243074, guid: e2869d1d00a52d84bbe6d4968d25e7d2, type: 3}
+    _icon: {fileID: -4502192010138243074, guid: e2869d1d00a52d84bbe6d4968d25e7d2, type: 3}
     _name: 
     _info: 
   _weaponConfig:
@@ -24,7 +24,10 @@ MonoBehaviour:
     _reloadingSpeed: 0.1
   _bulletConfig:
     _bulletType: 2
-    _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
+    _sprite: {fileID: -4502192010138243074, guid: e2869d1d00a52d84bbe6d4968d25e7d2, type: 3}
+    _animatorController:
+      _value: {fileID: 9100000, guid: b7df17295bf54e04f9e3a26100d01733, type: 2}
+      _enabled: 1
     _isEnemyBullet: 1
     _speed: 10
     _damage: 1

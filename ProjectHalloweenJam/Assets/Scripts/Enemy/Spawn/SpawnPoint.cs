@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Enemy.EnemyEntity;
 using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
@@ -10,8 +11,10 @@ public class SpawnPoint : MonoBehaviour
 
     public EnemyStats SpawnEnemy(Transform parent)
     {
-        EnemyStats enemy = Instantiate(_enemyPrefabs[CountEnemy - 1], parent);
+        EnemyStats enemy = Instantiate(_enemyPrefabs[CountEnemy - 1]);
+       
         enemy.transform.position = transform.position;
+        enemy.transform.SetParent(parent);
 
         RemoveEnemyFromList();
         return enemy;
