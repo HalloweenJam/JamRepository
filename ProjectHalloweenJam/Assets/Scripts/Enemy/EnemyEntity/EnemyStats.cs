@@ -10,10 +10,13 @@ namespace Enemy.EnemyEntity
     {
         [Header("Loot")] 
         [SerializeField, Range(0f, 1f)] private float _dropLootChance = .2f;
+
         [Header("Dissolve")]
         [SerializeField] private float _dissolveTime = 1f;
         [SerializeField] private Material _dissolveMaterial;
-        
+        [SerializeField] private bool _canAppearance = true;
+
+
         private bool _dissolved = false;
         private float _elapsedTime = 0f;
         
@@ -27,12 +30,9 @@ namespace Enemy.EnemyEntity
 
         public bool Dissolved => _dissolved;
 
-        private void Start()
-        {
-            SetHealth();
-        }
+        private void Start() => SetHealth();
 
-        public void Spawn(Transform playerPosition)
+        public void Initialize(Transform playerPosition)
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _movement = GetComponent<EnemyMovement>();
@@ -43,7 +43,8 @@ namespace Enemy.EnemyEntity
             _movement.enabled = false;
             _movement.Initialize(playerPosition, this);
 
-            Appearance();
+            if(_canAppearance)
+                Appearance();
         }
 
         public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)

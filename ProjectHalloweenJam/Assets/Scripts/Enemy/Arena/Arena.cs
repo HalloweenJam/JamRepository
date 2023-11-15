@@ -13,6 +13,9 @@ namespace Enemy.Arena
   
         private void CheckEnemyCount()
         {
+            if (_spawnerEnemy == null)
+                return;
+
             _countEnemy--;
             _spawnerEnemy.CheckEnemyIsEmpty();
 
@@ -27,11 +30,14 @@ namespace Enemy.Arena
 
         public void ActivateArena()
         {
+            foreach (Transform wall in _walls)
+                wall.gameObject.SetActive(true);
+
+            if (_spawnerEnemy == null)
+                return;
+
             _spawnerEnemy.SpawnEnemy();
             _countEnemy = _spawnerEnemy.transform.childCount;
-
-            foreach (Transform wall in _walls)       
-                wall.gameObject.SetActive(true);    
         }
 
         private void ArenaCompleted()

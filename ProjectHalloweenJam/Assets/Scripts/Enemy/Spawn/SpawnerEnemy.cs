@@ -33,7 +33,7 @@ public class SpawnerEnemy : MonoBehaviour
             if (_spawnPoints[i].EnemyPrefabs != null && _spawnPoints[i].CountEnemy != 0)
             {
                 EnemyStats enemy = _spawnPoints[i].SpawnEnemy(this.transform);
-                enemy.Spawn(_playerTransform);
+                enemy.Initialize(_playerTransform);
             }
         }
     }
