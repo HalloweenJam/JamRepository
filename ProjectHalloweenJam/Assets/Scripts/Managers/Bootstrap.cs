@@ -13,6 +13,7 @@ namespace Managers
             base.Awake();
             _inputReaderManager.Init();
             _playerController.Init();
+            print("sisi");
         }
     }
 }
