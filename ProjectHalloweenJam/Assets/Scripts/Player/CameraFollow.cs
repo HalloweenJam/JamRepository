@@ -24,11 +24,18 @@ namespace Player
         private void Start()
         {
             InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed += OnDisable;
         }
         
         private void OnDisable()
         {
+            if (InputReaderManager.Instance == null)
+                return;
+            
+            print("unsub");
+            
             InputReaderManager.Instance.OnInputReaderActiveStateChanged -= (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed -= OnDisable;
         }
 
         private void OnValidate()

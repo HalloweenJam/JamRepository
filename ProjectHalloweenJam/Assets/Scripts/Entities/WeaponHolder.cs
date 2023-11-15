@@ -25,12 +25,17 @@ namespace Entities
         private void Start()
         {
             InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed += OnDisable;
             _camera = Camera.main;
         }
         
         private void OnDisable()
         {
+            if (InputReaderManager.Instance == null)
+                return;
+            
             InputReaderManager.Instance.OnInputReaderActiveStateChanged -= (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed -= OnDisable;
         }
         
         public void Flip(bool isFacingRight)

@@ -10,10 +10,12 @@ namespace Gameplay.Interactions
     public class ShopCell : MonoBehaviour, IInteractable
     {
         [SerializeField] private Collectable _collectable;
+        [SerializeField] private SpriteRenderer _itemDisplay;
 
         private void Start()
         {
             _collectable = ShopManager.Instance.GetCollectable();
+            _itemDisplay.sprite = _collectable.Sprite;
         }
 
         public bool Interact(Inventory inventory)
@@ -25,6 +27,11 @@ namespace Gameplay.Interactions
             
             _collectable.Apply(playerStats);
             return true;
+        }
+
+        public string LookAt()
+        {
+            return $"Buy '{_collectable.Name}' for {_collectable.Cost} coins";
         }
     }
 }

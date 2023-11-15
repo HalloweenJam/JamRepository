@@ -1,4 +1,5 @@
-﻿using Core.Interfaces;
+﻿using System;
+using Core.Interfaces;
 using Entities;
 using Managers;
 using Player.Controls;
@@ -14,7 +15,10 @@ namespace Player
 
         [SerializeField, HideInInspector] private Inventory _inventory;
         [SerializeField, HideInInspector] private WeaponSelector _weaponSelector;
-        
+
+        public static Action<string> OnInteractionNearby;
+        public static Action OnInteractionLeft;
+         
         private PlayerStats _playerStats;
         private InputReader _inputReader;
 
@@ -41,6 +45,23 @@ namespace Player
             
             if (overlap.TryGetComponent<IInteractable>(out var interactable))
                 interactable.Interact(_inventory);
+        }
+
+        private void FixedUpdate()
+        {
+            var overlap = Physics2D.OverlapCircle(transform.position, _range, _interactionsLayerMask);
+
+            if (!overlap)
+            {
+                OnInteractionLeft?.Invoke();
+                return;
+            }
+
+            if (!overlap.TryGetComponent<IInteractable>(out var interactable)) 
+                return;
+            
+            var message = interactable.LookAt();
+            OnInteractionNearby?.Invoke(message);
         }
 
         private void OnTriggerEnter2D(Collider2D other)

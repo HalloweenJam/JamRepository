@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Managers
@@ -6,10 +7,13 @@ namespace Managers
     {
         public static T Instance { get; private set; }
 
+        public Action OnInstanceDestroyed;
+        
         protected virtual void Awake() => Instance = this as T;
 
         protected virtual void OnApplicationQuit()
         {
+            OnInstanceDestroyed?.Invoke();
             Instance = null;
             Destroy(gameObject);
         }

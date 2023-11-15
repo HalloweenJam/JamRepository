@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: RifleHolder
   m_EditorClassIdentifier: 
   _sprite: {fileID: 2407328536907620315, guid: a86d1d2d9cf74a5419cc94d5a8ddae2d, type: 3}
+  _name: Rifle
   _cost: 10
   _weapon: {fileID: 11400000, guid: 9dffd703588b6ba4c805f83a85e478c1, type: 2}

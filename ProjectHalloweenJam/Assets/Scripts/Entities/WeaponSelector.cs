@@ -87,8 +87,6 @@ namespace Entities
         {
             var dir = direction > 0 ? 1 : -1;
             
-            print("change");
-            
             _selectedWeaponIndex = (_selectedWeaponIndex + _weapons.Count + dir) % _weapons.Count;
             
             OnWeaponUsed?.Invoke(_currentWeapon, true);

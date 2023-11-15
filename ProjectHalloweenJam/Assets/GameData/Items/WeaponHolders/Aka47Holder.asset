@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Aka47Holder
   m_EditorClassIdentifier: 
   _sprite: {fileID: 7829804072965817479, guid: a86d1d2d9cf74a5419cc94d5a8ddae2d, type: 3}
+  _name: AK-47
   _cost: 1
   _weapon: {fileID: 11400000, guid: 117c11a4f30d50c418ef9b5e6c14764c, type: 2}

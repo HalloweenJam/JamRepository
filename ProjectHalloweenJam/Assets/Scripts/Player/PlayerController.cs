@@ -87,7 +87,9 @@ namespace Player
             _weaponSelector.Init(true);
             
             _inputReader = InputReaderManager.Instance.GetInputReader();
+            
             InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed += OnDisable;
             
             _inputReader.MoveEvent += direction =>
             {
@@ -171,7 +173,11 @@ namespace Player
         
         private void OnDisable()
         {
+            if (InputReaderManager.Instance == null)
+                return;
+            
             InputReaderManager.Instance.OnInputReaderActiveStateChanged -= (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed -= OnDisable;
         }
     }
 }
