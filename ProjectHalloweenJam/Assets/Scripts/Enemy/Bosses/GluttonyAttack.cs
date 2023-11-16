@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GluttonyAttack : EnemyAttack
 {
-    private string _burpAttack = "Burp";
+    private string _splitAttack = "Split";
 
     public override void Attack()
     {
@@ -23,14 +23,12 @@ public class GluttonyAttack : EnemyAttack
     private IEnumerator BurpCoroutine()
     {
         IsAttacking = true;
-        Animator.SetBool(_burpAttack, true);
+        Animator.SetBool(_splitAttack, true);
         yield return new WaitForSeconds(1.25f);
         WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
         yield return new WaitForSeconds(0.5f);
         WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
-        yield return new WaitForSeconds(0.5f);
-        WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
-        Animator.SetBool(_burpAttack, false);
+        Animator.SetBool(_splitAttack, false);
 
         IsAttacking = false;
         StartCoroutine(Reload());

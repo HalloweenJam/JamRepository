@@ -71,8 +71,6 @@ namespace Entities
 
                 _camera = Camera.main;
             }
-
-            _firePoint = transform;
             
             foreach (var weapon in _weaponsToAdd)
             {

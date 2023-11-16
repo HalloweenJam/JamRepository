@@ -30,10 +30,9 @@ namespace Enemy.EnemyEntity
 
         public bool Dissolved => _dissolved;
 
-        private void Start() => SetHealth();
-
         public void Initialize(Transform playerPosition)
         {
+            SetHealth();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _movement = GetComponent<EnemyMovement>();
             _defaultColor = _spriteRenderer.color;

@@ -44,7 +44,7 @@ namespace Projectiles
             _direction = direction;
             _speed = bulletConfig.Speed;
             _damage = bulletConfig.Damage;
-            
+            transform.localScale = new Vector3(bulletConfig.Scale, bulletConfig.Scale, 1f);
             _lifeTimeCounter = _lifeTime;
         }
 

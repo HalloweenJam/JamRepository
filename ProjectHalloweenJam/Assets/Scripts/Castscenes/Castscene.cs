@@ -21,6 +21,8 @@ public class Castscene : MonoBehaviour
     [SerializeField] private Image _dialogueDisplay;
     [SerializeField] private RawImage _minimapRenderer;
 
+
+    [SerializeField] private BossHP _bossBar;
     [SerializeField] private EnemyMovement _bossMovement;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private Transform _destnationTransform;
@@ -49,8 +51,11 @@ public class Castscene : MonoBehaviour
     {
         ShowDialogueDisplay(false);
         ShowInteface(true);
+        _bossBar.ShowBossBaR();
+
         _playerController.enabled = true;
         _bossMovement.enabled = true;
+
     }
 
     private void ShowInteface(bool active)

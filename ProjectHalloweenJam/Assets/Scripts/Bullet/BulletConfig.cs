@@ -13,6 +13,7 @@ namespace Bullet
         [SerializeField] private Sprite _sprite;
         [SerializeField] private OptionalProperty<AnimatorController> _animatorController;
         [SerializeField] private bool _isEnemyBullet = false;
+        [SerializeField] private float _scale = 1f;
         [Space]
         [SerializeField] private float _speed;
         [SerializeField] private int _damage;
@@ -24,6 +25,7 @@ namespace Bullet
         public Sprite Sprite => _sprite;
         public OptionalProperty<AnimatorController> AnimatorController => _animatorController;
 
+        public float Scale => _scale;
         public bool IsEnemyBullet => _isEnemyBullet;
 
         public float Speed => _speed;

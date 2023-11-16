@@ -29,6 +29,7 @@ MonoBehaviour:
       _value: {fileID: 0}
       _enabled: 0
     _isEnemyBullet: 1
+    _scale: 0.75
     _speed: 5
     _damage: 15
     _count: 10

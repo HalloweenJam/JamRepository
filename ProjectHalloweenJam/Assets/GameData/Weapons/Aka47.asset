@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description:
     _inHands: {fileID: 7362661061344524757, guid: 9355908b4923c78408dd411e6050eaef, type: 3}
-    _icon: {fileID: 7829804072965817479, guid: a86d1d2d9cf74a5419cc94d5a8ddae2d, type: 3}
+    _icon: {fileID: -2990053767782719145, guid: a629122b4c4a61d418dc3f582a23466f, type: 3}
     _name: "\u043A\u0430\u043A \u043F\u043E\u0434\u043D\u044F\u0442\u044C \u0431\u0430\u0431\u043B\u0430"
     _info: 
   _weaponConfig:
@@ -29,6 +29,7 @@ MonoBehaviour:
       _value: {fileID: 9100000, guid: 85a1f36d2b2570443a56cdd4c5f39064, type: 2}
       _enabled: 1
     _isEnemyBullet: 0
+    _scale: 1
     _speed: 20
     _damage: 20
     _count: 1
