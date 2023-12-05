@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FatBallGlow_0: -4420585871564500668
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
