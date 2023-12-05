@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae2491422424028963a2a77d453e68a, type: 3}
+  m_Name: Gluttony
+  m_EditorClassIdentifier: 
+  _description:
+    _inHands: {fileID: 0}
+    _icon: {fileID: 0}
+    _name: 
+    _info: 
+  _weaponConfig:
+    _totalBullets: 80
+    _bulletsPerBatch: 7
+    _attackSpeed: 0.1
+    _reloadingSpeed: 0
+  _bulletConfig:
+    _bulletType: 3
+    _sprite: {fileID: 8651862619831560131, guid: 046d3c135b97ec146a7d70beb37cf769, type: 3}
+    _defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    _customMaterial:
+      _value: {fileID: 2100000, guid: 4917f21938502d7469b213db8ca11b03, type: 2}
+      _enabled: 1
+    _animatorController:
+      _value: {fileID: 0}
+      _enabled: 0
+    _isEnemyBullet: 1
+    _scale: 0.9
+    _speed: 5
+    _damage: 25
+    _count: 10
+    _radius: 80

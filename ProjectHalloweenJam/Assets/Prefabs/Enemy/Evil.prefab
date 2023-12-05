@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8981587471485145456}
   - component: {fileID: 8452074653538083626}
-  - component: {fileID: 5962030578475604751}
+  - component: {fileID: 4506203551140001295}
   - component: {fileID: -1334949405458990762}
   - component: {fileID: 8595709411224823983}
   - component: {fileID: 2798476285419785165}
@@ -58,7 +58,8 @@ MonoBehaviour:
   _dropLootChance: 0.2
   _dissolveTime: 1
   _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
---- !u!114 &5962030578475604751
+  _canAppearance: 1
+--- !u!114 &4506203551140001295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,9 +68,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6855556829068113766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cd91c37293a5604694d348172f03939, type: 3}
+  m_Script: {fileID: 11500000, guid: a2df6613a140852479631e235a8b8f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _shootDistance: 10
 --- !u!114 &-1334949405458990762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,8 +261,8 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.45
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 3
+  m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0

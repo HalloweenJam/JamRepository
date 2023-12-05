@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: 20 refill
   m_EditorClassIdentifier: 
   _sprite: {fileID: -1865607800944187221, guid: 1720eacd62e367241a2a5568a3aba4b2, type: 3}
+  _name: 20% ammo refill
+  _cost: 3
   _refillAmount: 20
   _isPercent: 1

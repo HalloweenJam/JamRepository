@@ -1,6 +1,5 @@
 using Core.Interfaces;
 using Entities;
-using System.Security.Authentication.ExtendedProtection;
 using UnityEngine;
 
 namespace Enemy.EnemyEntity

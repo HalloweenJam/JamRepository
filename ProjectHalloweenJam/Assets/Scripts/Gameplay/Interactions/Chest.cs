@@ -41,5 +41,10 @@ namespace Gameplay.Interactions
             
             return true;
         }
+
+        public string LookAt()
+        {
+            return "Open";
+        }
     }
 }

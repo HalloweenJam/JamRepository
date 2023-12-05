@@ -32,6 +32,8 @@ namespace Entities
         
         public Action<WeaponData, bool> OnWeaponUsed;
 
+        public Transform FirePoint => _firePoint;
+
         public void Add(BaseWeapon weapon) => _weapons.Add(new WeaponData(weapon));
 
         public void Init(bool isPlayer = false) => _isPlayer = isPlayer;
@@ -64,8 +66,6 @@ namespace Entities
 
                 _camera = Camera.main;
             }
-
-            _firePoint = transform;
             
             foreach (var weapon in _weaponsToAdd)
             {

@@ -1,43 +1,38 @@
 using Enemy.EnemyEntity;
+using System;
 using UnityEngine;
 
 namespace Enemy.Arena
 {
     public class Arena : MonoBehaviour
     {
-        [SerializeField] private SpawnerEnemy _spawnerEnemy;
         [SerializeField] private Transform _walls;
-        private int _countEnemy;
+        [SerializeField] private SpawnZone _spawnZone;
+        [SerializeField] private SpawnerEnemy _spawner;
 
-        private void Awake() => EnemyStats.OnDeath += (_, _) => CheckEnemyCount(); 
-  
-        private void CheckEnemyCount()
+        private void Awake()
         {
-            _countEnemy--;
-            _spawnerEnemy.CheckEnemyIsEmpty();
-
-            if (_countEnemy == 0 && _spawnerEnemy.CanSpawn)
-            {
-                _spawnerEnemy.SpawnEnemy();
-                _countEnemy = _spawnerEnemy.transform.childCount - 1;
-            }
-            else if(_countEnemy == 0 && !_spawnerEnemy.CanSpawn)
-                ArenaCompleted();
+            SpawnerEnemy.OnAllEnemiesDied += ArenaCompleted;
+            _spawnZone.OnActivateArena += ActivateArena;
         }
 
         public void ActivateArena()
         {
-            _spawnerEnemy.SpawnEnemy();
-            _countEnemy = _spawnerEnemy.transform.childCount;
-
-            foreach (Transform wall in _walls)       
-                wall.gameObject.SetActive(true);    
+            _spawner.ActivateArena();
+            foreach (Transform wall in _walls)
+                wall.gameObject.SetActive(true);
         }
 
         private void ArenaCompleted()
         {
             foreach (Transform wall in _walls)
                 wall.gameObject.SetActive(false);
+        }
+
+        private void OnDisable() 
+        {
+            SpawnerEnemy.OnAllEnemiesDied -= ArenaCompleted;
+            _spawnZone.OnActivateArena -= ActivateArena;
         }
     }
 }

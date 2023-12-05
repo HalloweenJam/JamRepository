@@ -19,7 +19,8 @@ namespace Player
 
         [SerializeField] private WeaponHolder _weaponHolder;
 
-        [Header("Dash")] 
+        [Header("Dash")]
+        [SerializeField] private TrailRenderer _trailRenderer;
         [SerializeField] private BoxCollider2D _hurtCollider;
         [Space]
         [SerializeField] private float _dashForce = 20;
@@ -38,6 +39,7 @@ namespace Player
         
         private Camera _camera;
 
+        private bool _isEnabled = true;
         private bool _isDashing;
         private float _dashDelayCounter;
         private int _dashesCount;
@@ -54,17 +56,6 @@ namespace Player
         
         private bool _canDash => !_isDashing && _dashesCount > 0;
 
-        public void DisableHurtCollider(float time)
-        {
-            _hurtCollider.enabled = false;
-            StartCoroutine(EnableHurtCollider(time));
-        }
-
-        private IEnumerator EnableHurtCollider(float time)
-        {
-            yield return new WaitForSeconds(time);
-            _hurtCollider.enabled = true;
-        }
 
         private void OnValidate()
         {
@@ -89,6 +80,9 @@ namespace Player
             
             _inputReader = InputReaderManager.Instance.GetInputReader();
             
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed += OnDisable;
+            
             _inputReader.MoveEvent += direction =>
             {
                 if (direction != Vector2.zero)
@@ -106,12 +100,34 @@ namespace Player
                     Dash();
             };
         }
+        private void Update()
+        {
+            if (_dashesCount >= _maxDashesCount)
+                return;
+
+            _dashDelayCounter -= Time.deltaTime;
+
+            if (_dashDelayCounter > 0)
+                return;
+
+            _dashDelayCounter = _dashDelay;
+            _dashesCount++;
+        }
+
+        private void FixedUpdate()
+        {
+            if (!_isEnabled)
+                return;
+
+            Move();
+            Rotate();
+        }
+
 
         private void Dash()
         {
             _isDashing = true;
             OnPlayerDashing?.Invoke(_isDashing);
-
             _dashesCount--;
             
             _rigidbody.AddForce(new Vector2(_cashedMovementDirection.x, _cashedMovementDirection.y) * (_speed * _dashForce));
@@ -120,26 +136,6 @@ namespace Player
             OnPlayerDashing?.Invoke(_isDashing);
         }
         
-        private void Update()
-        {
-            if (_dashesCount >= _maxDashesCount)
-                return;
-            
-            _dashDelayCounter -= Time.deltaTime;
-
-            if (_dashDelayCounter > 0) 
-                return;
-            
-            _dashDelayCounter = _dashDelay;
-            _dashesCount++;
-        }
-
-        private void FixedUpdate()
-        {
-            Move();
-            Rotate();
-        }
-
         private void Rotate()
         {
             var mousePosX = _camera.ScreenToWorldPoint(Input.mousePosition).x;
@@ -164,6 +160,26 @@ namespace Player
             _animator.Play(_run);
             
             _rigidbody.AddForce(new Vector2(_movementDirection.x, _movementDirection.y) * _speed);
+        }
+        public void DisableHurtCollider(float time)
+        {
+            _hurtCollider.enabled = false;
+            StartCoroutine(EnableHurtCollider(time));
+        }
+
+        private IEnumerator EnableHurtCollider(float time)
+        {
+            yield return new WaitForSeconds(time);
+            _hurtCollider.enabled = true;
+        }
+
+        private void OnDisable()
+        {
+            if (InputReaderManager.Instance == null)
+                return;
+            
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged -= (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed -= OnDisable;
         }
     }
 }

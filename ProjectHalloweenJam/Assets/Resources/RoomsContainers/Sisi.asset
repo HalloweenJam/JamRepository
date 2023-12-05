@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c37831a5f074b96b5563023c528e988, type: 3}
+  m_Name: Sisi
+  m_EditorClassIdentifier: 
+  _requiredRooms:
+  - _room: {fileID: 898115123966705286, guid: e86cf073f3ab34f44a92ccb8bbbbe33c, type: 3}
+    _minRooms:
+      _value: 0
+      _enabled: 0
+  - _room: {fileID: 5799390160924250788, guid: 038c71e14fb50874fa44031182bfa3e7, type: 3}
+    _minRooms:
+      _value: 1
+      _enabled: 1
+  _roomsData:
+    weightedList:
+    - weightedItem:
+        _room: {fileID: 1028993062075011891, guid: f2f96cd89f9f1254f89e108725823312, type: 3}
+        _minRooms:
+          _value: 0
+          _enabled: 0
+      weight: 30
+    - weightedItem:
+        _room: {fileID: 8256205755496121060, guid: 89adac8cd78b3df48896717e71b6d617, type: 3}
+        _minRooms:
+          _value: 1
+          _enabled: 1
+      weight: 100

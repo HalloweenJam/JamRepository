@@ -1,6 +1,6 @@
-﻿using Core.Classes;
 using UnityEditor;
 using UnityEngine;
+using Utilities.Classes;
 
 namespace Editor
 {

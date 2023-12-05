@@ -1,18 +1,17 @@
 using System.Collections;
 using UnityEngine;
 using Enemy.EnemyEntity;
+using UnityEngine.Video;
 
 namespace Enemy.Evil
 {
     public class EvilAtack : EnemyAttack
     {
-        private void Update() => Attack();
-
         public override void Attack()
         {
             if (IsReload)
                 return;
-
+          
             WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
             StartCoroutine(Reload());
         }
