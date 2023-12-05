@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     public Action Attack;
 
     public Transform Player => PlayerTransform;
+    public NavMeshAgent NavAgent => Agent;
 
     private Vector3 _defaultScale;
 
@@ -31,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
         _defaultScale = transform.localScale;
     }
 
-    private void Update()
+    public virtual void Update()
     {
         if (PlayerTransform == null)
             return;
@@ -44,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
 
     public virtual void CanAttack() => Attack?.Invoke();
 
-    private void Rotation() 
+    protected void Rotation() 
     {
         var scale = _defaultScale;
         scale.x = transform.position.x < PlayerTransform.position.x ? scale.x : -1f * scale.x;

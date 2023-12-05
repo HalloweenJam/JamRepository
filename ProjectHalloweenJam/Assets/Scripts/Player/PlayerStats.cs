@@ -39,7 +39,7 @@ namespace Player
             }
             
             CurrentHealth -= damage;
-            _invisibilityCounter = _invisibilityLength;
+            _invisibilityCounter = _invisibilityLength;           
             _playerController.DisableHurtCollider(_invisibilityLength);
             
             OnEntityTakeDamage?.Invoke();

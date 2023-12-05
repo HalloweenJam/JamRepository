@@ -19,7 +19,8 @@ namespace Player
 
         [SerializeField] private WeaponHolder _weaponHolder;
 
-        [Header("Dash")] 
+        [Header("Dash")]
+        [SerializeField] private TrailRenderer _trailRenderer;
         [SerializeField] private BoxCollider2D _hurtCollider;
         [Space]
         [SerializeField] private float _dashForce = 20;
@@ -53,17 +54,6 @@ namespace Player
         
         private bool _canDash => !_isDashing && _dashesCount > 0;
 
-        public void DisableHurtCollider(float time)
-        {
-            _hurtCollider.enabled = false;
-            StartCoroutine(EnableHurtCollider(time));
-        }
-
-        private IEnumerator EnableHurtCollider(float time)
-        {
-            yield return new WaitForSeconds(time);
-            _hurtCollider.enabled = true;
-        }
 
         private void OnValidate()
         {
@@ -108,30 +98,16 @@ namespace Player
                     Dash();
             };
         }
-
-        private void Dash()
-        {
-            _isDashing = true;
-            OnPlayerDashing?.Invoke(_isDashing);
-
-            _dashesCount--;
-            
-            _rigidbody.AddForce(new Vector2(_cashedMovementDirection.x, _cashedMovementDirection.y) * (_speed * _dashForce));
-            
-            _isDashing = false;
-            OnPlayerDashing?.Invoke(_isDashing);
-        }
-        
         private void Update()
         {
             if (_dashesCount >= _maxDashesCount)
                 return;
-            
+
             _dashDelayCounter -= Time.deltaTime;
 
-            if (_dashDelayCounter > 0) 
+            if (_dashDelayCounter > 0)
                 return;
-            
+
             _dashDelayCounter = _dashDelay;
             _dashesCount++;
         }
@@ -140,11 +116,24 @@ namespace Player
         {
             if (!_isEnabled)
                 return;
-            
+
             Move();
             Rotate();
         }
 
+
+        private void Dash()
+        {
+            _isDashing = true;
+            OnPlayerDashing?.Invoke(_isDashing);
+            _dashesCount--;
+            
+            _rigidbody.AddForce(new Vector2(_cashedMovementDirection.x, _cashedMovementDirection.y) * (_speed * _dashForce));
+            
+            _isDashing = false;
+            OnPlayerDashing?.Invoke(_isDashing);
+        }
+        
         private void Rotate()
         {
             var mousePosX = _camera.ScreenToWorldPoint(Input.mousePosition).x;
@@ -170,7 +159,18 @@ namespace Player
             
             _rigidbody.AddForce(new Vector2(_movementDirection.x, _movementDirection.y) * _speed);
         }
-        
+        public void DisableHurtCollider(float time)
+        {
+            _hurtCollider.enabled = false;
+            StartCoroutine(EnableHurtCollider(time));
+        }
+
+        private IEnumerator EnableHurtCollider(float time)
+        {
+            yield return new WaitForSeconds(time);
+            _hurtCollider.enabled = true;
+        }
+
         private void OnDisable()
         {
             if (InputReaderManager.Instance == null)

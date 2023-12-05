@@ -1,22 +1,21 @@
 using Core;
-using Enemy.Arena;
+using System;
 using UnityEngine;
 
 public class SpawnZone : MonoBehaviour
 {
     [SerializeField] private bool _isBossArena = false;
-    [SerializeField] private Castscene castscene;
-    private Arena _arena;
+    [SerializeField] private Castscene _castscene;
 
-    private void Start() => _arena = transform.root.GetComponent<Arena>();
+    public Action OnActivateArena;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null && collision.gameObject.layer == 7) // 7 is player layer
+        if (collision != null && collision.gameObject.layer == 7) 
         {
             if (_isBossArena)
-                castscene.Activate();
-            _arena.ActivateArena();
+                _castscene.Activate();
+            OnActivateArena?.Invoke();
             this.Deactivate();
         }
     }

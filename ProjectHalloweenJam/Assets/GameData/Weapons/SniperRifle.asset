@@ -25,6 +25,10 @@ MonoBehaviour:
   _bulletConfig:
     _bulletType: 0
     _sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
+    _defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    _customMaterial:
+      _value: {fileID: 0}
+      _enabled: 0
     _animatorController:
       _value: {fileID: 9100000, guid: 85a1f36d2b2570443a56cdd4c5f39064, type: 2}
       _enabled: 1

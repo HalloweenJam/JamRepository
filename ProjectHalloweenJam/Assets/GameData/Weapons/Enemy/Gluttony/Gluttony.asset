@@ -25,12 +25,16 @@ MonoBehaviour:
   _bulletConfig:
     _bulletType: 3
     _sprite: {fileID: 8651862619831560131, guid: 046d3c135b97ec146a7d70beb37cf769, type: 3}
+    _defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    _customMaterial:
+      _value: {fileID: 2100000, guid: 4917f21938502d7469b213db8ca11b03, type: 2}
+      _enabled: 1
     _animatorController:
       _value: {fileID: 0}
       _enabled: 0
     _isEnemyBullet: 1
-    _scale: 0.75
+    _scale: 0.9
     _speed: 5
-    _damage: 15
+    _damage: 25
     _count: 10
     _radius: 80

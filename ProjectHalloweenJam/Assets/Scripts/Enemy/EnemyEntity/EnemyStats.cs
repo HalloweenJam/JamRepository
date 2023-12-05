@@ -16,7 +16,7 @@ namespace Enemy.EnemyEntity
         [SerializeField] private Material _dissolveMaterial;
         [SerializeField] private bool _canAppearance = true;
 
-
+        private bool _isDead = false;
         private bool _dissolved = false;
         private float _elapsedTime = 0f;
         
@@ -57,7 +57,7 @@ namespace Enemy.EnemyEntity
             OnEntityTakeDamage?.Invoke();
             
             CurrentHealth -= damage;
-            if (CurrentHealth <= 0)
+            if (CurrentHealth <= 0 && !_isDead)           
                 Kill();
 
             return true;
@@ -65,9 +65,10 @@ namespace Enemy.EnemyEntity
 
         protected override void Kill()
         {
+            _isDead = true;
             CurrentHealth = 0;
             OnDeath?.Invoke(transform.position, _dropLootChance);
-
+           
             Destroy(gameObject);
         }
 

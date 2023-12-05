@@ -27,7 +27,7 @@ public class DialogueDisplay : MonoBehaviour
 
     private void OnDisable()
     {
-        DialogueManager.Instance.OnStartDialogue -= (string name) => { };
-        DialogueManager.Instance.OnNextSentence -= (string sentence) => { };
+        DialogueManager.Instance.OnStartDialogue -= (string name) => _nameNPC.text = name;
+        DialogueManager.Instance.OnNextSentence -= (string sentence) => StartCoroutine(TypeSentence(sentence));
     }
 }

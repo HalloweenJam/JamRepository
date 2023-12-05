@@ -11,6 +11,8 @@ namespace Bullet
     {
         [SerializeField] private BulletType _bulletType;
         [SerializeField] private Sprite _sprite;
+        [SerializeField] private Material _defaultMaterial;
+        [SerializeField] private OptionalProperty<Material> _customMaterial;
         [SerializeField] private OptionalProperty<AnimatorController> _animatorController;
         [SerializeField] private bool _isEnemyBullet = false;
         [SerializeField] private float _scale = 1f;
@@ -23,6 +25,9 @@ namespace Bullet
         
         public BulletType Type => _bulletType;
         public Sprite Sprite => _sprite;
+
+        public Material DefaultMaterial => _defaultMaterial;
+        public OptionalProperty<Material> CustomMaterial => _customMaterial;
         public OptionalProperty<AnimatorController> AnimatorController => _animatorController;
 
         public float Scale => _scale;

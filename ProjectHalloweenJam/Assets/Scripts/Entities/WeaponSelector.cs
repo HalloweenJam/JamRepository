@@ -31,6 +31,8 @@ namespace Entities
         
         public Action<WeaponData, bool> OnWeaponUsed;
 
+        public Transform FirePoint => _firePoint;
+
         public void Add(BaseWeapon weapon) => _weapons.Add(new WeaponData(weapon));
 
         public bool TryToAttack(Vector2 targetPosition, bool isDirection = true)

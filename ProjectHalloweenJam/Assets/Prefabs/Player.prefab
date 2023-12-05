@@ -471,6 +471,7 @@ MonoBehaviour:
   _mass: 1
   _speed: 100
   _weaponHolder: {fileID: 7033296657604008231}
+  _trailRenderer: {fileID: 0}
   _hurtCollider: {fileID: 990256074493905575}
   _dashForce: 20
   _dashDelay: 3
