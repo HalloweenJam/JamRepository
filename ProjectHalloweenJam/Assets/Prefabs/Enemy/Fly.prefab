@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3440297373342935336}
   - component: {fileID: 3339767716003175521}
   - component: {fileID: 3749840463090854485}
+  - component: {fileID: 3713680364662920799}
   m_Layer: 8
   m_Name: Fly
   m_TagString: Untagged
@@ -55,8 +56,6 @@ MonoBehaviour:
   _maxHealth: 75
   CurrentHealth: 5
   _dropLootChance: 0.2
-  _dissolveTime: 1
-  _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
 --- !u!114 &440553403702090537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +121,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2275542139351671705, guid: f55c7b52f943a524a8a85d3bd55b4b9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -268,3 +267,18 @@ MonoBehaviour:
   _flashMaterial: {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
   _spriteRenderer: {fileID: 4982913484937996174}
   _entityStats: {fileID: 5706745955460684541}
+--- !u!114 &3713680364662920799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290981419494193894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac7d8b02f2420943bc927cfb52dd779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dissolveTime: 1
+  _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
+  _canAppearance: 1

@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6172047065351547928}
   - component: {fileID: 1792343139680819590}
   - component: {fileID: -6567987255240345523}
+  - component: {fileID: 7418417132993801132}
   m_Layer: 8
   m_Name: Evil
   m_TagString: Untagged
@@ -56,9 +57,6 @@ MonoBehaviour:
   _maxHealth: 50
   CurrentHealth: 5
   _dropLootChance: 0.2
-  _dissolveTime: 1
-  _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
-  _canAppearance: 1
 --- !u!114 &4506203551140001295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _shootDistance: 10
 --- !u!114 &-1334949405458990762
 MonoBehaviour:
@@ -144,7 +142,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 8622212870212576729, guid: 4f2454a56aa1f534db1480478788b298, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -290,3 +288,18 @@ MonoBehaviour:
   _flashMaterial: {fileID: 2100000, guid: 574cdafd5e503cd4fa56e885252adf6d, type: 2}
   _spriteRenderer: {fileID: 2798476285419785165}
   _entityStats: {fileID: 8452074653538083626}
+--- !u!114 &7418417132993801132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855556829068113766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac7d8b02f2420943bc927cfb52dd779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dissolveTime: 1
+  _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
+  _canAppearance: 1

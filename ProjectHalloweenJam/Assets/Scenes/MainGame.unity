@@ -241,6 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96a87f0c90f4ba28ceda464e6196b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerTransform: {fileID: 1603527920}
+  _navMeshSurface: {fileID: 8275800414497472856}
   _generationLayerMask:
     serializedVersion: 2
     m_Bits: 32768
@@ -1072,7 +1074,15 @@ PrefabInstance:
     - target: {fileID: 4301401365410411109, guid: 6c885084b223348449a4f0b11126291b, type: 3}
       propertyPath: _playerStats
       value: 
-      objectReference: {fileID: 2032747448}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053902910886759284, guid: 6c885084b223348449a4f0b11126291b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053902910886759284, guid: 6c885084b223348449a4f0b11126291b, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6841496928261290306, guid: 6c885084b223348449a4f0b11126291b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1167,17 +1177,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 234f1d2b2d8d478fbabff793587405c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2032747448 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3276824683475747444, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
-  m_PrefabInstance: {fileID: 497246372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8f1fe70e2744539ced6c601afbb492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1985400161453402392

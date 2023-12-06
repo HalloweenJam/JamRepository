@@ -54,7 +54,6 @@ namespace Player
         
         private bool _canDash => !_isDashing && _dashesCount > 0;
 
-
         private void OnValidate()
         {
             _rigidbody = GetComponent<Rigidbody2D>();

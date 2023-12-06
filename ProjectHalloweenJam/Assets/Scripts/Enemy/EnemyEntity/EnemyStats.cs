@@ -5,44 +5,37 @@ using UnityEngine;
 
 namespace Enemy.EnemyEntity
 {
-    [RequireComponent(typeof(EnemyMovement), typeof(SpriteRenderer))]
+    [RequireComponent(typeof(EnemyMovement), typeof(SpriteRenderer), typeof(DissolveEffect))]
     public class EnemyStats : EntityStats
     {
         [Header("Loot")] 
         [SerializeField, Range(0f, 1f)] private float _dropLootChance = .2f;
 
-        [Header("Dissolve")]
-        [SerializeField] private float _dissolveTime = 1f;
-        [SerializeField] private Material _dissolveMaterial;
-        [SerializeField] private bool _canAppearance = true;
-
         private bool _isDead = false;
-        private bool _dissolved = false;
-        private float _elapsedTime = 0f;
-        
+     
         private EnemyMovement _movement;
         private SpriteRenderer _spriteRenderer;
+        private DissolveEffect _dissolveEffect;
         private Color _defaultColor;
 
         public static Action<Vector2, float> OnDeath;
         
         private static readonly int Fade = Shader.PropertyToID("_Fade");
 
-        public bool Dissolved => _dissolved;
+        public bool Dissolved => _dissolveEffect.Dissolved;
 
         public void Initialize(Transform playerPosition)
         {
             SetHealth();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _movement = GetComponent<EnemyMovement>();
+            _dissolveEffect = GetComponent<DissolveEffect>();
             _defaultColor = _spriteRenderer.color;
-
-            _spriteRenderer.material = _dissolveMaterial;
-            
+ 
             _movement.enabled = false;
             _movement.Initialize(playerPosition, this);
 
-            if(_canAppearance)
+            if(_dissolveEffect.CanAppearance)
                 Appearance();
         }
 
@@ -72,46 +65,9 @@ namespace Enemy.EnemyEntity
             Destroy(gameObject);
         }
 
-        public void Appearance() => StartCoroutine(AppearanceCor());
+        public void Appearance() => _dissolveEffect.Appearance(_movement);
 
-        public void Dissolve() => StartCoroutine(DissolveCor());
+        public void Dissolve() => _dissolveEffect.Dissolve(_movement);
 
-        private IEnumerator AppearanceCor()
-        {
-            _dissolved = false;
-            float fadeMaterial = 0;
-            float percent = (1 / _dissolveTime);
-
-            while (_elapsedTime < _dissolveTime)
-            {
-                fadeMaterial += percent * Time.deltaTime;
-                _elapsedTime += Time.deltaTime;
-                _spriteRenderer.material.SetFloat(Fade, fadeMaterial);
-                yield return null;
-            }
-            _elapsedTime = 0f;
-            _movement.enabled = true;
-            _spriteRenderer.material.SetFloat(Fade, 1f);
-            _dissolved = true;
-        }
-
-        private IEnumerator DissolveCor()
-        {
-            _dissolved = false;
-            float fadeMaterial = 1;
-            float percent = -(1 / _dissolveTime);
-
-            while (_elapsedTime < _dissolveTime)
-            {
-                fadeMaterial += percent * Time.deltaTime;
-                _elapsedTime += Time.deltaTime;
-                _spriteRenderer.material.SetFloat(Fade, fadeMaterial);
-                yield return null;
-            }
-            _elapsedTime = 0f;
-            _movement.enabled = true;
-            _spriteRenderer.material.SetFloat(Fade, 0f);
-            _dissolved = true;
-        }
     }
 }
