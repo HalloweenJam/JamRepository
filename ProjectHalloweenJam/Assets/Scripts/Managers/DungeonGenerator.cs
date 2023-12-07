@@ -6,11 +6,14 @@ using UnityEngine;
 using Utilities.Classes.Delaunay;
 using CorridorGeneration;
 using static Utilities.Classes.Delaunay.Delaunay;
+using NavMeshPlus.Components;
 
 namespace Managers
 {
     public class DungeonGenerator : Singleton<DungeonGenerator>
     {
+        [SerializeField] private Transform _playerTransform;
+        [SerializeField] private NavMeshSurface _navMeshSurface;
         [SerializeField] private LayerMask _generationLayerMask;
         [SerializeField] private Vector2Int _range = new(40, 40);
         [SerializeField] private int _roomsCount;
@@ -28,7 +31,10 @@ namespace Managers
         
         private bool _isClusteringFinishing;
         private bool _isGenerationFinished;
-        
+
+        public Transform PlayerTransform => _playerTransform;
+
+
         private void Update()
         {
             if (!_generate)
@@ -65,6 +71,11 @@ namespace Managers
                 await Awaitable.WaitForSecondsAsync(0.2f);
             }
             CorridorGenerator.Instance.DeleteDisabledCorridors();
+
+            _navMeshSurface.RemoveData();
+            _navMeshSurface.AddData();
+            var data = _navMeshSurface.navMeshData;
+            _navMeshSurface.UpdateNavMesh(data);
         }
 
         private IEnumerator GeneratedRooms()

@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections.Generic;
 using Enemy.EnemyEntity;
 using System;
+using Managers;
 
 public class SpawnerEnemy : MonoBehaviour
 {
-    [SerializeField] private Transform _playerTransform;
     [SerializeField] private Transform _spawnPoinsTransfrom;
     [SerializeField] private bool _spawnOnStart = false;
 
@@ -41,7 +41,7 @@ public class SpawnerEnemy : MonoBehaviour
             if (_spawnPoints[i].EnemyPrefabs != null && !_spawnPoints[i].IsEmpty)
             {
                 EnemyStats enemy = _spawnPoints[i].SpawnEnemy(this.transform);
-                enemy.Initialize(_playerTransform);
+                enemy.Initialize(DungeonGenerator.Instance.PlayerTransform);
             }
         }
     }

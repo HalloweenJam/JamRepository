@@ -2139,6 +2139,7 @@ GameObject:
   - component: {fileID: 6458430602929321925}
   - component: {fileID: 5458174988114303695}
   - component: {fileID: 8549002036902402560}
+  - component: {fileID: 3894150082167076198}
   m_Layer: 15
   m_Name: Ground
   m_TagString: Untagged
@@ -4106,6 +4107,22 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 5031247539772177430}
+--- !u!114 &3894150082167076198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5031247539772177430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &5307982032108270459
 GameObject:
   m_ObjectHideFlags: 0
@@ -5202,6 +5219,7 @@ GameObject:
   - component: {fileID: 6216595169288680176}
   - component: {fileID: 8335090971404752151}
   - component: {fileID: 3592310462964550764}
+  - component: {fileID: 430398581564028465}
   m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
@@ -7133,6 +7151,22 @@ CompositeCollider2D:
   m_OffsetDistance: 0.12
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 7534269853910452927}
+--- !u!114 &430398581564028465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7534269853910452927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &7787782579477274658
 GameObject:
   m_ObjectHideFlags: 0

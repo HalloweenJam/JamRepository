@@ -48,3 +48,6 @@ TagManager:
   - name: EntityWeapon
     uniqueID: 2338951163
     locked: 0
+  - name: Wall
+    uniqueID: 3589191813
+    locked: 0

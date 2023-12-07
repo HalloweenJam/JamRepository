@@ -24,14 +24,20 @@ MonoBehaviour:
   _roomsData:
     weightedList:
     - weightedItem:
-        _room: {fileID: 1028993062075011891, guid: f2f96cd89f9f1254f89e108725823312, type: 3}
+        _room: {fileID: 967713200481759543, guid: 4e7ab43d335b378488aff0dc7cb59aa7, type: 3}
         _minRooms:
           _value: 0
           _enabled: 0
-      weight: 30
+      weight: 60
     - weightedItem:
         _room: {fileID: 8256205755496121060, guid: 89adac8cd78b3df48896717e71b6d617, type: 3}
         _minRooms:
           _value: 1
           _enabled: 1
-      weight: 100
+      weight: 20
+    - weightedItem:
+        _room: {fileID: 5951047740166616327, guid: 03a8b14c6dc45ce449cc0ef98519abb0, type: 3}
+        _minRooms:
+          _value: 1
+          _enabled: 1
+      weight: 20

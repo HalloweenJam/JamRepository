@@ -2,6 +2,7 @@ using Core;
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class SpawnZone : MonoBehaviour
 {
     [SerializeField] private bool _isBossArena = false;
