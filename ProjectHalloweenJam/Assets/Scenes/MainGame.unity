@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 000000009727bce0e5274901fb8f698b
+  m_ApplyToSortingLayers: 000000009727bce0e5274901fb8f698b85b8eed5
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1074,7 +1074,7 @@ PrefabInstance:
     - target: {fileID: 4301401365410411109, guid: 6c885084b223348449a4f0b11126291b, type: 3}
       propertyPath: _playerStats
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2068012923}
     - target: {fileID: 5053902910886759284, guid: 6c885084b223348449a4f0b11126291b, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1179,6 +1179,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234f1d2b2d8d478fbabff793587405c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2068012923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3276824683475747444, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+  m_PrefabInstance: {fileID: 497246372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8f1fe70e2744539ced6c601afbb492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1985400161453402392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1234,10 +1245,6 @@ PrefabInstance:
     - target: {fileID: 6253388076112731417, guid: b58dd62b6a279a6438a0dc6427accf13, type: 3}
       propertyPath: m_Name
       value: Camera Follow
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253388076112731417, guid: b58dd62b6a279a6438a0dc6427accf13, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1368,26 +1375,6 @@ PrefabInstance:
     - target: {fileID: 7832991373633342900, guid: 50c2ced3d70822b44bac33233c835247, type: 3}
       propertyPath: m_Name
       value: Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 7832991373633342900, guid: 50c2ced3d70822b44bac33233c835247, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8090543751203715694, guid: 50c2ced3d70822b44bac33233c835247, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8090543751203715694, guid: 50c2ced3d70822b44bac33233c835247, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838388887069763689, guid: 50c2ced3d70822b44bac33233c835247, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838388887069763689, guid: 50c2ced3d70822b44bac33233c835247, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
