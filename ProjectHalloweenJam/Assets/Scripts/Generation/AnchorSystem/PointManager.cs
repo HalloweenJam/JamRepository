@@ -1,0 +1,48 @@
+﻿using System.Collections.Generic;
+using Generation.AnchorSystem.Data;
+using UnityEngine;
+using Utilities;
+
+namespace Generation.AnchorSystem
+{
+    public class PointManager : MonoBehaviour
+    {
+        [SerializeField] private SpawnPointsData _spawnPointsData;
+
+        private readonly List<int> _usedIndexes = new();
+        private readonly List<Vector2> _additionalSpawnPositions = new();
+        
+        public static PointManager Instance { get; private set; }
+        
+        public int PointsCount => _spawnPositions.Count;
+        private IReadOnlyList<Vector2> _spawnPositions => _spawnPointsData.Positions;
+        private List<Vector2> _totalSpawnPositions => _additionalSpawnPositions.Join<Vector2, IReadOnlyList<Vector2>>(_spawnPointsData.Positions);
+        
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
+        }
+
+        public Vector2 GetPointPosition()
+        {
+            var id = _totalSpawnPositions.GetRandomUnusedId(_usedIndexes);
+            _usedIndexes.Add(id);
+            
+            return _totalSpawnPositions[id];
+        }
+
+        public void AddNewPositions(int count)
+        {
+            count = Mathf.Abs(count);
+            
+            PositionsGenerator.Instance.GenerateSpawnPositions(count, _additionalSpawnPositions);
+        }
+    }
+}
