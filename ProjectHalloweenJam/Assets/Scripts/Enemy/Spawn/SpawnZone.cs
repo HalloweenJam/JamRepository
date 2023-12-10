@@ -8,7 +8,7 @@ public class SpawnZone : MonoBehaviour
     [SerializeField] private bool _isBossArena = false;
     [SerializeField] private Castscene _castscene;
 
-    public Action OnActivateArena;
+    public Action OnEntered;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,8 +16,8 @@ public class SpawnZone : MonoBehaviour
         {
             if (_isBossArena)
                 _castscene.Activate();
-            OnActivateArena?.Invoke();
-            this.Deactivate();
+            OnEntered?.Invoke();
+            gameObject.SetActive(false);
         }
     }
 }

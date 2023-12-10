@@ -35,6 +35,7 @@ namespace Gameplay.Interactions
         {
             _collider = GetComponent<CircleCollider2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer.sortingOrder = 2;
 
             _collider.isTrigger = true;
         }

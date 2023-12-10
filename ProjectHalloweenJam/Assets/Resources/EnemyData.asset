@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39985eefa5886a646a6e38d932090de9, type: 3}
+  m_Name: EnemyData
+  m_EditorClassIdentifier: 
+  _startPoints: 0
+  _defaultEmemyItems:
+    weightedList:
+    - weightedItem:
+        Prefab: {fileID: 8452074653538083626, guid: 7fb02ef79d4f14a4c82dbc5e739b448a, type: 3}
+        Point: 3
+      weight: 33
+    - weightedItem:
+        Prefab: {fileID: 5706745955460684541, guid: bc9306b0bef47b94d990967e9fdc96f6, type: 3}
+        Point: 2
+      weight: 45
+    - weightedItem:
+        Prefab: {fileID: 2426690312207598836, guid: c27a8382ba3c609488b192dbf97f7edf, type: 3}
+        Point: 1
+      weight: 60
+  _miniBossesEmemyItems:
+    weightedList:
+    - weightedItem:
+        Prefab: {fileID: 4603893558348285115, guid: a411a598be3dfcf48b7932c2360dafb9, type: 3}
+        Point: 7
+      weight: 50

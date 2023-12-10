@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b71412bf0298434f87becf1c62f1d29, type: 3}
+  m_Name: LevelConfiguration
+  m_EditorClassIdentifier: 
+  _levelSettings:
+  - _minEnemyInScene: 2
+    _maxEnemyInScene: 4
+    _miniBossWeight: 0
+    _level: 0
+  - _minEnemyInScene: 2
+    _maxEnemyInScene: 5
+    _miniBossWeight: 30
+    _level: 1
+  - _minEnemyInScene: 3
+    _maxEnemyInScene: 6
+    _miniBossWeight: 50
+    _level: 2
+  - _minEnemyInScene: 3
+    _maxEnemyInScene: 8
+    _miniBossWeight: 70
+    _level: 3

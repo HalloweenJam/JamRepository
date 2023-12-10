@@ -2,7 +2,6 @@ using Bullet;
 using Core.Interfaces;
 using Managers;
 using UnityEngine;
-using UnityEditor.Animations;
 using System.Collections;
 
 namespace Projectiles
@@ -13,8 +12,8 @@ namespace Projectiles
         [SerializeField] private float _lifeTime = 5f;
 
         [Header("AnimationsOnHits")]
-        [SerializeField] private AnimatorController _hitWallAnimator;
-        [SerializeField] private AnimatorController _hitTargetAnimator;
+        [SerializeField] private RuntimeAnimatorController _hitWallAnimator;
+        [SerializeField] private RuntimeAnimatorController _hitTargetAnimator;
 
         [SerializeField, HideInInspector] private Rigidbody2D _rigidbody;
         [SerializeField, HideInInspector] private SpriteRenderer _render;
@@ -93,7 +92,7 @@ namespace Projectiles
                 StartCoroutine(Hit(other.contacts[0], _hitWallAnimator));
         }
 
-        private IEnumerator Hit(ContactPoint2D hitPoint, AnimatorController animatorController)
+        private IEnumerator Hit(ContactPoint2D hitPoint, RuntimeAnimatorController animatorController)
         {
             _isHit = true;
             _rigidbody.velocity = Vector3.zero;

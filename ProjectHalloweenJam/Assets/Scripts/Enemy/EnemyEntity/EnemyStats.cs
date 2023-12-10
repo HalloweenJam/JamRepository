@@ -16,7 +16,6 @@ namespace Enemy.EnemyEntity
         private EnemyMovement _movement;
         private SpriteRenderer _spriteRenderer;
         private DissolveEffect _dissolveEffect;
-        private Color _defaultColor;
 
         public static Action<Vector2, float> OnDeath;
         
@@ -30,13 +29,11 @@ namespace Enemy.EnemyEntity
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _movement = GetComponent<EnemyMovement>();
             _dissolveEffect = GetComponent<DissolveEffect>();
-            _defaultColor = _spriteRenderer.color;
  
             _movement.enabled = false;
             _movement.Initialize(playerPosition, this);
 
-            if(_dissolveEffect.CanAppearance)
-                Appearance();
+            Appearance();
         }
 
         public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
@@ -65,7 +62,11 @@ namespace Enemy.EnemyEntity
             Destroy(gameObject);
         }
 
-        public void Appearance() => _dissolveEffect.Appearance(_movement);
+        public void Appearance()
+        {
+            Behaviour component = _dissolveEffect.CanActivateComponent ? _movement : null;
+            _dissolveEffect.Appearance(component);
+        }
 
         public void Dissolve() => _dissolveEffect.Dissolve(_movement);
 

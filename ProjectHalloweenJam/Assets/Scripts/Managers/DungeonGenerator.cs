@@ -12,8 +12,13 @@ namespace Managers
 {
     public class DungeonGenerator : Singleton<DungeonGenerator>
     {
+        [Header("GameInfo")]
         [SerializeField] private Transform _playerTransform;
+        [SerializeField] private BoxCollider2D _mainCollider;
+        [SerializeField] private BoxCollider2D _collisionCollider;
         [SerializeField] private NavMeshSurface _navMeshSurface;
+
+        [Header("Generation")]
         [SerializeField] private LayerMask _generationLayerMask;
         [SerializeField] private Vector2Int _range = new(40, 40);
         [SerializeField] private int _roomsCount;
@@ -71,11 +76,18 @@ namespace Managers
                 await Awaitable.WaitForSecondsAsync(0.2f);
             }
             CorridorGenerator.Instance.DeleteDisabledCorridors();
+            PreparationForGame();
+        }
 
+        private void PreparationForGame()
+        {
             _navMeshSurface.RemoveData();
             _navMeshSurface.AddData();
             var data = _navMeshSurface.navMeshData;
             _navMeshSurface.UpdateNavMesh(data);
+
+            _mainCollider.enabled = true;
+            _collisionCollider.enabled = true;
         }
 
         private IEnumerator GeneratedRooms()

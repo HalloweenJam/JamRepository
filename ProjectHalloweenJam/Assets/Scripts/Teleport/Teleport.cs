@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
 
 public class Teleport : MonoBehaviour
 {
+    [SerializeField] private BossContainer _bossContainer;
     [SerializeField] private Color _color;
     private Color _setColor;
     private Material _material;
@@ -55,7 +55,8 @@ public class Teleport : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         _isStartedTimer = false;
+        yield return null;
+        _bossContainer.LoadBossScene();
     } 
 }

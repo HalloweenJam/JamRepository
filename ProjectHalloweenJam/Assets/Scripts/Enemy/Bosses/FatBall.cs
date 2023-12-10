@@ -1,14 +1,13 @@
 using Core;
 using System;
 using System.Collections;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class FatBall : MonoBehaviour
 {
     [SerializeField] private float _offsetY;
     [SerializeField] private Transform _shadowTransform;
-    [SerializeField] private AnimatorController _hitAnimator;
+    [SerializeField] private RuntimeAnimatorController _hitAnimator;
 
     private Animator _animator;
     private Transform _playerTransform;

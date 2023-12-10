@@ -14,7 +14,7 @@ public class Gate : MonoBehaviour
 
     public void OnEnable() => _dissolveEffect?.Appearance(null);
 
-    public void Disable() => StartCoroutine(Disabled());
+    public void Disable() =>  StartCoroutine(Disabled());
  
     private IEnumerator Disabled()
     {

@@ -1,7 +1,6 @@
 using System;
 using Core.Classes;
 using Core.Enums;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Bullet
@@ -13,7 +12,7 @@ namespace Bullet
         [SerializeField] private Sprite _sprite;
         [SerializeField] private Material _defaultMaterial;
         [SerializeField] private OptionalProperty<Material> _customMaterial;
-        [SerializeField] private OptionalProperty<AnimatorController> _animatorController;
+        [SerializeField] private OptionalProperty<RuntimeAnimatorController> _animatorController;
         [SerializeField] private bool _isEnemyBullet = false;
         [SerializeField] private float _scale = 1f;
         [Space]
@@ -28,7 +27,7 @@ namespace Bullet
 
         public Material DefaultMaterial => _defaultMaterial;
         public OptionalProperty<Material> CustomMaterial => _customMaterial;
-        public OptionalProperty<AnimatorController> AnimatorController => _animatorController;
+        public OptionalProperty<RuntimeAnimatorController> AnimatorController => _animatorController;
 
         public float Scale => _scale;
         public bool IsEnemyBullet => _isEnemyBullet;

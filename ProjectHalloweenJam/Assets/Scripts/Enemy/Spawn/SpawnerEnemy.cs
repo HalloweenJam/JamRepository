@@ -1,69 +1,92 @@
 using UnityEngine;
-using System.Collections.Generic;
+using Generation.AnchorSystem.Data;
+using Generation.AnchorSystem;
 using Enemy.EnemyEntity;
-using System;
 using Managers;
+using Enemy.Arena;
 
-public class SpawnerEnemy : MonoBehaviour
+public class SpawnerEnemy : Singleton<SpawnerEnemy>
 {
-    [SerializeField] private Transform _spawnPoinsTransfrom;
-    [SerializeField] private bool _spawnOnStart = false;
+    [SerializeField] private LevelConfiguration _levelConfiguration;
+    [SerializeField] private EnemyData _enemyData;
 
-    private List<SpawnPoint> _spawnPoints;
+    [SerializeField] private int _startPoints = 10;
+    [SerializeField] private bool _spawnOnStart = true;
 
-    private int _countEnemy;
-    private bool _canSpawn = false;
+    private Arena _currentArena;
+    private SpawnPointsData _currentSpawnData;
 
-    public static Action OnAllEnemiesDied;
+    #region Variables
+    private int _currentCountEnemy;
+    private int _enemyCount;
 
-    private void Awake()
+    private int _currentWaveNumber;
+    private bool _canSpawnMiniBoss;
+
+    private int _currentPoints;
+    private int _addPoints;
+    #endregion
+
+    public static System.Action OnAllEnemiesDied;
+
+    private void Start() 
     {
-        EnemyStats.OnDeath += (_, _) => CheckEnemyCount();
-        EnemyBoss.SecondPhase += SpawnEnemy;
-
-        _spawnPoints = new List<SpawnPoint>(_spawnPoinsTransfrom.childCount);
-        foreach (Transform points in _spawnPoinsTransfrom)     
-            _spawnPoints.Add(points.GetComponent<SpawnPoint>());
+        EnemyStats.OnDeath += CheckArena;
+        _currentPoints = _startPoints;
     }
 
-    public void ActivateArena()
+    private void CheckArena(Vector2 position, float loot)
     {
-        if (_spawnOnStart)
+        _currentCountEnemy = _currentCountEnemy != 0 ? _currentCountEnemy - 1: 0;
+
+        if (_currentWaveNumber != 0 && _currentCountEnemy == 0)
+            SpawnEnemy(_currentArena, _enemyCount, _canSpawnMiniBoss);
+        else if (_currentCountEnemy == 0)
+            _currentArena.Completed();
+    }     
+
+    public void ActivateArena(Arena arena, LevelSetting.Levels level, SpawnPointsData spawnPointsData)
+    {
+        _currentArena = arena;
+        _currentSpawnData = spawnPointsData;
+
+        var (arenaLevel, settings) = _levelConfiguration.GetSettings(level);
+        var (waves, enemyCount, canSpawnMiniBoss) = _levelConfiguration.SetRandomValue(arenaLevel, settings);
+
+        _canSpawnMiniBoss = canSpawnMiniBoss;
+        _currentWaveNumber = waves;
+        _enemyCount = enemyCount;
+
+        if(_spawnOnStart)
+            SpawnEnemy(_currentArena, _enemyCount, _canSpawnMiniBoss);
+    }
+
+    private void SpawnEnemy(Arena arena, int enemyInScene, bool canSpawnMiniBoss)
+    {
+        Vector2 position = PointManager.Instance.GetPointPosition(_currentSpawnData);
+        EnemyItem enemyItem = canSpawnMiniBoss ? _enemyData.GetMiniBoss() : _enemyData.GetDefaultEnemy();
+       
+        if ((_currentPoints - enemyItem.Point < 0) || _currentCountEnemy > enemyInScene)
         {
-            SpawnEnemy();
-            _countEnemy = transform.childCount;
+            _startPoints += _addPoints;
+            _currentPoints = _startPoints;
+            _currentWaveNumber--; 
+            return;
         }
-    }
-    private void SpawnEnemy()
-    {
-        for (int i = 0; i < _spawnPoints.Count; i++)
-        {
-            if (_spawnPoints[i].EnemyPrefabs != null && !_spawnPoints[i].IsEmpty)
-            {
-                EnemyStats enemy = _spawnPoints[i].SpawnEnemy(this.transform);
-                enemy.Initialize(DungeonGenerator.Instance.PlayerTransform);
-            }
-        }
+
+        if (canSpawnMiniBoss)
+            _canSpawnMiniBoss = false;
+
+        _currentPoints -= enemyItem.Point;
+        _addPoints += enemyItem.Point;
+        _currentCountEnemy++;
+
+        EnemyStats enemy = Instantiate(enemyItem.Prefab, arena.transform);
+        enemy.transform.localPosition = position;
+        enemy.Initialize(DungeonGenerator.Instance.PlayerTransform);
+
+        SpawnEnemy(_currentArena, _enemyCount, _canSpawnMiniBoss);
     }
 
-    private void CheckEnemyIsEmpty()
-    {
-        _canSpawn = false;  
-        foreach (SpawnPoint point in _spawnPoints)    
-            _canSpawn = _canSpawn || !point.IsEmpty;    
-    }
-
-    private void CheckEnemyCount()
-    {
-        _countEnemy--;
-        CheckEnemyIsEmpty();
-
-        if (_countEnemy == 0 && _canSpawn)
-        {
-            SpawnEnemy();
-            _countEnemy = transform.childCount - 1;
-        }
-        else if (_countEnemy == 0 && !_canSpawn)
-            OnAllEnemiesDied?.Invoke();
-    }
+    private void OnDisable() => EnemyStats.OnDeath -= CheckArena;
 }

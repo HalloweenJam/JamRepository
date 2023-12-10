@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DissolveEffect : MonoBehaviour
@@ -8,7 +6,7 @@ public class DissolveEffect : MonoBehaviour
     [Header("Dissolve")]
     [SerializeField] private float _dissolveTime = 1f;
     [SerializeField] private Material _dissolveMaterial;
-    [SerializeField] private bool _canAppearance = true;
+    [SerializeField] private bool _activateComponent = true;
 
     private SpriteRenderer _spriteRenderer;
 
@@ -19,7 +17,7 @@ public class DissolveEffect : MonoBehaviour
 
     public bool Dissolved => _dissolved;
     public Material DissolveMaterial => _dissolveMaterial;
-    public bool CanAppearance => _canAppearance;
+    public bool CanActivateComponent => _activateComponent;
 
 
     private void Awake()

@@ -1,38 +1,41 @@
+using Generation.AnchorSystem.Data;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Level = LevelSetting.Levels;
 
 namespace Enemy.Arena
 {
     public class Arena : MonoBehaviour
     {
-        [SerializeField] private List<Gate> _gates;
+        [SerializeField] private Level _level;
+        [SerializeField] private SpawnPointsData _spawnPointsData;
         [SerializeField] private SpawnZone _spawnZone;
-        [SerializeField] private SpawnerEnemy _spawner;
-
+        [SerializeField] private List<Gate> _gates;
+        private SpawnPointsData _ownSpawnPointsData;
+             
         private void Awake()
         {
-            SpawnerEnemy.OnAllEnemiesDied += ArenaCompleted;
-
-            _spawnZone.OnActivateArena += ActivateArena;
+            _spawnZone.OnEntered += Activate;
+            _ownSpawnPointsData = _spawnPointsData;
         }
 
-        public void ActivateArena()
+        private void Activate()
         {
-            _spawner.ActivateArena();
+            SpawnerEnemy.Instance.ActivateArena(this, _level, _ownSpawnPointsData);
             foreach (Gate gate in _gates)
                 gate.gameObject.SetActive(true);
         }
 
-        private void ArenaCompleted()
+        public void Completed()
         {
             foreach (Gate gate in _gates)
-                gate.Disable();
+            {
+                if(gate.gameObject.activeInHierarchy)
+                    gate.Disable();
+            }
         }
 
-        private void OnDisable() 
-        {
-            SpawnerEnemy.OnAllEnemiesDied -= ArenaCompleted;
-            _spawnZone.OnActivateArena -= ActivateArena;
-        }
+        private void OnDisable() => _spawnZone.OnEntered -= Activate;
     }
 }

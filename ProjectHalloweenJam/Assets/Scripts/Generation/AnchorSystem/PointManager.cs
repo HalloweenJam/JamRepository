@@ -1,38 +1,25 @@
 ﻿using System.Collections.Generic;
 using Generation.AnchorSystem.Data;
+using Managers;
 using UnityEngine;
 using Utilities;
 
 namespace Generation.AnchorSystem
 {
-    public class PointManager : MonoBehaviour
+    public class PointManager : Singleton<PointManager>
     {
-        [SerializeField] private SpawnPointsData _spawnPointsData;
-
+        private SpawnPointsData _spawnPointsData;
         private readonly List<int> _usedIndexes = new();
-        private readonly List<Vector2> _additionalSpawnPositions = new();
-        
-        public static PointManager Instance { get; private set; }
-        
+        private readonly List<Vector2> _additionalSpawnPositions = new();        
         public int PointsCount => _spawnPositions.Count;
         private IReadOnlyList<Vector2> _spawnPositions => _spawnPointsData.Positions;
         private List<Vector2> _totalSpawnPositions => _additionalSpawnPositions.Join<Vector2, IReadOnlyList<Vector2>>(_spawnPointsData.Positions);
-        
-        private void Awake()
-        {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                Instance = this;
-            }
-        }
+       
 
-        public Vector2 GetPointPosition()
+        public Vector2 GetPointPosition(SpawnPointsData spawnPoint)
         {
-            var id = _totalSpawnPositions.GetRandomUnusedId(_usedIndexes);
+            _spawnPointsData = spawnPoint;
+            var id = _totalSpawnPositions.GetRandomId();
             _usedIndexes.Add(id);
             
             return _totalSpawnPositions[id];
