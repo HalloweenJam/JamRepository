@@ -9,7 +9,7 @@ public class Teleport : MonoBehaviour
     private Material _material;
     private Coroutine _teleportation;
 
-    private bool _isStartedTimer = false;
+    private bool _isEnter = false;
 
     private void Awake()
     {
@@ -24,6 +24,7 @@ public class Teleport : MonoBehaviour
             if (_teleportation != null)
                 StopCoroutine(_teleportation);
 
+            _isEnter = true;
             _teleportation = StartCoroutine(ActivateTeleportation(true));
         }
     }
@@ -33,14 +34,13 @@ public class Teleport : MonoBehaviour
         if (_teleportation != null)
         {
             StopCoroutine(_teleportation);
+            _isEnter = false;
             _teleportation = StartCoroutine(ActivateTeleportation(false));
         }
     }    
 
     private IEnumerator ActivateTeleportation(bool activate)
     {
-        _isStartedTimer = true;
-
         float elapsedTime = 0f;
         float teleportationTime = activate ? 3f : 1.5f;
 
@@ -55,8 +55,9 @@ public class Teleport : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        _isStartedTimer = false;
         yield return null;
-        _bossContainer.LoadBossScene();
+
+        if(_isEnter)
+            _bossContainer.LoadBossScene();
     } 
 }

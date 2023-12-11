@@ -73,5 +73,4 @@ public class FatBall : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
-
 }

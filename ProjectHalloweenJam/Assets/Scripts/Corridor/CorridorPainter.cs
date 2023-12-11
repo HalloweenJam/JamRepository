@@ -21,7 +21,6 @@ namespace CorridorGeneration
         private Grid _grid;
         private TileData _tileData;
 
-
         #region Variables
         private float _distanceX;
         private float _distanceY;
