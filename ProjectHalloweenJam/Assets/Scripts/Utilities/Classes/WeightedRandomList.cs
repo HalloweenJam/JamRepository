@@ -53,6 +53,9 @@ namespace Utilities.Classes
         
         public T GetItemByCondition(Func<T, bool> condition)
         {
+            if (!weightedList.Exists(item => condition(item.weightedItem)))
+                throw new ArgumentOutOfRangeException("Item does not exists");
+            
             foreach (var item in weightedList.Select(pair => pair.weightedItem))
             {
                 if (condition(item))

@@ -38,8 +38,7 @@ namespace Managers
         private bool _isGenerationFinished;
 
         public Transform PlayerTransform => _playerTransform;
-
-
+        
         private void Update()
         {
             if (!_generate)
@@ -54,7 +53,7 @@ namespace Managers
         private async void GenerateDungeon()
         {
             if (!_isGenerationFinished)
-                StartCoroutine(GeneratedRooms());
+                StartCoroutine(GenerateRooms());
 
             if (!_isGenerationFinished)
                 return;
@@ -90,11 +89,12 @@ namespace Managers
             _collisionCollider.enabled = true;
         }
 
-        private IEnumerator GeneratedRooms()
+        private IEnumerator GenerateRooms()
         {
             var counter = 1000;
             var isStartRoom = true;
-
+            var hasContact = false;
+            
             for (int rooms = 0; rooms < _roomsCount;)
             {
                 counter--;
@@ -104,9 +104,9 @@ namespace Managers
                     break;
 
                 var position = isStartRoom ? Vector2Int.zero : new Vector2Int(Random.Range(-_range.x, _range.x), Random.Range(-_range.y, _range.y));
-                
-                var room = AvailableRoomsManager.Instance.GetRoom(); 
-                var hasContact = HasContact(position, room);
+
+                var room = AvailableRoomsManager.Instance.GetRoom(hasContact); 
+                hasContact = HasContact(position, room);
                 
                 if (hasContact)
                 {
@@ -136,6 +136,8 @@ namespace Managers
 
         private IEnumerator ClusteringRooms()
         {
+            print("clustering'");
+            
             var rooms = new List<GenerationRoom>(_generatedRooms.Where(room => !room.IsStartRoom));
             
             for (int i = 0; i < 50; i++)
@@ -144,7 +146,7 @@ namespace Managers
                 {
                     var position = room.GetNextPosition(_clusteringOffset);
                     var colliders = Physics2D.OverlapBoxAll(position, room.OverlapSize, 0, _generationLayerMask);
-
+                    
                     if (colliders.Length != 1 || room.MoveIterations >= _moveIterations) 
                         continue;
                     

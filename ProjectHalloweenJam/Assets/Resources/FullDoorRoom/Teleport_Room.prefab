@@ -5476,7 +5476,7 @@ GameObject:
   - component: {fileID: 8183091325382548552}
   - component: {fileID: 5799390160924250788}
   m_Layer: 0
-  m_Name: Room_Boss
+  m_Name: Teleport_Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5516,9 +5516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411bd1b3d75f4acc9f412ec2c79a706e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isStartRoom: 1
   _roomCenter: {fileID: 8842071436964961605}
-  _overlapSize: {x: 24.25, y: 21.5}
+  _overlapSize: {x: 28.75, y: 26}
   _maxPassagesCount: 4
   _doors:
   - {fileID: 3604631915118422145}
@@ -5529,10 +5528,10 @@ MonoBehaviour:
   _useSnap: 1
   _snapValue: 0.25
   _borderCapsPositions:
-  - {x: 0, y: 12}
-  - {x: 0, y: -9.5}
-  - {x: 12.5, y: 0}
-  - {x: -11.75, y: 0}
+  - {x: 0, y: 14.25}
+  - {x: 0, y: -11.75}
+  - {x: 15.25, y: 0}
+  - {x: -13.5, y: 0}
 --- !u!1 &4886445681634347540
 GameObject:
   m_ObjectHideFlags: 0

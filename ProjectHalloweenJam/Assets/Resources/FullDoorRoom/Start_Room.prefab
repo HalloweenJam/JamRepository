@@ -2878,7 +2878,7 @@ GameObject:
   - component: {fileID: 8842875824638559788}
   - component: {fileID: 898115123966705286}
   m_Layer: 0
-  m_Name: Room_1 1
+  m_Name: Start_Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2917,9 +2917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411bd1b3d75f4acc9f412ec2c79a706e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isStartRoom: 1
   _roomCenter: {fileID: 2766997999620719376}
-  _overlapSize: {x: 30.25, y: 29.5}
+  _overlapSize: {x: 36.75, y: 32}
   _maxPassagesCount: 4
   _doors:
   - {fileID: 4224874351731031859}
@@ -2930,10 +2929,10 @@ MonoBehaviour:
   _useSnap: 1
   _snapValue: 0.25
   _borderCapsPositions:
-  - {x: 0, y: 13.75}
-  - {x: 0, y: -15.75}
-  - {x: 15.75, y: 0}
-  - {x: -14.5, y: 0}
+  - {x: 0, y: 15.5}
+  - {x: 0, y: -16.5}
+  - {x: 19, y: 0}
+  - {x: -17.75, y: 0}
 --- !u!1 &2831869667518394312
 GameObject:
   m_ObjectHideFlags: 0

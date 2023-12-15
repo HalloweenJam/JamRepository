@@ -1497,9 +1497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411bd1b3d75f4acc9f412ec2c79a706e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isStartRoom: 0
   _roomCenter: {fileID: 711855577373814646}
-  _overlapSize: {x: 27.75, y: 22.75}
+  _overlapSize: {x: 24.75, y: 25.5}
   _maxPassagesCount: 4
   _doors:
   - {fileID: 7637334110308902866}
@@ -1510,10 +1509,10 @@ MonoBehaviour:
   _useSnap: 1
   _snapValue: 0.25
   _borderCapsPositions:
-  - {x: 0, y: 13.25}
-  - {x: 0, y: -9.5}
-  - {x: 13.5, y: 0}
-  - {x: -14.25, y: 0}
+  - {x: 0, y: 15.5}
+  - {x: 0, y: -10}
+  - {x: 12, y: 0}
+  - {x: -12.75, y: 0}
 --- !u!114 &4084349936779370899
 MonoBehaviour:
   m_ObjectHideFlags: 0

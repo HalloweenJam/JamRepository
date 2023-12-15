@@ -350,7 +350,7 @@ MonoBehaviour:
   _generationLayerMask:
     serializedVersion: 2
     m_Bits: 32768
-  _range: {x: 40, y: 40}
+  _range: {x: 50, y: 50}
   _roomsCount: 9
   _clusteringOffset: 3
   _moveIterations: 15

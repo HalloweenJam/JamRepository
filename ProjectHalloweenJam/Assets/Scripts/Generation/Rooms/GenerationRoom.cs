@@ -6,7 +6,6 @@ namespace Generation.Rooms
 {
     public class GenerationRoom : MonoBehaviour
     {
-        [SerializeField] private bool _isStartRoom;
         [SerializeField] private Transform _roomCenter;
         [SerializeField] private Vector2 _overlapSize;
         [SerializeField] private int _maxPassagesCount;
@@ -16,9 +15,9 @@ namespace Generation.Rooms
         [SerializeField] private bool _useSnap;
         [SerializeField] private float _snapValue = .25f;
 
+        private bool _isStartRoom;
+        
         private Vector2 _previousPosition;
-        private Dictionary<Door.Dir, Door> _doorsDictionary;
-        private Dictionary<Door.Dir, HashSet<GenerationRoom>> _adjoiningRooms = new();
 
         // idk but without attributes data will not saved
         [SerializeField, HideInInspector] private List<Vector2> _borderCapsPositions = new()
@@ -28,25 +27,30 @@ namespace Generation.Rooms
         
         public bool UseSnap => _useSnap;
         public List<Vector2> BorderCapsPositions => _borderCapsPositions;
-        public Dictionary<Door.Dir, Door>  Doors => _doorsDictionary;
-        public Dictionary<Door.Dir, HashSet<GenerationRoom>> AdjoiningRooms => _adjoiningRooms;
+        public Dictionary<Door.Dir, Door>  Doors { get; private set; }
+
+        public Dictionary<Door.Dir, HashSet<GenerationRoom>> AdjoiningRooms { get; } = new();
+
         public Vector2 RoomCenter => _roomCenter.position;
         public Vector2 OverlapCenter { get; set; }
         public Vector2 OverlapSize => _overlapSize;
         public Tilemap WallTilemap => _wallTilemap;
 
         public bool IsStartRoom => _isStartRoom;
+
         public int MaxPassagesCount => _maxPassagesCount;
         public int MoveIterations { get; private set; } = 0;
         public float SnapValue => _snapValue;
 
         private void Awake()
         {
-            _doorsDictionary = new Dictionary<Door.Dir, Door>(4);
-            foreach (Door door in _doors)
-                _doorsDictionary.Add(door.Direction, door);           
+            Doors = new Dictionary<Door.Dir, Door>(4);
+            foreach (var door in _doors)
+                Doors.Add(door.Direction, door);           
         }
 
+        public void SetStartRoomState(bool isStartRoom) => _isStartRoom = isStartRoom;
+        
         public void SetPosition(Vector2Int position)
         {
             var roomTransform = transform;

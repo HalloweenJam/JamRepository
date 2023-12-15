@@ -12,32 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c37831a5f074b96b5563023c528e988, type: 3}
   m_Name: RoomContainer
   m_EditorClassIdentifier: 
-  _requiredRooms:
-  - _room: {fileID: 898115123966705286, guid: e86cf073f3ab34f44a92ccb8bbbbe33c, type: 3}
-    _minRooms:
-      _value: 0
-      _enabled: 0
-  - _room: {fileID: 5799390160924250788, guid: 038c71e14fb50874fa44031182bfa3e7, type: 3}
-    _minRooms:
-      _value: 1
-      _enabled: 1
   _roomsData:
     weightedList:
     - weightedItem:
         _room: {fileID: 967713200481759543, guid: 4e7ab43d335b378488aff0dc7cb59aa7, type: 3}
+        _isStartRoom: 0
         _minRooms:
           _value: 0
           _enabled: 0
       weight: 40
     - weightedItem:
         _room: {fileID: 8256205755496121060, guid: 89adac8cd78b3df48896717e71b6d617, type: 3}
+        _isStartRoom: 0
         _minRooms:
           _value: 1
-          _enabled: 1
+          _enabled: 0
       weight: 50
     - weightedItem:
-        _room: {fileID: 5951047740166616327, guid: 03a8b14c6dc45ce449cc0ef98519abb0, type: 3}
+        _room: {fileID: 898115123966705286, guid: e86cf073f3ab34f44a92ccb8bbbbe33c, type: 3}
+        _isStartRoom: 1
+        _minRooms:
+          _value: 1
+          _enabled: 0
+      weight: 0
+    - weightedItem:
+        _room: {fileID: 5799390160924250788, guid: 038c71e14fb50874fa44031182bfa3e7, type: 3}
+        _isStartRoom: 0
         _minRooms:
           _value: 1
           _enabled: 1
-      weight: 10
+      weight: 0
+    - weightedItem:
+        _room: {fileID: 5951047740166616327, guid: 03a8b14c6dc45ce449cc0ef98519abb0, type: 3}
+        _isStartRoom: 0
+        _minRooms:
+          _value: 3
+          _enabled: 1
+      weight: 0
