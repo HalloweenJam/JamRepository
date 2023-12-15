@@ -14,12 +14,14 @@ namespace Enemy.EnemyEntity
         protected bool IsAttacking = false;
         protected bool IsReload = false;
 
+        public bool Attacking => IsAttacking;
+
         protected WeaponSelector WeaponSelector { get; private set; }
 
         protected virtual void Start()
         {
-            Animator = GetComponent<Animator>();
             EnemyMovement = GetComponent<EnemyMovement>();
+            Animator = EnemyMovement.Animator;
             EnemyMovement.Attack += Attack;
 
             WeaponSelector = GetComponent<WeaponSelector>();

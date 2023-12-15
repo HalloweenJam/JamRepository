@@ -1,17 +1,16 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyShooting : EnemyMovement
 {
     [SerializeField] private LayerMask _obstacleLayer;
     [SerializeField] private float _shootDistance = 10f;
-    private bool _isAttacking = false;
 
-    public override void Update()
+    private const string _move = "Move";
+
+    public override void Update() 
     {
         Rotation();
-        if (!_isAttacking)
+        if (EnemyAttack.Attacking)
             Move();
     }
 
@@ -21,10 +20,14 @@ public class EnemyShooting : EnemyMovement
     {
         if (!Physics2D.Linecast(transform.position, Player.position, (1 << 6)))
         {
-            _isAttacking = true;
             Attack?.Invoke();
+            Agent.isStopped = true;
+            Animator.SetBool(_move, false);
         }
-        else
-            _isAttacking = false;
+        else if(!EnemyAttack.Attacking)
+        {
+            Agent.isStopped = false;
+            Animator.SetBool(_move, true);
+        }
     }
 }

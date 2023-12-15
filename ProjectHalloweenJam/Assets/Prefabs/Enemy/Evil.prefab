@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 1792343139680819590}
   - component: {fileID: -6567987255240345523}
   - component: {fileID: 7418417132993801132}
+  - component: {fileID: 5626728398536817552}
   m_Layer: 8
   m_Name: Evil
   m_TagString: Untagged
@@ -237,7 +238,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.043640494}
+  m_Offset: {x: 0.0018146336, y: -0.009162545}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -247,7 +248,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9, y: 1.0127189}
+  m_Size: {x: 0.97621435, y: 0.7913344}
   m_EdgeRadius: 0
 --- !u!195 &1792343139680819590
 NavMeshAgent:
@@ -302,4 +303,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dissolveTime: 1
   _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
-  _canAppearance: 1
+  _activateComponent: 1
+--- !u!114 &5626728398536817552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855556829068113766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 088727ca12b7f8749a2f1f8b1c3a0c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _glowMaterial: {fileID: 2100000, guid: b29631b985f092c4b92235f5c334c00b, type: 2}
