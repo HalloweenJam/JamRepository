@@ -29,7 +29,7 @@ MonoBehaviour:
           _enabled: 0
       weight: 50
     - weightedItem:
-        _room: {fileID: 898115123966705286, guid: 65d810f4310ab0740851d7e711510f75, type: 3}
+        _room: {fileID: 898115123966705286, guid: ce9faa1349bdab34b97da86bb05566a0, type: 3}
         _isStartRoom: 1
         _minRooms:
           _value: 1
