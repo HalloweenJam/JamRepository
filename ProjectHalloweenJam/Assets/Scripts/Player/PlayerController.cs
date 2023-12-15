@@ -60,7 +60,10 @@ namespace Player
             _animator = GetComponent<Animator>();
             _weaponSelector ??= GetComponent<WeaponSelector>();
             _spriteRenderer ??= GetComponent<SpriteRenderer>();
-            
+        }
+
+        public void Init()
+        {
             _camera = Camera.main;
 
             _rigidbody.mass = _mass;
@@ -69,10 +72,7 @@ namespace Player
             _rigidbody.angularDrag = 0;
 
             _rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        }
-
-        public void Init()
-        {
+            
             _weaponSelector.Init(true);
             
             _inputReader = InputReaderManager.Instance.GetInputReader();
