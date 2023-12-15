@@ -11,10 +11,12 @@ public class EnemyMovement : MonoBehaviour
     protected NavMeshAgent Agent;
     protected Transform PlayerTransform;
 
-    public Action Attack;
-
     public Transform Player => PlayerTransform;
     public NavMeshAgent NavAgent => Agent;
+
+    public Animator Animator { get; private set; }
+
+    public Action Attack;
 
     private Vector3 _defaultScale;
 
@@ -22,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
     {
         Agent = GetComponent<NavMeshAgent>();
         EnemyAttack = GetComponent<EnemyAttack>();
+        Animator = GetComponent<Animator>();
         EnemyStats = enemyStats;
         PlayerTransform = playerTransform;
 
