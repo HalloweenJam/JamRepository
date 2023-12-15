@@ -13,19 +13,19 @@ namespace Player
         [SerializeField] private float _dashInvisibilityLength = .7f;
         
         [SerializeField, HideInInspector] private PlayerController _playerController;
-
+        [SerializeField, HideInInspector] private WeaponSelector _weaponSelector;
+        
         public static Action OnPlayerKilled;
         public Action<float> OnPlayerTakeDamage;
         
         private float _invisibilityCounter = 1;
 
-        private static readonly Wallet _wallet = new();
-        
-        public WeaponSelector WeaponSelector { get; private set; }
-        public Wallet Wallet => _wallet;
+        public WeaponSelector WeaponSelector => _weaponSelector;
+        public static Wallet Wallet { get; } = new();
+
         private bool _canIgnoreDamage => _invisibilityCounter > 0;
 
-        public static void DepositMoney(int value) => _wallet.DepositPoints(value);
+        public static void DepositMoney(int value) => Wallet.DepositPoints(value);
 
         public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
         {
@@ -64,7 +64,7 @@ namespace Player
         private void OnValidate()
         {
             _playerController = GetComponent<PlayerController>();
-            WeaponSelector = GetComponent<WeaponSelector>();
+            _weaponSelector = GetComponent<WeaponSelector>();
             CurrentHealth = MaxHealth;
         }
 

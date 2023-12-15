@@ -29,14 +29,14 @@ MonoBehaviour:
           _enabled: 0
       weight: 50
     - weightedItem:
-        _room: {fileID: 898115123966705286, guid: e86cf073f3ab34f44a92ccb8bbbbe33c, type: 3}
+        _room: {fileID: 898115123966705286, guid: 65d810f4310ab0740851d7e711510f75, type: 3}
         _isStartRoom: 1
         _minRooms:
           _value: 1
           _enabled: 0
       weight: 0
     - weightedItem:
-        _room: {fileID: 5799390160924250788, guid: 038c71e14fb50874fa44031182bfa3e7, type: 3}
+        _room: {fileID: 5799390160924250788, guid: 20bec768d738a144aa8fb06e15c21b3b, type: 3}
         _isStartRoom: 0
         _minRooms:
           _value: 1

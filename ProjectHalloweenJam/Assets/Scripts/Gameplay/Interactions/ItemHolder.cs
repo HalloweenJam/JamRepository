@@ -21,6 +21,7 @@ namespace Gameplay.Interactions
 
         public void PickUp(PlayerStats playerStats)
         {
+            
             _collectable.Apply(playerStats);
             Destroy(gameObject);
         }

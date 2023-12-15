@@ -6298,7 +6298,7 @@ GameObject:
   - component: {fileID: 8183091325382548552}
   - component: {fileID: 5799390160924250788}
   m_Layer: 0
-  m_Name: Teleport_Room
+  m_Name: Room_Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -22,7 +22,7 @@ namespace Gameplay.Interactions
         {
             var playerStats = inventory.PlayerStats;
 
-            if (!playerStats.Wallet.TryToSpendPoints(_collectable.Cost)) 
+            if (!PlayerStats.Wallet.TryToSpendPoints(_collectable.Cost)) 
                 return false;
             
             _collectable.Apply(playerStats);

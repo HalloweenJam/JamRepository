@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Player
 {
-    [RequireComponent(typeof(Inventory))]
+    [RequireComponent(typeof(Inventory), typeof(PlayerStats))]
     public class PlayerInteract : MonoBehaviour
     {
         [SerializeField] private float _range = 1.5f;
@@ -15,13 +15,12 @@ namespace Player
 
         [SerializeField, HideInInspector] private Inventory _inventory;
         [SerializeField, HideInInspector] private WeaponSelector _weaponSelector;
+        [SerializeField] private PlayerStats _playerStats;
+        [SerializeField, HideInInspector] private InputReader _inputReader;
 
         public static Action<string> OnInteractionNearby;
         public static Action OnInteractionLeft;
-         
-        private PlayerStats _playerStats;
-        private InputReader _inputReader;
-
+        
         private void OnValidate()
         {
             _inventory = GetComponent<Inventory>();
@@ -67,9 +66,8 @@ namespace Player
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.TryGetComponent<IPickUp>(out var item))
-            {
                 item.PickUp(_playerStats);
-            }
+            
         }
 
         private void OnDrawGizmosSelected()
