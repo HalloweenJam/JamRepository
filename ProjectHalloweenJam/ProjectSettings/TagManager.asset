@@ -54,3 +54,6 @@ TagManager:
   - name: Wall
     uniqueID: 3589191813
     locked: 0
+  - name: ShockWave
+    uniqueID: 1554173803
+    locked: 0
