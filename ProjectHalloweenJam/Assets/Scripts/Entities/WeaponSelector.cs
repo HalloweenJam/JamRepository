@@ -5,6 +5,7 @@ using Items;
 using Managers;
 using Player.Controls;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Weapons;
 
 namespace Entities
@@ -57,8 +58,15 @@ namespace Entities
             _isStarted = true;
         }
 
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= (arg0, mode) => _camera = Camera.main;
+        }
+
         private void Start()
         {
+            SceneManager.sceneLoaded += (arg0, mode) => _camera = Camera.main;
+            
             if (_isStarted)
                 return;
             
@@ -71,7 +79,7 @@ namespace Entities
 
                 _inputReader.MouseWheelScrollEvent += ChangeWeapon;
 
-                _camera = Camera.main;
+                _camera = Camera.main;;
             }
             
             foreach (var weapon in _weaponsToAdd)
@@ -104,7 +112,7 @@ namespace Entities
         {
             if (_isAttacking)
             {
-                var mousePosition =_camera.ScreenToWorldPoint(Input.mousePosition);
+                var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
                 TryToAttack(mousePosition, false);
             }
             

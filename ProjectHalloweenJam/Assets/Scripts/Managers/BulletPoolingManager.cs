@@ -5,11 +5,10 @@ using UnityEngine.Pool;
 
 namespace Managers
 {
-    public class BulletPoolingManager : PersistentSingleton<BulletPoolingManager>
+    public class BulletPoolingManager : Singleton<BulletPoolingManager>
     {
         [SerializeField] private Projectiles.Bullet _bullet;
         
-
         private ObjectPool<Projectiles.Bullet> _bulletsPool;
 
         public void GetBullet(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
@@ -32,8 +31,13 @@ namespace Managers
                 // ignored
             }
         }
-
+        
         private void Start()
+        {
+            Init();
+        }
+
+        private void Init()
         {
             _bulletsPool = new ObjectPool<Projectiles.Bullet>(CreateBullet);
         }

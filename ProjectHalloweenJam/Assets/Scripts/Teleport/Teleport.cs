@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -10,6 +11,7 @@ public class Teleport : MonoBehaviour
     private Coroutine _teleportation;
 
     private bool _isEnter = false;
+    private static readonly int GlowColor = Shader.PropertyToID("_GlowColor");
 
     private void Awake()
     {
@@ -19,25 +21,30 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null)
-        {
-            if (_teleportation != null)
-                StopCoroutine(_teleportation);
+        if (collision == null) 
+            return;
+        
+        if (_teleportation != null)
+            StopCoroutine(_teleportation);
 
-            _isEnter = true;
-            _teleportation = StartCoroutine(ActivateTeleportation(true));
-        }
+        _isEnter = true;
+        _teleportation = StartCoroutine(ActivateTeleportation(true));
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (_teleportation != null)
-        {
-            StopCoroutine(_teleportation);
-            _isEnter = false;
-            _teleportation = StartCoroutine(ActivateTeleportation(false));
-        }
-    }    
+        if (_teleportation == null) 
+            return;
+        
+        StopCoroutine(_teleportation);
+        _isEnter = false;
+        _teleportation = StartCoroutine(ActivateTeleportation(false));
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(_teleportation);
+    }
 
     private IEnumerator ActivateTeleportation(bool activate)
     {
@@ -51,7 +58,7 @@ public class Teleport : MonoBehaviour
         while (elapsedTime < teleportationTime)
         {
             _setColor.r = Mathf.Lerp(value, toValue, elapsedTime / teleportationTime);
-            _material.SetColor("_GlowColor", _setColor);
+            _material.SetColor(GlowColor, _setColor);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
