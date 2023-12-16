@@ -20,11 +20,15 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector3 _defaultScale;
 
-    public virtual void Initialize(Transform playerTransform, EnemyStats enemyStats)
+    private void OnValidate()
     {
         Agent = GetComponent<NavMeshAgent>();
         EnemyAttack = GetComponent<EnemyAttack>();
         Animator = GetComponent<Animator>();
+    }
+
+    public virtual void Initialize(Transform playerTransform, EnemyStats enemyStats)
+    {
         EnemyStats = enemyStats;
         PlayerTransform = playerTransform;
 

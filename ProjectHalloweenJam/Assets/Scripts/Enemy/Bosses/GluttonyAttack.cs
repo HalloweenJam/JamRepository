@@ -5,9 +5,16 @@ using UnityEngine;
 public class GluttonyAttack : EnemyAttack
 {
     [SerializeField] private FatBall _fatBallPrefab;
+    [SerializeField] private Transform _jumpFirePoint;
+    private Transform _defaultFirePoint;
 
+    [Header("AnimationParameters")]
     private string _splitAttack = "Split";
     private string _burpAttack = "Burp";
+    private string _jump = "Jump";
+
+    private bool _isExoSlam = false;
+    private bool _isJumping = false;
 
     public override void Attack()
     {
@@ -19,17 +26,49 @@ public class GluttonyAttack : EnemyAttack
 
     private void SelectAttack()
     {
-        var value = Random.value;
+        System.Random random = new ();
+        var value = 2;//random.Next(0, 3);
+        Debug.Log(value);
         switch (value)
         {
-            case < .33f:
+            case 0:
                 StartCoroutine(ShootFatBall());
                 break;
-            case < .66f:
+            case 1:
                 SplitBelching();
+                break;
+            case 2:     
+                Jump();
                 break;
         }
     }
+
+    private void Jump()
+    {
+        _defaultFirePoint = WeaponSelector.FirePoint;
+        WeaponSelector.SetFirePoint(_jumpFirePoint);
+
+        WeaponSelector.SetWeaponByIndex(1);
+
+        var value = Random.value;
+        int repeat;
+
+        switch (value)
+        {
+            case < .10f:
+                repeat = 4;
+                break;
+            case < .66f:
+                repeat = 3;
+                break;
+            default:
+                repeat = 2;
+                break;
+        }
+
+        StartCoroutine(Jump(repeat));
+    }
+
 
     private void SplitBelching()
     {
@@ -83,6 +122,40 @@ public class GluttonyAttack : EnemyAttack
         IsAttacking = false;
         StartCoroutine(Reload(2f));
     }
+
+    private IEnumerator Jump(int repeat)       
+    {
+        _isJumping = true;
+        IsAttacking = true;
+
+        for (int i = 0; i < repeat; i++) 
+        {
+            Animator.SetBool(_jump, true);
+            yield return new WaitUntil(() => !_isJumping);
+            StartCoroutine(ExoSlam());
+            yield return new WaitUntil(() => !_isExoSlam);
+        }
+
+        IsAttacking = false;
+        WeaponSelector.SetFirePoint(_defaultFirePoint);
+        StartCoroutine(Reload(2f));
+    }
+
+    private IEnumerator ExoSlam()
+    {
+        Animator.SetBool(_jump, false);
+        _isExoSlam = true;
+        System.Random random = new();
+        var value = random.Next(1,3);
+        for (int i = 0; i < value; i++)
+        {
+            WeaponSelector.TryToAttack(EnemyMovement.Player.position, false);
+            yield return new WaitForSeconds(0.25f);
+        }
+        _isExoSlam = false;       
+    }    
+
+    public void EndJump() => _isJumping = false;
 
     private IEnumerator Reload(float time)
     {

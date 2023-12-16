@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ae2491422424028963a2a77d453e68a, type: 3}
-  m_Name: Gluttony
+  m_Name: GluttonyJump
   m_EditorClassIdentifier: 
   _description:
     _inHands: {fileID: 0}
@@ -23,7 +23,7 @@ MonoBehaviour:
     _attackSpeed: 0.1
     _reloadingSpeed: 0
   _bulletConfig:
-    _bulletType: 3
+    _bulletType: 1
     _sprite: {fileID: 8651862619831560131, guid: 046d3c135b97ec146a7d70beb37cf769, type: 3}
     _defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     _customMaterial:
@@ -34,7 +34,7 @@ MonoBehaviour:
       _enabled: 0
     _isEnemyBullet: 1
     _scale: 0.9
-    _speed: 5
+    _speed: 7
     _damage: 25
-    _count: 20
-    _radius: 180
+    _count: 30
+    _radius: 160

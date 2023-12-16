@@ -45,11 +45,10 @@ namespace Entities
             return selectedWeapon.TryToAttack(_firePoint.position, direction);
         }
 
-        public void SetWeaponByIndex(int weaponIndex)
-        {
-            _selectedWeaponIndex = weaponIndex;
-        }
-        
+        public void SetFirePoint(Transform firePoint) => _firePoint = firePoint;
+
+        public void SetWeaponByIndex(int weaponIndex) => _selectedWeaponIndex = weaponIndex;
+           
         public void Init(bool isPlayer = false)
         { 
             _isPlayer = isPlayer;
