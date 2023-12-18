@@ -3,20 +3,26 @@ using Player.Controls;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using Enemy.Arena;
 
-
-public class Minimap : Singleton<Minimap>
+public class Minimap : Singleton<Minimap>, IPointerClickHandler
 {
+    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private Image _test;
+    private Vector2 _world;
+    [Space]
     [SerializeField] private RectTransform _centerMinimapRect;
     [SerializeField] private RectTransform _outlineRect;
-
+    [Space]
     [SerializeField] private RectTransform _minimapRectImage;
     [SerializeField] private RectTransform _bigMinimapSize;
-
+    [Space]
     [SerializeField] private float _speed;
     [SerializeField] private float _offset = 1f;
     private InputReader _inputReader;
-
+    [Space]
     #region variables
     private Vector2 _defaultImageSize;
     private Vector2 _defaultRectPosition;
@@ -29,8 +35,9 @@ public class Minimap : Singleton<Minimap>
     [SerializeField] private MinimapIcon _minimapIcon;
     private MinimapWorldAgent _playerAgent;
     private MinimapIcon _playerIcon;
-
+    [Space]
     [Header("Rendering")]
+    [SerializeField] private CursorChanger _cursorChanger;
     [SerializeField] private LayerMask _cullingMask;     
     [SerializeField] private Image _minimapImage;
 
@@ -67,6 +74,11 @@ public class Minimap : Singleton<Minimap>
         _outlineRect.anchoredPosition = _activeCenterMimap ? _centerMinimapRect.anchoredPosition : _defaultRectPosition;
         _outlineRect.sizeDelta = _activeCenterMimap ? _centerMinimapRect.sizeDelta : _defaultRectSize;
         _minimapRectImage.localScale = _activeCenterMimap ? _bigMinimapSize.localScale : _defaultImageSize; 
+
+        if(_activeCenterMimap)
+            _cursorChanger.SetCursor(CursorData.CursorType.Default);
+        else
+            _cursorChanger.SetCursor(CursorData.CursorType.Aim);
     }
 
     public void SetMinimap(float size) 
@@ -115,4 +127,30 @@ public class Minimap : Singleton<Minimap>
     }
 
     private void OnDisable() => _inputReader.OpenMinimapEvent -= OpenMinimap;
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Vector2 localPoint;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(_minimapRectImage, eventData.position, eventData.pressEventCamera, out localPoint);
+        var mousePosition = localPoint;
+        Image go = Instantiate(_test);
+        go.rectTransform.SetParent(_minimapImage.rectTransform);
+        go.rectTransform.anchoredPosition = mousePosition;
+
+        var worldPosition = new Vector2(mousePosition.x, mousePosition.y / 1.777f);
+        worldPosition /= _scaleRatio;
+        _world = worldPosition;
+
+        RaycastHit2D hit =  Physics2D.BoxCast(worldPosition, Vector2.one, 0, Vector2.zero);
+        if (hit.collider != null && hit.collider.transform.root.GetComponent<Arena>().IsCompleted)
+        {
+            Debug.Log(worldPosition);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(_world, Vector2.one);
+    }
 }

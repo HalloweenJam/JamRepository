@@ -12,9 +12,11 @@ namespace Enemy.Arena
         [SerializeField] private SpawnZone _spawnZone;
         [SerializeField] private List<Gate> _gates;
         [SerializeField] private bool _isBossArena = false;
+        private bool _isCompleted = false;
 
         private SpawnPointsData _ownSpawnPointsData;
         public bool IsBossArena => _isBossArena;
+        public bool IsCompleted => _isCompleted;
 
         private void Awake() => _ownSpawnPointsData = _spawnPointsData;
 
@@ -27,6 +29,7 @@ namespace Enemy.Arena
 
         public void Completed()
         {
+            _isCompleted = true;
             foreach (Gate gate in _gates)
             {
                 if(gate.gameObject.activeInHierarchy)
