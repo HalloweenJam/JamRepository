@@ -1,13 +1,16 @@
 using Core;
+using Core.Interfaces;
 using System;
 using System.Collections;
 using UnityEngine;
 
 public class FatBall : MonoBehaviour
 {
-    [SerializeField] private float _offsetY;
     [SerializeField] private Transform _shadowTransform;
     [SerializeField] private RuntimeAnimatorController _hitAnimator;
+
+    [SerializeField] private int _damage = 15;
+    [SerializeField] private float _offsetY;
 
     private Animator _animator;
     private Transform _playerTransform;
@@ -72,5 +75,11 @@ public class FatBall : MonoBehaviour
         _animator.runtimeAnimatorController = _hitAnimator;
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.TryGetComponent<IDamageable>(out var damageable))            
+            damageable.TryTakeDamage(_damage);       
     }
 }

@@ -6,9 +6,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
+    protected NavMeshAgent Agent;
     protected EnemyStats EnemyStats;
     protected EnemyAttack EnemyAttack;
-    protected NavMeshAgent Agent;
     protected Transform PlayerTransform;
 
     public Transform Player => PlayerTransform;
@@ -20,11 +20,11 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector3 _defaultScale;
 
-    private void OnValidate()
+    private void Awake()
     {
+        Animator = GetComponent<Animator>();
         Agent = GetComponent<NavMeshAgent>();
         EnemyAttack = GetComponent<EnemyAttack>();
-        Animator = GetComponent<Animator>();
     }
 
     public virtual void Initialize(Transform playerTransform, EnemyStats enemyStats)

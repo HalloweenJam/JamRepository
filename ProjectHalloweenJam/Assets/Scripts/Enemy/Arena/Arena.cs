@@ -1,5 +1,4 @@
 using Generation.AnchorSystem.Data;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Level = LevelSetting.Levels;
@@ -12,15 +11,14 @@ namespace Enemy.Arena
         [SerializeField] private SpawnPointsData _spawnPointsData;
         [SerializeField] private SpawnZone _spawnZone;
         [SerializeField] private List<Gate> _gates;
-        private SpawnPointsData _ownSpawnPointsData;
-             
-        private void Awake()
-        {
-            _spawnZone.OnEntered += Activate;
-            _ownSpawnPointsData = _spawnPointsData;
-        }
+        [SerializeField] private bool _isBossArena = false;
 
-        private void Activate()
+        private SpawnPointsData _ownSpawnPointsData;
+        public bool IsBossArena => _isBossArena;
+
+        private void Awake() => _ownSpawnPointsData = _spawnPointsData;
+
+        public void Activate()
         {
             SpawnerEnemy.Instance.ActivateArena(this, _level, _ownSpawnPointsData);
             foreach (Gate gate in _gates)
@@ -35,7 +33,5 @@ namespace Enemy.Arena
                     gate.Disable();
             }
         }
-
-        private void OnDisable() => _spawnZone.OnEntered -= Activate;
     }
 }

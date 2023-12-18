@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 75d830ddffe6309449b781874714c521
+guid: e8f8ca5db3bea30448fbbf9a03cd1877
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7323911766102209367
-    second: gluttony_boss_jump-Sheet_0
+      213: 5721441536304710199
+    second: gluttony_boss_attack1-Sheet_0
   - first:
-      213: 8656429166731647211
-    second: gluttony_boss_jump-Sheet_1
+      213: -8499554499174975954
+    second: gluttony_boss_attack1-Sheet_1
   - first:
-      213: -4333929925959313503
-    second: gluttony_boss_jump-Sheet_2
+      213: -3679368335102904561
+    second: gluttony_boss_attack1-Sheet_2
   - first:
-      213: -8449298809716357338
-    second: gluttony_boss_jump-Sheet_3
-  - first:
-      213: 2494986037301109374
-    second: gluttony_boss_jump-Sheet_4
-  - first:
-      213: 7121709554573103918
-    second: gluttony_boss_jump-Sheet_5
+      213: 8501697707605954829
+    second: gluttony_boss_attack1-Sheet_3
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -43,7 +37,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMipmapLimit: 0
+  ignoreMipmapLimit: 1
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -113,127 +107,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gluttony_boss_jump-Sheet_0
+      name: gluttony_boss_attack1-Sheet_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 11
-        width: 43
-        height: 45
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ac8c2f6d0d3c5a90800000000000000
-      internalID: -7323911766102209367
+      spriteID: 7328b9683c4a66f40800000000000000
+      internalID: 5721441536304710199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gluttony_boss_jump-Sheet_1
+      name: gluttony_boss_attack1-Sheet_1
       rect:
         serializedVersion: 2
-        x: 74
-        y: 12
-        width: 44
-        height: 49
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be8de52a670d12870800000000000000
-      internalID: 8656429166731647211
+      spriteID: e263a9f27348b0a80800000000000000
+      internalID: -8499554499174975954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gluttony_boss_jump-Sheet_2
+      name: gluttony_boss_attack1-Sheet_2
       rect:
         serializedVersion: 2
-        x: 139
-        y: 13
-        width: 43
-        height: 49
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a792c9c1b9cad3c0800000000000000
-      internalID: -4333929925959313503
+      spriteID: f07fe5c4ef140fcc0800000000000000
+      internalID: -3679368335102904561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gluttony_boss_jump-Sheet_3
+      name: gluttony_boss_attack1-Sheet_3
       rect:
         serializedVersion: 2
-        x: 202
-        y: 13
-        width: 44
-        height: 50
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 627c9b5bf7f0eba80800000000000000
-      internalID: -8449298809716357338
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_jump-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 10
-        width: 44
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e7264e8f498ff9220800000000000000
-      internalID: 2494986037301109374
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gluttony_boss_jump-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 321
-        y: 1
-        width: 63
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e23d5d18b1565d260800000000000000
-      internalID: 7121709554573103918
+      spriteID: d011b9965091cf570800000000000000
+      internalID: 8501697707605954829
       vertices: []
       indices: 
       edges: []
@@ -241,20 +193,20 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 30010542aa8929d4584dfe0e229ac9e8
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 99512d85e077d4349a4f2e326f211973, type: 3}
+      name: _MaskTex
     nameFileIdTable:
-      gluttony_boss_jump-Sheet_0: -7323911766102209367
-      gluttony_boss_jump-Sheet_1: 8656429166731647211
-      gluttony_boss_jump-Sheet_2: -4333929925959313503
-      gluttony_boss_jump-Sheet_3: -8449298809716357338
-      gluttony_boss_jump-Sheet_4: 2494986037301109374
-      gluttony_boss_jump-Sheet_5: 7121709554573103918
+      gluttony_boss_attack1-Sheet_0: 5721441536304710199
+      gluttony_boss_attack1-Sheet_1: -8499554499174975954
+      gluttony_boss_attack1-Sheet_2: -3679368335102904561
+      gluttony_boss_attack1-Sheet_3: 8501697707605954829
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

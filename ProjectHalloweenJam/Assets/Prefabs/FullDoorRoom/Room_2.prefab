@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 1534499863007802546}
   - component: {fileID: 7965085172028841796}
   - component: {fileID: 1448637329743541100}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Outside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2100,7 +2100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68eadba92e20db498a763d7208140e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isBossArena: 0
   _castscene: {fileID: 0}
 --- !u!1 &6668653851180509649
 GameObject:
@@ -2272,6 +2271,7 @@ MonoBehaviour:
   - {fileID: 5282377766202232410}
   - {fileID: 1019031248862508184}
   - {fileID: 2746559083992543138}
+  _isBossArena: 0
 --- !u!1 &9124720992790873123
 GameObject:
   m_ObjectHideFlags: 0

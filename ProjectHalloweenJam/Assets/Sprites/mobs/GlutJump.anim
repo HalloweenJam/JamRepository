@@ -30,10 +30,10 @@ AnimationClip:
       value: {fileID: -8449298809716357338, guid: 75d830ddffe6309449b781874714c521, type: 3}
     - time: 0.6666667
       value: {fileID: 2494986037301109374, guid: 75d830ddffe6309449b781874714c521, type: 3}
-    - time: 0.8333333
+    - time: 1.1666666
       value: {fileID: 7121709554573103918, guid: 75d830ddffe6309449b781874714c521, type: 3}
-    - time: 1
-      value: {fileID: -7323911766102209367, guid: 75d830ddffe6309449b781874714c521, type: 3}
+    - time: 1.3333334
+      value: {fileID: 7121709554573103918, guid: 75d830ddffe6309449b781874714c521, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -62,13 +62,13 @@ AnimationClip:
     - {fileID: -8449298809716357338, guid: 75d830ddffe6309449b781874714c521, type: 3}
     - {fileID: 2494986037301109374, guid: 75d830ddffe6309449b781874714c521, type: 3}
     - {fileID: 7121709554573103918, guid: 75d830ddffe6309449b781874714c521, type: 3}
-    - {fileID: -7323911766102209367, guid: 75d830ddffe6309449b781874714c521, type: 3}
+    - {fileID: 7121709554573103918, guid: 75d830ddffe6309449b781874714c521, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1666666
+    m_StopTime: 1.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -88,15 +88,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.8333333
-    functionName: EndJump
+  - time: 1.1666666
+    functionName: PlayShockWaveEffect
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
-    functionName: StopAnimationJump
+  - time: 1.3333334
+    functionName: EndJump
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d36940dbe014384bd5f64eff1f85c46, type: 3}
+  m_Name: Gluttony
+  m_EditorClassIdentifier: 
+  _positions:
+  - {x: -7.3953595, y: 4.5622873}
+  - {x: -23.436132, y: 2.5805678}
+  - {x: -15.313269, y: 1.7868094}
+  - {x: -9.796165, y: 1.9244196}
+  - {x: -24.0401, y: 0.06276536}
+  - {x: -20.917112, y: 1.9355516}
+  - {x: -6.854847, y: 2.2729251}
+  - {x: -21.737818, y: 4.440872}
+  - {x: -7.418548, y: -3.9520407}
+  - {x: -6.345133, y: -2.5620027}
+  - {x: -23.934872, y: -2.511085}
+  - {x: -6.298189, y: -0.17711353}
+  - {x: -22.314423, y: -4.183688}

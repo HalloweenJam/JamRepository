@@ -20,10 +20,10 @@ TagManager:
   - Interactable
   - EnemyProjectile
   - PlayerProjectile
-  - Tile
+  - Outside
   - GenerationLayer
   - Corridor
-  - 
+  - IgnoreMap
   - 
   - 
   - 
@@ -56,4 +56,7 @@ TagManager:
     locked: 0
   - name: ShockWave
     uniqueID: 1554173803
+    locked: 0
+  - name: Map
+    uniqueID: 4101719657
     locked: 0

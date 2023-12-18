@@ -1,11 +1,21 @@
 using Enemy.EnemyEntity;
 using System.Collections;
 using UnityEngine;
+using Visuals;
 
 public class GluttonyAttack : EnemyAttack
 {
     [SerializeField] private FatBall _fatBallPrefab;
     [SerializeField] private Transform _jumpFirePoint;
+    [SerializeField] private CameraShake _cameraShake;
+
+    [Header("Reload Time")]
+    [Range(0.1f, 5f)]
+    [SerializeField] private float _reloadTime = 2f;
+    [Range(0.1f, 5f)]
+    [SerializeField] private float _fatBallReloadTime = 1f;
+
+    private ShockWaveController _shockWaveController;
     private Transform _defaultFirePoint;
 
     [Header("AnimationParameters")]
@@ -15,6 +25,12 @@ public class GluttonyAttack : EnemyAttack
 
     private bool _isExoSlam = false;
     private bool _isJumping = false;
+
+    private void Awake()
+    {
+        _shockWaveController = GetComponent<ShockWaveController>();
+        EnemyBoss.SecondPhase += () => _reloadTime /= 2;
+    }
 
     public override void Attack()
     {
@@ -27,8 +43,8 @@ public class GluttonyAttack : EnemyAttack
     private void SelectAttack()
     {
         System.Random random = new ();
-        var value = 2;//random.Next(0, 3);
-        Debug.Log(value);
+        var value = random.Next(0, 3);
+
         switch (value)
         {
             case 0:
@@ -48,7 +64,7 @@ public class GluttonyAttack : EnemyAttack
         _defaultFirePoint = WeaponSelector.FirePoint;
         WeaponSelector.SetFirePoint(_jumpFirePoint);
 
-        WeaponSelector.SetWeaponByIndex(1);
+        WeaponSelector.SetWeaponByIndex(0);
 
         var value = Random.value;
         int repeat;
@@ -70,14 +86,16 @@ public class GluttonyAttack : EnemyAttack
     }
 
 
-    private void SplitBelching()
+    private void SplitBelching()   
     {
-        WeaponSelector.SetWeaponByIndex(0);
+        System.Random random = new ();
+        var attackIndex = random.Next(1, 3);
+        WeaponSelector.SetWeaponByIndex(attackIndex);
 
-        var value = Random.value;
+        var chanceRepeat = Random.value;
         int repeat;
 
-        switch (value)
+        switch (chanceRepeat)
         {
             case < .10f:
                 repeat = 5;
@@ -103,7 +121,7 @@ public class GluttonyAttack : EnemyAttack
         fatBall.Initialize(EnemyMovement.Player, WeaponSelector.FirePoint);
         Animator.SetBool(_burpAttack, false);
         IsAttacking = false;
-        StartCoroutine(Reload(1f));
+        StartCoroutine(Reload(_fatBallReloadTime));
     }
 
     private IEnumerator SplitAttack(int repeat)
@@ -120,7 +138,7 @@ public class GluttonyAttack : EnemyAttack
         }
 
         IsAttacking = false;
-        StartCoroutine(Reload(2f));
+        StartCoroutine(Reload(_reloadTime));
     }
 
     private IEnumerator Jump(int repeat)       
@@ -132,16 +150,16 @@ public class GluttonyAttack : EnemyAttack
         {
             Animator.SetBool(_jump, true);
             yield return new WaitUntil(() => !_isJumping);
-            StartCoroutine(ExoSlam());
+            StartCoroutine(EchoSlam());
             yield return new WaitUntil(() => !_isExoSlam);
         }
 
         IsAttacking = false;
         WeaponSelector.SetFirePoint(_defaultFirePoint);
-        StartCoroutine(Reload(2f));
+        StartCoroutine(Reload(_reloadTime));
     }
 
-    private IEnumerator ExoSlam()
+    private IEnumerator EchoSlam()   
     {
         Animator.SetBool(_jump, false);
         _isExoSlam = true;
@@ -153,9 +171,15 @@ public class GluttonyAttack : EnemyAttack
             yield return new WaitForSeconds(0.25f);
         }
         _isExoSlam = false;       
-    }    
+    }
 
     public void EndJump() => _isJumping = false;
+
+    public void PlayShockWaveEffect()
+    {
+        _shockWaveController.Play();
+        _cameraShake.Shake();
+    }
 
     private IEnumerator Reload(float time)
     {

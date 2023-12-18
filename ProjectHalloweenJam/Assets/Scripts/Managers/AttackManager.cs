@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class AttackManager : PersistentSingleton<AttackManager>
+    public class AttackManager : Singleton<AttackManager>
     {
         public static void SelectAttack(Vector2 startPosition, Vector2 direction, BulletConfig bulletConfig)
         {

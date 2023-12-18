@@ -122,8 +122,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.3
+  m_Offset: {x: -0.0052206717, y: 0}
+  m_Radius: 0.27911738
 --- !u!114 &6443791203522690323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,9 +136,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afd0ae81c0d2c84cb6a14aadd109cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offsetY: 10
   _shadowTransform: {fileID: 9205300814030561168}
   _hitAnimator: {fileID: 9100000, guid: 8a3f63e6e2099bd4c86f7d029032c634, type: 2}
+  _player:
+    serializedVersion: 2
+    m_Bits: 128
+  _damage: 15
+  _offsetY: 10
   _movementTime: 0.5
   _shadowViewTime: 1.5
 --- !u!95 &6317818068370687933

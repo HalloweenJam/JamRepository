@@ -19,6 +19,7 @@ namespace Player.Controls
         public event Action ShootingEvent;
         public event Action ShootingCancelledEvent;
 
+        public event Action OpenMinimapEvent;
         public event Action InteractEvent;
         
         public event Action ExitEvent;
@@ -99,6 +100,12 @@ namespace Player.Controls
 
         public void OnMousePosition(InputAction.CallbackContext context)
         {
+        }
+
+        public void OnMinimap(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+                OpenMinimapEvent?.Invoke();
         }
     }
 }

@@ -1,4 +1,3 @@
-using Enemy.Arena;
 using Enemy.EnemyEntity;
 using System;
 using UnityEngine;

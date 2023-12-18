@@ -13,7 +13,7 @@ namespace Managers
     public class DungeonGenerator : Singleton<DungeonGenerator>
     {
         [Header("GameInfo")]
-        [SerializeField] private Transform _playerTransform;
+        [SerializeField] private Minimap _minimap;
         [SerializeField] private BoxCollider2D _mainCollider;
         [SerializeField] private BoxCollider2D _collisionCollider;
         [SerializeField] private NavMeshSurface _navMeshSurface;
@@ -24,7 +24,7 @@ namespace Managers
         [SerializeField] private int _roomsCount;
         [SerializeField, Range(1, 10)] private int _clusteringOffset = 3;
         [SerializeField, Range(5, 35)] private int _moveIterations = 3;
-        
+
         [SerializeField] private bool _generate = true;
         
         private List<GenerationRoom> _generatedRooms = new();
@@ -36,8 +36,6 @@ namespace Managers
         
         private bool _isClusteringFinishing;
         private bool _isGenerationFinished;
-
-        public Transform PlayerTransform => _playerTransform;
         
         private void Update()
         {
@@ -80,6 +78,8 @@ namespace Managers
 
         private void PreparationForGame()
         {
+            _minimap.SetMinimap(_range.x);
+
             _navMeshSurface.RemoveData();
             _navMeshSurface.AddData();
             var data = _navMeshSurface.navMeshData;

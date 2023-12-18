@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class InputReaderManager : PersistentSingleton<InputReaderManager>
+    public class InputReaderManager : Singleton<InputReaderManager>
     {
         [SerializeField] private InputReader _inputReader;
 

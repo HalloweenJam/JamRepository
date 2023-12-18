@@ -107,6 +107,7 @@ MonoBehaviour:
   - {fileID: 5815191549821879225}
   - {fileID: 5823221381542659737}
   - {fileID: 329806000642773379}
+  _isBossArena: 0
 --- !u!114 &8256205755496121060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2152,7 +2153,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2491,7 +2492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68eadba92e20db498a763d7208140e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isBossArena: 0
   _castscene: {fileID: 0}
 --- !u!1 &7534269853910452927
 GameObject:
@@ -3596,7 +3596,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3614,8 +3614,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -705775483
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4704,7 +4704,7 @@ GameObject:
   - component: {fileID: 2042567649697396762}
   - component: {fileID: 3922533647391106863}
   - component: {fileID: 8843698055933152714}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Outside
   m_TagString: Untagged
   m_Icon: {fileID: 0}

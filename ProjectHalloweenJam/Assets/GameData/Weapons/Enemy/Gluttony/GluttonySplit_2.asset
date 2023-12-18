@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ae2491422424028963a2a77d453e68a, type: 3}
-  m_Name: Gluttony
+  m_Name: GluttonySplit_2
   m_EditorClassIdentifier: 
   _description:
     _inHands: {fileID: 0}
@@ -36,5 +36,5 @@ MonoBehaviour:
     _scale: 0.9
     _speed: 5
     _damage: 25
-    _count: 20
+    _count: 15
     _radius: 180

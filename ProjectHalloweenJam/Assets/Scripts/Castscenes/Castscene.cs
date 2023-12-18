@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using Core;
+using UnityEditor.TextCore.Text;
 
 public class Castscene : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Castscene : MonoBehaviour
     [Range(0, 5f)][SerializeField] private float _animationTime;
     [SerializeField] private string _idle;
     [SerializeField] private string _run;
+    private bool _isShowed = false;
     private Animator _playerAnimator;
 
     [Header("Interface")]
@@ -20,21 +22,29 @@ public class Castscene : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> _texts;
     [SerializeField] private Image _dialogueDisplay;
     [SerializeField] private RawImage _minimapRenderer;
-
-
     [SerializeField] private BossHP _bossBar;
-    [SerializeField] private EnemyMovement _bossMovement;
+
+    [Header("Components")]
+    [SerializeField] private EnemyBoss _enemyBoss;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private Transform _destnationTransform;
-    [SerializeField] private NPC _bossDialogue;
+    private Coroutine _coroutine;
+    private NPC _bossDialogue;
+    private EnemyMovement _bossMovement;
+
+    public bool IsShowed => _isShowed;
 
     private void Awake()
     {
         DialogueManager.Instance.OnEndDialogue += EndCastscene;
+        _enemyBoss.OnTakeDamage += EndCastsceneNow;
+
         _playerAnimator = _playerController.GetComponent<Animator>();
+        _bossMovement = _enemyBoss.gameObject.GetComponent<EnemyMovement>();
+        _bossDialogue = _enemyBoss.gameObject.GetComponent<NPC>();
     }
 
-    public void StartCastscene() => StartCoroutine(CastsceneCoroutine());
+    public void StartCastscene() => _coroutine = StartCoroutine(CastsceneCoroutine());
 
     private IEnumerator CastsceneCoroutine()
     {
@@ -49,13 +59,13 @@ public class Castscene : MonoBehaviour
     }
     private void EndCastscene()
     {
-        ShowDialogueDisplay(false);
-        ShowInteface(true);
-        _bossBar.ShowBossBaR();
-
         _playerController.enabled = true;
         _bossMovement.enabled = true;
 
+        _isShowed = false;
+        ShowDialogueDisplay(false);
+        ShowInteface(true);
+        _bossBar.ShowBossBaR();
     }
 
     private void ShowInteface(bool active)
@@ -79,5 +89,16 @@ public class Castscene : MonoBehaviour
         }
         else
             _dialogueDisplay.Deactivate();
+    }
+
+    private void EndCastsceneNow(float _)
+    {
+        if (!_isShowed && _coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _playerController.transform.DOPause();
+            EndCastscene();
+            _enemyBoss.OnTakeDamage -= EndCastsceneNow;
+        }
     }
 }

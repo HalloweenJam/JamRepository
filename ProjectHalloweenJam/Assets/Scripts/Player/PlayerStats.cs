@@ -80,6 +80,15 @@ namespace Player
                 return;
 
             _invisibilityCounter -= Time.deltaTime;
+        }  
+
+        private void OnDisable()
+        {
+            _playerController.OnPlayerDashing -= _ =>
+            {
+                _invisibilityCounter = _dashInvisibilityLength;
+                _playerController.DisableHurtCollider(_dashInvisibilityLength);
+            };
         }
     }
 }

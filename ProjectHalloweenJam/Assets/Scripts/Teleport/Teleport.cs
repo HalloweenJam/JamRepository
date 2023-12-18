@@ -43,7 +43,8 @@ public class Teleport : MonoBehaviour
 
     private void OnDisable()
     {
-        StopCoroutine(_teleportation);
+        if(_teleportation != null)
+            StopCoroutine(_teleportation);
     }
 
     private IEnumerator ActivateTeleportation(bool activate)

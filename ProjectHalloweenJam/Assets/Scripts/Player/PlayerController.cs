@@ -171,10 +171,16 @@ namespace Player
         }
 
         private void OnDisable()
-        {
+        { 
+            _inputReader.DashEvent -= () =>
+            {
+                if (_canDash)
+                    Dash();
+            };
+
             if (InputReaderManager.Instance == null)
                 return;
-            
+
             InputReaderManager.Instance.OnInputReaderActiveStateChanged -= (state) => _isEnabled = state;
             InputReaderManager.Instance.OnInstanceDestroyed -= OnDisable;
         }

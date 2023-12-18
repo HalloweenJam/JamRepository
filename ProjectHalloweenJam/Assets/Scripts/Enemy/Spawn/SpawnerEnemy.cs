@@ -9,6 +9,7 @@ public class SpawnerEnemy : Singleton<SpawnerEnemy>
 {
     [SerializeField] private LevelConfiguration _levelConfiguration;
     [SerializeField] private EnemyData _enemyData;
+    [SerializeField] private Transform _playerTransform;
 
     [SerializeField] private int _startPoints = 10;
     [SerializeField] private bool _spawnOnStart = true;
@@ -32,6 +33,7 @@ public class SpawnerEnemy : Singleton<SpawnerEnemy>
     private void Start() 
     {
         EnemyStats.OnDeath += CheckArena;
+        EnemyBoss.SecondPhase += SpawnEnemyInBossArena;
         _currentPoints = _startPoints;
     }
 
@@ -41,7 +43,7 @@ public class SpawnerEnemy : Singleton<SpawnerEnemy>
 
         if (_currentWaveNumber != 0 && _currentCountEnemy == 0)
             SpawnEnemy(_currentArena, _enemyCount, _canSpawnMiniBoss);
-        else if (_currentCountEnemy == 0)
+        else if (_currentCountEnemy == 0 && !_currentArena.IsBossArena)
             _currentArena.Completed();
     }     
 
@@ -73,20 +75,21 @@ public class SpawnerEnemy : Singleton<SpawnerEnemy>
             _currentWaveNumber--; 
             return;
         }
-
+  
         if (canSpawnMiniBoss)
-            _canSpawnMiniBoss = false;
+            _canSpawnMiniBoss = false;  
 
         _currentPoints -= enemyItem.Point;
         _addPoints += enemyItem.Point;
         _currentCountEnemy++;
 
-        EnemyStats enemy = Instantiate(enemyItem.Prefab, arena.transform);
+        EnemyStats enemy = Instantiate(enemyItem?.Prefab, arena?.transform);
         enemy.transform.localPosition = position;
-        enemy.Initialize(DungeonGenerator.Instance.PlayerTransform);
+        enemy.Initialize(_playerTransform);
 
         SpawnEnemy(_currentArena, _enemyCount, _canSpawnMiniBoss);
     }
 
+    private void SpawnEnemyInBossArena() => SpawnEnemy(_currentArena, _enemyCount, _canSpawnMiniBoss);
     private void OnDisable() => EnemyStats.OnDeath -= CheckArena;
 }
