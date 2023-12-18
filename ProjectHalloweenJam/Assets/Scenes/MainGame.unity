@@ -545,6 +545,10 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 577
       objectReference: {fileID: 0}
+    - target: {fileID: 4621394336644080632, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: _dissolveEffect
+      value: 
+      objectReference: {fileID: 2068012944}
     - target: {fileID: 5086677856818794409, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -574,6 +578,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6745565781883482922, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2068012936}
+    - targetCorrespondingSourceObject: {fileID: 6745565781883482922, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2068012944}
+    - targetCorrespondingSourceObject: {fileID: 5765303340139183827, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2084676226}
   m_SourcePrefab: {fileID: 100100000, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
 --- !u!1 &566969246
 GameObject:
@@ -815,6 +825,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c53f202483f5994699c87c10f4048ac, type: 3}
+--- !u!1 &1018123036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018123038}
+  - component: {fileID: 1018123037}
+  m_Layer: 0
+  m_Name: Sisis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1018123037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018123036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa77c607b7b34722af7d9e885bbd678b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1018123038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018123036}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066120308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,6 +1708,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: -5156993582514690110, guid: 54b30b06967c6e244ac9660784006dfd, type: 3}
   IconColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &2068012944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803491362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac7d8b02f2420943bc927cfb52dd779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dissolveTime: 0.4
+  _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
+  _activateComponent: 1
+--- !u!1 &2084676222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5765303340139183827, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+  m_PrefabInstance: {fileID: 497246372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2084676226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084676222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac7d8b02f2420943bc927cfb52dd779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dissolveTime: 0.4
+  _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
+  _activateComponent: 1
 --- !u!224 &7151101541878881
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2478,3 +2567,4 @@ SceneRoots:
   - {fileID: 1066120310}
   - {fileID: 6687439951228949472}
   - {fileID: 7775460315055655708}
+  - {fileID: 1018123038}

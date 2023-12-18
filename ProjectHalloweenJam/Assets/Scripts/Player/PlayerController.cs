@@ -16,8 +16,10 @@ namespace Player
 
         [Header("Movement")] 
         [SerializeField] private float _speed = 12;
-
         [SerializeField] private WeaponHolder _weaponHolder;
+
+        [Header("Teleport")] 
+        [SerializeField] private float _teleportTime = .5f;
 
         [Header("Dash")]
         [SerializeField] private TrailRenderer _trailRenderer;
@@ -36,14 +38,16 @@ namespace Player
         [HideInInspector, SerializeField] private Animator _animator;
         [HideInInspector, SerializeField] private SpriteRenderer _spriteRenderer;
         [HideInInspector, SerializeField] private WeaponSelector _weaponSelector;
+        [HideInInspector, SerializeField] private DissolveEffect _dissolveEffect;
         
         private Camera _camera;
 
         private bool _isEnabled = true;
         private bool _isDashing;
+        private bool _isMovementCancelled = true;
+        
         private float _dashDelayCounter;
         private int _dashesCount;
-        private bool _movementCancelled = true;
 
         private Vector2 _cashedMovementDirection = Vector2.right;
         private Vector2 _movementDirection;
@@ -51,6 +55,7 @@ namespace Player
         private InputReader _inputReader;
 
         public Action<bool> OnPlayerDashing;
+        public static Action<Vector2> TeleportPlayer;
         
         private bool _canDash => !_isDashing && _dashesCount > 0;
 
@@ -58,12 +63,49 @@ namespace Player
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+            _dissolveEffect = GetComponent<DissolveEffect>();
             _weaponSelector ??= GetComponent<WeaponSelector>();
             _spriteRenderer ??= GetComponent<SpriteRenderer>();
         }
 
+        private void Teleport(Vector2 pos)
+        {
+            StartCoroutine(MoveToCoroutine(pos));
+        }
+
+        private IEnumerator MoveToCoroutine(Vector2 pos)
+        {
+            EnableController(false);
+            _dissolveEffect.Dissolve(this);
+            _weaponSelector.WeaponHolder.Enable(false);
+            
+            yield return new WaitForSeconds(_teleportTime);
+
+            transform.position = pos;
+            
+            yield return new WaitForSeconds(_teleportTime);
+            
+            EnableController(true);
+            _dissolveEffect.Appearance(this);
+            _weaponSelector.WeaponHolder.Enable(true);
+        }
+
+        private void EnableController(bool enable)
+        {
+            if (!enable)
+            {
+                _inputReader.Disable();
+            }
+            else
+            {
+                _inputReader.SetPlayerActions();
+            }
+        }
+
         public void Init()
         {
+            TeleportPlayer = Teleport;
+            
             _camera = Camera.main;
 
             _rigidbody.mass = _mass;
@@ -86,16 +128,12 @@ namespace Player
                     _cashedMovementDirection = direction;
                 
                 _movementDirection = direction;
-                _movementCancelled = false;
+                _isMovementCancelled = false;
             };
             
-            _inputReader.MoveCancelledEvent += () => _movementCancelled = true;
+            _inputReader.MoveCancelledEvent += () => _isMovementCancelled = true;
 
-            _inputReader.DashEvent += () =>
-            {
-                if (_canDash)
-                    Dash();
-            };
+            _inputReader.DashEvent += TryDash;
         }
         private void Update()
         {
@@ -120,9 +158,11 @@ namespace Player
             Rotate();
         }
 
-
-        private void Dash()
+        private void TryDash()
         {
+            if (!_canDash)
+                return;
+            
             _isDashing = true;
             OnPlayerDashing?.Invoke(_isDashing);
             _dashesCount--;
@@ -148,7 +188,7 @@ namespace Player
 
         private void Move()
         {
-            if (_movementCancelled)
+            if (_isMovementCancelled)
             {
                 _animator.Play(_idle);
                 return;
@@ -171,12 +211,8 @@ namespace Player
         }
 
         private void OnDisable()
-        { 
-            _inputReader.DashEvent -= () =>
-            {
-                if (_canDash)
-                    Dash();
-            };
+        {
+            _inputReader.DashEvent -= TryDash;
 
             if (InputReaderManager.Instance == null)
                 return;

@@ -29,6 +29,8 @@ namespace Entities
         private InputReader _inputReader;
 
         private WeaponData _currentWeapon => _weapons[_selectedWeaponIndex];
+
+        public WeaponHolder WeaponHolder => _weaponHolder;
         
         public Action<WeaponData, bool> OnWeaponUsed;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Entities
 {
-    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(SpriteRenderer), typeof(DissolveEffect))]
     public class WeaponHolder : MonoBehaviour
     {
         [SerializeField] private float _offset;
@@ -11,11 +11,24 @@ namespace Entities
         [SerializeField] private Sprite _sprite;
 
         [SerializeField, HideInInspector] private SpriteRenderer _spriteRenderer;
+        [SerializeField, HideInInspector] private DissolveEffect _dissolveEffect;
         
         private float _rotation;
         private bool _isEnabled = true; 
         
         private Camera _camera;
+
+        public void Enable(bool enable)
+        {
+            if (!enable)
+            {
+                _dissolveEffect.Dissolve(this);
+            }
+            else
+            {
+                _dissolveEffect.Appearance(this);
+            }
+        }
 
         public void SetWeaponSprite(Sprite sprite)
         {
@@ -64,6 +77,7 @@ namespace Entities
         private void OnValidate()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            _dissolveEffect = GetComponent<DissolveEffect>();
             _spriteRenderer.sprite = _sprite;
         }
     }
