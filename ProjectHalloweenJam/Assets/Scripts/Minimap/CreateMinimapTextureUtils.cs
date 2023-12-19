@@ -47,14 +47,14 @@ public class CreateMinimapTextureUtils
 
         Texture2D cameraTexture = new Texture2D(width, height, TextureFormat.RGBA32, false);
         camera.targetTexture = rt;
-        RenderTexture.active = rt;  
+        RenderTexture.active = rt;   
 
         camera.Render();
 
         cameraTexture.ReadPixels(new Rect(0, 0, width, height), 0, 0, false);
         cameraTexture.Apply();
 
-        rt.Release();
+        rt.Release(); 
         Object.DestroyImmediate(camera.gameObject);  
 
         return cameraTexture;

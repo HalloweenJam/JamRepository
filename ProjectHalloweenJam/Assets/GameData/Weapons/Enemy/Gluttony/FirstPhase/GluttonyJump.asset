@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ae2491422424028963a2a77d453e68a, type: 3}
-  m_Name: GluttonySplit_2
+  m_Name: GluttonyJump
   m_EditorClassIdentifier: 
   _description:
     _inHands: {fileID: 0}
@@ -24,7 +24,7 @@ MonoBehaviour:
     _reloadingSpeed: 0
   _bulletConfig:
     _bulletType: 3
-    _sprite: {fileID: 8651862619831560131, guid: 046d3c135b97ec146a7d70beb37cf769, type: 3}
+    _sprite: {fileID: 5831596718773489678, guid: 5c35d25b06abb394b942216a02fb732a, type: 3}
     _defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     _customMaterial:
       _value: {fileID: 2100000, guid: 4917f21938502d7469b213db8ca11b03, type: 2}
@@ -36,5 +36,5 @@ MonoBehaviour:
     _scale: 0.9
     _speed: 5
     _damage: 25
-    _count: 15
+    _count: 10
     _radius: 180

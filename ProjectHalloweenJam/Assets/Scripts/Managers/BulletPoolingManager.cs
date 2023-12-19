@@ -26,10 +26,7 @@ namespace Managers
             {
                 _bulletsPool.Release(bullet);
             }
-            catch (Exception e)
-            {
-                // ignored
-            }
+            catch { }
         }
         
         private void Start()

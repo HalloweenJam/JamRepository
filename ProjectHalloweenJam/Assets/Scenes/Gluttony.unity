@@ -3416,6 +3416,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5936856721344827175, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6745565781883482922, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: m_Name
       value: Player
@@ -11311,6 +11315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
+  _secondPhaseController: {fileID: 9100000, guid: d51b344f58df6a344831605115488083, type: 2}
   _fatBallPrefab: {fileID: 6443791203522690323, guid: b5f3697b89f5bea4aa7118f316b71e00, type: 3}
   _jumpFirePoint: {fileID: 604191633}
   _cameraShake: {fileID: 7035559330638247856}
@@ -11341,7 +11346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922f2debd9e777449bc2682d64ea2c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1500
+  _maxHealth: 2000
   CurrentHealth: 5
   _dropLootChance: 0.2
   _playerTransform: {fileID: 1382347456}

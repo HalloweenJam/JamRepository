@@ -863,7 +863,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3878366460240128678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1842,7 +1842,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -1866,16 +1866,16 @@ CompositeCollider2D:
         Y: -25000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 3.499971, y: -2.5}
-      - {x: 3.499971, y: 6.5}
-      - {x: 2.5, y: 6.5000296}
-      - {x: 2.499971, y: 7.5}
-      - {x: -3.5, y: 7.4999704}
-      - {x: -3.5000296, y: 6.5}
-      - {x: -4.5, y: 6.499971}
-      - {x: -4.499971, y: -2.5}
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
+    - - {x: 3.5, y: 6.5}
+      - {x: 2.5, y: 6.5}
+      - {x: 2.5, y: 7.5}
+      - {x: -3.5, y: 7.5}
+      - {x: -3.5, y: 6.5}
+      - {x: -4.5, y: 6.5}
+      - {x: -4.5, y: -2.5}
+      - {x: 3.5, y: -2.5}
+  m_VertexDistance: 1.08
+  m_OffsetDistance: 0
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 2735774150356402650}
 --- !u!19719996 &3096301412479486128

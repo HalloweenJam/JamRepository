@@ -1,5 +1,6 @@
 using Core;
 using Core.Interfaces;
+using Entities;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -8,12 +9,17 @@ public class FatBall : MonoBehaviour
 {
     [SerializeField] private Transform _shadowTransform;
     [SerializeField] private RuntimeAnimatorController _hitAnimator;
-
+    [Space]
     [SerializeField] private int _damage = 15;
     [SerializeField] private float _offsetY;
+    [Space]
+    [SerializeField] private Material _material;
 
     private Animator _animator;
     private Transform _playerTransform;
+    private WeaponSelector _weaponSelector;
+
+    private static readonly int GlowColor = Shader.PropertyToID("_GlowColor");
 
     [Range(0, 5)]
     [SerializeField] private float _movementTime;
@@ -23,10 +29,11 @@ public class FatBall : MonoBehaviour
     public void Initialize(Transform playerTransform, Transform spawnTransform)
     {
         _animator = GetComponent<Animator>();
+        _weaponSelector = GetComponent<WeaponSelector>();
+        _weaponSelector.SetWeaponByIndex(0);
 
         _playerTransform = playerTransform;
         transform.position = spawnTransform.position;
-
 
         StartCoroutine(Fly());
     }
@@ -73,8 +80,21 @@ public class FatBall : MonoBehaviour
         _shadowTransform.position = shadowPosition;
         _shadowTransform.Deactivate();
         _animator.runtimeAnimatorController = _hitAnimator;
+        _weaponSelector.TryToAttack(_playerTransform.position, false);
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
+    }
+
+    public void SetToxicBall()
+    {
+        Color hdrColor = new Color(0f,8f,0f,1f);   
+        _material.SetColor(GlowColor, hdrColor);
+    }
+
+    public void SetFireBallMaterial()
+    {
+        Color hdrColor = new Color(20f, 0f, 0f,1f); 
+        _material.SetColor(GlowColor, hdrColor); 
     }
 
     private void OnCollisionEnter2D(Collision2D other)

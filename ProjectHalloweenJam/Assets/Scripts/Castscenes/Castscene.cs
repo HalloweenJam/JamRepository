@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using Core;
-using UnityEditor.TextCore.Text;
 
 public class Castscene : MonoBehaviour
 {

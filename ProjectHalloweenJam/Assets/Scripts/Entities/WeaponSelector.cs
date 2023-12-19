@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Core.Classes;
-using Items;
 using Managers;
 using Player.Controls;
 using UnityEngine;

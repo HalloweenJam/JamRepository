@@ -5,6 +5,7 @@ using Visuals;
 
 public class GluttonyAttack : EnemyAttack
 {
+    [SerializeField] private RuntimeAnimatorController _secondPhaseController;
     [SerializeField] private FatBall _fatBallPrefab;
     [SerializeField] private Transform _jumpFirePoint;
     [SerializeField] private CameraShake _cameraShake;
@@ -29,7 +30,9 @@ public class GluttonyAttack : EnemyAttack
     private void Awake()
     {
         _shockWaveController = GetComponent<ShockWaveController>();
-        EnemyBoss.SecondPhase += () => _reloadTime /= 2;
+        EnemyBoss.SecondPhase += SecondPhase;
+
+        _fatBallPrefab.SetToxicBall();
     }
 
     public override void Attack()
@@ -63,7 +66,6 @@ public class GluttonyAttack : EnemyAttack
     {
         _defaultFirePoint = WeaponSelector.FirePoint;
         WeaponSelector.SetFirePoint(_jumpFirePoint);
-
         WeaponSelector.SetWeaponByIndex(0);
 
         var value = Random.value;
@@ -84,7 +86,6 @@ public class GluttonyAttack : EnemyAttack
 
         StartCoroutine(Jump(repeat));
     }
-
 
     private void SplitBelching()   
     {
@@ -181,10 +182,26 @@ public class GluttonyAttack : EnemyAttack
         _cameraShake.Shake();
     }
 
+    private void SecondPhase()
+    {
+        StartCoroutine(ActivateSecondPhase());
+    }
+
+    private IEnumerator ActivateSecondPhase()
+    {
+        yield return new WaitUntil(() => !IsAttacking);
+        _reloadTime /= 2;
+        _shockWaveController.Play();
+        Animator.runtimeAnimatorController = _secondPhaseController;
+        _fatBallPrefab.SetFireBallMaterial();
+    }
+
     private IEnumerator Reload(float time)
     {
         IsReload = true;
         yield return new WaitForSeconds(time);
         IsReload = false;
     }
+
+    private void OnDisable() => EnemyBoss.SecondPhase -= SecondPhase;
 }

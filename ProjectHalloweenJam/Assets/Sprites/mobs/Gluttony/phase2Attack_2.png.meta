@@ -1,0 +1,560 @@
+fileFormatVersion: 2
+guid: 5b941e568ff8511429c1e275c4db684b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4770531793937970106
+    second: phase2Attack_2_0
+  - first:
+      213: -2928032752749264807
+    second: phase2Attack_2_1
+  - first:
+      213: -7982238887693249454
+    second: phase2Attack_2_2
+  - first:
+      213: -674965561785783937
+    second: phase2Attack_2_3
+  - first:
+      213: 7135092913271445479
+    second: phase2Attack_2_4
+  - first:
+      213: -8101643525477785445
+    second: phase2Attack_2_5
+  - first:
+      213: 4409412493486698906
+    second: phase2Attack_2_6
+  - first:
+      213: 5143933063874960433
+    second: phase2Attack_2_7
+  - first:
+      213: -1299097052479401202
+    second: phase2Attack_2_8
+  - first:
+      213: 4355963624865645593
+    second: phase2Attack_2_9
+  - first:
+      213: -2179281620741829480
+    second: phase2Attack_2_10
+  - first:
+      213: 137144592646848224
+    second: phase2Attack_2_11
+  - first:
+      213: 6673965764882252021
+    second: phase2Attack_2_12
+  - first:
+      213: 8523618444373122780
+    second: phase2Attack_2_13
+  - first:
+      213: -4539751314547996341
+    second: phase2Attack_2_14
+  - first:
+      213: 5071126721145222813
+    second: phase2Attack_2_15
+  - first:
+      213: 7783731999625809639
+    second: phase2Attack_2_16
+  - first:
+      213: -3478495963009370612
+    second: phase2Attack_2_17
+  - first:
+      213: -3806703241032704158
+    second: phase2Attack_2_18
+  - first:
+      213: 7271395217518939240
+    second: phase2Attack_2_19
+  - first:
+      213: 1602928726142373811
+    second: phase2Attack_2_20
+  - first:
+      213: 7025581702149958248
+    second: phase2Attack_2_21
+  - first:
+      213: -1085703251009211234
+    second: phase2Attack_2_22
+  - first:
+      213: 4796011239308601472
+    second: phase2Attack_2_23
+  - first:
+      213: 238642815195071651
+    second: phase2Attack_2_24
+  - first:
+      213: 5942605176252207666
+    second: phase2Attack_2_25
+  - first:
+      213: -8768455778210806677
+    second: phase2Attack_2_26
+  - first:
+      213: 4657788142551712355
+    second: phase2Attack_2_27
+  - first:
+      213: 5362124725747186011
+    second: phase2Attack_2_28
+  - first:
+      213: -1249274507541913258
+    second: phase2Attack_2_29
+  - first:
+      213: -8897071030253903028
+    second: phase2Attack_2_30
+  - first:
+      213: -4877455594498703424
+    second: phase2Attack_2_31
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: phase2Attack_2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64cce98db9aabcdb0800000000000000
+      internalID: -4770531793937970106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 950cba989b98d57d0800000000000000
+      internalID: -2928032752749264807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2541cbaf504693190800000000000000
+      internalID: -7982238887693249454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f79e22ec56a02a6f0800000000000000
+      internalID: -674965561785783937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e793f68331f40360800000000000000
+      internalID: 7135092913271445479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b90ad0f432e219f80800000000000000
+      internalID: -8101643525477785445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a91b17efc41613d30800000000000000
+      internalID: 4409412493486698906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13c57ac2edbe26740800000000000000
+      internalID: 5143933063874960433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e03553a1d1ea8fde0800000000000000
+      internalID: -1299097052479401202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 914c3a286dd737c30800000000000000
+      internalID: 4355963624865645593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89c452a89e2a1c1e0800000000000000
+      internalID: -2179281620741829480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eeb497c74c37e100800000000000000
+      internalID: 137144592646848224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f0cce2c080be9c50800000000000000
+      internalID: 6673965764882252021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_13
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cded3d9a0d9f94670800000000000000
+      internalID: 8523618444373122780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_14
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4901c76b309ff0c0800000000000000
+      internalID: -4539751314547996341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phase2Attack_2_15
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d963ad882e2406640800000000000000
+      internalID: 5071126721145222813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0498c90ee5e7c2142b667550aa2c002a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      phase2Attack_2_0: -4770531793937970106
+      phase2Attack_2_1: -2928032752749264807
+      phase2Attack_2_10: -2179281620741829480
+      phase2Attack_2_11: 137144592646848224
+      phase2Attack_2_12: 6673965764882252021
+      phase2Attack_2_13: 8523618444373122780
+      phase2Attack_2_14: -4539751314547996341
+      phase2Attack_2_15: 5071126721145222813
+      phase2Attack_2_2: -7982238887693249454
+      phase2Attack_2_3: -674965561785783937
+      phase2Attack_2_4: 7135092913271445479
+      phase2Attack_2_5: -8101643525477785445
+      phase2Attack_2_6: 4409412493486698906
+      phase2Attack_2_7: 5143933063874960433
+      phase2Attack_2_8: -1299097052479401202
+      phase2Attack_2_9: 4355963624865645593
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

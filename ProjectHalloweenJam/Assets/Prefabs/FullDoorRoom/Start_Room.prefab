@@ -2341,7 +2341,7 @@ GameObject:
   - component: {fileID: 898115123966705286}
   m_Layer: 0
   m_Name: Start_Room
-  m_TagString: Untagged
+  m_TagString: StartRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4492,7 +4492,7 @@ GameObject:
   - component: {fileID: 7717018789178912510}
   m_Layer: 15
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: StartRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5425,7 +5425,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:

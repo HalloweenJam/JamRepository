@@ -3,8 +3,6 @@ using UnityEngine;
 public class EnemyShooting : EnemyMovement
 {
     [SerializeField] private LayerMask _obstacleLayer;
-    [SerializeField] private float _shootDistance = 10f;
-
     private const string _move = "Move";
 
     public override void Update() 

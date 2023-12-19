@@ -3,30 +3,25 @@ using Player.Controls;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using Enemy.Arena;
 
-public class Minimap : Singleton<Minimap>, IPointerClickHandler
+public class Minimap : Singleton<Minimap>
 {
-    [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private Image _test;
-    private Vector2 _world;
-    [Space]
     [SerializeField] private RectTransform _centerMinimapRect;
     [SerializeField] private RectTransform _outlineRect;
     [Space]
     [SerializeField] private RectTransform _minimapRectImage;
     [SerializeField] private RectTransform _bigMinimapSize;
+    [SerializeField] private Image _blackSquarePrefab;
     [Space]
     [SerializeField] private float _speed;
     [SerializeField] private float _offset = 1f;
     private InputReader _inputReader;
-    [Space]
+
     #region variables
     private Vector2 _defaultImageSize;
     private Vector2 _defaultRectPosition;
     private Vector2 _defaultRectSize;
+    private Vector2 _defaultImagePosition;
     private Vector2 _scaleRatio;
     private float _mapSize;
     #endregion variables
@@ -42,8 +37,12 @@ public class Minimap : Singleton<Minimap>, IPointerClickHandler
     [SerializeField] private Image _minimapImage;
 
     public Action OnLoadedMinimap;
+    public Action<bool> OnOpenMinimap;
     private bool _activeCenterMimap = false;  
     private bool _isLoaded = false;
+
+    public RectTransform MinimapRect => _minimapRectImage;
+    public Vector2 ScaleRatio => _scaleRatio;
 
     private void Start()
     {
@@ -67,18 +66,21 @@ public class Minimap : Singleton<Minimap>, IPointerClickHandler
         _minimapRectImage.anchoredPosition = (_playerIcon.RectTransform.anchoredPosition * _speed);
     }
 
-    private void OpenMinimap()
+    public void OpenMinimap()
     {
         _activeCenterMimap = !_activeCenterMimap;
 
         _outlineRect.anchoredPosition = _activeCenterMimap ? _centerMinimapRect.anchoredPosition : _defaultRectPosition;
         _outlineRect.sizeDelta = _activeCenterMimap ? _centerMinimapRect.sizeDelta : _defaultRectSize;
-        _minimapRectImage.localScale = _activeCenterMimap ? _bigMinimapSize.localScale : _defaultImageSize; 
+        _minimapRectImage.localScale = _activeCenterMimap ? _bigMinimapSize.localScale : _defaultImageSize;
+        _minimapRectImage.anchoredPosition = _activeCenterMimap ? _defaultImagePosition : _minimapRectImage.anchoredPosition;
 
-        if(_activeCenterMimap)
+        if (_activeCenterMimap)
             _cursorChanger.SetCursor(CursorData.CursorType.Default);
         else
             _cursorChanger.SetCursor(CursorData.CursorType.Aim);
+
+        OnOpenMinimap?.Invoke(_activeCenterMimap);
     }
 
     public void SetMinimap(float size) 
@@ -91,6 +93,7 @@ public class Minimap : Singleton<Minimap>, IPointerClickHandler
         _defaultRectPosition = _outlineRect.anchoredPosition;
         _defaultRectSize = _outlineRect.sizeDelta;
         _defaultImageSize = _minimapRectImage.localScale;
+        _defaultImagePosition = _minimapRectImage.anchoredPosition;
 
         OnLoadedMinimap?.Invoke();
         _isLoaded = true;
@@ -120,37 +123,19 @@ public class Minimap : Singleton<Minimap>, IPointerClickHandler
 
     private void CalculateTransformationMatrix()
     {
-        var minimapDimensions = _minimapRectImage.rect.size / _offset;  
+        var minimapDimensions = _minimapRectImage.rect.size / _offset;   
         var mapDimensions = new Vector2(_mapSize, _mapSize);
 
         _scaleRatio = minimapDimensions / mapDimensions;
     }
 
+    public void FogOfWarForRoom(Vector2 worldPosition)
+    {
+        Image fog = Instantiate(_blackSquarePrefab);
+        var position = WorldToMapPosition(worldPosition);
+        fog.transform.SetParent(_minimapRectImage);
+        fog.rectTransform.anchoredPosition = position;
+    }
+
     private void OnDisable() => _inputReader.OpenMinimapEvent -= OpenMinimap;
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(_minimapRectImage, eventData.position, eventData.pressEventCamera, out localPoint);
-        var mousePosition = localPoint;
-        Image go = Instantiate(_test);
-        go.rectTransform.SetParent(_minimapImage.rectTransform);
-        go.rectTransform.anchoredPosition = mousePosition;
-
-        var worldPosition = new Vector2(mousePosition.x, mousePosition.y / 1.777f);
-        worldPosition /= _scaleRatio;
-        _world = worldPosition;
-
-        RaycastHit2D hit =  Physics2D.BoxCast(worldPosition, Vector2.one, 0, Vector2.zero);
-        if (hit.collider != null && hit.collider.transform.root.GetComponent<Arena>().IsCompleted)
-        {
-            Debug.Log(worldPosition);
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(_world, Vector2.one);
-    }
 }

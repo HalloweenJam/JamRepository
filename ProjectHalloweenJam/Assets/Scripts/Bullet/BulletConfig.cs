@@ -31,11 +31,12 @@ namespace Bullet
 
         public float Scale => _scale;
         public bool IsEnemyBullet => _isEnemyBullet;
-
         public float Speed => _speed;
         public float Radius => _radius;
         
         public int Damage => _damage;
         public int Count => _count;
+
+        public void SetSprite(Sprite sprite) => _sprite = sprite;
     }
 }
