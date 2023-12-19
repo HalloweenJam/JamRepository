@@ -12,8 +12,9 @@ namespace Core.Classes
         
         private float _attackSpeedCounter;
         private float _reloadingSpeedCounter;
-
-        private bool _isInfinity;
+        
+        private bool _canAttack = true;
+        private readonly bool _isInfinity;
         
         public int LeftBullets { get; private set; }
         public int LeftBulletsInBatch { get; private set; }
@@ -53,13 +54,22 @@ namespace Core.Classes
             LeftBullets += bulletsToAdd > TotalBullets - LeftBullets ? TotalBullets - LeftBullets : bulletsToAdd;
         }
 
-        public bool Update(float deltaTime)
+        public bool Update(float deltaTime, bool isReloadInvoked = false) => Update(deltaTime, ref isReloadInvoked); 
+        
+        public bool Update(float deltaTime, ref bool isReloadInvoked)
         {
             _attackSpeedCounter -= deltaTime;
 
-            if (LeftBulletsInBatch > 0)
+            if (!isReloadInvoked && LeftBulletsInBatch > 0)
                 return false;
+
+            if (LeftBulletsInBatch == TotalBulletsInBatch)
+            {
+                isReloadInvoked = false;
+                return false;
+            }
             
+            _canAttack = false;
             _reloadingSpeedCounter -= deltaTime;
 
             if (_reloadingSpeedCounter > 0) 
@@ -72,7 +82,7 @@ namespace Core.Classes
 
         public bool TryToAttack(Vector2 startPosition, Vector2 direction)
         {
-            if (LeftBulletsInBatch <= 0 || _attackSpeedCounter > 0) 
+            if (!_canAttack || LeftBulletsInBatch <= 0 || _attackSpeedCounter > 0) 
                 return false;
             
             LeftBulletsInBatch--;
@@ -90,8 +100,11 @@ namespace Core.Classes
                 return;
             }
 
+            var needed = TotalBulletsInBatch - LeftBulletsInBatch;
             LeftBulletsInBatch = LeftBullets > TotalBulletsInBatch ? TotalBulletsInBatch : LeftBullets;
-            LeftBullets -= LeftBulletsInBatch;
+            LeftBullets -= LeftBullets - needed < 0 ? LeftBulletsInBatch : needed;
+     
+            _canAttack = true;
         }
     }
 }

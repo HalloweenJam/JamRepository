@@ -15,6 +15,7 @@ namespace Player.Controls
         public event Action MoveCancelledEvent;
 
         public event Action DashEvent;
+        public event Action ReloadEvent;
 
         public event Action ShootingEvent;
         public event Action ShootingCancelledEvent;
@@ -106,6 +107,12 @@ namespace Player.Controls
         {
             if (context.phase == InputActionPhase.Performed)
                 OpenMinimapEvent?.Invoke();
+        }
+
+        public void OnReload(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+                ReloadEvent?.Invoke();
         }
     }
 }
