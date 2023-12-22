@@ -25,7 +25,7 @@ TagManager:
   - GenerationLayer
   - Corridor
   - IgnoreMap
-  - 
+  - Fog
   - 
   - 
   - 
@@ -60,4 +60,7 @@ TagManager:
     locked: 0
   - name: Map
     uniqueID: 4101719657
+    locked: 0
+  - name: Fog
+    uniqueID: 1260644145
     locked: 0
