@@ -96,6 +96,7 @@ namespace Core.Classes
         {
             if (_isInfinity)
             {
+                _canAttack = true;
                 LeftBulletsInBatch = TotalBulletsInBatch;
                 return;
             }
