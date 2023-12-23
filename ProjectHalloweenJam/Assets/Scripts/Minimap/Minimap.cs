@@ -44,6 +44,7 @@ public class Minimap : Singleton<Minimap>
     public RectTransform MinimapRect => _minimapRectImage;
     public Vector2 ScaleRatio => _scaleRatio;
 
+
     private void Start()
     {
         _inputReader = InputReaderManager.Instance.GetInputReader();

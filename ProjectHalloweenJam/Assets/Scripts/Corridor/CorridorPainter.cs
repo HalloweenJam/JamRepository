@@ -386,7 +386,6 @@ namespace CorridorGeneration
         private void GetWallTile(Shape shape, ref Tile takeTile, out Tile wallTile, int block, int tileNumber, float height, float coefY, float coefX)
         {
             wallTile = takeTile;
-            #region tile condition
             if (shape != Shape.BracketsHorizontal || shape != Shape.StraightX && shape != Shape.ZigzagVertical)
             {
                 if (tileNumber == 0 && block < 2 && block != 0)
@@ -490,6 +489,5 @@ namespace CorridorGeneration
                     break;
             }
         }
-        #endregion tile condition
     }
 }

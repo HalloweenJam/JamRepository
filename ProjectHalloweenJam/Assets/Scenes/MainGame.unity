@@ -597,7 +597,7 @@ PrefabInstance:
     - target: {fileID: 4621394336644080632, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: _dissolveEffect
       value: 
-      objectReference: {fileID: 2068012944}
+      objectReference: {fileID: 497246373}
     - target: {fileID: 5086677856818794409, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -634,6 +634,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2084676226}
   m_SourcePrefab: {fileID: 100100000, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+--- !u!114 &497246373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2038795516942552085, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+  m_PrefabInstance: {fileID: 497246372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803491362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac7d8b02f2420943bc927cfb52dd779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &566969246
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +922,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 000000009727bce0e5274901fb8f698b85b8eed56bcfa25c
+  m_ApplyToSortingLayers: 000000009727bce0e5274901fb8f698b85b8eed56bcfa25cabe0f765
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2137,7 +2148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5290553855558905607, guid: 50c2ced3d70822b44bac33233c835247, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 130559
+      value: 392703
       objectReference: {fileID: 0}
     - target: {fileID: 7505159772102523179, guid: 50c2ced3d70822b44bac33233c835247, type: 3}
       propertyPath: m_Follow
