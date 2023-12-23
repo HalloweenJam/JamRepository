@@ -98,6 +98,15 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""672e7fa3-2d41-4129-a9bb-46807c06ef38"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -254,6 +263,17 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""Minimap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33052b20-a27d-4cb9-856a-1bcc0550fd5e"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -293,6 +313,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Gameplay_MouseWheelScroll = m_Gameplay.FindAction("MouseWheelScroll", throwIfNotFound: true);
         m_Gameplay_MousePosition = m_Gameplay.FindAction("MousePosition", throwIfNotFound: true);
         m_Gameplay_Minimap = m_Gameplay.FindAction("Minimap", throwIfNotFound: true);
+        m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
     }
@@ -364,6 +385,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_MouseWheelScroll;
     private readonly InputAction m_Gameplay_MousePosition;
     private readonly InputAction m_Gameplay_Minimap;
+    private readonly InputAction m_Gameplay_Reload;
     public struct GameplayActions
     {
         private @GameControls m_Wrapper;
@@ -376,6 +398,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @MouseWheelScroll => m_Wrapper.m_Gameplay_MouseWheelScroll;
         public InputAction @MousePosition => m_Wrapper.m_Gameplay_MousePosition;
         public InputAction @Minimap => m_Wrapper.m_Gameplay_Minimap;
+        public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -409,6 +432,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Minimap.started += instance.OnMinimap;
             @Minimap.performed += instance.OnMinimap;
             @Minimap.canceled += instance.OnMinimap;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -437,6 +463,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Minimap.started -= instance.OnMinimap;
             @Minimap.performed -= instance.OnMinimap;
             @Minimap.canceled -= instance.OnMinimap;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -511,6 +540,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnMouseWheelScroll(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnMinimap(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

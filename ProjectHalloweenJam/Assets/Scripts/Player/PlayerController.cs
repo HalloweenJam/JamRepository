@@ -54,8 +54,10 @@ namespace Player
 
         private InputReader _inputReader;
 
+        public static Action<float> OnDashRefill;
         public Action<bool> OnPlayerDashing;
         public static Action<Vector2> TeleportPlayer;
+        private float _dashRefillRatio => _dashDelayCounter / _dashDelay;
         
         private bool _canDash => !_isDashing && _dashesCount > 0;
 
@@ -142,6 +144,8 @@ namespace Player
 
             _dashDelayCounter -= Time.deltaTime;
 
+            OnDashRefill?.Invoke(_dashRefillRatio);
+             
             if (_dashDelayCounter > 0)
                 return;
 

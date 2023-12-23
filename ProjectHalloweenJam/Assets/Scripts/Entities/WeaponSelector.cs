@@ -19,6 +19,7 @@ namespace Entities
         private readonly List<WeaponData> _weapons = new();
 
         private int _selectedWeaponIndex = 0;
+        private bool _isReloadInvoked;
         private bool _isAttacking;
         private bool _isPlayer;
         private bool _isStarted;
@@ -58,14 +59,11 @@ namespace Entities
             _isStarted = true;
         }
 
-        private void OnDisable()
-        {
-            SceneManager.sceneLoaded -= (arg0, mode) => _camera = Camera.main;
-        }
+        private void OnDisable() => SceneManager.sceneLoaded -= (_, _) => _camera = Camera.main;
 
         private void Start()
         {
-            SceneManager.sceneLoaded += (arg0, mode) => _camera = Camera.main;
+            SceneManager.sceneLoaded += (_, _) => _camera = Camera.main;
             
             if (_isStarted)
                 return;
@@ -77,9 +75,11 @@ namespace Entities
                 _inputReader.ShootingEvent += () => _isAttacking = true;
                 _inputReader.ShootingCancelledEvent += () => _isAttacking = false;
 
+                _inputReader.ReloadEvent += () => _isReloadInvoked = true;
+
                 _inputReader.MouseWheelScrollEvent += ChangeWeapon;
 
-                _camera = Camera.main;;
+                _camera = Camera.main;
             }
             
             foreach (var weapon in _weaponsToAdd)
@@ -122,8 +122,11 @@ namespace Entities
             {
                 if (i == _selectedWeaponIndex)
                 {
-                    if (_weapons[i].Update(deltaTime))
-                        OnWeaponUsed?.Invoke(_weapons[i], false);
+                    if (!_weapons[i].Update(deltaTime, ref _isReloadInvoked))
+                        continue;
+                    
+                    _isReloadInvoked = false;
+                    OnWeaponUsed?.Invoke(_weapons[i], false);
                 }
                 else
                 {
