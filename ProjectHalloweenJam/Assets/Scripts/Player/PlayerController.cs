@@ -4,6 +4,7 @@ using Entities;
 using Managers;
 using Player.Controls;
 using UnityEngine;
+using Visuals;
 
 namespace Player
 {
@@ -39,6 +40,7 @@ namespace Player
         [HideInInspector, SerializeField] private SpriteRenderer _spriteRenderer;
         [HideInInspector, SerializeField] private WeaponSelector _weaponSelector;
         [HideInInspector, SerializeField] private DissolveEffect _dissolveEffect;
+        [HideInInspector, SerializeField] private AfterImageController _afterImageController;
         
         private Camera _camera;
 
@@ -68,6 +70,7 @@ namespace Player
             _dissolveEffect = GetComponent<DissolveEffect>();
             _weaponSelector ??= GetComponent<WeaponSelector>();
             _spriteRenderer ??= GetComponent<SpriteRenderer>();
+            _afterImageController ??= GetComponent<AfterImageController>();
         }
 
         private void Teleport(Vector2 pos)
@@ -171,6 +174,7 @@ namespace Player
             OnPlayerDashing?.Invoke(_isDashing);
             _dashesCount--;
             
+            _afterImageController.Play();
             _rigidbody.AddForce(new Vector2(_cashedMovementDirection.x, _cashedMovementDirection.y) * (_speed * _dashForce));
             
             _isDashing = false;
