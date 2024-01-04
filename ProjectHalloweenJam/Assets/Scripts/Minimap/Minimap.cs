@@ -12,6 +12,7 @@ public class Minimap : Singleton<Minimap>
     [SerializeField] private RectTransform _minimapRectImage;
     [SerializeField] private RectTransform _bigMinimapSize;
     [SerializeField] private Image _blackSquarePrefab;
+    [SerializeField] private RectTransform _fogOfWarMask;
     [Space]
     [SerializeField] private float _speed;
     [SerializeField] private float _offset = 1f;
@@ -64,7 +65,7 @@ public class Minimap : Singleton<Minimap>
         if (!_isLoaded || _activeCenterMimap)
             return;
 
-        _minimapRectImage.anchoredPosition = (_playerIcon.RectTransform.anchoredPosition * _speed);
+        _fogOfWarMask.anchoredPosition = (_playerIcon.RectTransform.anchoredPosition * _speed);
     }
 
     public void OpenMinimap()
@@ -73,8 +74,8 @@ public class Minimap : Singleton<Minimap>
 
         _outlineRect.anchoredPosition = _activeCenterMimap ? _centerMinimapRect.anchoredPosition : _defaultRectPosition;
         _outlineRect.sizeDelta = _activeCenterMimap ? _centerMinimapRect.sizeDelta : _defaultRectSize;
-        _minimapRectImage.localScale = _activeCenterMimap ? _bigMinimapSize.localScale : _defaultImageSize;
-        _minimapRectImage.anchoredPosition = _activeCenterMimap ? _defaultImagePosition : _minimapRectImage.anchoredPosition;
+        _fogOfWarMask.localScale = _activeCenterMimap ? _bigMinimapSize.localScale : _defaultImageSize;
+        _fogOfWarMask.anchoredPosition = _activeCenterMimap ? _defaultImagePosition : _minimapRectImage.anchoredPosition;
 
         if (_activeCenterMimap)
             _cursorChanger.SetCursor(CursorData.CursorType.Default);
@@ -93,7 +94,7 @@ public class Minimap : Singleton<Minimap>
         CalculateTransformationMatrix();
         _defaultRectPosition = _outlineRect.anchoredPosition;
         _defaultRectSize = _outlineRect.sizeDelta;
-        _defaultImageSize = _minimapRectImage.localScale;
+        _defaultImageSize = _fogOfWarMask.localScale;
         _defaultImagePosition = _minimapRectImage.anchoredPosition;
 
         OnLoadedMinimap?.Invoke();

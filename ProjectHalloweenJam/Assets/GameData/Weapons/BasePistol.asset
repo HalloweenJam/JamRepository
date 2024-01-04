@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasePistol
   m_EditorClassIdentifier: 
   _description:
-    _inHands: {fileID: -2395591618090941519, guid: 9355908b4923c78408dd411e6050eaef, type: 3}
+    _inHands: {fileID: 8200246906327157222, guid: 417f7e7dbaea20047ad5704c8b5c6f64, type: 3}
     _icon: {fileID: 7976732837528411550, guid: a629122b4c4a61d418dc3f582a23466f, type: 3}
     _name: 
     _info: 

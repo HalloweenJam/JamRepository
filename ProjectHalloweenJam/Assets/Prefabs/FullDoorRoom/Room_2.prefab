@@ -2236,7 +2236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roomCenter: {fileID: 711855577373814646}
-  _overlapSize: {x: 24.75, y: 25.5}
+  _overlapSize: {x: 22.25, y: 27.25}
   _maxPassagesCount: 4
   _doors:
   - {fileID: 7637334110308902866}
@@ -2247,10 +2247,10 @@ MonoBehaviour:
   _useSnap: 1
   _snapValue: 0.25
   _borderCapsPositions:
-  - {x: 0, y: 15.5}
-  - {x: 0, y: -10}
-  - {x: 12, y: 0}
-  - {x: -12.75, y: 0}
+  - {x: 0, y: 16}
+  - {x: 0, y: -11.25}
+  - {x: 10.75, y: 0}
+  - {x: -11.5, y: 0}
 --- !u!114 &4084349936779370899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,6 +2272,8 @@ MonoBehaviour:
   - {fileID: 1019031248862508184}
   - {fileID: 2746559083992543138}
   _isBossArena: 0
+  _centerRoom: {fileID: 711855577373814646}
+  _radius: 10
 --- !u!1 &9124720992790873123
 GameObject:
   m_ObjectHideFlags: 0

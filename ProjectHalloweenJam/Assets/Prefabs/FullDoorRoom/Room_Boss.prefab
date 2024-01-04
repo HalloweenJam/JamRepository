@@ -6321,13 +6321,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8842071436964961605}
   - {fileID: 6595684179678852663}
   - {fileID: 4568419596560778066}
   - {fileID: 4223300988223773146}
   - {fileID: 5291927963270735540}
   - {fileID: 401013089722712340}
   - {fileID: 7946536478729296410}
-  - {fileID: 8842071436964961605}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5799390160924250788
@@ -6343,7 +6343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roomCenter: {fileID: 8842071436964961605}
-  _overlapSize: {x: 28.75, y: 26}
+  _overlapSize: {x: 28, y: 22.75}
   _maxPassagesCount: 4
   _doors:
   - {fileID: 3604631915118422145}
@@ -6354,9 +6354,9 @@ MonoBehaviour:
   _useSnap: 1
   _snapValue: 0.25
   _borderCapsPositions:
-  - {x: 0, y: 14.25}
-  - {x: 0, y: -11.75}
-  - {x: 15.25, y: 0}
+  - {x: 0, y: 12.5}
+  - {x: 0, y: -10.25}
+  - {x: 14.5, y: 0}
   - {x: -13.5, y: 0}
 --- !u!1 &4886445681634347540
 GameObject:
@@ -6711,7 +6711,7 @@ Transform:
   m_GameObject: {fileID: 5746664410259889332}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

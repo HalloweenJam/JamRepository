@@ -184,7 +184,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 1
+    m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -197,18 +197,18 @@ MonoBehaviour:
       y: 21
       width: 1920
       height: 907
-    m_Scale: {x: 1.2877696, y: 1.2877696}
-    m_Translation: {x: 960, y: 453.50006}
+    m_Scale: {x: 1.2584989, y: 1.2584989}
+    m_Translation: {x: 960, y: 453.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -745.475
-      y: -352.15933
-      width: 1490.95
-      height: 704.31854
+      x: -762.81354
+      y: -360.34995
+      width: 1525.6271
+      height: 720.6999
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1920, y: 928}

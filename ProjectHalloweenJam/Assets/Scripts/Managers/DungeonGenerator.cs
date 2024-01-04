@@ -6,18 +6,11 @@ using UnityEngine;
 using Utilities.Classes.Delaunay;
 using CorridorGeneration;
 using static Utilities.Classes.Delaunay.Delaunay;
-using NavMeshPlus.Components;
 
 namespace Managers
 {
     public class DungeonGenerator : Singleton<DungeonGenerator>
     {
-        [Header("GameInfo")]
-        [SerializeField] private Minimap _minimap;
-        [SerializeField] private BoxCollider2D _mainCollider;
-        [SerializeField] private BoxCollider2D _collisionCollider;
-        [SerializeField] private NavMeshSurface _navMeshSurface;
-
         [Header("Generation")]
         [SerializeField] private LayerMask _generationLayerMask;
         [SerializeField] private Vector2Int _range = new(40, 40);
@@ -73,20 +66,7 @@ namespace Managers
                 await Awaitable.WaitForSecondsAsync(0.2f);
             }
             CorridorGenerator.Instance.DeleteDisabledCorridors();
-            PreparationForGame();
-        }
-
-        private void PreparationForGame()
-        {
-            _minimap.SetMinimap(_range.x);
-
-            _navMeshSurface.RemoveData();
-            _navMeshSurface.AddData();
-            var data = _navMeshSurface.navMeshData;
-            _navMeshSurface.UpdateNavMesh(data);
-
-            _mainCollider.enabled = true;
-            _collisionCollider.enabled = true;
+            Bootstrap.Instance.EnableComponents(_range.x);
         }
 
         private IEnumerator GenerateRooms()

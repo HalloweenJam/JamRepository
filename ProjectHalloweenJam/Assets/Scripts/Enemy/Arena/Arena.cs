@@ -12,6 +12,11 @@ namespace Enemy.Arena
         [SerializeField] private SpawnZone _spawnZone;
         [SerializeField] private List<Gate> _gates;
         [SerializeField] private bool _isBossArena = false;
+
+        [Header("FogOfWar")]
+        [SerializeField] private Transform _centerRoom;
+        [SerializeField] private float _radius;
+
         private bool _isCompleted = false;
 
         private SpawnPointsData _ownSpawnPointsData;
@@ -23,6 +28,7 @@ namespace Enemy.Arena
         public void Activate()
         {
             SpawnerEnemy.Instance.ActivateArena(this, _level, _ownSpawnPointsData);
+            FogOfWar.Instance.MakeHole(_centerRoom.position, _radius); 
             foreach (Gate gate in _gates)
                 gate.gameObject.SetActive(true);
         }

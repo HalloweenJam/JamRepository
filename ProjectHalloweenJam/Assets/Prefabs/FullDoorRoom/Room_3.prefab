@@ -108,6 +108,8 @@ MonoBehaviour:
   - {fileID: 5823221381542659737}
   - {fileID: 329806000642773379}
   _isBossArena: 0
+  _centerRoom: {fileID: 2362272598860467046}
+  _radius: 15
 --- !u!114 &8256205755496121060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2282,7 +2284,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -2332,13 +2334,9 @@ CompositeCollider2D:
     m_Paths:
     - - {x: 5.499971, y: -7.5}
       - {x: 5.5000296, y: -4.5}
-      - {x: 8.5, y: -4.499971}
-      - {x: 8.49997, y: 4.5}
-      - {x: 7.5, y: 4.5000296}
-      - {x: 7.4999704, y: 5.5}
-      - {x: -6.5, y: 5.499971}
-      - {x: -6.5000296, y: 4.5}
-      - {x: -7.5, y: 4.499971}
+      - {x: 8.499997, y: -4.499967}
+      - {x: 7.499972, y: 5.499998}
+      - {x: -7.5, y: 4.499973}
       - {x: -7.4999704, y: -4.5}
       - {x: -4.5, y: -4.5000296}
       - {x: -4.499971, y: -7.5}
@@ -2350,7 +2348,7 @@ CompositeCollider2D:
       - {x: -3.5, y: -0.49997061}
       - {x: -3.4999704, y: 1.5}
       - {x: -1.5, y: 1.4999707}
-  m_VertexDistance: 0.0005
+  m_VertexDistance: 1.3
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 5031247539772177430}
