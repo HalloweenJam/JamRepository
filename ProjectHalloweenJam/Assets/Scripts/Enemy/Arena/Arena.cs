@@ -3,44 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using Level = LevelSetting.Levels;
 
-namespace Enemy.Arena
+public partial class Arena : Room
 {
-    public class Arena : MonoBehaviour
+    [SerializeField] private Level _level;
+    [SerializeField] private SpawnPointsData _spawnPointsData;
+    [SerializeField] private ActivateRoomZone _spawnZone;
+    [SerializeField] private List<Gate> _gates;
+    [SerializeField] private bool _isBossArena = false;
+
+    [SerializeField, HideInInspector] private Castscene _castscene;
+    private bool _isCompleted = false;
+
+    private SpawnPointsData _thisSpawnPointsData;
+    public bool IsBossArena => _isBossArena;
+    public bool IsCompleted => _isCompleted;
+
+    private void Awake() => _thisSpawnPointsData = _spawnPointsData;
+
+    public override void Activate(bool useFow)
     {
-        [SerializeField] private Level _level;
-        [SerializeField] private SpawnPointsData _spawnPointsData;
-        [SerializeField] private SpawnZone _spawnZone;
-        [SerializeField] private List<Gate> _gates;
-        [SerializeField] private bool _isBossArena = false;
+        SpawnerEnemy.Instance?.ActivateArena(this, _level, _thisSpawnPointsData);
 
-        [Header("FogOfWar")]
-        [SerializeField] private Transform _centerRoom;
-        [SerializeField] private float _radius;
-
-        private bool _isCompleted = false;
-
-        private SpawnPointsData _ownSpawnPointsData;
-        public bool IsBossArena => _isBossArena;
-        public bool IsCompleted => _isCompleted;
-
-        private void Awake() => _ownSpawnPointsData = _spawnPointsData;
-
-        public void Activate()
+        foreach (Gate gate in _gates)
         {
-            SpawnerEnemy.Instance.ActivateArena(this, _level, _ownSpawnPointsData);
-            FogOfWar.Instance.MakeHole(_centerRoom.position, _radius); 
-            foreach (Gate gate in _gates)
-                gate.gameObject.SetActive(true);
+            if(gate.IsActivatable)
+                gate?.Enable();
         }
 
-        public void Completed()
+        base.Activate(!_isBossArena);
+    }
+
+    public void Completed()
+    {
+        _isCompleted = true;
+        foreach (Gate gate in _gates)
         {
-            _isCompleted = true;
-            foreach (Gate gate in _gates)
-            {
-                if(gate.gameObject.activeInHierarchy)
-                    gate.Disable();
-            }
+            if (gate.gameObject.activeInHierarchy)
+                gate.Disable();
         }
     }
 }

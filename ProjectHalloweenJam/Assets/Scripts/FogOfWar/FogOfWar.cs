@@ -7,6 +7,8 @@ public class FogOfWar : Singleton<FogOfWar>
     [SerializeField] private Texture2D _fogOfWarTexture;
     [SerializeField] private Image _image;
     [SerializeField] private SpriteMask _spriteMask;
+    [SerializeField] private float _maskSize;
+
 
     private Vector2 _worldScale;
     private Vector2Int _pixelScale;
@@ -63,9 +65,10 @@ public class FogOfWar : Singleton<FogOfWar>
         CreateSprite();
     }
 
-    private void CreateSprite()
+    private void CreateSprite()  
     {
-        _spriteMask.sprite = Sprite.Create(_fogOfWarTexture, new Rect(0, 0, _fogOfWarTexture.width, _fogOfWarTexture.height), Vector2.one * .5f, 100);
+        _spriteMask.sprite = Sprite.Create(_fogOfWarTexture, 
+            new Rect(0, 0, _fogOfWarTexture.width, _fogOfWarTexture.height), Vector2.one * .5f, _maskSize, 100, SpriteMeshType.Tight);
         _image.sprite = _spriteMask.sprite;
     } 
 }

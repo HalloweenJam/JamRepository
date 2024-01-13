@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using Entities;
 using UnityEngine;
 
@@ -11,11 +10,11 @@ namespace Enemy.EnemyEntity
         [Header("Loot")] 
         [SerializeField, Range(0f, 1f)] private float _dropLootChance = .2f;
 
-        private bool _isDead = false;
-     
+        private Collider2D _collider;
         private EnemyMovement _movement;
-        private SpriteRenderer _spriteRenderer;
         private DissolveEffect _dissolveEffect;
+
+        private bool _isDead = false;
 
         public static Action<Vector2, float> OnDeath;
         
@@ -26,13 +25,14 @@ namespace Enemy.EnemyEntity
         public void Initialize(Transform playerPosition)
         {
             SetHealth();
-            _spriteRenderer = GetComponent<SpriteRenderer>();
             _movement = GetComponent<EnemyMovement>();
             _dissolveEffect = GetComponent<DissolveEffect>();
- 
-            _movement.enabled = false;
-            _movement.Initialize(playerPosition, this);
+            _collider = GetComponent<Collider2D>();
 
+            _movement.enabled = false;
+            _collider.enabled = false;
+
+            _movement.Initialize(playerPosition, this);
             Appearance();
         }
 
@@ -62,13 +62,12 @@ namespace Enemy.EnemyEntity
             Destroy(gameObject);
         }
 
-        public void Appearance()
+        public void Appearance()  
         {
             Behaviour component = _dissolveEffect.CanActivateComponent ? _movement : null;
-            _dissolveEffect.Appearance(component);
+            _dissolveEffect.Appearance(component, _collider);
         }
 
         public void Dissolve() => _dissolveEffect.Dissolve(_movement);
-
     }
 }

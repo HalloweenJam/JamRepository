@@ -174,7 +174,7 @@ namespace Player
             OnPlayerDashing?.Invoke(_isDashing);
             _dashesCount--;
             
-            _afterImageController.Play();
+            _afterImageController?.Play();
             _rigidbody.AddForce(new Vector2(_cashedMovementDirection.x, _cashedMovementDirection.y) * (_speed * _dashForce));
             
             _isDashing = false;

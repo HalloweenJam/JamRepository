@@ -3,9 +3,9 @@ using UnityEngine;
 using CorridorGeneration;
 using UnityEngine.Tilemaps;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour 
 {
-    public enum Dir
+    public enum Dir  
     {
         Left,
         Right,
@@ -14,6 +14,7 @@ public class Door : MonoBehaviour
     }
 
     [SerializeField] private List<Transform> _cells;
+
     public List<Transform> Cells => _cells;
 
     public Dir Direction;
@@ -54,7 +55,6 @@ public class Door : MonoBehaviour
             }
         }
     }
-
 
     private Tile GetTile(bool active, int drawOption)
     {

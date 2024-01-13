@@ -1,12 +1,8 @@
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
-using System.IO;
 
 public class CreateMinimapTextureUtils
 {
-    public const string _screenshotsFileName = "map_screen.png";
-    private static string s_SaveFolder => Path.Combine(Application.dataPath, "GameData", "Minimap");
-
     public static Sprite GetMinimapSprite(float size, LayerMask cullingMask)
     {
         Texture2D texture = CreateTexture2D(size, cullingMask);
@@ -27,7 +23,6 @@ public class CreateMinimapTextureUtils
         Rect rect = new Rect((Vector2)camera.transform.position, new Vector2(3840, 2160));
 
         Texture2D texture = CreateTextureForCamera(camera, rect);
-        SaveTexture(texture);
         return texture;
     }
 
@@ -58,17 +53,5 @@ public class CreateMinimapTextureUtils
         Object.DestroyImmediate(camera.gameObject);  
 
         return cameraTexture;
-    }
-
-    private static void SaveTexture(Texture2D texture)
-    {
-        byte[] textureBytes = texture.EncodeToPNG();
-        File.WriteAllBytes(GetPath(), textureBytes);
-    }
-
-    public static string GetPath()
-    {
-        string path = Path.Combine(s_SaveFolder, _screenshotsFileName);
-        return path;
     }
 }

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5211579280187689560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5375161909394166537}
+  - component: {fileID: 5357367163452292949}
+  m_Layer: 0
+  m_Name: ===ShopManager===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5375161909394166537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211579280187689560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5357367163452292949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211579280187689560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b16fcc679c84c7bbd780c521e0c13d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collectables:
+    weightedList:
+    - weightedItem:
+      - {fileID: 11400000, guid: c6f38adfb2a7adb4a9f43843ed59ebae, type: 2}
+      weight: 100
+    - weightedItem:
+      - {fileID: 11400000, guid: 8d23cdc6223377540b8f8c41e71f5ee1, type: 2}
+      - {fileID: 11400000, guid: 72c8d30d5cce04e40bebbb1d76ad652b, type: 2}
+      - {fileID: 11400000, guid: 4125c160b1cfbb24bb54a11cc835d0b4, type: 2}
+      weight: 70
+    - weightedItem:
+      - {fileID: 11400000, guid: c2c662d2a4911e04088db38524dec7cd, type: 2}
+      weight: 40
+    - weightedItem:
+      - {fileID: 11400000, guid: d047d47caf25cfa40911496c78103a0d, type: 2}
+      weight: 20

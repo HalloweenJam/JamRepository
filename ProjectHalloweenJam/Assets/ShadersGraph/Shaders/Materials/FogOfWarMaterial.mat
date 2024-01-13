@@ -41,15 +41,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DotSize: 3.6
-    - _DotSpace: 2.4
+    - _DotSize: 0.89
+    - _DotSpace: 0
     - _IntersectPower: 149.7
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Speed: 598.45
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
-    - _Dot: {r: 0.012052461, g: 0.00080101256, b: 0, a: 1}
+    - _Dot: {r: 0.0056053917, g: 0, b: 0, a: 1}
     - _IntersectColor: {r: 0.3959682, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7313268445467409283

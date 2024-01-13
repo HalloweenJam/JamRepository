@@ -23,7 +23,6 @@ public class EnemyBoss : EnemyStats
             SecondPhase?.Invoke();
         }
         
-
         return base.TryTakeDamage(damage, instantKill, ignoreInvisibility);
     }
 }

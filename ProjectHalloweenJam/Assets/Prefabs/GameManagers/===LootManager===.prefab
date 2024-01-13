@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5933626566598229288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1945454538595482118}
+  - component: {fileID: 8836407196034013894}
+  m_Layer: 0
+  m_Name: ===LootManager===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1945454538595482118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5933626566598229288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8836407196034013894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5933626566598229288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2deaacd10f4b139b73cbd8c859bdea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemHolder: {fileID: 2419766574648860924, guid: 29a9441bc04fca64ab767cb8a151868e, type: 3}
+  _weightedLootList:
+    weightedList:
+    - weightedItem:
+      - {fileID: 11400000, guid: c6f38adfb2a7adb4a9f43843ed59ebae, type: 2}
+      - {fileID: 11400000, guid: 38ea9b635f6b70646b28b2487aa30857, type: 2}
+      weight: 80
+    - weightedItem:
+      - {fileID: 11400000, guid: 8d23cdc6223377540b8f8c41e71f5ee1, type: 2}
+      - {fileID: 11400000, guid: 70eaf764bc37b674d9fb2321f4260ed8, type: 2}
+      weight: 60
+    - weightedItem:
+      - {fileID: 11400000, guid: c2c662d2a4911e04088db38524dec7cd, type: 2}
+      - {fileID: 11400000, guid: e68d48c229c34a440a0e43abf907f635, type: 2}
+      weight: 30
+    - weightedItem:
+      - {fileID: 11400000, guid: d047d47caf25cfa40911496c78103a0d, type: 2}
+      weight: 10

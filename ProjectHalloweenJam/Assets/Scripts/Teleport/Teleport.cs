@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using System.Collections;
 
@@ -11,6 +10,8 @@ public class Teleport : MonoBehaviour
     private Coroutine _teleportation;
 
     private bool _isEnter = false;
+    private bool _isCoroutineStoped = false;
+
     private static readonly int GlowColor = Shader.PropertyToID("_GlowColor");
 
     private void Awake()
@@ -33,7 +34,7 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (_teleportation == null) 
+        if (_teleportation == null || _isCoroutineStoped) 
             return;
         
         StopCoroutine(_teleportation);
@@ -43,7 +44,7 @@ public class Teleport : MonoBehaviour
 
     private void OnDisable()
     {
-        if(_teleportation != null)
+        if (_teleportation != null)
             StopCoroutine(_teleportation);
     }
 
@@ -66,6 +67,9 @@ public class Teleport : MonoBehaviour
         yield return null;
 
         if(_isEnter)
+        {
             _bossContainer.LoadBossScene();
+            _isCoroutineStoped = true; 
+        }
     } 
 }

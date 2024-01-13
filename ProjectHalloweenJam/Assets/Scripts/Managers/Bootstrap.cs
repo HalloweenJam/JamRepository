@@ -9,13 +9,16 @@ namespace Managers
     {
         [SerializeField] private InputReaderManager _inputReaderManager;
         [SerializeField] private PlayerController _playerController;
+        [SerializeField] private bool _useStartProperties = false;
 
-        [SerializeField] private Minimap _minimap;
-        [SerializeField] private BoxCollider2D _mainCollider;
-        [SerializeField] private BoxCollider2D _collisionCollider;
-        [SerializeField] private NavMeshSurface _navMeshSurface;
-        [SerializeField] private SpriteRenderer _fogOfWarSprite;
+        [Header("StartGameProperty")]
+        [SerializeField, HideInInspector] private Minimap _minimap;
+        [SerializeField, HideInInspector] private BoxCollider2D _mainCollider;
+        [SerializeField, HideInInspector] private BoxCollider2D _collisionCollider;
+        [SerializeField, HideInInspector] private NavMeshSurface _navMeshSurface;
+        [SerializeField, HideInInspector] private SpriteRenderer _fogOfWarSprite;
 
+        public bool UseStartProperties => _useStartProperties;
 
         protected override void Awake()
         {

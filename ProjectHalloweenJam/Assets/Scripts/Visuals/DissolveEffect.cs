@@ -19,24 +19,24 @@ public class DissolveEffect : MonoBehaviour
     public Material DissolveMaterial => _dissolveMaterial;
     public bool CanActivateComponent => _activateComponent;
 
-
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.material = _dissolveMaterial;
     }
 
-    public void Appearance(Behaviour component) 
-        => StartCoroutine(AppearanceCor(component));
+    public void Appearance(params Behaviour[] components) 
+        => StartCoroutine(DissolveCoroutine(true, components));
 
-    public void Dissolve(Behaviour component)
-        => StartCoroutine(DissolveCor(component));
+    public void Dissolve(params Behaviour[] components)
+        => StartCoroutine(DissolveCoroutine(false, components));
 
-    private IEnumerator AppearanceCor(Behaviour component)
+    private IEnumerator DissolveCoroutine(bool isAppearance, params Behaviour[] components)
     {
         _dissolved = false;
-        float fadeMaterial = 0;
-        float percent = (1 / _dissolveTime);
+        float fadeMaterial = isAppearance ? 0 : 1f;
+        float fadeAbs = isAppearance ? 1f : 0f;
+        float percent = isAppearance ? (1 / _dissolveTime) : -(1 / _dissolveTime); 
 
         while (_elapsedTime < _dissolveTime)
         {
@@ -46,29 +46,15 @@ public class DissolveEffect : MonoBehaviour
             yield return null;
         }
         _elapsedTime = 0f;
-        if(component != null)
-            component.enabled = true;
-        _spriteRenderer.material.SetFloat(Fade, 1f);
-        _dissolved = true;
-    }
 
-    private IEnumerator DissolveCor(Behaviour component)
-    {
-        _dissolved = false;
-        float fadeMaterial = 1;
-        float percent = -(1 / _dissolveTime);
-
-        while (_elapsedTime < _dissolveTime)
+        if (components != null)
         {
-            fadeMaterial += percent * Time.deltaTime;
-            _elapsedTime += Time.deltaTime;
-            _spriteRenderer.material.SetFloat(Fade, fadeMaterial);
-            yield return null;
+            foreach (Behaviour component in components)   
+                if(component != null)
+                    component.enabled = true;            
         }
-        _elapsedTime = 0f;
-        if (component != null)
-            component.enabled = true;
-        _spriteRenderer.material.SetFloat(Fade, 0f);
+
+        _spriteRenderer.material.SetFloat(Fade, fadeAbs);
         _dissolved = true;
     }
 }

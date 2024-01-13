@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 using Core;
+using Managers;
+using Cinemachine;
 
 public class Castscene : MonoBehaviour
 {
@@ -26,21 +28,24 @@ public class Castscene : MonoBehaviour
     [Header("Components")]
     [SerializeField] private EnemyBoss _enemyBoss;
     [SerializeField] private PlayerController _playerController;
-    [SerializeField] private Transform _destnationTransform;
+    [SerializeField] private Transform _destinationTransform;
+    [SerializeField] private CinemachineVirtualCamera _cinemachineVirtualCamera;
     private Coroutine _coroutine;
     private NPC _bossDialogue;
     private EnemyMovement _bossMovement;
+    private Camera _camera;
 
     public bool IsShowed => _isShowed;
 
     private void Awake()
     {
-        DialogueManager.Instance.OnEndDialogue += EndCastscene;
+        DialogueManager.Instance.OnEndDialogue += EndCastscene;   
         _enemyBoss.OnTakeDamage += EndCastsceneNow;
 
         _playerAnimator = _playerController.GetComponent<Animator>();
         _bossMovement = _enemyBoss.gameObject.GetComponent<EnemyMovement>();
         _bossDialogue = _enemyBoss.gameObject.GetComponent<NPC>();
+        _camera = Camera.main;
     }
 
     public void StartCastscene() => _coroutine = StartCoroutine(CastsceneCoroutine());
@@ -48,17 +53,25 @@ public class Castscene : MonoBehaviour
     private IEnumerator CastsceneCoroutine()
     {
         ShowInteface(false);
-        _playerController.enabled = false;
-        _playerController.transform.DOMove(_destnationTransform.position, _animationTime);
+        InputReaderManager.Instance.SetActiveControls(false);
+        _playerController.transform.DOMove(_destinationTransform.position, _animationTime);
+
+        Vector3 destinationCameraPosition = _destinationTransform.position;
+        destinationCameraPosition.z = -10f;
+        _cinemachineVirtualCamera.enabled = false;
+        _camera.transform.DOMove(destinationCameraPosition, _animationTime);
         _playerAnimator.Play(_run);
+
         yield return new WaitForSeconds(_animationTime);
+
         _playerAnimator.Play(_idle);
         ShowDialogueDisplay(true);
         _bossDialogue.DialogueTrigger();
     }
     private void EndCastscene()
     {
-        _playerController.enabled = true;
+        _cinemachineVirtualCamera.enabled = true;
+        InputReaderManager.Instance.SetActiveControls(true);
         _bossMovement.enabled = true;
 
         _isShowed = false;

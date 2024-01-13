@@ -3,13 +3,13 @@ using Generation.AnchorSystem.Data;
 using Generation.AnchorSystem;
 using Enemy.EnemyEntity;
 using Managers;
-using Enemy.Arena;
 
 public class SpawnerEnemy : Singleton<SpawnerEnemy>
-{
+{   
     [SerializeField] private LevelConfiguration _levelConfiguration;
     [SerializeField] private EnemyData _enemyData;
     [SerializeField] private Transform _playerTransform;
+    [SerializeField] private PointManager _pointManager;
 
     [SerializeField] private int _startPoints = 10;
     [SerializeField] private bool _spawnOnStart = true;
@@ -52,7 +52,7 @@ public class SpawnerEnemy : Singleton<SpawnerEnemy>
         _currentArena = arena;
         _currentSpawnData = spawnPointsData;
 
-        var (arenaLevel, settings) = _levelConfiguration.GetSettings(level);
+        var (arenaLevel, settings) = _levelConfiguration.GetSettings(level);  
         var (waves, enemyCount, canSpawnMiniBoss) = _levelConfiguration.SetRandomValue(arenaLevel, settings);
 
         _canSpawnMiniBoss = canSpawnMiniBoss;
@@ -65,7 +65,7 @@ public class SpawnerEnemy : Singleton<SpawnerEnemy>
 
     private void SpawnEnemy(Arena arena, int enemyInScene, bool canSpawnMiniBoss)
     {
-        Vector2 position = PointManager.Instance.GetPointPosition(_currentSpawnData);
+        Vector2 position = _pointManager.GetPointPosition(_currentSpawnData);
         EnemyItem enemyItem = canSpawnMiniBoss ? _enemyData.GetMiniBoss() : _enemyData.GetDefaultEnemy();
        
         if ((_currentPoints - enemyItem.Point < 0) || _currentCountEnemy > enemyInScene)
@@ -91,5 +91,10 @@ public class SpawnerEnemy : Singleton<SpawnerEnemy>
     }
 
     private void SpawnEnemyInBossArena() => SpawnEnemy(_currentArena, _enemyCount, _canSpawnMiniBoss);
-    private void OnDisable() => EnemyStats.OnDeath -= CheckArena;
+
+    private void OnDisable()
+    {
+        EnemyStats.OnDeath -= CheckArena;
+        EnemyBoss.SecondPhase -= SpawnEnemyInBossArena;
+    }
 }

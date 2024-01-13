@@ -67,9 +67,9 @@ namespace Visuals
             var deltaTime = Time.deltaTime;
 
             var toDestroy =
-                _afterImageObjects.Where(afterImageObject => !(afterImageObject.DecreaseAlpha(deltaTime * .5f) > 0));
+                _afterImageObjects.Where(afterImageObject => !(afterImageObject.DecreaseAlpha(deltaTime * .5f) > 0));  
 
-            foreach (var spriteRenderer in toDestroy)
+            foreach (var spriteRenderer in toDestroy.ToList())
             {
                 spriteRenderer.gameObject.SetActive(false);
                 

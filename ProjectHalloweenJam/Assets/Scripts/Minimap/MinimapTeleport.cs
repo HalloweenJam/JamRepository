@@ -1,5 +1,4 @@
 using Player;
-using Enemy.Arena;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
