@@ -1,3 +1,4 @@
+using Core;
 using Generation.AnchorSystem.Data;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,12 +24,14 @@ public partial class Arena : Room
     public override void Activate(bool useFow)
     {
         SpawnerEnemy.Instance?.ActivateArena(this, _level, _thisSpawnPointsData);
-
         foreach (Gate gate in _gates)
         {
-            if(gate.IsActivatable)
+            if(gate.IsActivatable || IsBossArena) 
                 gate?.Enable();
         }
+
+        if (IsBossArena)
+            _castscene.Activate();
 
         base.Activate(!_isBossArena);
     }

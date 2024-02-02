@@ -3210,6 +3210,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3578480387978929737, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
+      propertyPath: _activateComponent
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4299708764841919238, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
       propertyPath: m_Size.x
       value: 4.9406614
@@ -3230,10 +3234,42 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 0.73
       objectReference: {fileID: 0}
+    - target: {fileID: 6057179456448973838, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057179456448973838, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057179456448973838, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057179456448973838, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 4.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057179456448973838, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.73
+      objectReference: {fileID: 0}
     - target: {fileID: 7503496440939008960, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
       propertyPath: m_Name
       value: Gates
       objectReference: {fileID: 0}
+    - target: {fileID: 7503496440939008960, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7578261249866578425, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7578261249866578425, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
+      propertyPath: _triggerCollider
+      value: 
+      objectReference: {fileID: 1088964741}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3255,6 +3291,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8b4c44835412a459eb61ea65933a00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1088964741 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6057179456448973838, guid: 4e5cb314e612f5e4595381f819b48e62, type: 3}
+  m_PrefabInstance: {fileID: 1088964738}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1167636076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4299,7 +4340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68eadba92e20db498a763d7208140e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _castscene: {fileID: 1083982273}
 --- !u!61 &1897590470
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4615,7 +4655,7 @@ GameObject:
   - component: {fileID: 8768230751082377981}
   - component: {fileID: 8768230751082377980}
   - component: {fileID: 8768230751082377979}
-  - component: {fileID: 8768230751082377983}
+  - component: {fileID: 8768230751082377987}
   - component: {fileID: 8768230751082377984}
   - component: {fileID: 8768230751082377986}
   - component: {fileID: 8768230751082377985}
@@ -5060,14 +5100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4109026d26672d848806f266aeaebd8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _centerRoom: {fileID: 0}
+  _radius: 0
   _level: 0
   _spawnPointsData: {fileID: 11400000, guid: 13eea66ed1b1541419c60bdfa0ed23a3, type: 2}
   _spawnZone: {fileID: 1897590469}
   _gates:
   - {fileID: 1088964740}
   _isBossArena: 1
-  _centerRoom: {fileID: 0}
-  _radius: 0
+  _castscene: {fileID: 1083982273}
 --- !u!1 &3648361874089725212
 GameObject:
   m_ObjectHideFlags: 0
@@ -11401,22 +11442,6 @@ MonoBehaviour:
   CurrentHealth: 5
   _dropLootChance: 0.2
   _playerTransform: {fileID: 1382347456}
---- !u!114 &8768230751082377983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109888913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 153bab43cb04b514ba603ae67aaeb71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    Name: Gluttony
-    Sentences:
-    - -BEBRA!!
 --- !u!114 &8768230751082377984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11463,6 +11488,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shockWaveRenderer: {fileID: 1618013791}
   _shockWaveTime: 2
+--- !u!114 &8768230751082377987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109888913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aea1c440d195f74f9fa7c4896e1bc42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogueDisplay: {fileID: 7415848}
+  _dialogue:
+    Name: GLuttony
+    Sentences:
+    - Bebranyx
+  _hidePanel: {fileID: 7415845}
+  _dialoguePanel: {fileID: 7415845}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

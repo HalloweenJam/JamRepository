@@ -21,7 +21,7 @@ namespace Visuals
             
             afterImageObject.gameObject.layer = playerRenderer.gameObject.layer;
             
-            CopyRenderer(playerRenderer, player, startOpacity, 10);
+            CopyRenderer(playerRenderer, player, startOpacity, 10);    
             CopyRenderer(childRenderer, child, startOpacity, 12);
             
             afterImageObject.gameObject.SetActive(true);

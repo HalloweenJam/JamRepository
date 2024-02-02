@@ -24,6 +24,7 @@ namespace Player.Controls
         public event Action InteractEvent;
         
         public event Action ExitEvent;
+        public event Action DialogueEvent;
         
         private void OnEnable()
         {
@@ -55,7 +56,7 @@ namespace Player.Controls
             _gameControls.Gameplay.Disable();
             _gameControls.UI.Enable();
         }
-        
+    
         public void OnMovement(InputAction.CallbackContext context)
         {
             MoveEvent?.Invoke(context.ReadValue<Vector2>());
@@ -113,6 +114,12 @@ namespace Player.Controls
         {
             if (context.phase == InputActionPhase.Performed)
                 ReloadEvent?.Invoke();
+        }
+
+        public void OnDialogue(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+                DialogueEvent?.Invoke();
         }
     }
 }

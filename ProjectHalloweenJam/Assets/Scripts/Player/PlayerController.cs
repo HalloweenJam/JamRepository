@@ -23,7 +23,6 @@ namespace Player
         [SerializeField] private float _teleportTime = .5f;
 
         [Header("Dash")]
-        [SerializeField] private TrailRenderer _trailRenderer;
         [SerializeField] private BoxCollider2D _hurtCollider;
         [Space]
         [SerializeField] private float _dashForce = 20;

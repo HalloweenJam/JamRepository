@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -22,13 +23,13 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(string name, string[] NPCSentences)
     {
-        OnStartDialogue?.Invoke(dialogue.Name);
+        OnStartDialogue?.Invoke(name);
         sentences.Clear();
 
-        foreach (string sentence in dialogue.Sentences)
-            sentences.Enqueue(sentence);
+        foreach (string sentence in NPCSentences)
+            sentences.Enqueue(sentence); 
         NextSentence();
     }
 
@@ -42,4 +43,6 @@ public class DialogueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         OnNextSentence?.Invoke(sentence);
     }
+
+    public void StopDialogue() => OnEndDialogue?.Invoke();
 }

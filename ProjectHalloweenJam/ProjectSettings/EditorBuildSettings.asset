@@ -9,7 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: e057498800023664eb8bbb9ac0c07290
   - enabled: 1
-    path: Assets/Scenes/MainGame.unity
+    path: Assets/Scenes/Limb.unity
+    guid: e8ef46ad8b0aa3e45b62330ac3cd1dae
+  - enabled: 1
+    path: Assets/Scenes/SecondCircle.unity
+    guid: 154ba1d0da16d7a4da519179238da3d2
+  - enabled: 1
+    path: Assets/Scenes/CityDit.unity
     guid: 7fcd06b1ca88dea419f5b2e7dfefdf21
   - enabled: 1
     path: Assets/Scenes/Gluttony.unity

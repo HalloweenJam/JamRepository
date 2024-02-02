@@ -94,7 +94,10 @@ namespace Entities
         private void ChangeWeapon(float direction)
         {
             var dir = direction > 0 ? 1 : -1;
-            
+
+            if (_weapons.Count == 0)
+                return;
+
             _selectedWeaponIndex = (_selectedWeaponIndex + _weapons.Count + dir) % _weapons.Count;
             
             OnWeaponUsed?.Invoke(_currentWeapon, true);

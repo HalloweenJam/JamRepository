@@ -46,14 +46,20 @@ TagManager:
   - name: Interactions
     uniqueID: 3770427287
     locked: 0
-  - name: Entity
-    uniqueID: 21571557
-    locked: 0
   - name: EntityWeapon
     uniqueID: 2338951163
     locked: 0
+  - name: Outside
+    uniqueID: 1591489341
+    locked: 0
   - name: Wall
     uniqueID: 3589191813
+    locked: 0
+  - name: Entity
+    uniqueID: 21571557
+    locked: 0
+  - name: Decorative
+    uniqueID: 641900165
     locked: 0
   - name: ShockWave
     uniqueID: 1554173803
@@ -63,4 +69,7 @@ TagManager:
     locked: 0
   - name: Fog
     uniqueID: 1260644145
+    locked: 0
+  - name: UI
+    uniqueID: 759768255
     locked: 0

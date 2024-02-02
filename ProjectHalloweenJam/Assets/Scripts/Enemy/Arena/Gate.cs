@@ -4,24 +4,22 @@ using UnityEngine;
 [RequireComponent(typeof(DissolveEffect))] 
 public class Gate : MonoBehaviour
 {
+    [SerializeField, HideInInspector] private DissolveEffect _dissolveEffect;
     [SerializeField] private Collider2D _triggerCollider;
-    private DissolveEffect _dissolveEffect;
     private bool _isActivatable;
     public bool IsActivatable => _isActivatable;
 
-    private void Start()
-    {
-        _dissolveEffect = GetComponent<DissolveEffect>();
-        _isActivatable = gameObject.activeInHierarchy;
-    }
+    private void OnValidate() => _dissolveEffect = GetComponent<DissolveEffect>();
+
+    private void Start() => _isActivatable = gameObject.activeInHierarchy;
+
+    public void Disable() => StartCoroutine(Disabled());
 
     public void Enable()
     {
-        gameObject.SetActive(true);  
+        gameObject.SetActive(true);
         _dissolveEffect.Appearance();
     }
-
-    public void Disable() =>  StartCoroutine(Disabled());
  
     private IEnumerator Disabled()
     {

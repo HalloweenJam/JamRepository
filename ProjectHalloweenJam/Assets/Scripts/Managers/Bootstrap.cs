@@ -39,6 +39,8 @@ namespace Managers
             _mainCollider.enabled = true;
             _collisionCollider.enabled = true;
             _fogOfWarSprite.Activate();
+
+            SceneTransition.Instance.OpenScene();
         }
     }
 }

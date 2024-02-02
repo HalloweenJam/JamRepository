@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class PauseManager : PersistentSingleton<PauseManager>
+    public class PauseManager : StaticInstance<PauseManager>
     {
         private InputReader _inputReader;
         private bool _paused;
@@ -16,13 +16,10 @@ namespace Managers
             _inputReader.ExitEvent += Pause;
             GameMenu.Instance.SetActive(false);
             _inputReader.SetPlayerActions();
-            _paused = false;
+            _paused = false; 
         }
 
-        private void Pause()
-        {
-            OnGamePause();
-        }
+        private void Pause() => OnGamePause();
         
         private void OnGamePause()
         {
@@ -32,7 +29,7 @@ namespace Managers
             Time.timeScale = 0.0f;
         }
 
-        public void OffGamePause()
+        public void OffGamePause() 
         {
             _inputReader.SetPlayerActions();
             _paused = false;
@@ -44,6 +41,7 @@ namespace Managers
         public void ExitGameMenu()
         {
             _paused = false;
+            _inputReader.SetPlayerActions();
             GameMenu.Instance.SetActive(false);
             Time.timeScale = 1.0f;
         } 

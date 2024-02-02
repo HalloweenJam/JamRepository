@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630cb35a2533fa847b4a50555360bf75, type: 3}
+  m_Name: TileData_2
+  m_EditorClassIdentifier: 
+  _gridPrefab: {fileID: 8166223243474683309, guid: a35af46206d72774e89ea898dd0c17e0, type: 3}
+  _ground: {fileID: 11400000, guid: e422a12e232ee884db539e1d4f419388, type: 2}
+  _wallTop: {fileID: 11400000, guid: 25ce0cfd09948344b931b7a5726115c6, type: 2}
+  _wallBottom: {fileID: 11400000, guid: 9e5565273cf455545a59098a0e73b617, type: 2}
+  _wallLeft: {fileID: 11400000, guid: 2df19ab80d366ce49a5b1a168ac2cbaf, type: 2}
+  _wallRight: {fileID: 11400000, guid: 399b4e61c8eafd244936825f7baa30a6, type: 2}
+  _wallTopRight: {fileID: 11400000, guid: 6e20db05409e2174a923c2cae348ea21, type: 2}
+  _wallTopLeft: {fileID: 11400000, guid: 1106eba775aad2e48b98cd0c470fed90, type: 2}
+  _wallBottomLeft: {fileID: 11400000, guid: 3efa3b0620fe7f54abbb58d4fac690ef, type: 2}
+  _wallBottomRight: {fileID: 11400000, guid: 1b9f83a677a93344c875ff1e9edb53be, type: 2}
+  _wallRoomTop: {fileID: 11400000, guid: d6d4f1196c5765f4dbbc7d848ba2b17c, type: 2}
+  _wallRoomTopBody: {fileID: 11400000, guid: 91d815cb1d157c14382fceaca5e253a8, type: 2}

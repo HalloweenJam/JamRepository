@@ -1,71 +1,64 @@
+using Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour
 {
-   // [SerializeField] private Text LoadingPercentage;
-    [SerializeField] private Image LoadingProgressBar;
+    [SerializeField] private Image _loadingProgressBar;
     [SerializeField] private float _timeLoadingScene = 0.1f;
 
-    private static SceneTransition instance;
-    private static bool shouldPlayOpeningAnimation = false;
+    public static SceneTransition Instance { get; private set; }
+    private static bool _shouldPlayOpeningAnimation = false;
 
-    private Animator componentAnimator;
-    private AsyncOperation loadingSceneOperation;
+    private Animator _componentAnimator;
+    private AsyncOperation _loadingSceneOperation;
 
-    public static void SwitchToScene(string sceneName)
+    private bool _instantlyOpenScene = false;
+
+    public static void SwitchToScene(string sceneName, bool instantlyOpenScene)
     {
-        instance.componentAnimator.SetTrigger("sceneOpening");
-
-        instance.loadingSceneOperation = SceneManager.LoadSceneAsync(sceneName);
-
-        // Чтобы сцена не начала переключаться пока играет анимация closing:
-        instance.loadingSceneOperation.allowSceneActivation = false;
-
-        instance.LoadingProgressBar.fillAmount = 0;
+        Instance._componentAnimator.SetTrigger("sceneOpening");
+        Instance._loadingSceneOperation = SceneManager.LoadSceneAsync(sceneName);
+        Instance._loadingSceneOperation.allowSceneActivation = false;
+        Instance._loadingProgressBar.fillAmount = 0;
+        Instance._instantlyOpenScene = instantlyOpenScene;
+        Cursor.visible = false;
     }
 
-    private void Start()
+    private void Start()  
     {
-        instance = this;
+        Instance = this;
+        _componentAnimator = GetComponent<Animator>(); 
+        if(_instantlyOpenScene)
+            OpenScene();
+    }
 
-        componentAnimator = GetComponent<Animator>();
-
-        if (shouldPlayOpeningAnimation)
+    public void OpenScene()
+    {
+        if (_shouldPlayOpeningAnimation)
         {
-            componentAnimator.SetTrigger("sceneClosing");
-            instance.LoadingProgressBar.fillAmount = 1;
-
-            // Чтобы если следующий переход будет обычным SceneManager.LoadScene, не проигрывать анимацию opening:
-            shouldPlayOpeningAnimation = false;
+            _componentAnimator.SetTrigger("sceneClosing");
+            Instance._loadingProgressBar.fillAmount = 1;
+            _shouldPlayOpeningAnimation = false;
+            Cursor.visible = true;
         }
     }
 
     private void Update()
     {
-        if (loadingSceneOperation != null)
+        if (_loadingSceneOperation != null)
         {
-            //LoadingPercentage.text = Mathf.RoundToInt(loadingSceneOperation.progress * 100) + "%";
-
-            // Просто присвоить прогресс:
-            //LoadingProgressBar.fillAmount = loadingSceneOperation.progress; 
-
-            // Присвоить прогресс с быстрой анимацией, чтобы ощущалось плавнее:
-            LoadingProgressBar.fillAmount = Mathf.Lerp(LoadingProgressBar.fillAmount, loadingSceneOperation.progress,
+            _loadingProgressBar.fillAmount = Mathf.Lerp(_loadingProgressBar.fillAmount, _loadingSceneOperation.progress,
                 Time.deltaTime * _timeLoadingScene);
-            if(LoadingProgressBar.fillAmount > 0.8)
-            {
-                OnAnimationOver();
-            }
+            if(_loadingProgressBar.fillAmount > 0.8)           
+                OnAnimationOver();           
         }
     }
 
     public void OnAnimationOver()
     {
-        // Чтобы при открытии сцены, куда мы переключаемся, проигралась анимация opening:
-        shouldPlayOpeningAnimation = true;
-
-        loadingSceneOperation.allowSceneActivation = true;
+        _shouldPlayOpeningAnimation = true;
+        _loadingSceneOperation.allowSceneActivation = true;
     }
 }

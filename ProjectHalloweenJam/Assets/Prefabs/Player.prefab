@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 448689235473096329}
   - component: {fileID: 7033296657604008231}
   - component: {fileID: 3510228417044789283}
-  - component: {fileID: 6664403460363383649}
   m_Layer: 7
   m_Name: GunHolder
   m_TagString: Untagged
@@ -136,21 +135,6 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 448689235473096329}
   _dissolveEffect: {fileID: 3510228417044789283}
 --- !u!114 &3510228417044789283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5765303340139183827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac7d8b02f2420943bc927cfb52dd779, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dissolveTime: 0.4
-  _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
-  _activateComponent: 1
---- !u!114 &6664403460363383649
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -355,7 +339,6 @@ MonoBehaviour:
   _speed: 100
   _weaponHolder: {fileID: 7033296657604008231}
   _teleportTime: 0.5
-  _trailRenderer: {fileID: 0}
   _hurtCollider: {fileID: 990256074493905575}
   _dashForce: 20
   _dashDelay: 3

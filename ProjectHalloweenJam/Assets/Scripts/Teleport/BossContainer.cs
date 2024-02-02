@@ -10,6 +10,6 @@ public class BossContainer : ScriptableObject
     public void LoadBossScene()
     {
         var name = _bossSceneNames.GetWeightedRandom();
-        SceneTransition.SwitchToScene(name);
+        SceneTransition.SwitchToScene(name, true);
     }
 }
