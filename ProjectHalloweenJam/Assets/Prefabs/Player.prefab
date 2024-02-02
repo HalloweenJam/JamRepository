@@ -105,7 +105,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1956016133
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 10
   m_Sprite: {fileID: 7362661061344524757, guid: 9355908b4923c78408dd411e6050eaef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -149,6 +149,90 @@ MonoBehaviour:
   _dissolveTime: 0.4
   _dissolveMaterial: {fileID: 2100000, guid: cf9b87787e3429940bc8c15d4fadea78, type: 2}
   _activateComponent: 1
+--- !u!1 &5830859331869017626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3313585727575727296}
+  - component: {fileID: 5361699675824466419}
+  m_Layer: 0
+  m_Name: Shock Wave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3313585727575727296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5830859331869017626}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2122618606134928642}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5361699675824466419
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5830859331869017626}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: be3cb265eebf34c4989859e8316f7176, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1554173803
+  m_SortingLayer: 7
+  m_SortingOrder: 10
+  m_Sprite: {fileID: -2413806693520163455, guid: cbeaf0b0074ae834a8e7506bf5be6fb6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &6745565781883482922
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +256,7 @@ GameObject:
   - component: {fileID: 5750994816682901032}
   - component: {fileID: 4617132447602040523}
   - component: {fileID: 3339484265581563554}
+  - component: {fileID: 323210957465961474}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -192,6 +277,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3313585727575727296}
   - {fileID: 2758214160276593883}
   - {fileID: 1673438090122521247}
   - {fileID: 3582615163015355762}
@@ -236,7 +322,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 21571557
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 10
   m_Sprite: {fileID: 4965146562148701536, guid: 64bb115ee0e19ff4192d58d3bce5b41a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -345,12 +431,20 @@ MonoBehaviour:
   _maxDashesCount: 1
   _idle: Player_Idle
   _run: Player_Run
+  _cleanerLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  _clearRefills: 1000
+  _clearDelay: 0.5
+  _maxRadius: 30
+  _expansionTime: 1
   _rigidbody: {fileID: 7874342451100787098}
   _animator: {fileID: 1771303344377511941}
   _spriteRenderer: {fileID: 8783166603959011272}
   _weaponSelector: {fileID: 7120541555264942736}
   _dissolveEffect: {fileID: 5750994816682901032}
   _afterImageController: {fileID: 3339484265581563554}
+  _shockWaveController: {fileID: 323210957465961474}
 --- !u!114 &3276824683475747444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,8 +595,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _secondaryFogOfWar: {fileID: 3582615163015355762}
-  _timeInterval: 0.1
-  _sightDistance: 6.25
+  _timeInterval: 0.25
+  _sightDistance: 3.75
 --- !u!114 &3339484265581563554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +614,20 @@ MonoBehaviour:
   _length: 0.4
   _playerRenderer: {fileID: 8783166603959011272}
   _childRenderer: {fileID: 448689235473096329}
+--- !u!114 &323210957465961474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6745565781883482922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d7b07baed0412291080a36996b86b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shockWaveRenderer: {fileID: 5361699675824466419}
+  _shockWaveTime: 0.5
 --- !u!1 &9216733569172840091
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +717,22 @@ PrefabInstance:
     - target: {fileID: 2009571140744604284, guid: e423b01195f60694ca76e195f1152722, type: 3}
       propertyPath: m_Name
       value: FogAgentMask
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009571140744604284, guid: e423b01195f60694ca76e195f1152722, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158111106916434801, guid: e423b01195f60694ca76e195f1152722, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158111106916434801, guid: e423b01195f60694ca76e195f1152722, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158111106916434801, guid: e423b01195f60694ca76e195f1152722, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3158111106916434801, guid: e423b01195f60694ca76e195f1152722, type: 3}
       propertyPath: m_LocalPosition.x
