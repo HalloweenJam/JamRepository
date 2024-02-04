@@ -116,6 +116,15 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClearProjectiles"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b10ae1d-b300-4aaf-9bf5-cdf419a42b16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -294,6 +303,17 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""Dialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7461e04-5376-4e5b-bd47-fc940e24abbf"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClearProjectiles"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -335,6 +355,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Gameplay_Minimap = m_Gameplay.FindAction("Minimap", throwIfNotFound: true);
         m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
         m_Gameplay_Dialogue = m_Gameplay.FindAction("Dialogue", throwIfNotFound: true);
+        m_Gameplay_ClearProjectiles = m_Gameplay.FindAction("ClearProjectiles", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
     }
@@ -408,6 +429,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Minimap;
     private readonly InputAction m_Gameplay_Reload;
     private readonly InputAction m_Gameplay_Dialogue;
+    private readonly InputAction m_Gameplay_ClearProjectiles;
     public struct GameplayActions
     {
         private @GameControls m_Wrapper;
@@ -422,6 +444,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @Minimap => m_Wrapper.m_Gameplay_Minimap;
         public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
         public InputAction @Dialogue => m_Wrapper.m_Gameplay_Dialogue;
+        public InputAction @ClearProjectiles => m_Wrapper.m_Gameplay_ClearProjectiles;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -461,6 +484,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Dialogue.started += instance.OnDialogue;
             @Dialogue.performed += instance.OnDialogue;
             @Dialogue.canceled += instance.OnDialogue;
+            @ClearProjectiles.started += instance.OnClearProjectiles;
+            @ClearProjectiles.performed += instance.OnClearProjectiles;
+            @ClearProjectiles.canceled += instance.OnClearProjectiles;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -495,6 +521,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Dialogue.started -= instance.OnDialogue;
             @Dialogue.performed -= instance.OnDialogue;
             @Dialogue.canceled -= instance.OnDialogue;
+            @ClearProjectiles.started -= instance.OnClearProjectiles;
+            @ClearProjectiles.performed -= instance.OnClearProjectiles;
+            @ClearProjectiles.canceled -= instance.OnClearProjectiles;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -571,6 +600,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnMinimap(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnDialogue(InputAction.CallbackContext context);
+        void OnClearProjectiles(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -2,6 +2,7 @@ using Core;
 using Generation.AnchorSystem.Data;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Level = LevelSetting.Levels;
 
 public partial class Arena : Room
@@ -12,7 +13,7 @@ public partial class Arena : Room
     [SerializeField] private List<Gate> _gates;
     [SerializeField] private bool _isBossArena = false;
 
-    [SerializeField, HideInInspector] private Castscene _castscene;
+    [FormerlySerializedAs("_castscene")] [SerializeField, HideInInspector] private Cutscene _cutscene;
     private bool _isCompleted = false;
 
     private SpawnPointsData _thisSpawnPointsData;
@@ -31,7 +32,7 @@ public partial class Arena : Room
         }
 
         if (IsBossArena)
-            _castscene.Activate();
+            _cutscene.Activate();
 
         base.Activate(!_isBossArena);
     }

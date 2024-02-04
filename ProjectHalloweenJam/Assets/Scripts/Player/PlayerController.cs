@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Entities;
 using Managers;
 using Player.Controls;
@@ -33,6 +34,13 @@ namespace Player
         [Header("Animator")] 
         [SerializeField] private string _idle;
         [SerializeField] private string _run;
+
+        [Header("Projectile Cleaner")] 
+        [SerializeField] private LayerMask _cleanerLayerMask;
+        [SerializeField] private int _clearRefills = 1000;
+        [SerializeField] private float _clearDelay = 2f;
+        [SerializeField] private float _maxRadius = 30f;
+        [SerializeField] private float _expansionTime = 1;
         
         [HideInInspector, SerializeField] private Rigidbody2D _rigidbody;
         [HideInInspector, SerializeField] private Animator _animator;
@@ -40,13 +48,16 @@ namespace Player
         [HideInInspector, SerializeField] private WeaponSelector _weaponSelector;
         [HideInInspector, SerializeField] private DissolveEffect _dissolveEffect;
         [HideInInspector, SerializeField] private AfterImageController _afterImageController;
+        [HideInInspector, SerializeField] private ShockWaveController _shockWaveController;
         
         private Camera _camera;
 
         private bool _isEnabled = true;
         private bool _isDashing;
         private bool _isMovementCancelled = true;
-        
+
+        private float _cleanerRadius = 0;
+        private float _clearDelayCounter;
         private float _dashDelayCounter;
         private int _dashesCount;
 
@@ -62,14 +73,60 @@ namespace Player
         
         private bool _canDash => !_isDashing && _dashesCount > 0;
 
+        public void DisableHurtCollider(float time)
+        {
+            _hurtCollider.enabled = false;
+            StartCoroutine(EnableHurtCollider(time));
+        }
+
+        public void AddClearRefills(int value)
+        {
+            _clearRefills += value;
+        }
+
+        public void Init()
+        {
+            TeleportPlayer = Teleport;
+            
+            _camera = Camera.main;
+
+            _rigidbody.mass = _mass;
+            _rigidbody.drag = _linearDrag;
+            _rigidbody.gravityScale = 0;
+            _rigidbody.angularDrag = 0;
+
+            _rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            
+            _weaponSelector.Init(true);
+            
+            _inputReader = InputReaderManager.Instance.GetInputReader();
+            
+            InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
+            InputReaderManager.Instance.OnInstanceDestroyed += OnDisable;
+            
+            _inputReader.MoveEvent += direction =>
+            {
+                if (direction != Vector2.zero)
+                    _cashedMovementDirection = direction;
+                
+                _movementDirection = direction;
+                _isMovementCancelled = false;
+            };
+            _inputReader.ClearProjectilesAction += ClearProjectiles;
+            _inputReader.MoveCancelledEvent += () => _isMovementCancelled = true;
+
+            _inputReader.DashEvent += TryDash;
+        }
+        
         private void OnValidate()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
             _dissolveEffect = GetComponent<DissolveEffect>();
-            _weaponSelector ??= GetComponent<WeaponSelector>();
-            _spriteRenderer ??= GetComponent<SpriteRenderer>();
-            _afterImageController ??= GetComponent<AfterImageController>();
+            _weaponSelector = GetComponent<WeaponSelector>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _afterImageController = GetComponent<AfterImageController>();
+            _shockWaveController = GetComponent<ShockWaveController>();
         }
 
         private void Teleport(Vector2 pos)
@@ -106,41 +163,51 @@ namespace Player
             }
         }
 
-        public void Init()
+        private void ClearProjectiles()
         {
-            TeleportPlayer = Teleport;
-            
-            _camera = Camera.main;
+            if (_clearRefills < 1 || _clearDelayCounter > 0)
+                return;
 
-            _rigidbody.mass = _mass;
-            _rigidbody.drag = _linearDrag;
-            _rigidbody.gravityScale = 0;
-            _rigidbody.angularDrag = 0;
-
-            _rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            _clearRefills--;
+            _clearDelayCounter = _clearDelay;
             
-            _weaponSelector.Init(true);
-            
-            _inputReader = InputReaderManager.Instance.GetInputReader();
-            
-            InputReaderManager.Instance.OnInputReaderActiveStateChanged += (state) => _isEnabled = state;
-            InputReaderManager.Instance.OnInstanceDestroyed += OnDisable;
-            
-            _inputReader.MoveEvent += direction =>
-            {
-                if (direction != Vector2.zero)
-                    _cashedMovementDirection = direction;
-                
-                _movementDirection = direction;
-                _isMovementCancelled = false;
-            };
-            
-            _inputReader.MoveCancelledEvent += () => _isMovementCancelled = true;
-
-            _inputReader.DashEvent += TryDash;
+            _shockWaveController.Play();
+            StartCoroutine(DetectProjectiles());
         }
+
+        private IEnumerator DetectProjectiles()
+        {
+            yield return new WaitForFixedUpdate();
+            
+            var elapsedTime = 0f;
+            
+            while (elapsedTime < _expansionTime)
+            {
+                _cleanerRadius = Mathf.Lerp(0, _maxRadius, elapsedTime / _expansionTime);
+                var colliders = Physics2D.OverlapCircleAll(transform.position, _cleanerRadius, _cleanerLayerMask);
+                
+                DestroyProjectiles(colliders);
+                
+                elapsedTime += Time.deltaTime;
+                yield return new WaitForFixedUpdate();
+            }
+
+            _cleanerRadius = _maxRadius;
+        }
+
+        private static void DestroyProjectiles(IEnumerable<Collider2D> colliders)
+        {
+            foreach (var item in colliders)
+            {
+                if (item.TryGetComponent<Projectiles.Bullet>(out var bullet) && bullet.IsEnemyBullet)
+                    bullet.Destroy();
+            }
+        }
+        
         private void Update()
         {
+            _clearDelayCounter -= Time.deltaTime;
+            
             if (_dashesCount >= _maxDashesCount)
                 return;
 
@@ -173,7 +240,7 @@ namespace Player
             OnPlayerDashing?.Invoke(_isDashing);
             _dashesCount--;
             
-            _afterImageController?.Play();
+            _afterImageController.Play();
             _rigidbody.AddForce(new Vector2(_cashedMovementDirection.x, _cashedMovementDirection.y) * (_speed * _dashForce));
             
             _isDashing = false;
@@ -205,11 +272,6 @@ namespace Player
             
             _rigidbody.AddForce(new Vector2(_movementDirection.x, _movementDirection.y) * _speed);
         }
-        public void DisableHurtCollider(float time)
-        {
-            _hurtCollider.enabled = false;
-            StartCoroutine(EnableHurtCollider(time));
-        }
 
         private IEnumerator EnableHurtCollider(float time)
         {
@@ -220,7 +282,8 @@ namespace Player
         private void OnDisable()
         {
             _inputReader.DashEvent -= TryDash;
-
+            _inputReader.ClearProjectilesAction -= ClearProjectiles;
+            
             if (InputReaderManager.Instance == null)
                 return;
 

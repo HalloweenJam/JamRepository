@@ -15,11 +15,13 @@ namespace Visuals
 
         public void Play()
         {
+            _shockWaveRenderer.enabled = true;
             _coroutine = StartCoroutine(ShockWaveCoroutine(-.1f, 1f));
         }
         
         private void Awake()
         {
+            _shockWaveRenderer.enabled = false;
             _material = _shockWaveRenderer.material;
         }
 
@@ -35,6 +37,8 @@ namespace Visuals
                 _material.SetFloat(_distanceFromCenter, lerpedAmount);
                 yield return null;
             }
+            
+            _shockWaveRenderer.enabled = false;
         }
     }
 }

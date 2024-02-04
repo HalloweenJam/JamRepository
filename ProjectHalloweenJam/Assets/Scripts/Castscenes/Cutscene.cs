@@ -9,7 +9,7 @@ using Core;
 using Managers;
 using Cinemachine;
 
-public class Castscene : MonoBehaviour
+public class Cutscene : MonoBehaviour
 {
     [Header("Animation")]
     [Range(0, 5f)][SerializeField] private float _animationTime;
@@ -39,8 +39,8 @@ public class Castscene : MonoBehaviour
 
     private void Awake()
     {
-        DialogueManager.Instance.OnEndDialogue += EndCastscene;   
-        _enemyBoss.OnTakeDamage += EndCastsceneNow;
+        DialogueManager.Instance.OnEndDialogue += EndCutscene;   
+        _enemyBoss.OnTakeDamage += EndCutsceneNow;
 
         _playerAnimator = _playerController.GetComponent<Animator>();
         _bossMovement = _enemyBoss.gameObject.GetComponent<EnemyMovement>();
@@ -48,11 +48,11 @@ public class Castscene : MonoBehaviour
         _camera = Camera.main;
     }
 
-    public void StartCastscene() => _coroutine = StartCoroutine(CastsceneCoroutine());
+    public void StartCutscene() => _coroutine = StartCoroutine(CutsceneCoroutine());
 
-    private IEnumerator CastsceneCoroutine()
+    private IEnumerator CutsceneCoroutine()
     {
-        ShowInteface(false);
+        ShowInterface(false);
         InputReaderManager.Instance.SetActiveControls(false);
         _playerController.transform.DOMove(_destinationTransform.position, _animationTime);
 
@@ -66,9 +66,10 @@ public class Castscene : MonoBehaviour
 
         _playerAnimator.Play(_idle);
         ShowDialogueDisplay(true);
-        _bossDialogue.DialogueTrigger();
+        //_bossDialogue.DialogueTrigger();
+        EndCutscene();
     }
-    private void EndCastscene()
+    private void EndCutscene()
     {
         _cinemachineVirtualCamera.enabled = true;
         InputReaderManager.Instance.SetActiveControls(true);
@@ -76,11 +77,11 @@ public class Castscene : MonoBehaviour
 
         _isShowed = false;
         ShowDialogueDisplay(false);
-        ShowInteface(true);
+        ShowInterface(true);
         _bossBar.ShowBossBaR();
     }
 
-    private void ShowInteface(bool active)
+    private void ShowInterface(bool active)
     {
         foreach (var image in _interfaceObjects)
         {
@@ -95,7 +96,7 @@ public class Castscene : MonoBehaviour
     {
         if (active)
         {
-            float fadeValue = active ? 1 : 0f;
+            float fadeValue = 1;
             float fadeTime = 1.5f;
             _dialogueDisplay.DOFade(fadeValue, fadeTime);
         }
@@ -103,14 +104,14 @@ public class Castscene : MonoBehaviour
             _dialogueDisplay.Deactivate();
     }
 
-    private void EndCastsceneNow(float _)
+    private void EndCutsceneNow(float _)
     {
         if (!_isShowed && _coroutine != null)
         {
             StopCoroutine(_coroutine);
             _playerController.transform.DOPause();
-            EndCastscene();
-            _enemyBoss.OnTakeDamage -= EndCastsceneNow;
+            EndCutscene();
+            _enemyBoss.OnTakeDamage -= EndCutsceneNow;
         }
     }
 }

@@ -22,6 +22,8 @@ namespace Player.Controls
 
         public event Action OpenMinimapEvent;
         public event Action InteractEvent;
+
+        public event Action ClearProjectilesAction;
         
         public event Action ExitEvent;
         public event Action DialogueEvent;
@@ -120,6 +122,12 @@ namespace Player.Controls
         {
             if (context.phase == InputActionPhase.Performed)
                 DialogueEvent?.Invoke();
+        }
+
+        public void OnClearProjectiles(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+                ClearProjectilesAction?.Invoke();
         }
     }
 }

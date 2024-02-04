@@ -19,7 +19,7 @@ namespace Projectiles
         [SerializeField, HideInInspector] private SpriteRenderer _render;
         [SerializeField, HideInInspector] private CircleCollider2D _collider;
         [SerializeField, HideInInspector] private Animator _animator;
-
+        
         private int _damage;
         private float _speed;
         private float _lifeTimeCounter;
@@ -28,6 +28,8 @@ namespace Projectiles
         private bool _isEnemyBullet;
         
         private Vector2 _direction;
+        
+        public bool IsEnemyBullet => _isEnemyBullet;
         
         public void Init(Vector2 direction, BulletConfig bulletConfig)
         {
@@ -43,18 +45,23 @@ namespace Projectiles
                 _render.sprite = bulletConfig.Sprite;
             }
 
-            if (bulletConfig.CustomMaterial.Enabled)
-                _render.material = bulletConfig.CustomMaterial.Value;
-            else
-                _render.material = bulletConfig.DefaultMaterial;
+            _render.material = bulletConfig.CustomMaterial.Enabled
+                ? bulletConfig.CustomMaterial.Value
+                : bulletConfig.DefaultMaterial;
 
             _isEnemyBullet = bulletConfig.IsEnemyBullet;
+            _collider.enabled = true;
             _collider.radius = 0.3f;
             _direction = direction;
             _speed = bulletConfig.Speed;
             _damage = bulletConfig.Damage;
             transform.localScale = new Vector3(bulletConfig.Scale, bulletConfig.Scale, 1f);
             _lifeTimeCounter = _lifeTime;
+        }
+
+        public void Destroy()
+        {
+            StartCoroutine(Hit(new ContactPoint2D(), _hitTargetAnimator));
         }
 
         private void OnValidate()
@@ -82,7 +89,6 @@ namespace Projectiles
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            
             if (other.collider.TryGetComponent<IDamageable>(out var damageable))
             {
                 StartCoroutine(Hit(other.contacts[0], _hitTargetAnimator));
@@ -97,8 +103,9 @@ namespace Projectiles
             _isHit = true;
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = 0;
-
-            if(Mathf.Abs(hitPoint.normal.x) > 0.5)
+            _collider.enabled = false;
+            
+            if (Mathf.Abs(hitPoint.normal.x) > 0.5)
                 transform.eulerAngles = new Vector3(0, 0, 90 * hitPoint.normal.x);
             else
             {
@@ -108,6 +115,7 @@ namespace Projectiles
 
             transform.localScale = _isEnemyBullet ? Vector3.one * 0.5f : transform.localScale;
             _animator.runtimeAnimatorController = animatorController;
+            
             yield return new WaitForSeconds(1f);
             _isHit = false;
             BulletPoolingManager.Instance.Release(this);
