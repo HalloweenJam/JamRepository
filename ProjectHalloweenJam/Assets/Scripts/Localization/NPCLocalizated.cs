@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCData : LocalizedText
+public class NPCLocalizated : LocalizedText
 {
     private readonly string _nameKey = "Name";
     private Dictionary<string, List<string>> _dialogueData;

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LocalizationReader
 {
-    private static string s_pathLocalization => Path.Combine(Application.dataPath, "Scripts", "Localization");
-    private static string s_pathDialogue => Path.Combine(Application.dataPath, "DialogueData");
+    private static string s_pathLocalization => Path.Combine(Application.streamingAssetsPath, "Localization", "Menu");
+    private static string s_pathDialogue => Path.Combine(Application.streamingAssetsPath, "Localization", "NPC");
 
     private static int _languageId = 0;
 

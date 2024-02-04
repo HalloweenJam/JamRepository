@@ -2165,7 +2165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6976541420009528784, guid: 847f9e38ed0f7bf42ae593324734ac0b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7916935925514879797, guid: 847f9e38ed0f7bf42ae593324734ac0b, type: 3}
       propertyPath: _loadingProgressBar
@@ -2522,6 +2522,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4617132447602040523, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
+      propertyPath: _timeInterval
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6745565781883482922, guid: 41a1ff74dad4c80409ee66b0c09b1caf, type: 3}
       propertyPath: m_Name
       value: 'Player '
@@ -2819,7 +2823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8216057991300538630, guid: 82c0495fce0bb9347a1c6ba08e8d7f37, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

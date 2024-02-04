@@ -11079,13 +11079,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1176300371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79d8f63f5d7bd3b438c854abefe68292, type: 3}
+  m_Script: {fileID: 11500000, guid: ed0f831d386996049a43b872fd593db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LocalizationData: {fileID: 11400000, guid: 7bc7f64a411489447b00abb0115a9f7d, type: 2}
   _key: 
-  _nameText: {fileID: 822419370}
-  _dialogueText: {fileID: 2019867842}
 --- !u!1001 &1210426384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17056,8 +17054,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 13.73955, y: 0.70205003, z: 0}
-    m_Extent: {x: 15.43025, y: 2.39825, z: 0}
+    m_Center: {x: 13.74055, y: 0.69735, z: 0}
+    m_Extent: {x: 15.43485, y: 2.39535, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -20535,12 +20533,20 @@ MonoBehaviour:
   _maxDashesCount: 1
   _idle: Player_Idle
   _run: Player_Run
+  _cleanerLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _clearRefills: 1000
+  _clearDelay: 2
+  _maxRadius: 30
+  _expansionTime: 1
   _rigidbody: {fileID: 7874342450203189838}
   _animator: {fileID: 1771303345107141585}
   _spriteRenderer: {fileID: 8783166603245831196}
   _weaponSelector: {fileID: 8783166603245831197}
   _dissolveEffect: {fileID: 0}
   _afterImageController: {fileID: 0}
+  _shockWaveController: {fileID: 0}
 --- !u!114 &5637165108854305884
 MonoBehaviour:
   m_ObjectHideFlags: 0

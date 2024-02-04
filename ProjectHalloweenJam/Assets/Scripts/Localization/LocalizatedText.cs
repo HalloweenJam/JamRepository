@@ -4,7 +4,7 @@ using TMPro;
 public class LocalizedText : MonoBehaviour
 {
     [SerializeField] protected LocalizationData LocalizationData;
-    [SerializeField] private string _key;
+    [SerializeField, HideInInspector] private string _key;
     private TextMeshProUGUI _text;
 
     public virtual void Awake() 

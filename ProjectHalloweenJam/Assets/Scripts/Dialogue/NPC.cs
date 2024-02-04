@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    [SerializeField] private NPCData _npcData;
+    [SerializeField] private NPCLocalizated _npcData;
     [Space]
     [SerializeField] private DialogueDisplay _dialogueDisplay;
     [SerializeField] private RectTransform _hidePanel;
