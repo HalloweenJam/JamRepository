@@ -5,6 +5,7 @@ public class SettingsData
     public ResItem ResItem { get; set; }
     public float EffectsVolume { get; set; }
     public float MusicVolume { get; set; }
+    public int Language { get; set; }
 
     public static Newtonsoft.Json.JsonSerializerSettings SerializeSettings()
     {

@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -28,8 +26,9 @@ public class DialogueManager : MonoBehaviour
         OnStartDialogue?.Invoke(name);
         sentences.Clear();
 
-        foreach (string sentence in NPCSentences)
-            sentences.Enqueue(sentence); 
+        foreach (var sentence in NPCSentences)       
+            sentences.Enqueue(sentence);
+        
         NextSentence();
     }
 

@@ -13,6 +13,7 @@ public class Settings : MonoBehaviour
     [SerializeField] private Toggle _fullScreenTog;
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private Slider _effetsSlider;
+    [SerializeField] private TMP_Dropdown _language;
 
     [SerializeField] private AudioMixerGroup _music;
     [SerializeField] private AudioMixerGroup _effects;
@@ -22,12 +23,13 @@ public class Settings : MonoBehaviour
 
     private int _currentResIndex;
 
+    public static Action UpdateLanguageAction;
+
     private void Start()
     {
         LoadSettings();
         SetSettings();
     }
-
 
     private void SetSettings()
     {
@@ -39,6 +41,9 @@ public class Settings : MonoBehaviour
 
         _music.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, _musicSlider.value));
         _effects.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, _effetsSlider.value));
+
+        LocalizationReader.SetLanguageId(_language.value);
+        UpdateLanguageAction?.Invoke();
     }
 
     public void SaveSettings()
@@ -52,7 +57,8 @@ public class Settings : MonoBehaviour
         data.MusicVolume = _musicSlider.value;
         data.EffectsVolume = _effetsSlider.value;
         data.FirstStartGame = _isFirstStartGame;
-
+        data.Language = _language.value;
+        
         SettingsSaveLoadUtils.SaveSettingsData(data);
     }
 
@@ -71,6 +77,7 @@ public class Settings : MonoBehaviour
         _musicSlider.value = data.MusicVolume;
         _effetsSlider.value = data.EffectsVolume;
         _isFirstStartGame = data.FirstStartGame;
+        _language.value = data.Language; 
 
         _currentResIndex = _resolutionItems.IndexOf(_resolutionItem);
     }
@@ -99,6 +106,7 @@ public class Settings : MonoBehaviour
         _musicSlider.value = 0.5f;
         _effetsSlider.value = 0.5f;
         _isFirstStartGame = true;
+        _language.value = 0;
 
         SetSettings();
     }

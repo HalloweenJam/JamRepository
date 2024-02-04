@@ -1,27 +1,25 @@
 using Core;
 using Managers;
+using TMPro;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    [SerializeField] private string _name;
+    [SerializeField] private NPCData _npcData;
     [Space]
     [SerializeField] private DialogueDisplay _dialogueDisplay;
     [SerializeField] private RectTransform _hidePanel;
-    [SerializeField] private RectTransform _dialoguePanel;
+    [SerializeField] private RectTransform _dialoguePanel;  
 
-    private string[] _sentences;
     private bool _isStartedDialogue = false;
 
     private void Start()
     {
         InputReaderManager.Instance.GetInputReader().DialogueEvent += OnDialogue;
         DialogueManager.Instance.OnEndDialogue += HidePanels;
-
-       
     }
 
-    public void DialogueTrigger() => DialogueManager.Instance.StartDialogue(_name, _sentences); 
+    public void DialogueTrigger() => DialogueManager.Instance.StartDialogue(_npcData.Name, _npcData.GetDialogueSentences());
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

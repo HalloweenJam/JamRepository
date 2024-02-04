@@ -1,0 +1,12 @@
+﻿Key;EN;RU
+Menu.Play;Play;Играть
+Menu.Settings;Settings;Настройки
+Menu.Exit;Exit;Выход
+Settings.Resolution;Resolution;Разрешение
+Settings.FullScreen;FullScreen;Полный экран
+Settings.Music;Music;Музыка
+Settings.Effects;Effects;Эффекты
+Settings.Language;Language;Язык
+Settings.Apply;Apply;Сохранить
+Settings.Back;Back;Назад
+SceneTransition.Loading;Loading;Загрузка
