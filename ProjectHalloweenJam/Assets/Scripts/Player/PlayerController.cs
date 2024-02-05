@@ -268,9 +268,9 @@ namespace Player
                 return;
             }
 
-            _animator.Play(_run);
-            
-            _rigidbody.AddForce(new Vector2(_movementDirection.x, _movementDirection.y) * _speed);
+            _animator.Play(_run);  
+
+            _rigidbody.AddForce(new Vector2(_movementDirection.x, _movementDirection.y) * (_speed * 50 * Time.fixedDeltaTime));
         }
 
         private IEnumerator EnableHurtCollider(float time)
