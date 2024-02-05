@@ -10882,11 +10882,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1176300373}
-  - component: {fileID: 1176300376}
   - component: {fileID: 1176300378}
   - component: {fileID: 1176300372}
   - component: {fileID: 1176300375}
   - component: {fileID: 1176300377}
+  - component: {fileID: 1176300379}
   m_Layer: 0
   m_Name: Minos
   m_TagString: Untagged
@@ -11008,22 +11008,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.97121924, y: 1.7815604}
   m_EdgeRadius: 0
---- !u!114 &1176300376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176300371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aea1c440d195f74f9fa7c4896e1bc42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _npcData: {fileID: 1176300378}
-  _dialogueDisplay: {fileID: 256573460}
-  _hidePanel: {fileID: 1981277803}
-  _dialoguePanel: {fileID: 1139134421}
 --- !u!61 &1176300377
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11084,6 +11068,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocalizationData: {fileID: 11400000, guid: 7bc7f64a411489447b00abb0115a9f7d, type: 2}
   _key: 
+--- !u!114 &1176300379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176300371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153bab43cb04b514ba603ae67aaeb71e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _npcData: {fileID: 1176300378}
+  _dialogueDisplay: {fileID: 256573460}
+  _hidePanel: {fileID: 1981277803}
+  _dialoguePanel: {fileID: 1139134421}
 --- !u!1001 &1210426384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17054,8 +17054,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 13.74055, y: 0.69735, z: 0}
-    m_Extent: {x: 15.43485, y: 2.39535, z: 0}
+    m_Center: {x: 13.7315, y: 0.6978, z: 0}
+    m_Extent: {x: 15.4257, y: 2.4005, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
