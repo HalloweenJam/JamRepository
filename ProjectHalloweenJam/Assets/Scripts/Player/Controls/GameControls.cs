@@ -296,7 +296,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""31fedab5-eb44-44f7-8178-9bbfc8bd6ffe"",
-                    ""path"": ""<Keyboard>/#(F)"",
+                    ""path"": ""<Keyboard>/t"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
