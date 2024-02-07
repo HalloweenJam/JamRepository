@@ -27,7 +27,7 @@ namespace Player
 
         public static void DepositMoney(int value) => Wallet.DepositPoints(value);
 
-        public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
+        public override bool TryTakeDamage(int damage, ContactPoint2D hitPoint = default, float hitForce = 0f, bool instantKill = false, bool ignoreInvisibility = false)
         {
             if (_canIgnoreDamage && !ignoreInvisibility)
                 return false;

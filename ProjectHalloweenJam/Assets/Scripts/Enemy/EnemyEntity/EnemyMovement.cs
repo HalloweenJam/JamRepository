@@ -2,6 +2,7 @@ using Enemy.EnemyEntity;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
@@ -18,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
 
     public Action Attack;
 
+    private Rigidbody2D _rigidbody;
     private Vector3 _defaultScale;
 
     private void Awake()
@@ -25,6 +27,9 @@ public class EnemyMovement : MonoBehaviour
         Animator = GetComponent<Animator>();
         Agent = GetComponent<NavMeshAgent>();
         EnemyAttack = GetComponent<EnemyAttack>();
+
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody.gravityScale = 0f;
     }
 
     public virtual void Initialize(Transform playerTransform, EnemyStats enemyStats)
@@ -51,6 +56,18 @@ public class EnemyMovement : MonoBehaviour
     public virtual void Move() => Agent.SetDestination(PlayerTransform.position);      
 
     public virtual void CanAttack() => Attack?.Invoke();
+
+    public void Repel(ContactPoint2D hitPoint, float hitForce) => StartCoroutine(RepelCoroutine(hitPoint, hitForce));
+
+    private IEnumerator RepelCoroutine(ContactPoint2D hitPoint, float hitForce)
+    {
+        hitForce = 100f;
+        Vector2 direction = (Vector2)transform.position - hitPoint.point;
+        Vector2 force = hitForce * direction;
+        _rigidbody.AddForce(force);
+        yield return new WaitForSeconds(0.25f);
+        _rigidbody.velocity = Vector2.zero;
+    }
 
     protected void Rotation() 
     {

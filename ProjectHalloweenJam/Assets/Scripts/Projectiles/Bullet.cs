@@ -92,7 +92,7 @@ namespace Projectiles
             if (other.collider.TryGetComponent<IDamageable>(out var damageable))
             {
                 StartCoroutine(Hit(other.contacts[0], _hitTargetAnimator));
-                damageable.TryTakeDamage(_damage);
+                damageable.TryTakeDamage(_damage, other.contacts[0], 100f);
             }
             else
                 StartCoroutine(Hit(other.contacts[0], _hitWallAnimator));

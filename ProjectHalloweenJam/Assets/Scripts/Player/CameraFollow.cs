@@ -33,7 +33,7 @@ namespace Player
                 return;
             
             print("unsub");
-            
+       
             InputReaderManager.Instance.OnInputReaderActiveStateChanged -= (state) => _isEnabled = state;
             InputReaderManager.Instance.OnInstanceDestroyed -= OnDisable;
         }

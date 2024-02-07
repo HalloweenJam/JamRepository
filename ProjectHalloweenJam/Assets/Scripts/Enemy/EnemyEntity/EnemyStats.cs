@@ -36,7 +36,7 @@ namespace Enemy.EnemyEntity
             Appearance();
         }
 
-        public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
+        public override bool TryTakeDamage(int damage, ContactPoint2D hitPoint = default, float hitForce = 0, bool instantKill = false, bool ignoreInvisibility = false)
         {
             if (instantKill)
             {
@@ -47,6 +47,7 @@ namespace Enemy.EnemyEntity
             OnEntityTakeDamage?.Invoke();
             
             CurrentHealth -= damage;
+            _movement.Repel(hitPoint, hitForce);
             if (CurrentHealth <= 0 && !_isDead)           
                 Kill();
 

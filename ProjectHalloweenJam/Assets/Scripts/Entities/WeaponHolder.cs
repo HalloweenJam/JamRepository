@@ -7,7 +7,7 @@ namespace Entities
     public class WeaponHolder : MonoBehaviour
     {
         [SerializeField] private float _offset;
-
+        [SerializeField] private Transform _pointRotation;
         [SerializeField] private Sprite _sprite;
 
         [SerializeField, HideInInspector] private SpriteRenderer _spriteRenderer;
@@ -53,14 +53,14 @@ namespace Entities
         
         public void Flip(bool isFacingRight)
         {
-            var localScale = transform.localScale;
+            var localScale = _pointRotation.localScale;
 
             var value = isFacingRight ? -1f : 1f;
 
             localScale.x = value;
             localScale.y = value;
 
-            transform.localScale = localScale;
+            _pointRotation.localScale = localScale;
         }
 
         private void FixedUpdate()
@@ -71,7 +71,7 @@ namespace Entities
             var direction = _camera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
             _rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, _rotation + _offset);
+            _pointRotation.rotation = Quaternion.Euler(0f, 0f, _rotation + _offset);
         }
         
         private void OnValidate()

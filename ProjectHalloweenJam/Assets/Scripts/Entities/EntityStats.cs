@@ -16,7 +16,7 @@ namespace Entities
 
         protected void SetHealth() => CurrentHealth = _maxHealth;
         
-        public abstract bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false);
+        public abstract bool TryTakeDamage(int damage, ContactPoint2D hitPoint = default, float hitForce = 0f, bool instantKill = false, bool ignoreInvisibility = false);
 
         protected abstract void Kill();
     }

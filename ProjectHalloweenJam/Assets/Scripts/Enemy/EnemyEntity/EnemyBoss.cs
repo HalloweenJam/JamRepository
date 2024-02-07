@@ -13,16 +13,16 @@ public class EnemyBoss : EnemyStats
 
     public void Start() => base.Initialize(_playerTransform);
 
-    public override bool TryTakeDamage(int damage, bool instantKill = false, bool ignoreInvisibility = false)
+    public override bool TryTakeDamage(int damage, ContactPoint2D hitPoint = default, float hitForce = 0f, bool instantKill = false, bool ignoreInvisibility = false)
     {
         OnTakeDamage?.Invoke((float)CurrentHealth / MaxHealth);
 
         if ((((float)CurrentHealth / MaxHealth) * 100) <= 50f && !_secondPhaseActive)
         {
             _secondPhaseActive = true; 
-            SecondPhase?.Invoke();
+            SecondPhase?.Invoke();   
         }
         
-        return base.TryTakeDamage(damage, instantKill, ignoreInvisibility);
+        return base.TryTakeDamage(damage, hitPoint, hitForce, instantKill, ignoreInvisibility);
     }
 }
