@@ -98,6 +98,7 @@ namespace Player
             _rigidbody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
             
             _weaponSelector.Init(true);
+            _weaponSelector.OnKnockBack += OnKnockBack;
             
             _inputReader = InputReaderManager.Instance.GetInputReader();
             
@@ -117,7 +118,12 @@ namespace Player
 
             _inputReader.DashEvent += TryDash;
         }
-        
+
+        private void OnKnockBack(Vector2 direction, float force)
+        {
+            _rigidbody.AddForce(direction * force, ForceMode2D.Force);
+        }
+
         private void OnValidate()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
@@ -283,6 +289,7 @@ namespace Player
         {
             _inputReader.DashEvent -= TryDash;
             _inputReader.ClearProjectilesAction -= ClearProjectiles;
+            _weaponSelector.OnKnockBack -= OnKnockBack;
             
             if (InputReaderManager.Instance == null)
                 return;

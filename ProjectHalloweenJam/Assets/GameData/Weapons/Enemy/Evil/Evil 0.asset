@@ -22,6 +22,7 @@ MonoBehaviour:
     _bulletsPerBatch: 1000
     _attackSpeed: 1
     _reloadingSpeed: 0.1
+    _knockBackForce: 10
   _bulletConfig:
     _bulletType: 0
     _sprite: {fileID: 2560381209985369486, guid: fc3c1d4ea44042a4289f9c894a836eea, type: 3}
