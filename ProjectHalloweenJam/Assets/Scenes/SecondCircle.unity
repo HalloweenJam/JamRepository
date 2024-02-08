@@ -6179,7 +6179,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 000000009727bce0e5274901fb8f698b85b8eed56bcfa25cabe0f7653d33dc5e59a6af41
+  m_ApplyToSortingLayers: 000000009727bce0e5274901fb8f698b85b8eed56bcfa25c3d33dc5e59a6af41859e4226
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -8910,6 +8910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443a93bf3eb7402fae4ed45f06a835e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canApplyKnockBack: 1
   _weaponHolder: {fileID: 7033296657040502971}
   _firePoint: {fileID: 954874280292423915}
   _weaponsToAdd:
