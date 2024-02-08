@@ -969,7 +969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &781830041
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -6179,7 +6179,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 000000009727bce0e5274901fb8f698b85b8eed56bcfa25cabe0f7653d33dc5e59a6af41
+  m_ApplyToSortingLayers: 000000009727bce0e5274901fb8f698b85b8eed56bcfa25c3d33dc5e59a6af41859e4226
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
