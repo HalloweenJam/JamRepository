@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Entities;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D), typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
@@ -11,7 +12,8 @@ public class EnemyMovement : MonoBehaviour
     protected EnemyStats EnemyStats;
     protected EnemyAttack EnemyAttack;
     protected Transform PlayerTransform;
-
+    protected WeaponSelector WeaponSelector;
+    
     public Transform Player => PlayerTransform;
     public NavMeshAgent NavAgent => Agent;
 
@@ -27,9 +29,21 @@ public class EnemyMovement : MonoBehaviour
         Animator = GetComponent<Animator>();
         Agent = GetComponent<NavMeshAgent>();
         EnemyAttack = GetComponent<EnemyAttack>();
+        WeaponSelector = GetComponentInChildren<WeaponSelector>();
+        WeaponSelector.OnKnockBack += OnKnockBack;
 
         _rigidbody = GetComponent<Rigidbody2D>();
         _rigidbody.gravityScale = 0f;
+    }
+
+    private void OnKnockBack(Vector2 direction, float force)
+    {
+        _rigidbody.AddForce(direction * force, ForceMode2D.Force);
+    }
+
+    private void OnDestroy()
+    {
+        WeaponSelector.OnKnockBack -= OnKnockBack;
     }
 
     public virtual void Initialize(Transform playerTransform, EnemyStats enemyStats)

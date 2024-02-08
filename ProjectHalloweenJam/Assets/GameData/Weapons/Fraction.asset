@@ -18,10 +18,11 @@ MonoBehaviour:
     _name: 
     _info: 
   _weaponConfig:
-    _totalBullets: 35
+    _totalBullets: 37
     _bulletsPerBatch: 5
     _attackSpeed: 0.5
     _reloadingSpeed: 1
+    _knockBackForce: 4
   _bulletConfig:
     _bulletType: 3
     _sprite: {fileID: -7420662752220689073, guid: 100506cb7d0a5c34cbac3b6c6d5d7662, type: 3}

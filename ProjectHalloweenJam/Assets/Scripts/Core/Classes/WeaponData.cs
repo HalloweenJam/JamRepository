@@ -21,12 +21,15 @@ namespace Core.Classes
         public int TotalBullets { get; }
         public int TotalBulletsInBatch { get; }
 
+        public float KnockBackForce { get; private set; }
+
         public Sprite InHandsSprite { get; }
         public Sprite Icon { get; private set; }
 
         public WeaponData(BaseWeapon baseWeapon)
         {
             _baseWeapon = baseWeapon;
+            KnockBackForce = baseWeapon.WeaponConfig.KnockBackForce;
 
             _attackSpeed = baseWeapon.WeaponConfig.AttackSpeed;
             _reloadingSpeed = baseWeapon.WeaponConfig.ReloadingSpeed;

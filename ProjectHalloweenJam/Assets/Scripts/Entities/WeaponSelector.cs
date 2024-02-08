@@ -11,9 +11,11 @@ namespace Entities
 {
     public class WeaponSelector : MonoBehaviour
     {
+        [SerializeField] private bool _canApplyKnockBack = true;
+        [Space]
         [SerializeField] private WeaponHolder _weaponHolder;
         [SerializeField] private Transform _firePoint;
-        
+        [Space]
         [SerializeField] private List<RangeWeapon> _weaponsToAdd;
         
         private readonly List<WeaponData> _weapons = new();
@@ -33,6 +35,7 @@ namespace Entities
         public WeaponHolder WeaponHolder => _weaponHolder;
         
         public Action<WeaponData, bool> OnWeaponUsed;
+        public Action<Vector2, float> OnKnockBack;
 
         public Transform FirePoint => _firePoint;
 
@@ -41,11 +44,15 @@ namespace Entities
         public bool TryToAttack(Vector2 targetPosition, bool isDirection = true)
         {
             var direction = isDirection ? targetPosition : (targetPosition - (Vector2) _firePoint.position).normalized;
-            var selectedWeapon = _currentWeapon;
-            
-            OnWeaponUsed?.Invoke(selectedWeapon, false);
-            
-            return selectedWeapon.TryToAttack(_firePoint.position, direction);
+
+            OnWeaponUsed?.Invoke(_currentWeapon, false);
+
+            var isAttackPassed = _currentWeapon.TryToAttack(_firePoint.position, direction);
+
+            if (isAttackPassed && _canApplyKnockBack)
+                OnKnockBack?.Invoke(-direction, _currentWeapon.KnockBackForce);
+
+            return isAttackPassed;
         }
 
         public void SetFirePoint(Transform firePoint) => _firePoint = firePoint;

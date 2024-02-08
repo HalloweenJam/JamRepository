@@ -33,7 +33,7 @@ namespace Enemy.EnemyEntity
    
         private void OnCollisionStay2D(Collision2D collision)
         {
-            if (collision != null & collision.gameObject.TryGetComponent<IDamageable>(out var damageable))
+            if (collision != null && collision.gameObject.TryGetComponent<IDamageable>(out var damageable))
                 damageable.TryTakeDamage(_damage);
         }
     }

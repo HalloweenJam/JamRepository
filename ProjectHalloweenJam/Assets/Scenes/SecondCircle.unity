@@ -8910,6 +8910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443a93bf3eb7402fae4ed45f06a835e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canApplyKnockBack: 1
   _weaponHolder: {fileID: 7033296657040502971}
   _firePoint: {fileID: 954874280292423915}
   _weaponsToAdd:
