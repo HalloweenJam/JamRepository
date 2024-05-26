@@ -9,3 +9,5 @@
 Вскоре, мы опубликуем более качественный вариант репозитория.
 
 ## За развитием проекта можно следить на странице [игры](https://glzmo.itch.io/good-day-in-hell) 
+
+[![Watch the video](https://img.itch.zone/aW1nLzE2MzAxOTQ3LnBuZw==/315x250%23c/SNDXqI.png)](https://www.youtube.com/watch?v=HQP2hxj52OI&feature=youtu.be)
